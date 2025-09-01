@@ -3,7 +3,7 @@ Welcome! Everything we make in the club will be here, please remember to commit 
 Story script: https://docs.google.com/document/d/1cHEZ6vZdfSWDoih76JM9KHbPaTzSw5q0KRIftT3MLtQ/edit?usp=sharing
 
 Resources:
-Ren'Py Documentation: https://www.renpy.org/doc/html/index.html
+/n/Ren'Py Documentation: https://www.renpy.org/doc/html/index.html
 Python Documentation: https://docs.python.org/3/tutorial/index.html
 
 Tutorials:
