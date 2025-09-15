@@ -28,6 +28,8 @@ label start:
     
     e "What is happening"
 
+    "POT" "I love branches"
+
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
     # This ends the game.
