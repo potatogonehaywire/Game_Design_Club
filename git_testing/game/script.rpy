@@ -25,6 +25,8 @@ label start:
     # These display lines of dialogue.
 
     e "You've created a new Ren'Py game."
+    
+    e "What is happening"
 
     "POT" "I love branches"
 
