@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgk0tfb8440dp"]
+
+[ext_resource type="Texture2D" uid="uid://pn2ftdry2yh5" path="res://bingo14.png" id="1_w6awp"]
+[ext_resource type="Script" uid="uid://be2mieml5ao2p" path="res://bingo_14.gd" id="1_yjheg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j316h"]
+size = Vector2(32, 22)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yjheg")
+
+[node name="Bingo14" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(132, 323)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_w6awp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(6, 1)
+shape = SubResource("RectangleShape2D_j316h")
