@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://coplxaemyo182"]
+
+[ext_resource type="Script" uid="uid://dam25ksb1hhsf" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqtel"]
+size = Vector3(1, 1.0750732, 0.24969482)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
+size = Vector3(1, 1, 0.29467773)
+
+[node name="Player??" type="CharacterBody3D"]
+script = ExtResource("1_onrkg")
+
+[node name="PlayerSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0)
+texture = ExtResource("2_i3pqv")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.006756592, 0.0048724385)
+shape = SubResource("BoxShape3D_hqtel")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9812692, 0.19264188, 0, -0.19264187, 0.9812692, 0, 0.08326121, 0.5264011)
+fov = 46.47491
+
+[node name="hitbox" type="Area3D" parent="."]
+
+[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0005126931)
+shape = SubResource("BoxShape3D_sweqy")
+debug_color = Color(0.9754197, 0, 0.42305484, 0.41960785)
