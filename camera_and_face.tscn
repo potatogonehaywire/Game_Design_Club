@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwiqf81uewvau"]
+
+[ext_resource type="Texture2D" uid="uid://11gvonbpv4wp" path="res://asses/default_image.png" id="1_1da3w"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mqgy3"]
+panorama = ExtResource("1_1da3w")
+
+[sub_resource type="Sky" id="Sky_6amx7"]
+sky_material = SubResource("PanoramaSkyMaterial_mqgy3")
+
+[sub_resource type="Environment" id="Environment_2aacd"]
+background_mode = 2
+sky = SubResource("Sky_6amx7")
+sky_custom_fov = 91.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.08298227, 0.45115355, -0.8885802, 3.6878416e-09, 0.8916554, 0.4527149, 0.9965509, 0.03756732, -0.07399163, 0, 0.7747719, 1.3958535)
+environment = SubResource("Environment_2aacd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.09848609, 0, 0.9951384, 0, 1, 0, -0.9951384, 0, 0.09848609, 1.8282182, 0, 1.4414641)
+pixel_size = 0.001
+texture = ExtResource("1_1da3w")
