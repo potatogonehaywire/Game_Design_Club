@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhndd0lglwclb"]
+
+[ext_resource type="Texture2D" uid="uid://dlqc0mdtmwn6" path="res://lu_guang_amazing_art.png" id="1_f7cmv"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_f7cmv")
