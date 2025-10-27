@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://ixfbq7mnkgaj"]
+[gd_scene load_steps=2 format=3 uid="uid://ixfbq7mnkgaj"]
+
+[ext_resource type="Texture2D" path="res://Young Kazuya.jpeg" id="1_wlaw2"]
 
 [node name="kazuya\'s space!!!" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_wlaw2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6277977, 3.0763128)
