@@ -1,11 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ixfbq7mnkgaj"]
+[gd_scene load_steps=5 format=3 uid="uid://ixfbq7mnkgaj"]
 
-[ext_resource type="Texture2D" path="res://Young Kazuya.jpeg" id="1_wlaw2"]
+[ext_resource type="Texture2D" uid="uid://boyx02hfasrl" path="res://Minecraft Block.jpg" id="1_wlaw2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wlaw2"]
+sky_top_color = Color(0.7997163, 0.15885332, 0.26051825, 1)
+
+[sub_resource type="Sky" id="Sky_nifpj"]
+sky_material = SubResource("ProceduralSkyMaterial_wlaw2")
+
+[sub_resource type="Environment" id="Environment_tm3ry"]
+background_mode = 2
+sky = SubResource("Sky_nifpj")
 
 [node name="kazuya\'s space!!!" type="Node3D"]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-texture = ExtResource("1_wlaw2")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tm3ry")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6277977, 3.0763128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3395478, 3.4576929)
+current = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8147197, 0)
+texture = ExtResource("1_wlaw2")
