@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://jk53jislx0pl"]
+
+[ext_resource type="Script" uid="uid://tyoeq5o5d34c" path="res://testdummy.gd" id="1_cxp23"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_kwp0h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
+size = Vector3(1.3087158, 1.2910156, 0.18457031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3clko"]
+size = Vector3(1.3422852, 1.369873, 1)
+
+[node name="testdummy" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+script = ExtResource("1_cxp23")
+
+[node name="dummySprite" type="Sprite3D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_kwp0h")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005065918, 0.005859375, -0.009277344)
+shape = SubResource("BoxShape3D_cxp23")
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01586914, 0.00793457, 0)
+shape = SubResource("BoxShape3D_3clko")
+debug_color = Color(0.9665665, 1.4439225e-06, 0.48270833, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
