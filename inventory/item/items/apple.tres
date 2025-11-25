@@ -11,5 +11,6 @@ region = Rect2(0, 448, 32, 32)
 script = ExtResource("1_pbjlt")
 name = "Apple"
 description = "A tasty apple"
+stackable = true
 texture = SubResource("AtlasTexture_nuljg")
 metadata/_custom_type_script = "uid://crfo0aa0jfnam"

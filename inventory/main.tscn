@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://i4gw4eoiok5w"]
+[gd_scene load_steps=10 format=3 uid="uid://i4gw4eoiok5w"]
 
+[ext_resource type="Script" uid="uid://btxu5m84el8i4" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cj7w44pa3wtl8" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dvf75yc8u60yo" path="res://inventory/inventory_interface.gd" id="3_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,6 +24,7 @@ glow_enabled = true
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_1bvp3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -40,3 +44,20 @@ shape = SubResource("ConcavePolygonShape3D_ig7tw")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1650007, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_lquwl")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("2_0xm2m")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
