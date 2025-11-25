@@ -1,0 +1,68 @@
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+[gd_scene load_steps=7 format=3 uid="uid://bpu5jbnqrkoy7"]
+
+[ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player.tscn" id="1_jotil"]
+=======
+=======
+>>>>>>> Stashed changes
+[gd_scene load_steps=8 format=3 uid="uid://bpu5jbnqrkoy7"]
+
+[ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player.tscn" id="1_jotil"]
+[ext_resource type="PackedScene" uid="uid://fatjs3ekskud" path="res://enemy_demo.tscn" id="2_44gc5"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mdrg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jotil"]
+size = Vector3(10.020996, 1.0464478, 6.9675293)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
+
+[sub_resource type="Sky" id="Sky_44gc5"]
+sky_material = SubResource("ProceduralSkyMaterial_jotil")
+
+[sub_resource type="Environment" id="Environment_612pj"]
+background_mode = 2
+sky = SubResource("Sky_44gc5")
+
+[node name="testscene" type="Node3D"]
+
+[node name="Player??" parent="." instance=ExtResource("1_jotil")]
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636112, 0)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101, 0.606, 0)
+>>>>>>> Stashed changes
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101, 0.606, 0)
+>>>>>>> Stashed changes
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="floorshape" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, 0, 0, 0)
+mesh = SubResource("BoxMesh_8mdrg")
+
+[node name="floorcollision" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, 0.023223877, 0.0030517578)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_612pj")
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+[node name="EnemyDemo" parent="." instance=ExtResource("2_44gc5")]
+transform = Transform3D(0.151, 0, 0, 0, 0.151, 0, 0, 0, 0.151, 0.82, 0.615, 0)
+>>>>>>> Stashed changes
+=======
+
+[node name="EnemyDemo" parent="." instance=ExtResource("2_44gc5")]
+transform = Transform3D(0.151, 0, 0, 0, 0.151, 0, 0, 0, 0.151, 0.82, 0.615, 0)
+>>>>>>> Stashed changes

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://fatjs3ekskud"]
+
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_5trt5"]
+[ext_resource type="Script" uid="uid://bxf8ipqnk1aff" path="res://enemy_demo.gd" id="1_bnqge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnqge"]
+size = Vector3(1.3513184, 1.3297119, 0.16210938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ws0my"]
+size = Vector3(1.3233032, 1.223877, 0.26727295)
+
+[node name="EnemyDemo" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(0.151, 0, 0, 0, 0.151, 0, 0, 0, 0.151, 0, 0, 0)
+script = ExtResource("1_bnqge")
+
+[node name="EnemySprite" type="Sprite3D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_5trt5")
+
+[node name="EnemyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015258789, 0.0051879883, -0.0048828125)
+shape = SubResource("BoxShape3D_bnqge")
+
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(0.9999965, 0, -0.0026528975, 0, 1, 0, 0.0026528975, 0, 0.9999965, 0.022004953, -0.029418945, 0.01980333)
+shape = SubResource("BoxShape3D_ws0my")
+debug_color = Color(0.90715975, 0.2513633, 0.43635073, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
