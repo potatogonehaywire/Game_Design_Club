@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfcju82um8mqx"]
+
+[ext_resource type="Texture2D" uid="uid://la71q1y72887" path="res://reminder.jpg" id="2_i3pqv"]
+
+[sub_resource type="GDScript" id="GDScript_4flbx"]
+resource_name = "playermovement"
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 2.0
+const DASH_VELOCITY = 20
+
+
+func _physics_process(delta: float) -> void:
+
+
+
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+		# Handle dash.
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		velocity.x = direction.x * SPEED * DASH_VELOCITY
+		
+	move_and_slide()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4flbx"]
+size = Vector3(1.9746704, 2.3586426, 0.04925537)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4876359, 0)
+script = SubResource("GDScript_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00088500977, 0.044067383, -0.009857178)
+shape = SubResource("BoxShape3D_4flbx")
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+alpha_cut = 1
+texture = ExtResource("2_i3pqv")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8343479, 0.55123824, 0, -0.55123824, 0.8343479, 0, 2.8389456, 4.3123198)
