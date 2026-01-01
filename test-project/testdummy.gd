@@ -1,24 +1,19 @@
 extends CharacterBody3D
 
-@onready var timer = $Timer
-var enemyhp = 30
 var canDamage = true
+var my_id = 0
+#var unique_run_id: int = 0
+#var isHit = false
 const speed = 15
+@export var id = 0
+@export var enemyhp = 30
 
 
-func _process(_delta: float) -> void:
-	if Global.enemyHit == true && canDamage == true:
-		enemyhp -= 15
-		canDamage = false
-		timer.start(0.5)
-		timer.timeout.connect(_on_timer_timeout)
-		if enemyhp <= 0:
-			queue_free()
-			await get_tree().create_timer(5.0).timeout
-		
+func _ready() -> void:
+	my_id = self.id
+	print(name, " is id ", my_id)
 
 func _physics_process(_delta: float) -> void:
-	
 	if is_on_floor():
 		velocity.y = 0
 	else:
@@ -26,14 +21,37 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		Global.health -= 20
 		print (Global.health)
-	await get_tree().create_timer(2.0).timeout
 
 
-func _on_timer_timeout() -> void:
-	canDamage = true
+func upon_hit():
+	my_id = Global.enemyHitID
+	if self.my_id == Global.enemyHitID:
+		if self.enemyhp > 0:
+			take_damage()
+	else:
+		print("sad")
+
+func take_damage() -> void:
+	if self.canDamage == true:
+		Global.enemyIsHit = false
+		self.canDamage = false
+		self.enemyhp -= 15 * Global.weapon
+		if self.enemyhp <= 0:
+			Global.enemyIsHit = false
+			self.queue_free()
+		else:
+			print (self.enemyhp)
+			self.canDamage = true
+	
+
+func die() -> void:
+	print("eurgh")
+	$Collision.disabled = true
+	$Hitbox/HitboxShape.disabled = true
+	self.visible = false
+	self.queue_free()
 	

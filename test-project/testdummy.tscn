@@ -21,14 +21,11 @@ texture = ExtResource("1_kwp0h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005065918, 0.005859375, -0.009277344)
 shape = SubResource("BoxShape3D_cxp23")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." groups=["playerHitbox"]]
 
 [node name="HitboxShape" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01586914, 0.00793457, 0)
 shape = SubResource("BoxShape3D_3clko")
 debug_color = Color(0.9665665, 1.4439225e-06, 0.48270833, 0.41960785)
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
