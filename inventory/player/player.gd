@@ -1,19 +1,22 @@
 extends CharacterBody3D
  
 @export var inventory_data: InventoryData
+@export var equip_inventory_data: InventoryDataEquip
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
  
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
- 
+var health: int = 5
+
 signal toggle_inventory()
 
 @onready var interact_ray: RayCast3D = $Camera3D/InteractRay
 @onready var camera: Camera3D = $Camera3D
  
 func _ready() -> void:
+	PlayerManager.player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
  
  
@@ -55,6 +58,15 @@ func _physics_process(delta: float) -> void:
  
 	move_and_slide()
 
+
 func interact() -> void:
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_interact()
+
+
+func get_drop_position() -> Vector3:
+	var direction = -camera.global_transform.basis.z
+	return camera.global_position + direction * Vector3(2,0,2)
+
+func heal(heal_value:int) -> void:
+	health += heal_value

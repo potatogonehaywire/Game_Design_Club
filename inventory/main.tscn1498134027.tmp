@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://i4gw4eoiok5w"]
+[gd_scene load_steps=24 format=3 uid="uid://i4gw4eoiok5w"]
 
 [ext_resource type="Script" uid="uid://btxu5m84el8i4" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cj7w44pa3wtl8" path="res://player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chest.tscn" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://dvf75yc8u60yo" path="res://inventory/inventory_interface.gd" id="3_lquwl"]
-[ext_resource type="Script" uid="uid://c4jshx1ynvgo7" path="res://inventory/inventory_data_equip.gd" id="3_w48qg"]
 [ext_resource type="Script" uid="uid://eumbv2n6r6r7" path="res://inventory/inventory_data.gd" id="4_5vw27"]
 [ext_resource type="Script" uid="uid://cahcjrlh2sdwo" path="res://inventory/slot_data.gd" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="5_lquwl"]
@@ -32,11 +31,6 @@ glow_enabled = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ig7tw"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[sub_resource type="Resource" id="Resource_vivmo"]
-script = ExtResource("3_w48qg")
-slot_datas = Array[ExtResource("5_kek77")]([null])
-metadata/_custom_type_script = "uid://c4jshx1ynvgo7"
 
 [sub_resource type="Resource" id="Resource_dg77c"]
 script = ExtResource("5_kek77")
@@ -87,7 +81,6 @@ shape = SubResource("ConcavePolygonShape3D_ig7tw")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1650007, 0)
-equip_inventory_data = SubResource("Resource_vivmo")
 
 [node name="Chest" parent="." instance=ExtResource("3_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
@@ -129,13 +122,6 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="EquipInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("2_0xm2m")]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 10.0
-offset_right = 490.0
 offset_bottom = 50.0
 
 [node name="ExternalInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("2_0xm2m")]
