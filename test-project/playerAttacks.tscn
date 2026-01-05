@@ -24,7 +24,7 @@ transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.006756592, 0.00
 shape = SubResource("BoxShape3D_hqtel")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9812692, 0.19264188, 0, -0.19264187, 0.9812692, 0, 0.08326121, 0.5264011)
+transform = Transform3D(1, 0, 0, 0, 0.94519985, 0.32649213, 0, -0.32649213, 0.94519985, 0, 0.16419668, 0.5266658)
 fov = 46.47491
 
 [node name="hitbox" type="Area3D" parent="."]
@@ -43,5 +43,10 @@ debug_color = Color(0.14366537, 0.6347878, 0.3525482, 0.41960785)
 
 [node name="cooldown" type="Timer" parent="."]
 
+[node name="rangedCooldown" type="Timer" parent="."]
+
+[node name="projectileMarkerThing" type="Marker3D" parent="."]
+
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="rangedCooldown" to="." method="_on_ranged_cooldown_timeout"]

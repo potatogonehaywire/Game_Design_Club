@@ -39,19 +39,16 @@ func take_damage() -> void:
 	if self.canDamage == true:
 		Global.enemyIsHit = false
 		self.canDamage = false
-		self.enemyhp -= 15 * Global.weapon
+		if Global.isProjectile == true:
+			self.enemyhp -= 10 * Global.ranged
+			Global.isProjectile = false
+		else:
+			self.enemyhp -= 15 * Global.weapon
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
 			self.queue_free()
+			print("eurgh")
 		else:
 			print (self.enemyhp)
 			self.canDamage = true
-	
-
-func die() -> void:
-	print("eurgh")
-	$Collision.disabled = true
-	$Hitbox/HitboxShape.disabled = true
-	self.visible = false
-	self.queue_free()
 	

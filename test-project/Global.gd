@@ -11,6 +11,7 @@ var equippedRanged = 1
 
 var enemyHitID = 0
 var enemyIsHit: bool = false
+var isProjectile = false
 
 
 func _process(_delta: float) -> void:
