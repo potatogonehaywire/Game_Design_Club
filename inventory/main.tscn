@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://i4gw4eoiok5w"]
+[gd_scene load_steps=30 format=3 uid="uid://i4gw4eoiok5w"]
 
 [ext_resource type="Script" uid="uid://btxu5m84el8i4" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cj7w44pa3wtl8" path="res://player/player.tscn" id="1_ig7tw"]
@@ -11,8 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="5_lquwl"]
 [ext_resource type="Resource" uid="uid://diipf1wotl7fk" path="res://item/items/apple.tres" id="6_4c57u"]
 [ext_resource type="Resource" uid="uid://bwc887cm8f38n" path="res://item/items/blue_book.tres" id="7_efxa6"]
+[ext_resource type="Resource" uid="uid://ck427y43u0jv6" path="res://item/items/health_potion.tres" id="9_2cqfq"]
 [ext_resource type="Script" uid="uid://cyo15pgueupft" path="res://click_catcher.gd" id="9_dg77c"]
+[ext_resource type="Resource" uid="uid://dqmxglck0r7u6" path="res://item/items/iron_helm.tres" id="10_yaehf"]
 [ext_resource type="PackedScene" uid="uid://bevrfdqlbvrqp" path="res://item/pick_up/pick_up.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="12_yaehf"]
 [ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="13_ycdy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
@@ -38,26 +41,31 @@ script = ExtResource("3_w48qg")
 slot_datas = Array[ExtResource("5_kek77")]([null])
 metadata/_custom_type_script = "uid://c4jshx1ynvgo7"
 
-[sub_resource type="Resource" id="Resource_dg77c"]
+[sub_resource type="Resource" id="Resource_074og"]
 script = ExtResource("5_kek77")
 item_data = ExtResource("6_4c57u")
-quantity = 25
+quantity = 15
 metadata/_custom_type_script = "uid://cahcjrlh2sdwo"
 
-[sub_resource type="Resource" id="Resource_ycdy4"]
+[sub_resource type="Resource" id="Resource_cegan"]
 script = ExtResource("5_kek77")
 item_data = ExtResource("7_efxa6")
 metadata/_custom_type_script = "uid://cahcjrlh2sdwo"
 
-[sub_resource type="Resource" id="Resource_w48qg"]
+[sub_resource type="Resource" id="Resource_82xsv"]
 script = ExtResource("5_kek77")
-item_data = ExtResource("6_4c57u")
-quantity = 7
+item_data = ExtResource("9_2cqfq")
+quantity = 5
 metadata/_custom_type_script = "uid://cahcjrlh2sdwo"
 
-[sub_resource type="Resource" id="Resource_4c57u"]
+[sub_resource type="Resource" id="Resource_getpj"]
+script = ExtResource("5_kek77")
+item_data = ExtResource("10_yaehf")
+metadata/_custom_type_script = "uid://cahcjrlh2sdwo"
+
+[sub_resource type="Resource" id="Resource_ycdy4"]
 script = ExtResource("4_5vw27")
-slot_datas = Array[ExtResource("5_kek77")]([SubResource("Resource_dg77c"), SubResource("Resource_ycdy4"), SubResource("Resource_w48qg"), null, null])
+slot_datas = Array[ExtResource("5_kek77")]([SubResource("Resource_074og"), SubResource("Resource_cegan"), SubResource("Resource_82xsv"), SubResource("Resource_getpj"), null])
 metadata/_custom_type_script = "uid://eumbv2n6r6r7"
 
 [sub_resource type="Resource" id="Resource_efxa6"]
@@ -91,13 +99,16 @@ equip_inventory_data = SubResource("Resource_vivmo")
 
 [node name="Chest" parent="." instance=ExtResource("3_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-inventory_data = SubResource("Resource_4c57u")
+inventory_data = SubResource("Resource_ycdy4")
 
 [node name="PickUp" parent="." instance=ExtResource("11_efxa6")]
 transform = Transform3D(0.7015687, 0, -0.7126018, 0, 1, 0, 0.7126018, 0, 0.7015687, -2.5952973, 0.6689168, 1.7623446)
 slot_data = SubResource("Resource_efxa6")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="talent_tree" parent="UI" instance=ExtResource("12_yaehf")]
+visible = false
 
 [node name="InventoryRoot" type="Control" parent="UI"]
 visible = false

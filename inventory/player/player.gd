@@ -11,6 +11,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health: int = 5
 
 signal toggle_inventory()
+signal toggle_skilltree()
 
 @onready var interact_ray: RayCast3D = $Camera3D/InteractRay
 @onready var camera: Camera3D = $Camera3D
@@ -34,6 +35,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
+	
+	if Input.is_action_just_pressed("skill_tree"):
+		toggle_skilltree.emit()
  
  
 func _physics_process(delta: float) -> void:
