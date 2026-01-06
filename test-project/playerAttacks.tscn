@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://coplxaemyo182"]
+
+[ext_resource type="Script" uid="uid://dwjsat7w3ccji" path="res://playerAttacks.gd" id="1_u78ne"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqtel"]
+size = Vector3(1, 1.0750732, 0.24969482)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
+size = Vector3(1, 1, 0.29467773)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(0.23966552, 0.24975586, 0.128479)
+
+[node name="Player??" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_u78ne")
+
+[node name="PlayerSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0)
+texture = ExtResource("2_i3pqv")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.006756592, 0.0048724385)
+shape = SubResource("BoxShape3D_hqtel")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94519985, 0.32649213, 0, -0.32649213, 0.94519985, 0, 0.16419668, 0.5266658)
+fov = 46.47491
+
+[node name="hitbox" type="Area3D" parent="."]
+
+[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0005126931)
+shape = SubResource("BoxShape3D_sweqy")
+debug_color = Color(0.9754197, 0, 0.42305484, 0.41960785)
+
+[node name="AttackHitbox" type="Area3D" parent="."]
+
+[node name="AttackHitboxCollision" type="CollisionShape3D" parent="AttackHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0035732687, 0.0032958984, -0.018218994)
+shape = SubResource("BoxShape3D_onrkg")
+debug_color = Color(0.14366537, 0.6347878, 0.3525482, 0.41960785)
+
+[node name="cooldown" type="Timer" parent="."]
+
+[node name="rangedCooldown" type="Timer" parent="."]
+
+[node name="projectileMarkerThing" type="Marker3D" parent="."]
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="rangedCooldown" to="." method="_on_ranged_cooldown_timeout"]
