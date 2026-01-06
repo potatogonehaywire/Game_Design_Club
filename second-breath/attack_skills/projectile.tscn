@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cypk7ydkr5r7b"]
+
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://sprites/icon.svg" id="1_a85iw"]
+[ext_resource type="Script" uid="uid://j8bijkkoja23" path="res://attack_skills/projectile.gd" id="1_qxf0c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qxf0c"]
+radius = 0.11243766
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgwo2"]
+radius = 0.12638149
+
+[node name="projectile" type="CharacterBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+axis_lock_linear_y = true
+script = ExtResource("1_qxf0c")
+
+[node name="projectileSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+modulate = Color(0.18344527, 0.65219605, 5.7756904e-07, 1)
+texture = ExtResource("1_a85iw")
+
+[node name="projectileCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qxf0c")
+disabled = true
+
+[node name="projectileHitbox" type="Area3D" parent="."]
+
+[node name="projectileCollisionHitbox" type="CollisionShape3D" parent="projectileHitbox"]
+shape = SubResource("SphereShape3D_dgwo2")
+debug_color = Color(0.9671822, 0, 0.46782863, 0.41960785)
+
+[connection signal="body_entered" from="projectileHitbox" to="." method="_on_projectile_hitbox_body_entered"]

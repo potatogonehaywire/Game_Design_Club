@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bevrfdqlbvrqp"]
 
-[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item_atlas.tres" id="1_tnsif"]
+[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item/item_atlas.tres" id="1_tnsif"]
 [ext_resource type="Script" uid="uid://bbrlrgy5de3s3" path="res://item/pick_up/pick_up.gd" id="1_v7xbx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v7xbx"]
