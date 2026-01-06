@@ -1,31 +1,37 @@
 extends CharacterBody3D
- 
-@export var inventory_data: InventoryData
-@export var equip_inventory_data: InventoryDataEquip
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
- 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var health: int = 5
 
 signal toggle_inventory()
 signal toggle_skilltree()
 
+const speed = 5
+const jumpspeed = 20
+var jump = 2
+var cooldownOff = true
+var rangedCooldownOff = true
+var damaged = null
+var health: int = 5
+
+@export var inventory_data: InventoryData
+@export var equip_inventory_data: InventoryDataEquip
+
+@onready var attack = $AttackHitbox/AttackHitboxCollision
+@onready var cooldown = $cooldown
+@onready var rangedCooldown = $rangedCooldown
 @onready var interact_ray: RayCast3D = $Camera3D/InteractRay
 @onready var camera: Camera3D = $Camera3D
- 
+@onready var inventory_root: Control = $"../UI/InventoryRoot"
+@onready var talent_tree: TalentTree = $"../UI/talent_tree"
+
+
+var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
+@onready var muzzle_location: Marker3D = $projectileMarkerThing
+
 func _ready() -> void:
 	PlayerManager.player = self
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
- 
- 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * .005)
-		camera.rotate_x(-event.relative.y * .005)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/4, PI/4)
+	attack.disabled = true
+
+
+func _unhandled_input(_event: InputEvent) -> void:
  
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -38,29 +44,99 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("skill_tree"):
 		toggle_skilltree.emit()
- 
- 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
- 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
- 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+
+
+func _process(_delta: float) -> void:
+	if Global.health <= 0:
+		Global.health = 100
+		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && cooldownOff == true:
+		Global.weapon_check()
+		attack.disabled = false
+		Global.stamina -= 10
+		cooldownOff = false
+		await get_tree().create_timer(0.1).timeout
+		attack.disabled = true
+		cooldown.start(0.5)
+	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
+		rangedCooldownOff = false
+		rangedCooldown.start(1)
+		shoot()
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_pressed("left"):
+		velocity.x = -speed
+	elif Input.is_action_pressed("right"):
+		velocity.x = speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
- 
+		velocity.x = 0
+		
+	if Input.is_action_pressed("forward"):
+		velocity.z = -speed
+	elif Input.is_action_pressed("backward"):
+		velocity.z = speed
+	else:
+		velocity.z = 0
+		
+	if is_on_floor():
+		velocity.y = 0
+		jump = 2
+		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
+			Global.stamina -= 15
+			velocity.y += jumpspeed
+			jump -= 1
+	else:
+		velocity.y -= 3
+		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
+			Global.stamina -= 15
+			velocity.y = 0
+			velocity.y += jumpspeed
+			jump -= 1
 	move_and_slide()
+
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemy") && attack.disabled == false:
+		if body.has_method("upon_hit"): 
+			var id = body.id
+			Global.enemyHitID = id
+			enemy_hit()
+
+func enemy_hit() -> void:
+	Global.enemyIsHit = true
+
+func _on_cooldown_timeout() -> void:
+	cooldownOff = true
+
+func _on_ranged_cooldown_timeout() -> void:
+	rangedCooldownOff = true
+
+func shoot():
+	
+	if inventory_root.visible == false and talent_tree.visible == false:
+
+		var mouse_position = get_viewport().get_mouse_position()
+
+		var ray_origin = camera.project_ray_origin(mouse_position)
+		var ray_direction = camera.project_ray_normal(mouse_position)
+		var ray_length = 500.0 
+
+		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_ray(query)
+
+		var target_point: Vector3
+		if result:
+			target_point = result.position
+		else:
+			target_point = ray_origin + ray_direction * ray_length
+
+		var direction_to_target = (target_point - muzzle_location.global_position).normalized()
+
+		var projectile_instance = ProjectileScene.instantiate()
+		get_tree().current_scene.add_child(projectile_instance)
+
+		projectile_instance.global_position = muzzle_location.global_position
+		projectile_instance.move_direction = direction_to_target
 
 
 func interact() -> void:
@@ -70,7 +146,8 @@ func interact() -> void:
 
 func get_drop_position() -> Vector3:
 	var direction = -camera.global_transform.basis.z
-	return camera.global_position + direction * Vector3(2,0,2)
+	return camera.global_position + direction + Vector3(0,0,-1)
+
 
 func heal(heal_value:int) -> void:
 	health += heal_value

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnr4t4xujgpwx"]
 
-[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item_atlas.tres" id="1_koksw"]
+[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item/item_atlas.tres" id="1_koksw"]
 [ext_resource type="Script" uid="uid://b8jshi3ba5cl2" path="res://skill_tree/talent_slot.gd" id="2_1kuqh"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://Micro5-Regular.ttf" id="2_xqaru"]
+[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://menus/Micro5-Regular.ttf" id="2_xqaru"]
 [ext_resource type="Script" uid="uid://gr33gpu0js8i" path="res://skill_tree/talent_line.gd" id="3_4dqs8"]
 
 [node name="TalentSlot" type="TextureButton"]

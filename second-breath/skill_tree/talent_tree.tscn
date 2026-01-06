@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://p30b8qbm3n7e"]
 
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://Micro5-Regular.ttf" id="1_51xa5"]
+[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://menus/Micro5-Regular.ttf" id="1_51xa5"]
 [ext_resource type="Script" uid="uid://djibti1mdftqm" path="res://skill_tree/talent_tree.gd" id="1_h8x7a"]
 [ext_resource type="PackedScene" uid="uid://cnr4t4xujgpwx" path="res://skill_tree/talent_slot.tscn" id="3_mugwv"]
 
