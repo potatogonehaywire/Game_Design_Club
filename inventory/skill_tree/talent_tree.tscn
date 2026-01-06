@@ -1,0 +1,384 @@
+[gd_scene load_steps=14 format=3 uid="uid://p30b8qbm3n7e"]
+
+[ext_resource type="FontFile" uid="uid://cr3salkjqwwlg" path="res://Micro5-Regular.ttf" id="1_51xa5"]
+[ext_resource type="Script" uid="uid://tsqhf1n3bv4d" path="res://skill_tree/talent_tree.gd" id="1_h8x7a"]
+[ext_resource type="PackedScene" uid="uid://cnr4t4xujgpwx" path="res://skill_tree/talent_slot.tscn" id="3_mugwv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsv2n"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-4538bde5e729a128e02f988f7f967aae.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjy42"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(256, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mugwv"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(32, 352, 31.751965, 31.270538)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evv38"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(224, 416, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdvun"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(448, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gubjn"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f00np"]
+atlas = SubResource("CompressedTexture2D_jsv2n")
+region = Rect2(224, 256, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mugwv"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-4538bde5e729a128e02f988f7f967aae.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvu2r"]
+atlas = SubResource("CompressedTexture2D_mugwv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqaal"]
+atlas = SubResource("CompressedTexture2D_mugwv")
+region = Rect2(256, 0, 32, 32)
+
+[node name="talent_tree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8x7a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25565878, 0.25565878, 0.25565878, 0.49019608)
+
+[node name="PointsLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1063.0
+offset_top = 568.0
+offset_right = 1103.0
+offset_bottom = 613.0
+theme_override_fonts/font = ExtResource("1_51xa5")
+theme_override_font_sizes/font_size = 44
+text = "0"
+horizontal_alignment = 2
+
+[node name="BaseTalent" parent="." instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 312.0
+offset_right = 592.0
+offset_bottom = 344.0
+texture_normal = SubResource("AtlasTexture_cjy42")
+talent_id = "base"
+
+[node name="Anger1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 280.0
+offset_right = 560.0
+offset_bottom = 312.0
+talent_id = "anger1"
+tier = 2
+depends_on = [NodePath("../BaseTalent")]
+
+[node name="Anger2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 216.0
+offset_right = 544.0
+offset_bottom = 248.0
+talent_id = "anger2a"
+tier = 3
+depends_on = [NodePath("../Anger1")]
+
+[node name="Anger2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 264.0
+offset_right = 488.0
+offset_bottom = 296.0
+talent_id = "anger2b"
+tier = 3
+depends_on = [NodePath("../Anger1")]
+
+[node name="Anger3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 160.0
+offset_right = 496.0
+offset_bottom = 192.0
+talent_id = "anger3a"
+tier = 4
+depends_on = [NodePath("../Anger2a")]
+
+[node name="Anger3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 224.0
+offset_right = 432.0
+offset_bottom = 256.0
+talent_id = "anger3b"
+tier = 4
+depends_on = [NodePath("../Anger2b")]
+
+[node name="Anger4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 152.0
+offset_right = 424.0
+offset_bottom = 184.0
+talent_id = "anger4"
+tier = 5
+depends_on = [NodePath("../Anger3a"), NodePath("../Anger3b")]
+
+[node name="Regret1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 593.0
+offset_top = 344.0
+offset_right = 625.0
+offset_bottom = 376.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret1"
+tier = 2
+depends_on = [NodePath("../BaseTalent")]
+
+[node name="Regret2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 328.0
+offset_right = 697.0
+offset_bottom = 360.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret2a"
+tier = 3
+depends_on = [NodePath("../Regret1")]
+
+[node name="Regret2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 400.0
+offset_right = 641.0
+offset_bottom = 432.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret2b"
+tier = 3
+depends_on = [NodePath("../Regret1")]
+
+[node name="Regret3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 368.0
+offset_right = 761.0
+offset_bottom = 400.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret3a"
+tier = 4
+depends_on = [NodePath("../Regret2a")]
+
+[node name="Regret3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 448.0
+offset_right = 697.0
+offset_bottom = 480.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret3b"
+tier = 4
+depends_on = [NodePath("../Regret2b")]
+
+[node name="Regret4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 440.0
+offset_right = 777.0
+offset_bottom = 472.0
+texture_normal = SubResource("AtlasTexture_mugwv")
+talent_id = "regret4"
+tier = 5
+depends_on = [NodePath("../Regret3a"), NodePath("../Regret3b")]
+
+[node name="AngerEnvy" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 299.0
+offset_right = 389.0
+offset_bottom = 331.0
+texture_normal = SubResource("AtlasTexture_evv38")
+talent_id = "wrath_sorrow"
+tier = 5
+depends_on = [NodePath("../Anger3b"), NodePath("../Envy3b")]
+
+[node name="FearRegret" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 152.0
+offset_right = 752.0
+offset_bottom = 184.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear_regret"
+tier = 5
+depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
+
+[node name="Fear1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 280.0
+offset_right = 624.0
+offset_bottom = 312.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear1"
+tier = 2
+depends_on = [NodePath("../BaseTalent")]
+
+[node name="Fear2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 208.0
+offset_right = 640.0
+offset_bottom = 240.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear2a"
+tier = 3
+depends_on = [NodePath("../Fear1")]
+
+[node name="Fear2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 264.0
+offset_right = 704.0
+offset_bottom = 296.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear2b"
+tier = 3
+depends_on = [NodePath("../Fear1")]
+
+[node name="Fear3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 160.0
+offset_right = 680.0
+offset_bottom = 192.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear3a"
+tier = 4
+depends_on = [NodePath("../Fear2a")]
+
+[node name="Fear3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 216.0
+offset_right = 760.0
+offset_bottom = 248.0
+texture_normal = SubResource("AtlasTexture_gdvun")
+talent_id = "fear3b"
+tier = 4
+depends_on = [NodePath("../Fear2b")]
+
+[node name="Fear4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 295.0
+offset_right = 782.0
+offset_bottom = 327.0
+texture_normal = SubResource("AtlasTexture_gubjn")
+talent_id = "fear4"
+tier = 5
+depends_on = [NodePath("../Regret3a"), NodePath("../Fear3b")]
+
+[node name="AngerFear" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 139.0
+offset_right = 590.0
+offset_bottom = 171.0
+texture_normal = SubResource("AtlasTexture_f00np")
+talent_id = "wrath_fear"
+tier = 5
+depends_on = [NodePath("../Anger3a"), NodePath("../Fear3a")]
+
+[node name="Envy1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 344.0
+offset_right = 561.0
+offset_bottom = 376.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy1"
+tier = 2
+depends_on = [NodePath("../BaseTalent")]
+
+[node name="Envy2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 408.0
+offset_right = 553.0
+offset_bottom = 440.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy2a"
+tier = 3
+depends_on = [NodePath("../Envy1")]
+
+[node name="Envy2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 336.0
+offset_right = 497.0
+offset_bottom = 368.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy2b"
+tier = 3
+depends_on = [NodePath("../Envy1")]
+
+[node name="Envy3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 456.0
+offset_right = 497.0
+offset_bottom = 488.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy3a"
+tier = 4
+depends_on = [NodePath("../Envy2a")]
+
+[node name="Envy3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 368.0
+offset_right = 433.0
+offset_bottom = 400.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy3b"
+tier = 4
+depends_on = [NodePath("../Envy2b")]
+
+[node name="Envy4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 448.0
+offset_right = 417.0
+offset_bottom = 480.0
+texture_normal = SubResource("AtlasTexture_yvu2r")
+talent_id = "envy4"
+tier = 5
+depends_on = [NodePath("../Envy3a"), NodePath("../Envy3b")]
+
+[node name="EnvyRegret" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 471.0
+offset_right = 601.0
+offset_bottom = 503.0
+texture_normal = SubResource("AtlasTexture_xqaal")
+talent_id = "envy_regret"
+tier = 5
+depends_on = [NodePath("../Envy3a"), NodePath("../Regret3b")]
