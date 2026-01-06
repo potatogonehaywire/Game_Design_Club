@@ -1,43 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj7w44pa3wtl8"]
+[gd_scene load_steps=10 format=3 uid="uid://coplxaemyo182"]
 
-[ext_resource type="Script" uid="uid://fbf2505jxc64" path="res://player/player.gd" id="1_4flbx"]
-[ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://dwjsat7w3ccji" path="res://player/player.gd" id="1_u78ne"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://sprites/icon.svg" id="2_i3pqv"]
+[ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_qjkh3"]
+[ext_resource type="Script" uid="uid://bl7cci2mvndgg" path="res://inventory/inventory_data_equip.gd" id="3_g6k8r"]
+[ext_resource type="Script" uid="uid://qeerjmaj1eqg" path="res://inventory/slot_data.gd" id="4_boad6"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+[sub_resource type="Resource" id="Resource_rgyib"]
+script = ExtResource("3_g6k8r")
+slot_datas = Array[ExtResource("4_boad6")]([null])
+metadata/_custom_type_script = "uid://bl7cci2mvndgg"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqtel"]
+size = Vector3(1, 1.0750732, 0.24969482)
 
-[node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-script = ExtResource("1_4flbx")
-inventory_data = ExtResource("2_onrkg")
+[sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
+size = Vector3(1, 1, 0.29467773)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075550556, 0)
-mesh = SubResource("CapsuleMesh_sh265")
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(0.23966552, 0.24975586, 0.128479)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0010331, 0)
-shape = SubResource("CapsuleShape3D_4flbx")
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 3
+script = ExtResource("1_u78ne")
+inventory_data = ExtResource("2_qjkh3")
+equip_inventory_data = SubResource("Resource_rgyib")
+
+[node name="PlayerSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0, 0.15091991, 0, 0, 0)
+texture = ExtResource("2_i3pqv")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.006756592, 0.0048724385)
+shape = SubResource("BoxShape3D_hqtel")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9451999, 0.32649216, 0, -0.32649216, 0.9451999, 0, 0.22044247, 0.8452568)
+fov = 46.47491
 
 [node name="InteractRay" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2.5)
 collision_mask = 4
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="hitbox" type="Area3D" parent="."]
+
+[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0005126931)
+shape = SubResource("BoxShape3D_sweqy")
+debug_color = Color(0.9754197, 0, 0.42305484, 0.41960785)
+
+[node name="AttackHitbox" type="Area3D" parent="."]
+
+[node name="AttackHitboxCollision" type="CollisionShape3D" parent="AttackHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0035732687, 0.0032958984, -0.018218994)
+shape = SubResource("BoxShape3D_onrkg")
+debug_color = Color(0.14366537, 0.6347878, 0.3525482, 0.41960785)
+
+[node name="cooldown" type="Timer" parent="."]
+
+[node name="rangedCooldown" type="Timer" parent="."]
+
+[node name="projectileMarkerThing" type="Marker3D" parent="."]
+
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="rangedCooldown" to="." method="_on_ranged_cooldown_timeout"]
