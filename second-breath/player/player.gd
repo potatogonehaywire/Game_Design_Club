@@ -146,7 +146,7 @@ func interact() -> void:
 
 func get_drop_position() -> Vector3:
 	var direction = -camera.global_transform.basis.z
-	return camera.global_position + direction + Vector3(0,0,-1)
+	return camera.global_position + direction + Vector3(0,0.2,-1)
 
 
 func heal(heal_value:int) -> void:
