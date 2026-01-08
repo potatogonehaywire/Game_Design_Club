@@ -1,16 +1,14 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bwc887cm8f38n"]
 
 [ext_resource type="Script" uid="uid://pamr5qxhwmun" path="res://item/item_data.gd" id="1_ubqd6"]
+[ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="2_hopj0"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsv2n"]
-load_path = "res://.godot/imported/#1 - Transparent Icons.png-4538bde5e729a128e02f988f7f967aae.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubqd6"]
-atlas = SubResource("CompressedTexture2D_jsv2n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnw4u"]
+atlas = ExtResource("2_hopj0")
 region = Rect2(0, 416, 32, 32)
 
 [resource]
 script = ExtResource("1_ubqd6")
 name = "Blue Book"
 description = "Good reading"
-texture = SubResource("AtlasTexture_ubqd6")
+texture = SubResource("AtlasTexture_lnw4u")

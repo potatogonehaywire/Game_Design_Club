@@ -1,17 +1,15 @@
 [gd_resource type="Resource" script_class="ItemDataEquip" load_steps=4 format=3 uid="uid://dqmxglck0r7u6"]
 
 [ext_resource type="Script" uid="uid://xw006ahlurw0" path="res://item/item_data_equip.gd" id="1_s3j1w"]
+[ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="2_o8wkw"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jsv2n"]
-load_path = "res://.godot/imported/#1 - Transparent Icons.png-4538bde5e729a128e02f988f7f967aae.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3j1w"]
-atlas = SubResource("CompressedTexture2D_jsv2n")
-region = Rect2(96, 224, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_quibl"]
+atlas = ExtResource("2_o8wkw")
+region = Rect2(32, 224, 32, 32)
 
 [resource]
 script = ExtResource("1_s3j1w")
 defence = 1
 name = "Iron Helm"
 description = "Will protect"
-texture = SubResource("AtlasTexture_s3j1w")
+texture = SubResource("AtlasTexture_quibl")
