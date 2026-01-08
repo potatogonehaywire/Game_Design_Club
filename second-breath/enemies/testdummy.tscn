@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jk53jislx0pl"]
 
 [ext_resource type="Script" uid="uid://tyoeq5o5d34c" path="res://enemies/testdummy.gd" id="1_cxp23"]
-[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://sprites/icon.svg" id="1_kwp0h"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_kwp0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
 size = Vector3(1.3087158, 1.2910156, 0.18457031)
