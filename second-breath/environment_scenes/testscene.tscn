@@ -37,7 +37,7 @@ transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, 
 mesh = SubResource("BoxMesh_8mdrg")
 
 [node name="floorcollision" type="CollisionShape3D" parent="floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, 0.023223877, 0.0030517578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, -0.029563308, 0.0030517578)
 shape = SubResource("BoxShape3D_jotil")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
