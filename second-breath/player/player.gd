@@ -111,32 +111,30 @@ func _on_ranged_cooldown_timeout() -> void:
 	rangedCooldownOff = true
 
 func shoot():
-	
-	if inventory_root.visible == false and talent_tree.visible == false:
-
+	if talent_tree.visible == false:
 		var mouse_position = get_viewport().get_mouse_position()
+		if inventory_root.visible == false:
+			var ray_origin = camera.project_ray_origin(mouse_position)
+			var ray_direction = camera.project_ray_normal(mouse_position)
+			var ray_length = 500.0 
 
-		var ray_origin = camera.project_ray_origin(mouse_position)
-		var ray_direction = camera.project_ray_normal(mouse_position)
-		var ray_length = 500.0 
+			var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+			var space_state = get_world_3d().direct_space_state
+			var result = space_state.intersect_ray(query)
 
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
-		var space_state = get_world_3d().direct_space_state
-		var result = space_state.intersect_ray(query)
+			var target_point: Vector3
+			if result:
+				target_point = result.position
+			else:
+				target_point = ray_origin + ray_direction * ray_length
 
-		var target_point: Vector3
-		if result:
-			target_point = result.position
-		else:
-			target_point = ray_origin + ray_direction * ray_length
+			var direction_to_target = (target_point - muzzle_location.global_position).normalized()
 
-		var direction_to_target = (target_point - muzzle_location.global_position).normalized()
+			var projectile_instance = ProjectileScene.instantiate()
+			get_tree().current_scene.add_child(projectile_instance)
 
-		var projectile_instance = ProjectileScene.instantiate()
-		get_tree().current_scene.add_child(projectile_instance)
-
-		projectile_instance.global_position = muzzle_location.global_position
-		projectile_instance.move_direction = direction_to_target
+			projectile_instance.global_position = muzzle_location.global_position
+			projectile_instance.move_direction = direction_to_target
 
 
 func interact() -> void:
