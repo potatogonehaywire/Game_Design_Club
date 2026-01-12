@@ -1,14 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://do14ugg5i7a4p"]
+[gd_scene load_steps=11 format=3 uid="uid://do14ugg5i7a4p"]
 
 [ext_resource type="Script" uid="uid://drmrg4fo35aaa" path="res://chests/chest.gd" id="1_twpm2"]
 [ext_resource type="Script" uid="uid://bgl2hbo6a0b2n" path="res://inventory/inventory_data.gd" id="2_7raco"]
 [ext_resource type="Script" uid="uid://qeerjmaj1eqg" path="res://inventory/slot_data.gd" id="3_bxacl"]
 [ext_resource type="Resource" uid="uid://ck427y43u0jv6" path="res://item/items/health_potion.tres" id="4_bxacl"]
-[ext_resource type="Resource" uid="uid://diipf1wotl7fk" path="res://item/items/apple.tres" id="4_n6kd7"]
 
 [sub_resource type="Resource" id="Resource_7raco"]
 script = ExtResource("3_bxacl")
-item_data = ExtResource("4_n6kd7")
 quantity = 35
 metadata/_custom_type_script = "uid://qeerjmaj1eqg"
 
@@ -20,7 +18,7 @@ metadata/_custom_type_script = "uid://qeerjmaj1eqg"
 
 [sub_resource type="Resource" id="Resource_n6kd7"]
 script = ExtResource("2_7raco")
-slot_datas = Array[ExtResource("3_bxacl")]([SubResource("Resource_7raco"), SubResource("Resource_bxacl"), null, null, null, null, null, null, null, null, null])
+slot_datas = Array[ExtResource("3_bxacl")]([SubResource("Resource_7raco"), SubResource("Resource_bxacl")])
 metadata/_custom_type_script = "uid://bgl2hbo6a0b2n"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7raco"]
@@ -44,5 +42,4 @@ shape = SubResource("BoxShape3D_7raco")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.5, 0)
-texture_filter = 0
 texture = SubResource("AtlasTexture_ebbmy")
