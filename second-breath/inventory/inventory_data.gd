@@ -54,7 +54,7 @@ func use_slot_data(index:int) -> void:
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
 
-	PlayerManager.use_slot_data(slot_data)
+	Global.use_slot_data(slot_data)
 	
 	inventory_updated.emit(self)
 

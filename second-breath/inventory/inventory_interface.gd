@@ -15,7 +15,7 @@ func _physics_process(_delta:float) -> void:
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5)
 	if external_inventory_owner \
-	and external_inventory_owner.global_position.distance_to(PlayerManager.get_global_position())>4:
+	and external_inventory_owner.global_position.distance_to(Global.get_global_position())>4:
 		force_close.emit()
 
 func set_player_inventory_data(inventory_data: InventoryData) -> void:

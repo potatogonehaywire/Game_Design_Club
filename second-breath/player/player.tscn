@@ -22,7 +22,7 @@ size = Vector3(1, 1, 0.29467773)
 size = Vector3(0.23966552, 0.24975586, 0.128479)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_u78ne")
 inventory_data = ExtResource("2_qjkh3")
 equip_inventory_data = SubResource("Resource_rgyib")
