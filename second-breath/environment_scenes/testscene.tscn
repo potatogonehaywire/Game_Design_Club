@@ -46,7 +46,7 @@ environment = SubResource("Environment_612pj")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="testdummy" parent="Enemies" instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.409, 0.5, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.5, 0)
 id = 1
 
 [node name="testdummy2" parent="Enemies" instance=ExtResource("2_fvmrd")]
@@ -54,7 +54,7 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.5, 0)
 id = 2
 
 [node name="testdummy3" parent="Enemies" instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 0.6029473)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 2.1574533)
 id = 3
 
 [node name="UI" type="CanvasLayer" parent="."]
