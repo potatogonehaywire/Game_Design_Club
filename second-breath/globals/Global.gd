@@ -1,6 +1,7 @@
 extends Node
 var health = 100
 var stamina = 100
+var player = null
 
 var i = 1
 var weapon = 1

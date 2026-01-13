@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://jk53jislx0pl"]
+[gd_scene load_steps=7 format=3 uid="uid://jk53jislx0pl"]
 
 [ext_resource type="Script" uid="uid://tyoeq5o5d34c" path="res://enemies/testdummy.gd" id="1_cxp23"]
 [ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_kwp0h"]
@@ -8,6 +8,14 @@ size = Vector3(1.3087158, 1.2910156, 0.18457031)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3clko"]
 size = Vector3(1.3422852, 1.369873, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7p70c"]
+height = 1.7270508
+radius = 4.234375
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0u52l"]
+height = 1.6774902
+radius = 5.421875
 
 [node name="testdummy" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
@@ -28,4 +36,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01586914, 0.00793457, 0)
 shape = SubResource("BoxShape3D_3clko")
 debug_color = Color(0.9665665, 1.4439225e-06, 0.48270833, 0.41960785)
 
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="DetectionAreaShape" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.13647455, 0)
+shape = SubResource("CylinderShape3D_7p70c")
+debug_color = Color(0, 0.64898485, 0.17268649, 0.41960785)
+
+[node name="ChaseDetectionArea" type="Area3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="ChaseDetectionAreaShape" type="CollisionShape3D" parent="ChaseDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075561516, 0)
+shape = SubResource("CylinderShape3D_0u52l")
+debug_color = Color(0.3997097, 0.59280473, 0.40508422, 0.41960785)
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="ChaseDetectionArea" to="." method="_on_chase_detection_area_body_exited"]
