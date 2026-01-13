@@ -103,6 +103,7 @@ offset_right = 490.0
 offset_bottom = 50.0
 
 [node name="ExternalInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("6_osbks")]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
