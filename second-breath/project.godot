@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://globals/Global.gd"
-PlayerManager="*res://globals/player_manager.gd"
 
 [global_group]
 

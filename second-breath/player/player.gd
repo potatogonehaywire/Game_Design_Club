@@ -27,7 +27,7 @@ var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn"
 @onready var muzzle_location: Marker3D = $projectileMarkerThing
 
 func _ready() -> void:
-	PlayerManager.player = self
+	Global.player = self
 	attack.disabled = true
 	Global.player = self
 
