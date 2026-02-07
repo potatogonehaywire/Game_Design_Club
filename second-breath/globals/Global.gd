@@ -1,7 +1,6 @@
 extends Node
 var health = 100
 var stamina = 100
-var player = null
 
 var i = 1
 var weapon = 1
@@ -13,6 +12,9 @@ var equippedRanged = 1
 var enemyHitID = 0
 var enemyIsHit: bool = false
 var isProjectile = false
+var debuff = 0
+var windup = 2
+var projectileType = 0
 
 var player
 
@@ -38,6 +40,13 @@ func _process(_delta: float) -> void:
 				if node.has_method("upon_hit"):
 					node.upon_hit()
 					return
+	
+	if debuff != 0:
+		await get_tree().create_timer(5.0).timeout
+		debuff = 0
+	
+	if Input.is_action_just_pressed("projectileTypeTest"):
+		projectileType += 1
 
 
 func staminaRecover() -> void:

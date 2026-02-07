@@ -9,6 +9,7 @@ var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
+
 #var health: int = 5
 
 @export var inventory_data: InventoryData
@@ -63,6 +64,7 @@ func _process(_delta: float) -> void:
 		rangedCooldownOff = false
 		rangedCooldown.start(1)
 		shoot()
+		
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -112,6 +114,7 @@ func _on_ranged_cooldown_timeout() -> void:
 	rangedCooldownOff = true
 
 func shoot():
+	await get_tree().create_timer(Global.windup).timeout
 	if talent_tree.visible == false:
 		var mouse_position = get_viewport().get_mouse_position()
 		var ray_origin = camera.project_ray_origin(mouse_position)

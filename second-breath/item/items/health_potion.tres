@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://ck427y43u0jv6"]
+[gd_resource type="Resource" script_class="ItemDataConsumable" format=3 uid="uid://ck427y43u0jv6"]
 
 [ext_resource type="Script" uid="uid://ciigmpmco1lmi" path="res://item/item_data_consumable.gd" id="1_810tu"]
 [ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="2_1jjx4"]
