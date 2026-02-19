@@ -14,7 +14,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_8mdrg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jotil"]
-size = Vector3(10.020996, 1.0464478, 6.9675293)
+size = Vector3(19.210388, 1.0464478, 6.883301)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
 
@@ -29,16 +29,16 @@ sky = SubResource("Sky_44gc5")
 script = ExtResource("1_r6pyn")
 
 [node name="Player" parent="." unique_id=736580759 instance=ExtResource("1_gpfmr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7991793, 0)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
 
 [node name="floorshape" type="MeshInstance3D" parent="floor" unique_id=875642947]
-transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, -0.09752458, 0.022745728)
+transform = Transform3D(19.28375, 0, 0, 0, 1, 0, 0, 0, 19.61675, -0.0015132427, -0.09752458, 0.022745728)
 mesh = SubResource("BoxMesh_8mdrg")
 
 [node name="floorcollision" type="CollisionShape3D" parent="floor" unique_id=1198127828]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, -0.029563308, 0.0030517578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.049957275, -0.029563308, -0.1187176)
 shape = SubResource("BoxShape3D_jotil")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]

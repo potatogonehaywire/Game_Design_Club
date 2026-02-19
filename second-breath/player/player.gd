@@ -9,8 +9,9 @@ var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
+var walk_direction = "forward"
 
-#var health: int = 5
+@onready var player_sprite_3d: AnimatedSprite3D = $PlayerSprite3D
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -69,18 +70,37 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
+		player_sprite_3d.play("walk_left")
+		walk_direction = "left"
 	elif Input.is_action_pressed("right"):
+		player_sprite_3d.play("walk_right")
 		velocity.x = speed
+		walk_direction = "right"
 	else:
 		velocity.x = 0
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
+		player_sprite_3d.play("walk_forward")
+		walk_direction = "forward"
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
+		player_sprite_3d.play("walk_backward")
+		walk_direction = "backward"
 	else:
 		velocity.z = 0
-		
+	
+	if velocity.x == 0 and velocity.z == 0:
+		match walk_direction:
+			"forward":
+					player_sprite_3d.play("idle_forward")	
+			"backward":
+					player_sprite_3d.play("idle_backward")	
+			"left":
+					player_sprite_3d.play("idle_left")	
+			"right":
+					player_sprite_3d.play("idle_right")	
+					
 	if is_on_floor():
 		velocity.y = 0
 		jump = 2
