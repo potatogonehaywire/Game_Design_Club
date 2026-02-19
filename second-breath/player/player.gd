@@ -70,10 +70,10 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
-		player_sprite_3d.play("walk_left")
+		#player_sprite_3d.play("walk_left")
 		walk_direction = "left"
 	elif Input.is_action_pressed("right"):
-		player_sprite_3d.play("walk_right")
+		#player_sprite_3d.play("walk_right")
 		velocity.x = speed
 		walk_direction = "right"
 	else:
@@ -81,26 +81,26 @@ func _physics_process(_delta: float) -> void:
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
-		player_sprite_3d.play("walk_forward")
+		#player_sprite_3d.play("walk_forward")
 		walk_direction = "forward"
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
-		player_sprite_3d.play("walk_backward")
+		#player_sprite_3d.play("walk_backward")
 		walk_direction = "backward"
 	else:
 		velocity.z = 0
 	
-	if velocity.x == 0 and velocity.z == 0:
-		match walk_direction:
-			"forward":
-					player_sprite_3d.play("idle_forward")	
-			"backward":
-					player_sprite_3d.play("idle_backward")	
-			"left":
-					player_sprite_3d.play("idle_left")	
-			"right":
-					player_sprite_3d.play("idle_right")	
-					
+	#if velocity.x == 0 and velocity.z == 0:
+		#match walk_direction:
+			#"forward":
+					#player_sprite_3d.play("idle_forward")	
+			#"backward":
+					#player_sprite_3d.play("idle_backward")	
+			#"left":
+					#player_sprite_3d.play("idle_left")	
+			#"right":
+					#player_sprite_3d.play("idle_right")	
+					#
 	if is_on_floor():
 		velocity.y = 0
 		jump = 2
