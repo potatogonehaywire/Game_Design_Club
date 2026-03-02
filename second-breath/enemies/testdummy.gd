@@ -9,15 +9,12 @@ var isHit = false
 @export var enemyhp = 30
 @export var damage = 20
 @export var enemyType = 1
-#var projectileTypes = preload("res://attack_skills/projectileTypes.gd")
 
 
 func _ready() -> void:
-	#var projectile = projectileTypes.new()
 	my_id = self.id
 	print(name, " is id ", my_id)
-	#projectile = my_id
-	#print(projectile)
+	
 
 func _physics_process(_delta: float) -> void:
 	if is_on_floor():

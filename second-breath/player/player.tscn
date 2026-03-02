@@ -488,7 +488,6 @@ blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2ieo8"]
-graph_offset = Vector2(-89.042015, 22.510193)
 nodes/output/position = Vector2(480, 160)
 nodes/walking/node = SubResource("AnimationNodeBlendSpace2D_8t03j")
 nodes/walking/position = Vector2(96, 144)
@@ -510,7 +509,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014974594, 0.006462857, 0.0
 shape = SubResource("BoxShape3D_hqtel")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1675269623]
-transform = Transform3D(1, 0, 0, 0, 0.97851974, 0.20615298, 0, -0.20615298, 0.97851974, 0, 1.1934011, 2.6655207)
+transform = Transform3D(1, 0, 0, 0, 0.99799484, 0.06329571, 0, -0.06329571, 0.99799484, 0, 0.797379, 2.6655207)
 fov = 46.47491
 
 [node name="InteractRay" type="RayCast3D" parent="Camera3D" unique_id=1057876392]

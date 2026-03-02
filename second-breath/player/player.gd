@@ -82,26 +82,13 @@ func _physics_process(_delta: float) -> void:
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
-		#player_sprite_3d.play("walk_forward")
 		walk_direction = "forward"
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
-		#player_sprite_3d.play("walk_backward")
 		walk_direction = "backward"
 	else:
 		velocity.z = 0
 	
-	#if velocity.x == 0 and velocity.z == 0:
-		#match walk_direction:
-			#"forward":
-					#player_sprite_3d.play("idle_forward")	
-			#"backward":
-					#player_sprite_3d.play("idle_backward")	
-			#"left":
-					#player_sprite_3d.play("idle_left")	
-			#"right":
-					#player_sprite_3d.play("idle_right")	
-					#
 	if is_on_floor():
 		velocity.y = 0
 		jump = 2
@@ -160,7 +147,6 @@ func shoot():
 
 			projectile_instance.global_position = muzzle_location.global_position
 			projectile_instance.move_direction = direction_to_target
-		
 		else:
 			pass
 
