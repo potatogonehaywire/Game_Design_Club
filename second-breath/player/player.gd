@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 signal toggle_inventory()
 signal toggle_skilltree()

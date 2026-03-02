@@ -223,7 +223,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_rgyib"]
 resource_name = "idle_backward"
 length = 0.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -252,7 +251,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_hg6s5"]
 resource_name = "idle_forward"
 length = 0.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -281,7 +279,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_8t03j"]
 resource_name = "idle_left"
 length = 0.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -310,7 +307,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_2ieo8"]
 resource_name = "idle_right"
 length = 0.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -339,7 +335,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "walk_forward"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -367,7 +362,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_g6k8r"]
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -396,7 +390,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ebec5"]
 resource_name = "walk_left"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -425,7 +418,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_yllr7"]
 resource_name = "walk_right"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -478,18 +470,18 @@ animation = &"walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_8t03j"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_g6k8r")
-blend_point_0/pos = Vector2(0, -1)
+blend_point_0/pos = Vector2(0, 1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_boad6")
 blend_point_1/pos = Vector2(-1, 0)
 blend_point_2/node = SubResource("AnimationNodeAnimation_rgyib")
-blend_point_2/pos = Vector2(0, 1)
+blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_hg6s5")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2ieo8"]
 graph_offset = Vector2(-89.042015, 22.510193)
-nodes/output/position = Vector2(480, 160)
+nodes/output/position = Vector2(512, 192)
 nodes/walking/node = SubResource("AnimationNodeBlendSpace2D_8t03j")
 nodes/walking/position = Vector2(96, 144)
 node_connections = [&"output", 0, &"walking"]
@@ -546,7 +538,7 @@ libraries/ = SubResource("AnimationLibrary_g6k8r")
 root_node = NodePath("../PlayerSprite3D")
 tree_root = SubResource("AnimationNodeBlendTree_2ieo8")
 anim_player = NodePath("../AnimationPlayer")
-parameters/walking/blend_position = Vector2(-0.21792454, 0.3435583)
+parameters/walking/blend_position = Vector2(0, 1)
 
 [node name="player_animation" type="Node3D" parent="." unique_id=2105502787 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("6_g6k8r")
