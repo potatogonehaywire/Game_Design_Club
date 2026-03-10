@@ -9,8 +9,6 @@ radius = 0.11243766
 [sub_resource type="SphereShape3D" id="SphereShape3D_dgwo2"]
 radius = 0.12638149
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_w8exc"]
-
 [node name="projectile" type="CharacterBody3D" unique_id=1533306491]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 axis_lock_linear_y = true
@@ -31,11 +29,4 @@ disabled = true
 shape = SubResource("SphereShape3D_dgwo2")
 debug_color = Color(0.9671822, 0, 0.46782863, 0.41960785)
 
-[node name="explosion" type="Area3D" parent="." unique_id=218116139]
-
-[node name="explosionRadius" type="CollisionShape3D" parent="explosion" unique_id=1048317852]
-shape = SubResource("SphereShape3D_w8exc")
-disabled = true
-
 [connection signal="body_entered" from="projectileHitbox" to="." method="_on_projectile_hitbox_body_entered"]
-[connection signal="body_entered" from="explosion" to="." method="_on_explosion_body_entered"]

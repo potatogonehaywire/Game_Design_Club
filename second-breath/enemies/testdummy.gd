@@ -9,15 +9,10 @@ var isHit = false
 @export var enemyhp = 30
 @export var damage = 20
 @export var enemyType = 1
-#var projectileTypes = preload("res://attack_skills/projectileTypes.gd")
-
 
 func _ready() -> void:
-	#var projectile = projectileTypes.new()
 	my_id = self.id
 	print(name, " is id ", my_id)
-	#projectile = my_id
-	#print(projectile)
 
 func _physics_process(_delta: float) -> void:
 	if is_on_floor():
@@ -42,10 +37,10 @@ func _process(_delta: float) -> void:
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if isHit == true:
-			Global.health -= damage + Global.debuff
+			Global.health -= damage + Global.dmgdebuff
 			print (Global.health)
 		else:
-			Global.health -= damage + Global.debuff
+			Global.health -= damage + Global.dmgdebuff
 			print (Global.health)
 
 
@@ -65,8 +60,13 @@ func take_damage() -> void:
 			self.enemyhp -= 10 * Global.ranged + Global.debuff
 			Global.isProjectile = false
 			isHit = true
+			Global.debuff = 0
+			Global.dmgdebuff = 0
+			Global.windup = 2
 		else:
 			self.enemyhp -= 15 * Global.weapon + Global.debuff
+			Global.debuff = 0
+			Global.dmgdebuff = 0
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
 			self.queue_free()

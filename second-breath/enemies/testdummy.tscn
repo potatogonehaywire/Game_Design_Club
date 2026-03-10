@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://tyoeq5o5d34c" path="res://enemies/testdummy.gd" id="1_cxp23"]
 [ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_kwp0h"]
-[ext_resource type="Script" uid="uid://8st6upij2cv2" path="res://attack_skills/projectileTypes.gd" id="3_0u52l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
 size = Vector3(1.3087158, 1.2910156, 0.18457031)
@@ -53,7 +52,6 @@ shape = SubResource("CylinderShape3D_0u52l")
 debug_color = Color(0.3997097, 0.59280473, 0.40508422, 0.41960785)
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=41634338]
-script = ExtResource("3_0u52l")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

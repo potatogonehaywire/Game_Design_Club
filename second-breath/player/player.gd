@@ -101,7 +101,7 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
 			var id = body.id
-			Global.enemyHitID = id
+			Global.enemyHitID.append(id)
 			enemy_hit()
 
 func enemy_hit() -> void:
@@ -139,7 +139,7 @@ func shoot():
 
 			projectile_instance.global_position = muzzle_location.global_position
 			projectile_instance.move_direction = direction_to_target
-		
+			projectile_instance.isPlayer = true
 		else:
 			pass
 
