@@ -14,26 +14,32 @@ var healthDrain = false
 
 #Global.debuff not working, to fix. all basic attack work.
 func _ready():
-	if isPlayer == true:
-		print("hi")
-	else:
-		print("bye")
 	match projectileType:
 		0:
 			life_timer = 2.0
 		1: #basic anger
 			healthDrain = true
-			Global.debuff = 5
+			Global.debuff = 3
+			if isPlayer == true:
+				Global.debuff = 5
 		2: #basic fear
-			life_timer = 3.0
-			speed = 6.5
+			life_timer = 2.0
+			speed = 5
 			explodes = true
+			if isPlayer == true:
+				life_timer = 3.0
+				speed = 6.5
 		3: #basic envy
-			Global.dmgdebuff = 3
+			Global.dmgdebuff = 2
+			if isPlayer == true:
+				Global.dmgdebuff = 3
 		4: #basic regret
 			Global.windup = 4
-			speed = 8
+			speed = 7
 			Global.debuff = 2
+			if isPlayer == true:
+				speed = 8
+				Global.debuff = 3
 		_:
 			Global.projectileType = 0
 	print(projectileType)
@@ -60,14 +66,17 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") && isPlayer == true:
 		if body.has_method("upon_hit"): 
 			var id = body.id
 			Global.enemyHitID.append(id)
 			Global.isProjectile = true
 			print(Global.enemyHitID)
 			enemy_hit()
-			
+	elif body.is_in_group("player") && isPlayer == false:
+		#not hitting player, fix later
+		#also do the same sorta code thing in explosion.gd once it works
+		Global.health -= 10 + Global.debuff
 
 func enemy_hit() -> void:
 	if healthDrain == true:
@@ -85,7 +94,7 @@ func explode() -> void:
 	add_child(explosion_instance)
 	explosion_instance.global_position = self.global_position
 	speed = 0
-	Global.debuff -= 5
+	Global.debuff = 0
 	await get_tree().create_timer(1).timeout
 	explosion_instance.queue_free()
 	queue_free()

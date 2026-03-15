@@ -42,8 +42,6 @@ func _process(_delta: float) -> void:
 				if node.has_method("upon_hit"):
 					node.upon_hit()
 					enemyHitID.erase(node.get("id"))
-			else:
-				print(f)
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
 		projectileType += 1
