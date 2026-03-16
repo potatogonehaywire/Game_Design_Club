@@ -4,97 +4,65 @@ var move_direction := Vector3.ZERO
 var speed := 5.5 
 var life_timer := 2.0 
 var enemyType = 0
-var isPlayer = false
 var projectileType = Global.projectileType
-var explosion = preload("res://attack_skills/explosion.tscn")
+@onready var explosionRadius = $explosion/explosionRadius
 
 #everything from here is for each type of projectile
 var explodes = false
+var dmgDebuff = false
 var healthDrain = false
 
-#Global.debuff not working, to fix. all basic attack work.
 func _ready():
 	match projectileType:
 		0:
 			life_timer = 2.0
 		1: #basic anger
 			healthDrain = true
-			Global.debuff = 3
-			if isPlayer == true:
-				Global.debuff = 5
+			Global.debuff = 5
 		2: #basic fear
-			life_timer = 2.0
-			speed = 5
+			life_timer = 4.0
 			explodes = true
-			if isPlayer == true:
-				life_timer = 3.0
-				speed = 6.5
 		3: #basic envy
-			Global.dmgdebuff = 2
-			if isPlayer == true:
-				Global.dmgdebuff = 3
+			dmgDebuff = true
 		4: #basic regret
 			Global.windup = 4
-			speed = 7
-			Global.debuff = 2
-			if isPlayer == true:
-				speed = 8
-				Global.debuff = 3
-		_:
-			Global.projectileType = 0
 	print(projectileType)
 	await get_tree().create_timer(life_timer).timeout
 	if explodes == true:
-		explode()
-	else:
-		queue_free()
+		explosionRadius.disabled = false
+	queue_free()
 
-func _physics_process(_delta):
-	if projectileType == 4:
-		if speed > 0:
-			speed -= 0.15
-		elif speed <= 0:
-			speed = 0
-			await get_tree().create_timer(0.1).timeout
-			queue_free()
+func _process(_delta):
+	if speed > 3.0:
+		speed -= 0.075
 	else:
-		if speed > 3.0:
-			speed -= 0.075
-		else:
-			speed -= 0
+		speed -= 0
 	velocity = move_direction * speed
 	move_and_slide()
 
 func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && isPlayer == true:
+	if body.is_in_group("enemy"):
 		if body.has_method("upon_hit"): 
 			var id = body.id
-			Global.enemyHitID.append(id)
+			Global.enemyHitID = id
 			Global.isProjectile = true
-			print(Global.enemyHitID)
 			enemy_hit()
-	elif body.is_in_group("player") && isPlayer == false:
-		#not hitting player, fix later
-		#also do the same sorta code thing in explosion.gd once it works
-		Global.health -= 10 + Global.debuff
+			
 
+func _on_explosion_body_entered(body: Node3D) -> void:
+	enemy_hit()
+	Global.debuff += 5
+	
 func enemy_hit() -> void:
-	if healthDrain == true:
-		Global.health -= 10
-		print (Global.health)
-		healthDrain = false
 	Global.enemyIsHit = true
+	if dmgDebuff == true:
+		Global.debuff = -5
+	if healthDrain == true:
+		Global.health -= 20
+		print (Global.health)
+		healthDrain == false
 	if explodes == true:
-		explode()
-	else:
-		queue_free()
-
-func explode() -> void:
-	var explosion_instance = explosion.instantiate()
-	add_child(explosion_instance)
-	explosion_instance.global_position = self.global_position
-	speed = 0
+		explosionRadius.disabled = false
 	Global.debuff = 0
-	await get_tree().create_timer(1).timeout
-	explosion_instance.queue_free()
+	Global.windup = 2
 	queue_free()

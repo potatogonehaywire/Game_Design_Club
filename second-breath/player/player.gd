@@ -111,7 +111,7 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
 			var id = body.id
-			Global.enemyHitID.append(id)
+			Global.enemyHitID = id
 			enemy_hit()
 
 func enemy_hit() -> void:
