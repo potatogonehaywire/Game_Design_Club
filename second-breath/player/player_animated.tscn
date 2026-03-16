@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coplxaemyo182"]
 
-[ext_resource type="Script" uid="uid://dwjsat7w3ccji" path="res://player/player.gd" id="1_u78ne"]
+[ext_resource type="Script" uid="uid://dwjsat7w3ccji" path="res://player/player_animated.gd" id="1_u78ne"]
 [ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://bl7cci2mvndgg" path="res://inventory/inventory_data_equip.gd" id="3_g6k8r"]
 [ext_resource type="Script" uid="uid://qeerjmaj1eqg" path="res://inventory/slot_data.gd" id="4_boad6"]

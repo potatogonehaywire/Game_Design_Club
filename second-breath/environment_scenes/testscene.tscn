@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://bpu5jbnqrkoy7"]
 
-[ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player/player.tscn" id="1_gpfmr"]
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_r6pyn"]
-[ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="2_fvmrd"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="3_fu3vm"]
 [ext_resource type="Texture2D" uid="uid://la1sui6hxjcj" path="res://sprites/bg_test.png" id="3_osbks"]
 [ext_resource type="Texture2D" uid="uid://dguvbfujapf0y" path="res://sprites/zone1_bg.png" id="4_armuh"]
@@ -29,9 +27,6 @@ sky = SubResource("Sky_44gc5")
 
 [node name="testscene" type="Node3D" unique_id=1214572928]
 script = ExtResource("1_r6pyn")
-
-[node name="Player" parent="." unique_id=736580759 instance=ExtResource("1_gpfmr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7991793, 0)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
 
@@ -92,20 +87,6 @@ shape = SubResource("BoxShape3D_jotil")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
 environment = SubResource("Environment_612pj")
-
-[node name="Enemies" type="Node" parent="." unique_id=1799270182]
-
-[node name="testdummy" parent="Enemies" unique_id=35917985 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.7065784, 0)
-id = 1
-
-[node name="testdummy2" parent="Enemies" unique_id=1609338178 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.7065784, 0)
-id = 2
-
-[node name="testdummy3" parent="Enemies" unique_id=2013907163 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.7065784, 2.1574533)
-id = 3
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1826429714]
 
