@@ -105,7 +105,7 @@ func _physics_process(_delta: float) -> void:
 			jump -= 1
 	move_and_slide()
 
-	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, -0.5,velocity.z)*0.5, 0.05)
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.7, 0.05)
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
