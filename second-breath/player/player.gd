@@ -20,8 +20,9 @@ var walk_direction = "forward"
 @onready var attack = $AttackHitbox/AttackHitboxCollision
 @onready var cooldown = $cooldown
 @onready var rangedCooldown = $rangedCooldown
-@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
-@onready var camera: Camera3D = $Camera3D
+@onready var interact_ray: RayCast3D = $camera_controller/camera_target/Camera3D/InteractRay
+@onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
+@onready var camera_controller: Node3D = $camera_controller
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 
@@ -69,12 +70,11 @@ func _process(_delta: float) -> void:
 		
 
 func _physics_process(_delta: float) -> void:
+	
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
-		#player_sprite_3d.play("walk_left")
 		walk_direction = "left"
 	elif Input.is_action_pressed("right"):
-		#player_sprite_3d.play("walk_right")
 		velocity.x = speed
 		walk_direction = "right"
 	else:
@@ -104,6 +104,8 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 	move_and_slide()
+
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, -0.5,velocity.z)*0.5, 0.05)
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
