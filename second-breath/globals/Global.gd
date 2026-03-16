@@ -2,17 +2,18 @@ extends Node
 var health = 100
 var stamina = 100
 
-var i = 1
+var s = 1
 var weapon = 1
 var equippedWeapon = 1
 var ranged = 1
 var equippedRanged = 1
 
 
-var enemyHitID = 0
+var enemyHitID = []
 var enemyIsHit: bool = false
 var isProjectile = false
 var debuff = 0
+var dmgdebuff = 0
 var windup = 2
 var projectileType = 0
 
@@ -34,28 +35,25 @@ func _process(_delta: float) -> void:
 	else:
 		stamina = 100
 	
-	if enemyIsHit == true:
+	if enemyIsHit == true || enemyHitID.size() > 0:
 		for node in get_tree().get_nodes_in_group("enemy"):
-			if node.get("id") == enemyHitID:
+			var f = node.get("id")
+			if f in enemyHitID:
 				if node.has_method("upon_hit"):
 					node.upon_hit()
-					return
-	
-	if debuff != 0:
-		await get_tree().create_timer(5.0).timeout
-		debuff = 0
+					enemyHitID.erase(node.get("id"))
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
 		projectileType += 1
+		print(projectileType)
 
 
 func staminaRecover() -> void:
-	if i == 1:
-		i = 0
+	if s == 1:
+		s = 0
 		stamina += 1
 		await get_tree().create_timer(0.1).timeout
-		i = 1
-
+		s = 1
 
 func weapon_check() -> void:
 	if equippedWeapon == 1:
