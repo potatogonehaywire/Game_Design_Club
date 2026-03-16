@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://cypk7ydkr5r7b"]
 
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_a85iw"]
 [ext_resource type="Script" uid="uid://j8bijkkoja23" path="res://attack_skills/projectile.gd" id="1_qxf0c"]
-[ext_resource type="Texture2D" uid="uid://8sh0lxrute5e" path="res://sprites/spear.png" id="2_w8exc"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_w8exc"]
-height = 4.2700195
-radius = 0.21777344
+[sub_resource type="SphereShape3D" id="SphereShape3D_qxf0c"]
+radius = 0.11243766
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dgwo2"]
 radius = 0.12638149
@@ -18,12 +17,12 @@ axis_lock_linear_y = true
 script = ExtResource("1_qxf0c")
 
 [node name="projectileSprite" type="Sprite3D" parent="." unique_id=643659107]
-transform = Transform3D(-4.636293e-09, 4.636293e-09, -0.15, 0.10606602, 0.10606602, 0, 0.10606602, -0.10606602, -6.5567085e-09, 0, 0, 0)
-texture = ExtResource("2_w8exc")
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+modulate = Color(0.18344527, 0.65219605, 5.7756904e-07, 1)
+texture = ExtResource("1_a85iw")
 
 [node name="projectileCollision" type="CollisionShape3D" parent="." unique_id=853642634]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.0071383845, 0.9999743, 0, -0.9999743, 0.0071383845, -0.009094028, 0.12264842, -0.03418286)
-shape = SubResource("CylinderShape3D_w8exc")
+shape = SubResource("SphereShape3D_qxf0c")
 disabled = true
 
 [node name="projectileHitbox" type="Area3D" parent="." unique_id=2060407258]
