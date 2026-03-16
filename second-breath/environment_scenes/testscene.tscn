@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpu5jbnqrkoy7"]
+[gd_scene format=3 uid="uid://bpu5jbnqrkoy7"]
 
 [ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player/player.tscn" id="1_gpfmr"]
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_r6pyn"]
@@ -25,45 +25,45 @@ sky_material = SubResource("ProceduralSkyMaterial_jotil")
 background_mode = 2
 sky = SubResource("Sky_44gc5")
 
-[node name="testscene" type="Node3D"]
+[node name="testscene" type="Node3D" unique_id=1214572928]
 script = ExtResource("1_r6pyn")
 
-[node name="Player" parent="." instance=ExtResource("1_gpfmr")]
+[node name="Player" parent="." unique_id=736580759 instance=ExtResource("1_gpfmr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="floor" type="StaticBody3D" parent="."]
+[node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
 
-[node name="floorshape" type="MeshInstance3D" parent="floor"]
+[node name="floorshape" type="MeshInstance3D" parent="floor" unique_id=875642947]
 transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, -0.09752458, 0.022745728)
 mesh = SubResource("BoxMesh_8mdrg")
 
-[node name="floorcollision" type="CollisionShape3D" parent="floor"]
+[node name="floorcollision" type="CollisionShape3D" parent="floor" unique_id=1198127828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, -0.029563308, 0.0030517578)
 shape = SubResource("BoxShape3D_jotil")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
 environment = SubResource("Environment_612pj")
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node" parent="." unique_id=1799270182]
 
-[node name="testdummy" parent="Enemies" instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.409, 0.5, 0)
+[node name="testdummy" parent="Enemies" unique_id=35917985 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.5, 0)
 id = 1
 
-[node name="testdummy2" parent="Enemies" instance=ExtResource("2_fvmrd")]
+[node name="testdummy2" parent="Enemies" unique_id=1609338178 instance=ExtResource("2_fvmrd")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.5, 0)
 id = 2
 
-[node name="testdummy3" parent="Enemies" instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 0.6029473)
+[node name="testdummy3" parent="Enemies" unique_id=2013907163 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 2.1574533)
 id = 3
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1826429714]
 
-[node name="talent_tree" parent="UI" instance=ExtResource("3_fu3vm")]
+[node name="talent_tree" parent="UI" unique_id=1811441089 instance=ExtResource("3_fu3vm")]
 visible = false
 
-[node name="InventoryRoot" type="Control" parent="UI"]
+[node name="InventoryRoot" type="Control" parent="UI" unique_id=2131856864]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -72,7 +72,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClickCatcher" type="Control" parent="UI/InventoryRoot"]
+[node name="ClickCatcher" type="Control" parent="UI/InventoryRoot" unique_id=518467672]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,35 +81,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_r6pyn")
 
-[node name="InventoryInterface" type="Control" parent="UI/InventoryRoot"]
+[node name="InventoryInterface" type="Control" parent="UI/InventoryRoot" unique_id=123091248]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_t5rxo")
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayerInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("6_osbks")]
+[node name="PlayerInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=563012542 instance=ExtResource("6_osbks")]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
 
-[node name="EquipInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("6_osbks")]
+[node name="EquipInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=781456995 instance=ExtResource("6_osbks")]
 layout_mode = 0
 offset_left = 450.0
 offset_top = 10.0
 offset_right = 490.0
 offset_bottom = 50.0
 
-[node name="ExternalInventory" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("6_osbks")]
+[node name="ExternalInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=871451830 instance=ExtResource("6_osbks")]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 50.0
 offset_bottom = 50.0
 
-[node name="GrabbedSlot" parent="UI/InventoryRoot/InventoryInterface" instance=ExtResource("7_f08sh")]
+[node name="GrabbedSlot" parent="UI/InventoryRoot/InventoryInterface" unique_id=2053814841 instance=ExtResource("7_f08sh")]
 visible = false
 modulate = Color(1, 1, 1, 0.7529412)
 self_modulate = Color(1, 1, 1, 0)
@@ -117,13 +118,13 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
-[node name="HotBarInventory" parent="UI" instance=ExtResource("8_h8ram")]
+[node name="HotBarInventory" parent="UI" unique_id=1732129010 instance=ExtResource("8_h8ram")]
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 430.0
 offset_bottom = 90.0
 
-[node name="Chest" parent="." instance=ExtResource("4_t5rxo")]
+[node name="Chest" parent="." unique_id=647030195 instance=ExtResource("4_t5rxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.19232523, 0.587754)
 
 [connection signal="visibility_changed" from="UI/InventoryRoot" to="UI/InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]

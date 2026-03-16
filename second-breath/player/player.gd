@@ -3,13 +3,14 @@ extends CharacterBody3D
 signal toggle_inventory()
 signal toggle_skilltree()
 
-const speed = 5
+const speed = 3
 const jumpspeed = 20
 var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
-var health: int = 5
+
+#var health: int = 5
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -29,6 +30,7 @@ var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn"
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
+	Global.player = self
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -62,6 +64,7 @@ func _process(_delta: float) -> void:
 		rangedCooldownOff = false
 		rangedCooldown.start(1)
 		shoot()
+		
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -86,7 +89,7 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 	else:
-		velocity.y -= 3
+		velocity.y -= 2
 		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
 			Global.stamina -= 15
 			velocity.y = 0
@@ -98,7 +101,7 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
 			var id = body.id
-			Global.enemyHitID = id
+			Global.enemyHitID.append(id)
 			enemy_hit()
 
 func enemy_hit() -> void:
@@ -111,6 +114,7 @@ func _on_ranged_cooldown_timeout() -> void:
 	rangedCooldownOff = true
 
 func shoot():
+	await get_tree().create_timer(Global.windup).timeout
 	if talent_tree.visible == false:
 		var mouse_position = get_viewport().get_mouse_position()
 		var ray_origin = camera.project_ray_origin(mouse_position)
@@ -135,7 +139,7 @@ func shoot():
 
 			projectile_instance.global_position = muzzle_location.global_position
 			projectile_instance.move_direction = direction_to_target
-		
+			projectile_instance.isPlayer = true
 		else:
 			pass
 
@@ -151,4 +155,4 @@ func get_drop_position() -> Vector3:
 
 
 func heal(heal_value:int) -> void:
-	health += heal_value
+	Global.health += heal_value

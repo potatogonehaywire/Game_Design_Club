@@ -1,0 +1,13 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1768265500
+Global.gd::GDScript::7072552800974530644::1768265250::0::1::::<>Node<><>0<>0<><>::
+icon.svg::CompressedTexture2D::8973857670188631746::1768265250::1768265501::1::::<><><>0<>0<>b03a6703d1144b02d17affd48b6c07a5<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex::
+main_menu.tscn::PackedScene::5592830335177036801::1768265250::0::1::::<><><>0<>0<><>::uid://ccy12q4cd3m34::::res://ominous_tree_background.jpg
+ominous_tree_background.jpg::CompressedTexture2D::4964391864275987349::1768265250::1768265501::1::::<><><>0<>0<>d064077dfe49c372f88831c83201f183<>res://.godot/imported/ominous_tree_background.jpg-7f029ea354d93d6abccdbb2cce494df1.ctex::
+playerAttacks.gd::GDScript::8723089965186821970::1768265250::0::1::::<>CharacterBody3D<><>0<>0<><>::
+playerAttacks.tscn::PackedScene::5787159811566892117::1768265262::0::1::::<><><>0<>0<><>::uid://dwjsat7w3ccji::::res://playerAttacks.gd<>uid://d04aeigorso2u::::res://icon.svg
+projectile.gd::GDScript::699899550601882778::1768265250::0::1::::<>CharacterBody3D<><>0<>0<><>::
+projectile.tscn::PackedScene::6489004862015585797::1768265250::0::1::::<><><>0<>0<><>::uid://d04aeigorso2u::::res://icon.svg<>uid://j8bijkkoja23::::res://projectile.gd
+testdummy.gd::GDScript::1383991163688472068::1768265250::0::1::::<>CharacterBody3D<><>0<>0<><>::
+testdummy.tscn::PackedScene::654215368197277589::1768265250::0::1::::<><><>0<>0<><>::uid://tyoeq5o5d34c::::res://testdummy.gd<>uid://d04aeigorso2u::::res://icon.svg
+testscene.tscn::PackedScene::3482378548628822440::1768265250::0::1::::<><><>0<>0<><>::uid://coplxaemyo182::::res://playerAttacks.tscn<>uid://jk53jislx0pl::::res://testdummy.tscn

@@ -232,7 +232,7 @@ offset_bottom = 335.0
 texture_normal = SubResource("AtlasTexture_gubjn")
 talent_id = "fear_regret"
 tier = 5
-depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
+depends_on = [NodePath("../Regret3a"), NodePath("../Fear3b")]
 
 [node name="Fear1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -298,7 +298,7 @@ offset_bottom = 175.0
 texture_normal = SubResource("AtlasTexture_xqaal")
 talent_id = "fear4"
 tier = 5
-depends_on = [NodePath("../Regret3a"), NodePath("../Fear3b")]
+depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
 
 [node name="AngerFear" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0

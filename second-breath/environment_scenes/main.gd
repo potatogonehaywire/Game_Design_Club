@@ -24,8 +24,9 @@ func _ready() -> void:
 func toggle_skilltree_interface() -> void:
 	talent_tree.visible = not talent_tree.visible
 	if talent_tree.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		hot_bar_inventory.hide()
+	else:
+		hot_bar_inventory.show()
 
 func toggle_inventory_root(external_inventory_owner = null) -> void:
 	inventory_root.visible = not inventory_root.visible
