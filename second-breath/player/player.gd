@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 signal toggle_inventory()
 signal toggle_skilltree()
@@ -9,8 +10,9 @@ var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
+var walk_direction = "forward"
 
-#var health: int = 5
+@onready var player_sprite_3d: AnimatedSprite3D = $PlayerSprite3D
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -18,8 +20,9 @@ var damaged = null
 @onready var attack = $AttackHitbox/AttackHitboxCollision
 @onready var cooldown = $cooldown
 @onready var rangedCooldown = $rangedCooldown
-@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
-@onready var camera: Camera3D = $Camera3D
+@onready var interact_ray: RayCast3D = $camera_controller/camera_target/Camera3D/InteractRay
+@onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
+@onready var camera_controller: Node3D = $camera_controller
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 
@@ -67,20 +70,25 @@ func _process(_delta: float) -> void:
 		
 
 func _physics_process(_delta: float) -> void:
+	
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
+		walk_direction = "left"
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
+		walk_direction = "right"
 	else:
 		velocity.x = 0
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
+		walk_direction = "forward"
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
+		walk_direction = "backward"
 	else:
 		velocity.z = 0
-		
+	
 	if is_on_floor():
 		velocity.y = 0
 		jump = 2
@@ -96,6 +104,8 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 	move_and_slide()
+
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.7, 0.05)
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
@@ -139,7 +149,6 @@ func shoot():
 
 			projectile_instance.global_position = muzzle_location.global_position
 			projectile_instance.move_direction = direction_to_target
-			projectile_instance.isPlayer = true
 		else:
 			pass
 

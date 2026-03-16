@@ -4,17 +4,19 @@
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_r6pyn"]
 [ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="2_fvmrd"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="3_fu3vm"]
+[ext_resource type="Texture2D" uid="uid://la1sui6hxjcj" path="res://sprites/bg_test.png" id="3_osbks"]
+[ext_resource type="Texture2D" uid="uid://dguvbfujapf0y" path="res://sprites/zone1_bg.png" id="4_armuh"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="4_r6pyn"]
 [ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="4_t5rxo"]
+[ext_resource type="Texture2D" uid="uid://cvrkut7cwfdlq" path="res://sprites/zone1_trees.png" id="5_kf5sr"]
 [ext_resource type="Script" uid="uid://06uq0uv2jxlk" path="res://inventory/inventory_interface.gd" id="5_t5rxo"]
 [ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="6_osbks"]
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="7_f08sh"]
 [ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="8_h8ram"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8mdrg"]
+[ext_resource type="PackedScene" uid="uid://bo2b1qfb4wty0" path="res://background_elements/tree.tscn" id="12_f08sh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jotil"]
-size = Vector3(10.020996, 1.0464478, 6.9675293)
+size = Vector3(26.010605, 1.0464478, 6.883301)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
 
@@ -29,16 +31,63 @@ sky = SubResource("Sky_44gc5")
 script = ExtResource("1_r6pyn")
 
 [node name="Player" parent="." unique_id=736580759 instance=ExtResource("1_gpfmr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7991793, 0)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
 
-[node name="floorshape" type="MeshInstance3D" parent="floor" unique_id=875642947]
-transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, -0.09752458, 0.022745728)
-mesh = SubResource("BoxMesh_8mdrg")
+[node name="Sprite3D" type="Sprite3D" parent="floor" unique_id=344337932]
+transform = Transform3D(3.30412, 0, 0, 0, -1.7027902e-07, -0.6121469, 0, 3.8955297, -2.675779e-08, -0.0010368824, 0.38899034, 0.03414309)
+texture = ExtResource("3_osbks")
 
 [node name="floorcollision" type="CollisionShape3D" parent="floor" unique_id=1198127828]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, -0.029563308, 0.0030517578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.054283142, -0.029563308, -0.1187176)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=2017797517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.57207)
+
+[node name="Sprite3D" type="Sprite3D" parent="Wall" unique_id=409547738]
+transform = Transform3D(4.810099, 0, 0, 0, 3.404337, 0.09382302, 0, -0.4727543, 0.6756264, -0.7266133, 5.9485474, -16.232367)
+modulate = Color(0.62018454, 0.8470327, 0.86542594, 1)
+texture = ExtResource("4_armuh")
+
+[node name="floorcollision" type="CollisionShape3D" parent="Wall" unique_id=901462927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.054283142, -0.029563308, -0.1187176)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="bg_trees" type="StaticBody3D" parent="." unique_id=367239712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.246963)
+
+[node name="Sprite3D" type="Sprite3D" parent="bg_trees" unique_id=1986905732]
+transform = Transform3D(1.7907655, 0, 0, 0, 1.5143723, 0.08186837, 0, -0.21029821, 0.58954006, -0.7266133, 4.2740536, 2.3061752)
+texture = ExtResource("5_kf5sr")
+
+[node name="floorcollision" type="CollisionShape3D" parent="bg_trees" unique_id=1800826281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.054283142, -0.029563308, -0.1187176)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="bg_trees2" type="StaticBody3D" parent="." unique_id=1515164292]
+transform = Transform3D(1.4933025, 0, 0, 0, 1.220438, 0, 0, 0, 1, 0, 0, -20.824081)
+
+[node name="Sprite3D" type="Sprite3D" parent="bg_trees2" unique_id=4259586]
+transform = Transform3D(1.9895203, 0, 0, 0, 1.6824505, 0.09095484, 0, -0.23363894, 0.6549724, 3.3483734, 4.2740536, 2.3061752)
+modulate = Color(0.753742, 0.8765365, 0.9032833, 1)
+texture = ExtResource("5_kf5sr")
+
+[node name="floorcollision" type="CollisionShape3D" parent="bg_trees2" unique_id=85760742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.054283142, -0.029563308, -0.1187176)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="bg_trees3" type="StaticBody3D" parent="." unique_id=1164632008]
+transform = Transform3D(1.4933025, 0, 0, 0, 1.220438, 0, 0, 0, 1, -6.6769733, 0, -22.053766)
+
+[node name="Sprite3D" type="Sprite3D" parent="bg_trees3" unique_id=184741665]
+transform = Transform3D(1.9895203, 0, 0, 0, 1.6824505, 0.09095484, 0, -0.23363894, 0.6549724, -0.7266133, 4.2740536, 2.3061752)
+modulate = Color(0.753742, 0.8765365, 0.9032833, 1)
+texture = ExtResource("5_kf5sr")
+
+[node name="floorcollision" type="CollisionShape3D" parent="bg_trees3" unique_id=1488217698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.8914046, -0.054283142, -0.029563308, -0.1187176)
 shape = SubResource("BoxShape3D_jotil")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
@@ -47,15 +96,15 @@ environment = SubResource("Environment_612pj")
 [node name="Enemies" type="Node" parent="." unique_id=1799270182]
 
 [node name="testdummy" parent="Enemies" unique_id=35917985 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.5, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.7065784, 0)
 id = 1
 
 [node name="testdummy2" parent="Enemies" unique_id=1609338178 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.5, 0)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.7065784, 0)
 id = 2
 
 [node name="testdummy3" parent="Enemies" unique_id=2013907163 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 2.1574533)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.7065784, 2.1574533)
 id = 3
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1826429714]
@@ -125,7 +174,25 @@ offset_right = 430.0
 offset_bottom = 90.0
 
 [node name="Chest" parent="." unique_id=647030195 instance=ExtResource("4_t5rxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.19232523, 0.587754)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.13880157, 0.587754)
+
+[node name="Tree2" parent="." unique_id=561386792 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4311953, 1.059969, -1.0978606)
+
+[node name="Tree3" parent="." unique_id=1479691901 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9959116, 1.059969, 0.97133183)
+
+[node name="Tree4" parent="." unique_id=1360880520 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0087576, 1.059969, -3.869435)
+
+[node name="Tree5" parent="." unique_id=182007773 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.590308, 1.059969, -3.458128)
+
+[node name="Tree6" parent="." unique_id=1181097210 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36096, 1.0599685, -1.8332491)
+
+[node name="Tree" parent="." unique_id=2061107874 instance=ExtResource("12_f08sh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0004468, 1.2979492, 0)
 
 [connection signal="visibility_changed" from="UI/InventoryRoot" to="UI/InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]
 [connection signal="gui_input" from="UI/InventoryRoot/ClickCatcher" to="UI/InventoryRoot/InventoryInterface" method="_on_click_catcher_gui_input"]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bo2b1qfb4wty0"]
+
+[ext_resource type="Texture2D" uid="uid://dtrcfryit1vc7" path="res://sprites/tree_green.png" id="1_rfl1o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rfl1o"]
+
+[node name="Tree" type="StaticBody3D" unique_id=1479691901]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1490220931]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = ExtResource("1_rfl1o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1590560705]
+shape = SubResource("CylinderShape3D_rfl1o")
