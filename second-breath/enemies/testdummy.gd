@@ -13,7 +13,6 @@ var isHit = false
 @export var damage = 20
 @export var enemyType = 1
 
-
 func _ready() -> void:
 	my_id = self.id
 	print(name, " is id ", my_id)

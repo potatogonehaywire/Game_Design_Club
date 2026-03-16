@@ -1,22 +1,6 @@
 [gd_scene format=3 uid="uid://jk53jislx0pl"]
 
 [ext_resource type="Script" uid="uid://tyoeq5o5d34c" path="res://enemies/testdummy.gd" id="1_cxp23"]
-[ext_resource type="Texture2D" uid="uid://cumqcfkhb4jqd" path="res://sprites/issac.png" id="2_7p70c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7p70c"]
-atlas = ExtResource("2_7p70c")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0u52l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7p70c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 [ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="1_kwp0h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
@@ -37,26 +21,25 @@ radius = 5.421875
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("1_cxp23")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=637220245]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_0u52l")
+[node name="dummySprite" type="Sprite3D" parent="." unique_id=1786679852]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_kwp0h")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1379621390]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.005065918, 0.0058593745, -0.009277344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005065918, 0.005859375, -0.009277344)
 shape = SubResource("BoxShape3D_cxp23")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=1822726024 groups=["playerHitbox"]]
 
 [node name="HitboxShape" type="CollisionShape3D" parent="Hitbox" unique_id=613451608]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.01586914, 0.00793457, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01586914, 0.00793457, 0)
 shape = SubResource("BoxShape3D_3clko")
 debug_color = Color(0.9665665, 1.4439225e-06, 0.48270833, 0.41960785)
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=667612591]
 
 [node name="DetectionAreaShape" type="CollisionShape3D" parent="DetectionArea" unique_id=1964711775]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.13647455, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.13647455, 0)
 shape = SubResource("CylinderShape3D_7p70c")
 debug_color = Color(0, 0.64898485, 0.17268649, 0.41960785)
 
@@ -64,7 +47,7 @@ debug_color = Color(0, 0.64898485, 0.17268649, 0.41960785)
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="ChaseDetectionAreaShape" type="CollisionShape3D" parent="ChaseDetectionArea" unique_id=1933220894]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.075561516, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075561516, 0)
 shape = SubResource("CylinderShape3D_0u52l")
 debug_color = Color(0.3997097, 0.59280473, 0.40508422, 0.41960785)
 
