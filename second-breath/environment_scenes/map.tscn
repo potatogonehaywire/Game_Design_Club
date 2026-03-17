@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ckk0uk57jofg2"]
 
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_aneo3"]
-[ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player/player_animated.tscn" id="2_ilmlt"]
 [ext_resource type="Texture2D" uid="uid://la1sui6hxjcj" path="res://sprites/bg_test.png" id="3_n85xo"]
 [ext_resource type="Texture2D" uid="uid://dguvbfujapf0y" path="res://sprites/zone1_bg.png" id="4_wojsv"]
 [ext_resource type="Texture2D" uid="uid://cvrkut7cwfdlq" path="res://sprites/zone1_trees.png" id="5_xrfvn"]
@@ -466,9 +465,6 @@ shape = SubResource("ConcavePolygonShape3D_otuaa")
 
 [node name="Tree" parent="." unique_id=2061107874 instance=ExtResource("14_arshi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0004468, 1.2979492, 0)
-
-[node name="Player" parent="." unique_id=736580759 instance=ExtResource("2_ilmlt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7991793, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
 environment = SubResource("Environment_612pj")
