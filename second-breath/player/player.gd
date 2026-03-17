@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 signal toggle_inventory()
 signal toggle_skilltree()
@@ -10,7 +11,6 @@ var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
 
-#var health: int = 5
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -18,8 +18,9 @@ var damaged = null
 @onready var attack = $AttackHitbox/AttackHitboxCollision
 @onready var cooldown = $cooldown
 @onready var rangedCooldown = $rangedCooldown
-@onready var interact_ray: RayCast3D = $Camera3D/InteractRay
-@onready var camera: Camera3D = $Camera3D
+@onready var interact_ray: RayCast3D = $camera_controller/camera_target/Camera3D/InteractRay
+@onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
+@onready var camera_controller: Node3D = $camera_controller
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 
@@ -97,6 +98,8 @@ func _physics_process(_delta: float) -> void:
 			jump -= 1
 	move_and_slide()
 
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.7, 0.04)
+
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
@@ -156,3 +159,4 @@ func get_drop_position() -> Vector3:
 
 func heal(heal_value:int) -> void:
 	Global.health += heal_value
+	print("player health: " + str(Global.health))
