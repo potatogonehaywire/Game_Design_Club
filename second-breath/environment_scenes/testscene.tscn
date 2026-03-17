@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bpu5jbnqrkoy7"]
 
-[ext_resource type="PackedScene" uid="uid://coplxaemyo182" path="res://player/player.tscn" id="1_gpfmr"]
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_r6pyn"]
 [ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="2_fvmrd"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="3_fu3vm"]
@@ -27,9 +26,6 @@ sky = SubResource("Sky_44gc5")
 
 [node name="testscene" type="Node3D" unique_id=1214572928]
 script = ExtResource("1_r6pyn")
-
-[node name="Player" parent="." unique_id=736580759 instance=ExtResource("1_gpfmr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
 

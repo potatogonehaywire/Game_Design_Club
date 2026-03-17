@@ -3,11 +3,11 @@ extends Area3D
 @onready var eradius = $explosionRadius
 
 func _ready() -> void:
-	self.eradius.shape.radius = 0.1
+	self.eradius.shape.radius = 0.5
 
 func _process(_delta: float) -> void:
 	if self.eradius.shape.radius <= 1:
-		self.eradius.shape.radius += 0.015
+		self.eradius.shape.radius += 0.05
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("upon_hit"): 

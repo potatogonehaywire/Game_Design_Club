@@ -9,6 +9,7 @@ radius = 0.1
 script = ExtResource("1_kytmt")
 
 [node name="explosionRadius" type="CollisionShape3D" parent="." unique_id=1657131492]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 shape = SubResource("SphereShape3D_irj5j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

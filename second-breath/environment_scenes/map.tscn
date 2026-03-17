@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://ckk0uk57jofg2"]
 
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_aneo3"]
-[ext_resource type="Texture2D" uid="uid://la1sui6hxjcj" path="res://sprites/bg_test.png" id="3_n85xo"]
-[ext_resource type="Texture2D" uid="uid://dguvbfujapf0y" path="res://sprites/zone1_bg.png" id="4_wojsv"]
-[ext_resource type="Texture2D" uid="uid://cvrkut7cwfdlq" path="res://sprites/zone1_trees.png" id="5_xrfvn"]
+[ext_resource type="Texture2D" uid="uid://c7lgj3k8w76bc" path="res://sprites/bg_test.png" id="3_n85xo"]
+[ext_resource type="Texture2D" uid="uid://cfcsgh05u7mt0" path="res://sprites/zone1_bg.png" id="4_wojsv"]
+[ext_resource type="Texture2D" uid="uid://baxhoob5b8mml" path="res://sprites/zone1_trees.png" id="5_xrfvn"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="7_spr5q"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="8_ddsj8"]
 [ext_resource type="Script" uid="uid://06uq0uv2jxlk" path="res://inventory/inventory_interface.gd" id="9_c2frf"]
 [ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="10_b7xsl"]
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="11_qiium"]
+[ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="12_iw17c"]
 [ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="12_q8lsv"]
 [ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="13_jle6x"]
+[ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="13_ol8ra"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_n85xo"]
 
@@ -533,6 +535,24 @@ offset_bottom = 90.0
 
 [node name="Chest" parent="." unique_id=647030195 instance=ExtResource("13_jle6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.13880157, 0.587754)
+
+[node name="Player" parent="." unique_id=1436769523 instance=ExtResource("12_iw17c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9134178, 0.91090894, -0.1200428)
+
+[node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 5.1984367, 0.8863789, -0.11523712)
+
+[node name="testdummy2" parent="." unique_id=1524244774 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 10.80542, 0.77500045, 0.66430426)
+id = 1
+
+[node name="testdummy3" parent="." unique_id=1139285873 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 11.977959, 0.77500045, 0.5917301)
+id = 2
+
+[node name="testdummy4" parent="." unique_id=510857639 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 11.542921, 0.77500045, -1.1793036)
+id = 3
 
 [connection signal="visibility_changed" from="UI/InventoryRoot" to="UI/InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]
 [connection signal="gui_input" from="UI/InventoryRoot/ClickCatcher" to="UI/InventoryRoot/InventoryInterface" method="_on_click_catcher_gui_input"]
