@@ -1,80 +1,71 @@
-[gd_scene format=3 uid="uid://coplxaemyo182"]
+[gd_scene format=3 uid="uid://b3k1b34pmgqvm"]
 
-[ext_resource type="Script" uid="uid://dwjsat7w3ccji" path="res://player/player.gd" id="1_u78ne"]
-[ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_qjkh3"]
-[ext_resource type="Script" uid="uid://bl7cci2mvndgg" path="res://inventory/inventory_data_equip.gd" id="3_g6k8r"]
-[ext_resource type="Script" uid="uid://qeerjmaj1eqg" path="res://inventory/slot_data.gd" id="4_boad6"]
-[ext_resource type="Texture2D" uid="uid://c51e2dyxxblyy" path="res://sprites/kolita.png" id="5_qjkh3"]
-[ext_resource type="Script" uid="uid://dqmmd5bw3o8n0" path="res://player/player_animation.gd" id="6_g6k8r"]
-
-[sub_resource type="Resource" id="Resource_rgyib"]
-resource_name = "equip_inventory"
-script = ExtResource("3_g6k8r")
-slot_datas = Array[ExtResource("4_boad6")]([null])
-metadata/_custom_type_script = "uid://bl7cci2mvndgg"
+[ext_resource type="Script" uid="uid://bgk2gd1h7m3o" path="res://player/animated_player.gd" id="1_kgm2g"]
+[ext_resource type="Texture2D" uid="uid://c51e2dyxxblyy" path="res://sprites/kolita.png" id="5_dmdqd"]
+[ext_resource type="Script" uid="uid://dqmmd5bw3o8n0" path="res://player/player_animation.gd" id="6_1ao5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(0, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(400, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(600, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(200, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(0, 11, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(4, 207, 199, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(4, 403, 199, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(400, 207, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(1200, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(400, 403, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(600, 207, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(600, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(600, 403, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(200, 11, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(200, 207, 200, 196)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
-atlas = ExtResource("5_qjkh3")
+atlas = ExtResource("5_dmdqd")
 region = Rect2(200, 403, 200, 196)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_boad6"]
@@ -494,9 +485,7 @@ nodes/walking/position = Vector2(96, 144)
 node_connections = [&"output", 0, &"walking"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
-script = ExtResource("1_u78ne")
-inventory_data = ExtResource("2_qjkh3")
-equip_inventory_data = SubResource("Resource_rgyib")
+script = ExtResource("1_kgm2g")
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
@@ -554,7 +543,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/walking/blend_position = Vector2(-0.21792454, 0.3435583)
 
 [node name="player_animation" type="Node3D" parent="." unique_id=2105502787 node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("6_g6k8r")
+script = ExtResource("6_1ao5t")
 animation_tree = NodePath("../AnimationTree")
 
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
