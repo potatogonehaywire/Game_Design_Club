@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://b6b8e4t3c5r8p"
+path.s3tc="res://.godot/imported/cartoon-ruins-27627759.webp-7aa0501d040bc0580b7a1cb8cac66516.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://sprites/cartoon-ruins-27627759.webp"
+dest_files=["res://.godot/imported/cartoon-ruins-27627759.webp-7aa0501d040bc0580b7a1cb8cac66516.s3tc.ctex"]
 
 [params]
 
