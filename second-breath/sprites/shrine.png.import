@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://c5gt741pgxxua"
+path.s3tc="res://.godot/imported/shrine.png-c8e56d7a74cafe8552b85be02c280775.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://sprites/shrine.png"
+dest_files=["res://.godot/imported/shrine.png-c8e56d7a74cafe8552b85be02c280775.s3tc.ctex"]
 
 [params]
 

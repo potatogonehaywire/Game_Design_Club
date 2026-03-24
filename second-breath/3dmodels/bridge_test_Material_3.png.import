@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://b2bdbxft2062j"
+path="res://.godot/imported/bridge_test_Material_3.png-31efc901046898059caf75eb9b8a3964.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "5d26130e901b13b8b05f6c69f705b3d0"
 }
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://3dmodels/bridge_test_Material_3.png"
+dest_files=["res://.godot/imported/bridge_test_Material_3.png-31efc901046898059caf75eb9b8a3964.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -38,4 +40,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

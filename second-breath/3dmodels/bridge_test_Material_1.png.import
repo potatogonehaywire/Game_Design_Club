@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://djdaemb17wxcw"
+path.s3tc="res://.godot/imported/bridge_test_Material_1.png-0ef9a412e8284ead502578c60be58d38.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "b64a0bae4f8b48743b7f78b513d1401c"
+}
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://3dmodels/bridge_test_Material_1.png"
+dest_files=["res://.godot/imported/bridge_test_Material_1.png-0ef9a412e8284ead502578c60be58d38.s3tc.ctex"]
 
 [params]
 

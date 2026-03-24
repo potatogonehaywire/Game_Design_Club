@@ -24,6 +24,7 @@ slot_datas = Array[ExtResource("3_bxacl")]([SubResource("Resource_7raco"), SubRe
 metadata/_custom_type_script = "uid://bgl2hbo6a0b2n"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7raco"]
+size = Vector3(0.5854492, 0.49194336, 0.33605957)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2c6go"]
 load_path = "res://.godot/imported/transparent_icons.png-ece2d8a199e22f3b86922c65bf438730.s3tc.ctex"
@@ -40,10 +41,10 @@ script = ExtResource("1_twpm2")
 inventory_data = SubResource("Resource_n6kd7")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=286356209]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.012207031, 0.54174805, -0.0670166)
 shape = SubResource("BoxShape3D_7raco")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=927405803]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.5, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.5, 0)
 texture_filter = 0
 texture = SubResource("AtlasTexture_ebbmy")

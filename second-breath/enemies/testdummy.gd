@@ -9,9 +9,13 @@ var isHit = false
 @onready var muzzle_location: Marker3D = $projectileMarkerThing
 @export var speed = 1
 @export var id = 0
-@export var enemyhp = 30
+@export var ENEMY_HP_MAX = 30
+var enemyhp = ENEMY_HP_MAX
 @export var damage = 20
 @export var enemyType = 1
+@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
+
 
 func _ready() -> void:
 	my_id = self.id
@@ -41,9 +45,11 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if isHit == true:
 			Global.health -= damage + Global.dmgdebuff
+			health_bar.health_changed()
 			print (Global.health)
 		else:
 			Global.health -= damage + Global.dmgdebuff
+			health_bar.health_changed()
 			print (Global.health)
 
 
@@ -52,6 +58,7 @@ func upon_hit():
 	if self.my_id == Global.enemyHitID:
 		if self.enemyhp > 0:
 			take_damage()
+			enemy_health_sprite.enemy_health_changed()
 	else:
 		print("sad")
 

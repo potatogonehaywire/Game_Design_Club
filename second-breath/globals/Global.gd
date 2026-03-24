@@ -1,6 +1,7 @@
 extends Node
 var health = 100
 var stamina = 100
+var stamina_bar
 
 var s = 1
 var weapon = 1
@@ -18,6 +19,7 @@ var windup = 2
 var projectileType = 0
 
 var player
+
 
 func use_slot_data(slot_data: SlotData) -> void:
 	slot_data.item_data.use(player)
@@ -54,6 +56,7 @@ func staminaRecover() -> void:
 		stamina += 1
 		await get_tree().create_timer(0.1).timeout
 		s = 1
+		
 
 func weapon_check() -> void:
 	if equippedWeapon == 1:

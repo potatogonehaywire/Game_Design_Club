@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://bvpsfvtfrq81r"
+path.s3tc="res://.godot/imported/mountain_Material Base Color.png-db2f24dd01c6d9782680c89b4e94f7b1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "bdd2c294286925676340c4248628694b"
+}
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://3dmodels/mountain_Material Base Color.png"
+dest_files=["res://.godot/imported/mountain_Material Base Color.png-db2f24dd01c6d9782680c89b4e94f7b1.s3tc.ctex"]
 
 [params]
 

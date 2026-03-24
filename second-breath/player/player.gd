@@ -4,13 +4,13 @@ class_name Player
 signal toggle_inventory()
 signal toggle_skilltree()
 
-const speed = 3
+const speed = 5
 const jumpspeed = 20
 var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
-
+var direction: Vector3
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -18,11 +18,12 @@ var damaged = null
 @onready var attack = $AttackHitbox/AttackHitboxCollision
 @onready var cooldown = $cooldown
 @onready var rangedCooldown = $rangedCooldown
-@onready var interact_ray: RayCast3D = $camera_controller/camera_target/Camera3D/InteractRay
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
+@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var attack_hitbox: Area3D = $AttackHitbox
 
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
@@ -57,6 +58,7 @@ func _process(_delta: float) -> void:
 		Global.weapon_check()
 		attack.disabled = false
 		Global.stamina -= 10
+		attack_hitbox.position = Vector3(velocity.x, 0, velocity.z).normalized() * 0.5
 		cooldownOff = false
 		await get_tree().create_timer(0.1).timeout
 		attack.disabled = true
@@ -70,17 +72,29 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
+		direction.x = velocity.x ** 0 * -1
+		print(direction)
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
+		direction.x = velocity.x ** 0
+		print(direction)
 	else:
 		velocity.x = 0
+		if velocity.z != 0:
+			direction.x = 0
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
+		direction.z = velocity.z ** 0 * -1
+		print(direction)
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
+		direction.z = velocity.z ** 0
+		print(direction)
 	else:
 		velocity.z = 0
+		if velocity.x != 0:
+			direction.z = 0
 		
 	if is_on_floor():
 		velocity.y = 0
@@ -98,7 +112,7 @@ func _physics_process(_delta: float) -> void:
 			jump -= 1
 	move_and_slide()
 
-	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.7, 0.04)
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
@@ -148,8 +162,20 @@ func shoot():
 
 
 func interact() -> void:
-	if interact_ray.is_colliding():
-		interact_ray.get_collider().player_interact()
+		var mouse_position = get_viewport().get_mouse_position()
+		var ray_origin = camera.project_ray_origin(mouse_position)
+		var ray_direction = camera.project_ray_normal(mouse_position)
+		var ray_length = 50
+		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_ray(query)
+
+		if result:
+			var collider = result.collider
+			if collider.has_method("player_interact"):
+				collider.player_interact()
+
 
 
 func get_drop_position() -> Vector3:
@@ -159,4 +185,5 @@ func get_drop_position() -> Vector3:
 
 func heal(heal_value:int) -> void:
 	Global.health += heal_value
+	health_bar.health_changed()
 	print("player health: " + str(Global.health))
