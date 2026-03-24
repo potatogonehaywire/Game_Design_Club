@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3uq8om5qrd5d" path="res://enemies/testdummy.gd" id="1_cxp23"]
 [ext_resource type="Texture2D" uid="uid://tjjlg7gbd7nt" path="res://sprites/issac.png" id="2_7p70c"]
+[ext_resource type="PackedScene" uid="uid://dqixxrkol83k1" path="res://enemies/enemy_health_sprite.tscn" id="3_0u52l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
 size = Vector3(1.3087158, 1.2910156, 0.18457031)
@@ -16,6 +17,9 @@ radius = 4.234375
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0u52l"]
 height = 1.6774902
 radius = 5.421875
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0u52l"]
+viewport_path = NodePath("SubViewport")
 
 [node name="testdummy" type="CharacterBody3D" unique_id=505480189 groups=["enemy"]]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
@@ -58,6 +62,10 @@ debug_color = Color(0.3997097, 0.59280473, 0.40508422, 0.41960785)
 
 [node name="ProjectileCooldown" type="Timer" parent="." unique_id=339049869]
 wait_time = 5.0
+
+[node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
+transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 3.995999, 0)
+texture = SubResource("ViewportTexture_0u52l")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

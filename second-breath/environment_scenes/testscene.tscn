@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="6_osbks"]
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="7_f08sh"]
 [ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="8_h8ram"]
+[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="9_f08sh"]
+[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="10_h8ram"]
+[ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="10_t5rxo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8mdrg"]
 
@@ -24,10 +27,23 @@ sky_material = SubResource("ProceduralSkyMaterial_jotil")
 background_mode = 2
 sky = SubResource("Sky_44gc5")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_armuh"]
+bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf5sr"]
+bg_color = Color(0.92260283, 0.61066866, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt5j8"]
+bg_color = Color(0.22899795, 0.322422, 0.3573269, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mg0r"]
+bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
+
 [node name="testscene" type="Node3D" unique_id=1214572928]
 script = ExtResource("1_r6pyn")
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
+transform = Transform3D(4.075, 0, 0, 0, 4.075, 0, 0, 0, 4.075, 0, -1.5888016, 0)
 
 [node name="floorshape" type="MeshInstance3D" parent="floor" unique_id=875642947]
 transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, -0.09752458, 0.022745728)
@@ -40,19 +56,19 @@ shape = SubResource("BoxShape3D_jotil")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
 environment = SubResource("Environment_612pj")
 
-[node name="Enemies" type="Node" parent="." unique_id=1799270182]
-
-[node name="testdummy" parent="Enemies" unique_id=35917985 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.5, 0)
+[node name="testdummy" parent="." unique_id=35917985 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 1.1488247, 0)
 id = 1
 
-[node name="testdummy2" parent="Enemies" unique_id=1609338178 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 0.5, 0)
+[node name="testdummy2" parent="." unique_id=1609338178 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.68458545, 1.1488247, 0)
 id = 2
 
-[node name="testdummy3" parent="Enemies" unique_id=2013907163 instance=ExtResource("2_fvmrd")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 0.5, 2.1574533)
+[node name="testdummy3" parent="." unique_id=2013907163 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.009276837, 1.1488247, 2.1574533)
 id = 3
+
+[node name="Enemies" type="Node" parent="." unique_id=1799270182]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1826429714]
 
@@ -119,9 +135,44 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 430.0
 offset_bottom = 90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="StaminaBar" type="ProgressBar" parent="UI" unique_id=470955651]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 33.0
+offset_right = -11.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_armuh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kf5sr")
+show_percentage = false
+script = ExtResource("9_f08sh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=73818188]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -295.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 26.0
+grow_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_yt5j8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4mg0r")
+value = 50.0
+show_percentage = false
+script = ExtResource("10_h8ram")
+metadata/_edit_use_anchors_ = true
 
 [node name="Chest" parent="." unique_id=647030195 instance=ExtResource("4_t5rxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.19232523, 0.587754)
+
+[node name="Player" parent="." unique_id=1436769523 instance=ExtResource("10_t5rxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4199739, 1.0424606, 1.5792758)
 
 [connection signal="visibility_changed" from="UI/InventoryRoot" to="UI/InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]
 [connection signal="gui_input" from="UI/InventoryRoot/ClickCatcher" to="UI/InventoryRoot/InventoryInterface" method="_on_click_catcher_gui_input"]
