@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyvgw0tk51fq"
-path.s3tc="res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"
+uid="uid://ciyjawochae0u"
+path.s3tc="res://.godot/imported/frame0004.png-4202dc07964c9bb13f8f2356203e58fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/tree_green.png"
-dest_files=["res://.godot/imported/tree_green.png-1611a262b3e3ad274dfaf2cc344f79af.s3tc.ctex"]
+source_file="res://sprites/kolita/melee_backward/frame0004.png"
+dest_files=["res://.godot/imported/frame0004.png-4202dc07964c9bb13f8f2356203e58fc.s3tc.ctex"]
 
 [params]
 

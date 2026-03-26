@@ -73,11 +73,9 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
 		direction.x = velocity.x ** 0 * -1
-		print(direction)
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
 		direction.x = velocity.x ** 0
-		print(direction)
 	else:
 		velocity.x = 0
 		if velocity.z != 0:
@@ -86,11 +84,11 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
 		direction.z = velocity.z ** 0 * -1
-		print(direction)
+
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
 		direction.z = velocity.z ** 0
-		print(direction)
+
 	else:
 		velocity.z = 0
 		if velocity.x != 0:
@@ -179,8 +177,7 @@ func interact() -> void:
 
 
 func get_drop_position() -> Vector3:
-	var direction = -camera.global_transform.basis.z
-	return camera.global_position + direction + Vector3(0,0.2,-1)
+	return global_position + direction
 
 
 func heal(heal_value:int) -> void:

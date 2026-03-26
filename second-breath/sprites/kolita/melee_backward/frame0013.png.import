@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5wxep8jlb6a"
-path.s3tc="res://.godot/imported/pngegg.png-619e9cf1556a38f212023e1c0fe38804.s3tc.ctex"
+uid="uid://spcse8nka5l2"
+path.s3tc="res://.godot/imported/frame0013.png-91ca40b70fb4827863d2b100813825e0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/pngegg.png"
-dest_files=["res://.godot/imported/pngegg.png-619e9cf1556a38f212023e1c0fe38804.s3tc.ctex"]
+source_file="res://sprites/kolita/melee_backward/frame0013.png"
+dest_files=["res://.godot/imported/frame0013.png-91ca40b70fb4827863d2b100813825e0.s3tc.ctex"]
 
 [params]
 

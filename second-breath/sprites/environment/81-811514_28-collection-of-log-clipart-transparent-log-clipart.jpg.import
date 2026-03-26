@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baxhoob5b8mml"
-path.s3tc="res://.godot/imported/zone1_trees.png-1dd10de979f4b97b65affa427110c332.s3tc.ctex"
+uid="uid://cyxycpcxf3ij8"
+path.s3tc="res://.godot/imported/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg-a8bfa5a7d61847b64f7377e4079cc92d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/zone1_trees.png"
-dest_files=["res://.godot/imported/zone1_trees.png-1dd10de979f4b97b65affa427110c332.s3tc.ctex"]
+source_file="res://sprites/environment/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg"
+dest_files=["res://.godot/imported/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg-a8bfa5a7d61847b64f7377e4079cc92d.s3tc.ctex"]
 
 [params]
 

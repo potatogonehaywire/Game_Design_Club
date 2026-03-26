@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5gt741pgxxua"
-path.s3tc="res://.godot/imported/shrine.png-c8e56d7a74cafe8552b85be02c280775.s3tc.ctex"
+uid="uid://g0dtkbfa4ib2"
+path.s3tc="res://.godot/imported/frame0010.png-03485f9d8288bcaee4fe08597b5091b2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/shrine.png"
-dest_files=["res://.godot/imported/shrine.png-c8e56d7a74cafe8552b85be02c280775.s3tc.ctex"]
+source_file="res://sprites/kolita/melee_backward/frame0010.png"
+dest_files=["res://.godot/imported/frame0010.png-03485f9d8288bcaee4fe08597b5091b2.s3tc.ctex"]
 
 [params]
 

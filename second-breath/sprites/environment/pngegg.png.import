@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlati3a8dxit6"
-path.s3tc="res://.godot/imported/kolita.png-852baa8852155a7d9da68fd9e8d43f6e.s3tc.ctex"
+uid="uid://cv5wxep8jlb6a"
+path.s3tc="res://.godot/imported/pngegg.png-8ae43c321bfff51c29dac958ce85b77a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/kolita.png"
-dest_files=["res://.godot/imported/kolita.png-852baa8852155a7d9da68fd9e8d43f6e.s3tc.ctex"]
+source_file="res://sprites/environment/pngegg.png"
+dest_files=["res://.godot/imported/pngegg.png-8ae43c321bfff51c29dac958ce85b77a.s3tc.ctex"]
 
 [params]
 

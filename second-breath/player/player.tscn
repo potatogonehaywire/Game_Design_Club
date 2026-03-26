@@ -1,10 +1,32 @@
 [gd_scene format=3 uid="uid://b3k1b34pmgqvm"]
 
 [ext_resource type="Script" uid="uid://bgk2gd1h7m3o" path="res://player/player.gd" id="1_rkbax"]
-[ext_resource type="Texture2D" uid="uid://dlati3a8dxit6" path="res://sprites/kolita.png" id="2_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://dlati3a8dxit6" path="res://sprites/kolita/kolita_walk.png" id="2_g1dw6"]
 [ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_yw30f"]
 [ext_resource type="Resource" uid="uid://bo3taghxsbrr7" path="res://player/player_equip.tres" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://dferadgbjanva" path="res://sprites/kolita/melee_backward/frame0000.png" id="5_knn7v"]
 [ext_resource type="Script" uid="uid://dqmmd5bw3o8n0" path="res://player/player_animation.gd" id="5_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://cxgx17wlypr7r" path="res://sprites/kolita/melee_backward/frame0001.png" id="6_7pqkx"]
+[ext_resource type="Texture2D" uid="uid://hv5o6c7mbn4c" path="res://sprites/kolita/melee_backward/frame0002.png" id="7_uw77l"]
+[ext_resource type="Texture2D" uid="uid://djtroy4uv3rht" path="res://sprites/kolita/melee_backward/frame0003.png" id="8_rptt4"]
+[ext_resource type="Texture2D" uid="uid://ciyjawochae0u" path="res://sprites/kolita/melee_backward/frame0004.png" id="9_r7pn3"]
+[ext_resource type="Texture2D" uid="uid://bi036hjqwt5ai" path="res://sprites/kolita/melee_backward/frame0005.png" id="10_b8hi5"]
+[ext_resource type="Texture2D" uid="uid://dd6qh3cb8g1hh" path="res://sprites/kolita/melee_backward/frame0006.png" id="11_2uvqg"]
+[ext_resource type="Texture2D" uid="uid://c1mw20jfyw1xd" path="res://sprites/kolita/melee_backward/frame0007.png" id="12_1s1yo"]
+[ext_resource type="Texture2D" uid="uid://71piu05k77do" path="res://sprites/kolita/melee_backward/frame0008.png" id="13_5ejfk"]
+[ext_resource type="Texture2D" uid="uid://dav322s6u7mfb" path="res://sprites/kolita/melee_backward/frame0009.png" id="14_jd2rm"]
+[ext_resource type="Texture2D" uid="uid://g0dtkbfa4ib2" path="res://sprites/kolita/melee_backward/frame0010.png" id="15_q28gw"]
+[ext_resource type="Texture2D" uid="uid://dsmp0donnert3" path="res://sprites/kolita/melee_backward/frame0011.png" id="16_ge24q"]
+[ext_resource type="Texture2D" uid="uid://3uodpbcacc4l" path="res://sprites/kolita/melee_backward/frame0012.png" id="17_pnw6m"]
+[ext_resource type="Texture2D" uid="uid://spcse8nka5l2" path="res://sprites/kolita/melee_backward/frame0013.png" id="18_1so5t"]
+[ext_resource type="Texture2D" uid="uid://bonc85skymhup" path="res://sprites/kolita/melee_backward/frame0014.png" id="19_55jnj"]
+[ext_resource type="Texture2D" uid="uid://brvl7tprpje4w" path="res://sprites/kolita/melee_backward/frame0015.png" id="20_dx5ib"]
+[ext_resource type="Texture2D" uid="uid://dakfrxtw04mr5" path="res://sprites/kolita/melee_backward/frame0017.png" id="21_a2xo5"]
+[ext_resource type="Texture2D" uid="uid://dw1evbw206mxj" path="res://sprites/kolita/melee_backward/frame0018.png" id="22_art4l"]
+[ext_resource type="Texture2D" uid="uid://c43yqvgddeii1" path="res://sprites/kolita/melee_backward/frame0019.png" id="23_fjxoa"]
+[ext_resource type="Texture2D" uid="uid://cvaveftb8ni5u" path="res://sprites/kolita/melee_backward/frame0020.png" id="24_gswnw"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://kf7v4o67dia8" path="res://animations/idle_blend_space_2d.tres" id="25_7pqkx"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dcg23p04rmslu" path="res://animations/walk_blend_space_2d.tres" id="26_uw77l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
 atlas = ExtResource("2_g1dw6")
@@ -103,6 +125,71 @@ animations = [{
 "loop": true,
 "name": &"idle_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_knn7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7pqkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uw77l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rptt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_r7pn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b8hi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2uvqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1s1yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5ejfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jd2rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q28gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ge24q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pnw6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1so5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_55jnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dx5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_a2xo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_art4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_fjxoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gswnw")
+}],
+"loop": false,
+"name": &"melee_backward",
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -329,6 +416,33 @@ tracks/1/keys = {
 "values": [&"idle_right"]
 }
 
+[sub_resource type="Animation" id="Animation_knn7v"]
+resource_name = "melee_backward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0417, 0.0834, 0.13333334, 0.16666667, 0.208, 0.25, 0.2914, 0.3331, 0.3748, 0.4165, 0.4582, 0.5, 0.5416, 0.5833, 0.625, 0.6666667, 0.7084, 0.7501, 0.7918),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"melee_backward"]
+}
+
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "walk_forward"
 length = 0.8
@@ -451,40 +565,48 @@ _data = {
 &"idle_forward": SubResource("Animation_hg6s5"),
 &"idle_left": SubResource("Animation_8t03j"),
 &"idle_right": SubResource("Animation_2ieo8"),
+&"melee_backward": SubResource("Animation_knn7v"),
 &"walk_backward": SubResource("Animation_qjkh3"),
 &"walk_forward": SubResource("Animation_g6k8r"),
 &"walk_left": SubResource("Animation_ebec5"),
 &"walk_right": SubResource("Animation_yllr7")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g6k8r"]
-animation = &"walk_forward"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rptt4"]
+advance_mode = 2
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_boad6"]
-animation = &"walk_left"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r7pn3"]
+advance_mode = 2
+advance_condition = &"walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rgyib"]
-animation = &"walk_backward"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8hi5"]
+advance_mode = 2
+advance_condition = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hg6s5"]
-animation = &"walk_right"
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uw77l"]
+states/Idle/node = ExtResource("25_7pqkx")
+states/Idle/position = Vector2(466, 76.8)
+states/Start/position = Vector2(200, 100.479996)
+states/Walk/node = ExtResource("26_uw77l")
+states/Walk/position = Vector2(544.4, 217.59999)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rptt4"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_r7pn3"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_b8hi5")]
+graph_offset = Vector2(102, 34)
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_8t03j"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_g6k8r")
-blend_point_0/pos = Vector2(0, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_boad6")
-blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_rgyib")
-blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_hg6s5")
-blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_knn7v"]
+animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2ieo8"]
+graph_offset = Vector2(-440.85733, 68.70486)
 nodes/output/position = Vector2(480, 160)
-nodes/walking/node = SubResource("AnimationNodeBlendSpace2D_8t03j")
-nodes/walking/position = Vector2(96, 144)
-node_connections = [&"output", 0, &"walking"]
+nodes/walking/node = ExtResource("26_uw77l")
+nodes/walking/position = Vector2(-560, 416)
+nodes/melee_back/node = SubResource("AnimationNodeAnimation_knn7v")
+nodes/melee_back/position = Vector2(-224, 448)
+nodes/idle/node = ExtResource("25_7pqkx")
+nodes/idle/position = Vector2(-368, 192)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_uw77l")
+nodes/StateMachine/position = Vector2(224, 304)
+node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
@@ -540,7 +662,12 @@ libraries/ = SubResource("AnimationLibrary_g6k8r")
 root_node = NodePath("../PlayerSprite3D")
 tree_root = SubResource("AnimationNodeBlendTree_2ieo8")
 anim_player = NodePath("../AnimationPlayer")
-parameters/walking/blend_position = Vector2(-0.21792454, 0.3435583)
+parameters/walking/blend_position = Vector2(-1.37, 0.344)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/StateMachine/conditions/idle = false
+parameters/StateMachine/conditions/walk = false
+parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
+parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
 
 [node name="player_animation" type="Node3D" parent="." unique_id=2105502787]
 script = ExtResource("5_qjkh3")

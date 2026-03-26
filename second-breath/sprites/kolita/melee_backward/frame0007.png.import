@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7lgj3k8w76bc"
-path.s3tc="res://.godot/imported/bg_test.png-46fbd191827fa2177e442ec03ca5ae19.s3tc.ctex"
+uid="uid://c1mw20jfyw1xd"
+path.s3tc="res://.godot/imported/frame0007.png-d24153bab2002ee7f44fecc3b6592892.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/bg_test.png"
-dest_files=["res://.godot/imported/bg_test.png-46fbd191827fa2177e442ec03ca5ae19.s3tc.ctex"]
+source_file="res://sprites/kolita/melee_backward/frame0007.png"
+dest_files=["res://.godot/imported/frame0007.png-d24153bab2002ee7f44fecc3b6592892.s3tc.ctex"]
 
 [params]
 

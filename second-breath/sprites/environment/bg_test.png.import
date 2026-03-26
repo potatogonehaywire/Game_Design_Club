@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyxycpcxf3ij8"
-path.s3tc="res://.godot/imported/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg-a8d19d9f93cddb8090b452479181a773.s3tc.ctex"
+uid="uid://c7lgj3k8w76bc"
+path.s3tc="res://.godot/imported/bg_test.png-07b3abec3d84cfcc0c2bb97879bf5756.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg"
-dest_files=["res://.godot/imported/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg-a8d19d9f93cddb8090b452479181a773.s3tc.ctex"]
+source_file="res://sprites/environment/bg_test.png"
+dest_files=["res://.godot/imported/bg_test.png-07b3abec3d84cfcc0c2bb97879bf5756.s3tc.ctex"]
 
 [params]
 
