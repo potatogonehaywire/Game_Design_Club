@@ -33,7 +33,7 @@ func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
 	Global.player = self
-
+	
 
 func _unhandled_input(_event: InputEvent) -> void:
  

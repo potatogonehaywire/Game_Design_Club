@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgyvnkobd44tx"
-path.s3tc="res://.godot/imported/kolita_idle_backwards0011.png-34b6062059035e02f25b4cc12314c24a.s3tc.ctex"
+uid="uid://cah6ir8x5f2ra"
+path.s3tc="res://.godot/imported/kolita_idle_forward0003.png-16cac73768d3d18a35e02c690ab0f8a3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/kolita/idle_backward/kolita_idle_backwards0011.png"
-dest_files=["res://.godot/imported/kolita_idle_backwards0011.png-34b6062059035e02f25b4cc12314c24a.s3tc.ctex"]
+source_file="res://sprites/kolita/idle_forward/kolita_idle_forward0003.png"
+dest_files=["res://.godot/imported/kolita_idle_forward0003.png-16cac73768d3d18a35e02c690ab0f8a3.s3tc.ctex"]
 
 [params]
 

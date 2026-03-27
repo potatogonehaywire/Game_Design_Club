@@ -9,5 +9,4 @@ func _physics_process(_delta: float) -> void:
 	#animation_tree.set("parameters/StateMachine/conditions/idle", idle)
 
 	#animation_tree.set("parameters/idle/blend_position", Vector2(player.direction.x, player.direction.z))
-
-	animation_tree.set("parameters/walking/blend_position", Vector2(player.direction.x, player.direction.z))
+	animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(player.direction.x, player.direction.z))
