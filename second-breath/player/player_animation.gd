@@ -1,12 +1,12 @@
 extends Node3D
 
-@onready var animation_tree: AnimationTree = $"../AnimationTree"
-@onready var player : Player = get_owner()
-
-func _physics_process(_delta: float) -> void:
-	#var idle = !player.velocity
-	#animation_tree.set("parameters/StateMachine/conditions/run", !idle)
-	#animation_tree.set("parameters/StateMachine/conditions/idle", idle)
-
-	#animation_tree.set("parameters/idle/blend_position", Vector2(player.direction.x, player.direction.z))
-	animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(player.direction.x, player.direction.z))
+#@onready var animation_tree: AnimationTree = $"../AnimationTree"
+#@onready var player : Player = get_owner()
+#
+#func _physics_process(_delta: float) -> void:
+	##var idle = !player.velocity
+	##animation_tree.set("parameters/StateMachine/conditions/run", !idle)
+	##animation_tree.set("parameters/StateMachine/conditions/idle", idle)
+#
+	#animation_tree.set("parameters/StateMachine/Idle/blend_position", Vector2(player.direction.x, player.direction.z))
+	##animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(player.direction.x, player.direction.z))
