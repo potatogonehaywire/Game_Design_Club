@@ -24,6 +24,7 @@ var direction: Vector3
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
@@ -58,9 +59,11 @@ func _process(_delta: float) -> void:
 		Global.weapon_check()
 		attack.disabled = false
 		Global.stamina -= 10
-		attack_hitbox.position = Vector3(velocity.x, 0, velocity.z).normalized() * 0.5
 		cooldownOff = false
-		await get_tree().create_timer(0.1).timeout
+		attack_hitbox.position = direction * 0.6
+		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		await get_tree().create_timer(0.4).timeout
+		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 		attack.disabled = true
 		cooldown.start(0.5)
 	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
@@ -72,10 +75,10 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
-		direction.x = velocity.x ** 0 * -1
+		direction.x = -1
 	elif Input.is_action_pressed("right"):
 		velocity.x = speed
-		direction.x = velocity.x ** 0
+		direction.x = 1
 	else:
 		velocity.x = 0
 		if velocity.z != 0:
@@ -83,11 +86,11 @@ func _physics_process(_delta: float) -> void:
 		
 	if Input.is_action_pressed("forward"):
 		velocity.z = -speed
-		direction.z = velocity.z ** 0 * -1
+		direction.z = -1
 
 	elif Input.is_action_pressed("backward"):
 		velocity.z = speed
-		direction.z = velocity.z ** 0
+		direction.z = 1
 
 	else:
 		velocity.z = 0
