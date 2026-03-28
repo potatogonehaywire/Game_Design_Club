@@ -7,11 +7,13 @@ const PickUp = preload("res://item/pick_up/pick_up.tscn")
 @onready var inventory_root: Control = $UI/InventoryRoot
 @onready var hot_bar_inventory: PanelContainer = $UI/HotBarInventory
 @onready var talent_tree: TalentTree = $UI/talent_tree
+@onready var ui: CanvasLayer = $UI
 
 
 func _ready() -> void:
 	player.toggle_inventory.connect(toggle_inventory_root)
 	player.toggle_skilltree.connect(toggle_skilltree_interface)
+	player.interact_hover.connect(show_interact_hover)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	inventory_interface.set_equip_inventory_data(player.equip_inventory_data)
 	inventory_interface.force_close.connect(toggle_inventory_root)
@@ -47,3 +49,9 @@ func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
 	pick_up.slot_data = slot_data
 	pick_up.position = player.get_drop_position()
 	add_child(pick_up)
+
+func show_interact_hover(visible) -> void:
+	if visible:
+		ui.find_child("InteractLabel").show()
+	else:
+		ui.find_child("InteractLabel").hide()

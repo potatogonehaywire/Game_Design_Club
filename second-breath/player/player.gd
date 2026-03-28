@@ -3,6 +3,7 @@ class_name Player
 
 signal toggle_inventory()
 signal toggle_skilltree()
+signal interact_hover()
 
 const speed = 5
 const jumpspeed = 20
@@ -11,6 +12,8 @@ var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
 var direction: Vector3
+var bullseye = preload("uid://boe62hylmoryp")
+var interact_label = false
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -29,6 +32,12 @@ var direction: Vector3
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
 @onready var muzzle_location: Marker3D = $projectileMarkerThing
+@onready var interact_ray: RayCast3D = $InteractRay
+var mouse_position
+var ray_origin
+var ray_direction
+var ray_length: float = 50.0
+var close_enough
 
 func _ready() -> void:
 	Global.player = self
@@ -71,6 +80,36 @@ func _process(_delta: float) -> void:
 		rangedCooldown.start(1)
 		shoot()
 		
+	mouse_position = get_viewport().get_mouse_position()
+	ray_origin = camera.project_ray_origin(mouse_position)
+	ray_direction = camera.project_ray_normal(mouse_position)
+	
+	# Move the RayCast3D to the camera's position
+	interact_ray.global_position = ray_origin
+	# Point it in the direction of the mouse
+	interact_ray.target_position = ray_direction * 50.0
+	
+	var collider = interact_ray.get_collider()
+	if collider is Node:
+		var distance_with_collider = abs(position - collider.global_position) 
+		if distance_with_collider.x < 3 and distance_with_collider.z < 3:
+			close_enough = true
+		else:
+			close_enough = false
+		if collider.is_in_group("enemy"):
+			Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(25,25))
+		elif collider.is_in_group("external_inventory") and close_enough:
+			interact_hover.emit(true)
+			interact_label = true
+			Input.set_custom_mouse_cursor(null)
+		else:
+			interact_label = false
+			interact_hover.emit(false)
+			Input.set_custom_mouse_cursor(null)
+	else:
+		Input.set_custom_mouse_cursor(null)
+	
+
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -112,8 +151,8 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 	move_and_slide()
-
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
+
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
@@ -134,56 +173,47 @@ func _on_ranged_cooldown_timeout() -> void:
 func shoot():
 	await get_tree().create_timer(Global.windup).timeout
 	if talent_tree.visible == false:
-		var mouse_position = get_viewport().get_mouse_position()
-		var ray_origin = camera.project_ray_origin(mouse_position)
-		var ray_direction = camera.project_ray_normal(mouse_position)
-		var ray_length = 500.0 
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+		#var mouse_position = get_viewport().get_mouse_position()
+		#var ray_origin = camera.project_ray_origin(mouse_position)
+		#var ray_direction = camera.project_ray_normal(mouse_position)
+		#var ray_length = 500.0 
+		#var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
 
-		var space_state = get_world_3d().direct_space_state
-		var result = space_state.intersect_ray(query)
+		#var space_state = get_world_3d().direct_space_state
+		#var result = space_state.intersect_ray(query)
 
 		var target_point: Vector3
-		if result:
-			target_point = result.position
-		else:
-			target_point = ray_origin + ray_direction * ray_length
+		var collider = interact_ray.get_collider()
+		if collider is Node:
+			if collider.is_in_group("enemy"):
+				target_point = interact_ray.get_collider().target_position
+			else:
+				target_point = ray_origin + ray_direction * ray_length
 
-		var direction_to_target = (target_point - muzzle_location.global_position).normalized()
-
-		var projectile_instance = ProjectileScene.instantiate()
-		if inventory_root.visible == false:
-			get_tree().current_scene.add_child(projectile_instance)
-
-			projectile_instance.global_position = muzzle_location.global_position
-			projectile_instance.move_direction = direction_to_target
-			projectile_instance.isPlayer = true
-		else:
-			pass
+			var direction_to_target = (target_point - muzzle_location.global_position).normalized()
+			var projectile_instance = ProjectileScene.instantiate()
+			if inventory_root.visible == false:
+				get_tree().current_scene.add_child(projectile_instance)
+	
+				projectile_instance.global_position = muzzle_location.global_position
+				projectile_instance.move_direction = direction_to_target
+				projectile_instance.isPlayer = true
 
 
 func interact() -> void:
-		var mouse_position = get_viewport().get_mouse_position()
-		var ray_origin = camera.project_ray_origin(mouse_position)
-		var ray_direction = camera.project_ray_normal(mouse_position)
-		var ray_length = 50
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
-
-		var space_state = get_world_3d().direct_space_state
-		var result = space_state.intersect_ray(query)
-
-		if result:
-			var collider = result.collider
-			if collider.has_method("player_interact"):
-				collider.player_interact()
-
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		if collider.has_method("player_interact"):
+			collider.player_interact()
 
 
 func get_drop_position() -> Vector3:
-	return global_position + direction
+	return global_position + direction + Vector3(0, 1,0)
 
 
 func heal(heal_value:int) -> void:
 	Global.health += heal_value
+	if Global.health > 100:
+		Global.health = 100
 	health_bar.health_changed()
 	print("player health: " + str(Global.health))

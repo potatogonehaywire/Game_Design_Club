@@ -950,9 +950,11 @@ parameters/StateMachine/conditions/idle = false
 parameters/StateMachine/conditions/walking = false
 parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
 parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
-parameters/OneShot/active = true
-parameters/OneShot/internal_active = true
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+
+[node name="InteractRay" type="RayCast3D" parent="." unique_id=963342766]
 
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
