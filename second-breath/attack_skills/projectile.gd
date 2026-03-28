@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var move_direction := Vector3.ZERO
-var speed := 5.5 
+var speed := 10.0
 var life_timer := 2.0 
 var enemyType = 0
 var isPlayer = false

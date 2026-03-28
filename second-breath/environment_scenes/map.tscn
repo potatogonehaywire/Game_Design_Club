@@ -1,30 +1,23 @@
 [gd_scene format=3 uid="uid://ckk0uk57jofg2"]
 
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_aneo3"]
-[ext_resource type="Texture2D" uid="uid://cfcsgh05u7mt0" path="res://sprites/zone1_bg.png" id="4_wojsv"]
-[ext_resource type="Texture2D" uid="uid://baxhoob5b8mml" path="res://sprites/zone1_trees.png" id="5_xrfvn"]
-[ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="7_spr5q"]
-[ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="8_ddsj8"]
-[ext_resource type="Script" uid="uid://06uq0uv2jxlk" path="res://inventory/inventory_interface.gd" id="9_c2frf"]
-[ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="10_b7xsl"]
-[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="10_q8lsv"]
-[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="10_qiium"]
-[ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="11_qiium"]
+[ext_resource type="Texture2D" uid="uid://cfcsgh05u7mt0" path="res://sprites/background/zone1_bg.png" id="4_wojsv"]
+[ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="4_xrfvn"]
+[ext_resource type="Texture2D" uid="uid://baxhoob5b8mml" path="res://sprites/background/zone1_trees.png" id="5_xrfvn"]
 [ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="12_iw17c"]
-[ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="12_q8lsv"]
 [ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="13_jle6x"]
 [ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="13_ol8ra"]
-[ext_resource type="Texture2D" uid="uid://cyxycpcxf3ij8" path="res://sprites/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg" id="15_b7xsl"]
+[ext_resource type="Texture2D" uid="uid://cyxycpcxf3ij8" path="res://sprites/environment/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg" id="15_b7xsl"]
 [ext_resource type="PackedScene" uid="uid://do667otx82w08" path="res://3dmodels/bridge_test.glb" id="15_ilmlt"]
 [ext_resource type="PackedScene" uid="uid://dmfjwavng137j" path="res://3dmodels/spawn.glb" id="15_n85xo"]
 [ext_resource type="PackedScene" uid="uid://dmsj0gn5uy2t4" path="res://3dmodels/main.glb" id="16_n85xo"]
-[ext_resource type="Texture2D" uid="uid://b6b8e4t3c5r8p" path="res://sprites/cartoon-ruins-27627759.webp" id="17_qy8pf"]
-[ext_resource type="Texture2D" uid="uid://c5gt741pgxxua" path="res://sprites/shrine.png" id="17_spr5q"]
+[ext_resource type="Texture2D" uid="uid://b6b8e4t3c5r8p" path="res://sprites/environment/cartoon-ruins-27627759.webp" id="17_qy8pf"]
+[ext_resource type="Texture2D" uid="uid://c5gt741pgxxua" path="res://sprites/environment/shrine.png" id="17_spr5q"]
 [ext_resource type="PackedScene" uid="uid://k8ldr1pdbc3j" path="res://3dmodels/generic_island.glb" id="17_wojsv"]
 [ext_resource type="PackedScene" uid="uid://b7fyrv4as4jk5" path="res://3dmodels/mountain.glb" id="18_qy8pf"]
 [ext_resource type="PackedScene" uid="uid://7jlu3kp2x0vj" path="res://3dmodels/generic_island2.glb" id="18_xrfvn"]
-[ext_resource type="Texture2D" uid="uid://cv5wxep8jlb6a" path="res://sprites/pngegg.png" id="19_ddsj8"]
-[ext_resource type="Texture2D" uid="uid://bnyvgw0tk51fq" path="res://sprites/tree_green.png" id="20_c2frf"]
+[ext_resource type="Texture2D" uid="uid://cv5wxep8jlb6a" path="res://sprites/environment/pngegg.png" id="19_ddsj8"]
+[ext_resource type="Texture2D" uid="uid://bnyvgw0tk51fq" path="res://sprites/environment/tree_green.png" id="20_c2frf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
 
@@ -34,18 +27,6 @@ sky_material = SubResource("ProceduralSkyMaterial_jotil")
 [sub_resource type="Environment" id="Environment_612pj"]
 background_mode = 2
 sky = SubResource("Sky_44gc5")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiium"]
-bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arshi"]
-bg_color = Color(0.92260283, 0.61066866, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8lsv"]
-bg_color = Color(0.22899795, 0.322422, 0.3573269, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jle6x"]
-bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qiium"]
 size = Vector3(8.218735, 3.0769043, 1)
@@ -120,100 +101,7 @@ texture = ExtResource("5_xrfvn")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
 environment = SubResource("Environment_612pj")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1826429714]
-
-[node name="talent_tree" parent="UI" unique_id=1811441089 instance=ExtResource("7_spr5q")]
-visible = false
-
-[node name="InventoryRoot" type="Control" parent="UI" unique_id=2131856864]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ClickCatcher" type="Control" parent="UI/InventoryRoot" unique_id=518467672]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_ddsj8")
-
-[node name="InventoryInterface" type="Control" parent="UI/InventoryRoot" unique_id=123091248]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_c2frf")
-metadata/_edit_use_anchors_ = true
-
-[node name="PlayerInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=563012542 instance=ExtResource("10_b7xsl")]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="EquipInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=781456995 instance=ExtResource("10_b7xsl")]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 10.0
-offset_right = 490.0
-offset_bottom = 50.0
-
-[node name="ExternalInventory" parent="UI/InventoryRoot/InventoryInterface" unique_id=871451830 instance=ExtResource("10_b7xsl")]
-visible = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="GrabbedSlot" parent="UI/InventoryRoot/InventoryInterface" unique_id=2053814841 instance=ExtResource("11_qiium")]
-visible = false
-modulate = Color(1, 1, 1, 0.7529412)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="HotBarInventory" parent="UI" unique_id=1732129010 instance=ExtResource("12_q8lsv")]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 430.0
-offset_bottom = 90.0
-
-[node name="StaminaBar" type="ProgressBar" parent="UI" unique_id=221246074]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -296.0
-offset_top = 33.0
-offset_right = -11.0
-offset_bottom = 47.0
-grow_horizontal = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
-theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
-show_percentage = false
-script = ExtResource("10_q8lsv")
-
-[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1086109607]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -295.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = 26.0
-grow_horizontal = 0
-theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
-value = 50.0
-show_percentage = false
-script = ExtResource("10_qiium")
+[node name="UI" parent="." unique_id=725296579 instance=ExtResource("4_xrfvn")]
 
 [node name="Chest" parent="." unique_id=647030195 instance=ExtResource("13_jle6x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, -3.7300467, 0.587754)
@@ -873,10 +761,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 10.08122
 
 [node name="bridge_test22" parent="." unique_id=1601093820 instance=ExtResource("15_ilmlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 0.2863083)
-
-[connection signal="visibility_changed" from="UI/InventoryRoot" to="UI/InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]
-[connection signal="gui_input" from="UI/InventoryRoot/ClickCatcher" to="UI/InventoryRoot/InventoryInterface" method="_on_click_catcher_gui_input"]
-[connection signal="drop_slot_data" from="UI/InventoryRoot/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
-[connection signal="force_close" from="UI/InventoryRoot/InventoryInterface" to="." method="_on_inventory_interface_force_close"]
-[connection signal="gui_input" from="UI/InventoryRoot/InventoryInterface" to="UI/InventoryRoot/InventoryInterface" method="_on_gui_input"]
-[connection signal="visibility_changed" from="UI/InventoryRoot/InventoryInterface" to="UI/InventoryRoot/InventoryInterface" method="_on_visibility_changed"]

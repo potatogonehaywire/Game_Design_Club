@@ -7,7 +7,7 @@
 radius = 0.11243766
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dgwo2"]
-radius = 0.12638149
+radius = 0.6409581
 
 [node name="projectile" type="CharacterBody3D" unique_id=1533306491]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -15,7 +15,7 @@ axis_lock_linear_y = true
 script = ExtResource("1_qxf0c")
 
 [node name="projectileSprite" type="Sprite3D" parent="." unique_id=643659107]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 modulate = Color(0.18344527, 0.65219605, 5.7756904e-07, 1)
 texture = ExtResource("1_a85iw")
 
