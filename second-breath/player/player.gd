@@ -186,7 +186,7 @@ func shoot():
 		var collider = interact_ray.get_collider()
 		if collider is Node:
 			if collider.is_in_group("enemy"):
-				target_point = interact_ray.get_collider().target_position
+				target_point = interact_ray.get_collision_normal()
 			else:
 				target_point = ray_origin + ray_direction * ray_length
 
