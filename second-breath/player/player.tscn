@@ -900,7 +900,7 @@ equip_inventory_data = ExtResource("3_yw30f")
 top_level = true
 
 [node name="camera_target" type="Node3D" parent="camera_controller" unique_id=305944685]
-transform = Transform3D(1, 0, 0, 0, 0.9673475, 0.25345406, 0, -0.25345406, 0.9673475, 0, 1.0124767, 2.7861814)
+transform = Transform3D(1, 0, 0, 0, 0.9673475, 0.25345406, 0, -0.25345406, 0.9673475, 0, 1.3110678, 3.9755297)
 
 [node name="Camera3D" type="Camera3D" parent="camera_controller/camera_target" unique_id=1675269623]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
