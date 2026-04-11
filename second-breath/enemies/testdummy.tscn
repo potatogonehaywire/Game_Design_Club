@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://b3uq8om5qrd5d" path="res://enemies/testdummy.gd" id="1_cxp23"]
 [ext_resource type="Texture2D" uid="uid://tjjlg7gbd7nt" path="res://sprites/issac.png" id="2_7p70c"]
 [ext_resource type="PackedScene" uid="uid://dqixxrkol83k1" path="res://enemies/enemy_health_sprite.tscn" id="3_0u52l"]
+[ext_resource type="Script" uid="uid://dspv3bgoeph0y" path="res://enemies/enemy_state_machine.gd" id="4_t1ary"]
+[ext_resource type="Script" uid="uid://cn7j5sh51g2qv" path="res://enemies/enemy_attack.gd" id="5_qmg4j"]
+[ext_resource type="Script" uid="uid://c7evj218bewb1" path="res://enemies/enemy_pursuit.gd" id="6_fap38"]
+[ext_resource type="Script" uid="uid://lvf4xjf4xvu7" path="res://enemies/enemy_return.gd" id="7_vfj3n"]
+[ext_resource type="Script" uid="uid://bxclymg1vcfip" path="res://enemies/enemy_idle.gd" id="8_cwm40"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxp23"]
 size = Vector3(1.3087158, 1.2910156, 0.18457031)
@@ -18,7 +23,7 @@ radius = 4.234375
 height = 1.6774902
 radius = 5.421875
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0u52l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_khym8"]
 viewport_path = NodePath("SubViewport")
 
 [node name="testdummy" type="CharacterBody3D" unique_id=505480189 groups=["enemy"]]
@@ -65,7 +70,22 @@ wait_time = 5.0
 
 [node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 3.995999, 0)
-texture = SubResource("ViewportTexture_0u52l")
+texture = SubResource("ViewportTexture_khym8")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1656563775]
+script = ExtResource("4_t1ary")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1729182717]
+script = ExtResource("5_qmg4j")
+
+[node name="Pursuit" type="Node" parent="StateMachine" unique_id=1180165692]
+script = ExtResource("6_fap38")
+
+[node name="Return" type="Node" parent="StateMachine" unique_id=310601224]
+script = ExtResource("7_vfj3n")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=448052107]
+script = ExtResource("8_cwm40")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
