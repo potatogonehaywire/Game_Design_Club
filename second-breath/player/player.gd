@@ -80,21 +80,23 @@ func _process(_delta: float) -> void:
 		cooldown.start(0.5)
 	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
 		rangedCooldownOff = false
-		rangedCooldown.start(1)
+		rangedCooldown.start(0.5)
 		shoot()
 	
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
 		
-	ray_origin = camera.project_ray_origin(mouse_position)
+	ray_origin = camera.project_ray_origin(Vector2.ZERO)
 	ray_direction = camera.project_ray_normal(mouse_position)
 	
 	# Move the RayCast3D to the camera's position
-	interact_ray.global_position = ray_origin
+	interact_ray.global_position = Global.get_global_position()
 	# Point it in the direction of the mouse
 	interact_ray.target_position = ray_direction * 50.0
 	
 	var collider = interact_ray.get_collider()
+	var collision_point = interact_ray.get_collision_point()
+	print(collision_point)
 	if collider is Node:
 		var distance_with_collider = abs(position - collider.global_position) 
 		if distance_with_collider.x < 3 and distance_with_collider.z < 3:
@@ -195,7 +197,8 @@ func shoot():
 			else:
 				target_point = ray_origin + ray_direction * ray_length
 
-			var direction_to_target = (target_point - muzzle_location.global_position).normalized()
+			var direction_to_target = muzzle_location.global_position.direction_to(target_point).normalized()
+			print(direction_to_target)
 			var projectile_instance = ProjectileScene.instantiate()
 			if inventory_root.visible == false:
 				get_tree().current_scene.add_child(projectile_instance)

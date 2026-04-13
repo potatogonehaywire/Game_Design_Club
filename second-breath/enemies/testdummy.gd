@@ -82,7 +82,7 @@ func take_damage() -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = true
-		cooldown.start(5)
+		cooldown.start(1)
 
 
 func _on_chase_detection_area_body_exited(body: Node3D) -> void:
@@ -93,7 +93,8 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
-		var direction_to_target = (position.direction_to(Global.player.position) - muzzle_location.global_position).normalized()
+		var direction_to_target = (position.direction_to(Global.get_global_position())).normalized()
+		print(direction_to_target)
 		var projectile_instance = projectile.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)
 
