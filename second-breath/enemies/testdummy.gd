@@ -15,6 +15,7 @@ var enemyhp = ENEMY_HP_MAX
 @export var enemyType = 1
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
+@onready var state_machine: StateMachine = $StateMachine
 
 
 func _ready() -> void:
@@ -22,35 +23,26 @@ func _ready() -> void:
 	print(name, " is id ", my_id)
 
 func _physics_process(_delta: float) -> void:
-	if is_on_floor():
-		velocity.y = 0
-	else:
-		velocity.y -= 3
-	
-	if isInRange == true:
-		velocity = Vector3.ZERO
-		velocity = position.direction_to(Global.player.position) * speed
-	else:
-		velocity.x = 0
-		velocity.z = 0
-	
 	move_and_slide()
 
 func _process(_delta: float) -> void:
 	if isHit == true:
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1).timeout
 		isHit = false
 
+
 func _on_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		if isHit == true:
-			Global.health -= damage + Global.dmgdebuff
-			health_bar.health_changed()
-			print (Global.health)
-		else:
-			Global.health -= damage + Global.dmgdebuff
-			health_bar.health_changed()
-			print (Global.health)
+	if body.is_in_group("player") and isHit == false:
+		isHit = true
+		state_machine.change_state("attack")
+		#if isHit == true:
+			#Global.health -= damage + Global.dmgdebuff
+			#health_bar.health_changed()
+			#print (Global.health)
+		#else:
+			#Global.health -= damage + Global.dmgdebuff
+			#health_bar.health_changed()
+			#print (Global.health)
 
 
 func upon_hit():
@@ -61,6 +53,7 @@ func upon_hit():
 			enemy_health_sprite.enemy_health_changed()
 	else:
 		print("sad")
+
 
 func take_damage() -> void:
 	if self.canDamage == true:
@@ -85,7 +78,6 @@ func take_damage() -> void:
 			print (self.enemyhp)
 			self.canDamage = true
 	
-
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

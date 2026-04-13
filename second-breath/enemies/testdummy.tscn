@@ -24,7 +24,7 @@ radius = 4.234375
 height = 1.6774902
 radius = 5.421875
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_khym8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qmg4j"]
 viewport_path = NodePath("SubViewport")
 
 [node name="testdummy" type="CharacterBody3D" unique_id=505480189 groups=["enemy"]]
@@ -71,11 +71,11 @@ wait_time = 5.0
 
 [node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 3.995999, 0)
-texture = SubResource("ViewportTexture_khym8")
+texture = SubResource("ViewportTexture_qmg4j")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1656563775 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_t1ary")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Wander")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1729182717]
 script = ExtResource("5_qmg4j")

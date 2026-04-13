@@ -63,7 +63,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if Global.health <= 0:
 		Global.health = 100
-		get_tree().reload_current_scene()
+		set_process(false)
+		set_physics_process(false)
+		set_process_input(false)
+		get_tree().reload_current_scene.call_deferred()
+
 	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && cooldownOff == true:
 		Global.weapon_check()
 		attack.disabled = false
@@ -79,8 +83,10 @@ func _process(_delta: float) -> void:
 		rangedCooldownOff = false
 		rangedCooldown.start(1)
 		shoot()
+	
+	if is_inside_tree() == true and get_viewport() != null:
+		mouse_position = get_viewport().get_mouse_position()
 		
-	mouse_position = get_viewport().get_mouse_position()
 	ray_origin = camera.project_ray_origin(mouse_position)
 	ray_direction = camera.project_ray_normal(mouse_position)
 	
