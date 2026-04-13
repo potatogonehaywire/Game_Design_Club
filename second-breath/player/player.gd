@@ -42,7 +42,6 @@ var close_enough
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
-	Global.player = self
 	
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -160,12 +159,12 @@ func _physics_process(_delta: float) -> void:
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 
 
-func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && attack.disabled == false:
-		if body.has_method("upon_hit"): 
-			var id = body.id
-			Global.enemyHitID.append(id)
-			enemy_hit()
+#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	#if body.is_in_group("enemy") && attack.disabled == false:
+		#if body.has_method("upon_hit"): 
+			#var id = body.id
+			#Global.enemyHitID.append(id)
+			#enemy_hit()
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
@@ -223,3 +222,11 @@ func heal(heal_value:int) -> void:
 		Global.health = 100
 	health_bar.health_changed()
 	print("player health: " + str(Global.health))
+
+
+func _on_attack_hitbox_area_entered(area: Area3D) -> void:
+	if area.is_in_group("enemyHurtbox") && attack.disabled == false:
+		if area.get_parent().has_method("upon_hit"): 
+			var id = area.get_parent().id
+			Global.enemyHitID.append(id)
+			enemy_hit()

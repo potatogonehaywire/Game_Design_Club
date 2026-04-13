@@ -14,6 +14,9 @@
 size = Vector3(1.3087158, 1.2910156, 0.18457031)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3clko"]
+size = Vector3(1.3422852, 1.369873, 0.87402344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmg4j"]
 size = Vector3(1.3422852, 1.369873, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7p70c"]
@@ -42,11 +45,19 @@ region_rect = Rect2(0, 0, 100, 100)
 transform = Transform3D(3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.6, -0.005065918, 0.005859375, -0.009277344)
 shape = SubResource("BoxShape3D_cxp23")
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=1822726024 groups=["playerHitbox"]]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1822726024]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0.58254874)
 
 [node name="HitboxShape" type="CollisionShape3D" parent="Hitbox" unique_id=613451608]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.01586914, 0.00793457, 0)
+transform = Transform3D(1.9999998, 0, 0, 0, 1.9999998, 0, 0, 0, 1.9999998, -0.015869139, 0.007934569, 0.07714844)
 shape = SubResource("BoxShape3D_3clko")
+debug_color = Color(0.5744623, 0.38493013, 1, 0.41960785)
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=615579984 groups=["enemyHurtbox"]]
+
+[node name="HurtboxShape" type="CollisionShape3D" parent="Hurtbox" unique_id=2135046139]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.01586914, 0.00793457, 0)
+shape = SubResource("BoxShape3D_qmg4j")
 debug_color = Color(0.9665665, 1.4439225e-06, 0.48270833, 0.41960785)
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=667612591]

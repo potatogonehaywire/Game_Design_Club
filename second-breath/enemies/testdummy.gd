@@ -90,6 +90,7 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 		isInRange = false
 		cooldown.stop()
 
+
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
 		var direction_to_target = (position.direction_to(Global.player.position) - muzzle_location.global_position).normalized()

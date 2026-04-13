@@ -27,6 +27,7 @@ Global="*res://globals/Global.gd"
 player=""
 enemy=""
 playerHitbox=""
+enemyHurtbox=""
 
 [input]
 
