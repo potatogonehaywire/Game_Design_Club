@@ -16,9 +16,10 @@ var enemyhp = ENEMY_HP_MAX
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
 @onready var state_machine: StateMachine = $StateMachine
-
+@export var starting_location: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
+	starting_location = global_position
 	my_id = self.id
 	print(name, " is id ", my_id)
 
@@ -35,14 +36,6 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and isHit == false:
 		isHit = true
 		state_machine.change_state("attack")
-		#if isHit == true:
-			#Global.health -= damage + Global.dmgdebuff
-			#health_bar.health_changed()
-			#print (Global.health)
-		#else:
-			#Global.health -= damage + Global.dmgdebuff
-			#health_bar.health_changed()
-			#print (Global.health)
 
 
 func upon_hit():
@@ -93,7 +86,7 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
-		var direction_to_target = (position.direction_to(Global.get_global_position())).normalized()
+		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
 		print(direction_to_target)
 		var projectile_instance = projectile.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)

@@ -86,7 +86,7 @@ texture = SubResource("ViewportTexture_qmg4j")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1656563775 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_t1ary")
-initial_state = NodePath("Wander")
+initial_state = NodePath("Idle")
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1729182717]
 script = ExtResource("5_qmg4j")

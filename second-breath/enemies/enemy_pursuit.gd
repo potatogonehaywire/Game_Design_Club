@@ -1,5 +1,5 @@
 extends State
-class_name EnemyChase
+class_name EnemyPursuit
 
 var player: CharacterBody3D = null
 @onready var enemy: CharacterBody3D = $"../.."
@@ -23,7 +23,7 @@ func physics_update(_delta:float) -> void:
 		#enemy.velocity = Vector3.ZERO
 	enemy.velocity = enemy.position.direction_to(Global.player.position) * enemy.speed
 	if enemy.isInRange != true:
-		state_machine.change_state("wander")
+		state_machine.change_state("return")
 	#else:
 		#velocity.x = 0
 		#velocity.z = 0

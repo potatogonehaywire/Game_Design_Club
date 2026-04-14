@@ -3,6 +3,7 @@ class_name EnemyWander
 
 var wander_direction: Vector3
 var wander_time: float = 0.0 
+var wait_time
 
 @onready var enemy: CharacterBody3D = $"../.."
 
@@ -13,6 +14,8 @@ func randomize_variables() -> void:
 
 func enter() -> void:
 	randomize_variables()
+	randomize()
+	wait_time = randf_range(5, 20)
 
 
 func exit() -> void:
@@ -24,9 +27,13 @@ func update(delta:float) -> void:
 		randomize_variables()
 	
 	wander_time -= delta
+	wait_time -= delta
 	
 	if enemy.isInRange == true:
 		state_machine.change_state("pursuit")
+	
+	if wait_time <= 0:
+		state_machine.change_state("idle")
 		
 		
 func physics_update(_delta:float) -> void:
