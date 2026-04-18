@@ -80,7 +80,12 @@ func _process(_delta: float) -> void:
 		cooldown.start(0.5)
 	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
 		rangedCooldownOff = false
+<<<<<<< Updated upstream
 		rangedCooldown.start(0.5)
+=======
+		rangedCooldown.start(1)
+		await get_tree().create_timer(Global.windup).timeout
+>>>>>>> Stashed changes
 		shoot()
 	
 	if is_inside_tree() == true and get_viewport() != null:
