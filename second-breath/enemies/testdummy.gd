@@ -12,8 +12,16 @@ var isHit = false
 @export var enemyhp = 30
 @export var damage = 20
 @export var enemyType = 1
+<<<<<<< Updated upstream
+=======
+@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
+@onready var state_machine: StateMachine = $StateMachine
+@export var starting_location: Vector3 = Vector3.ZERO
+>>>>>>> Stashed changes
 
 func _ready() -> void:
+	starting_location = global_position
 	my_id = self.id
 	print(name, " is id ", my_id)
 
@@ -38,6 +46,7 @@ func _process(_delta: float) -> void:
 		isHit = false
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
+<<<<<<< Updated upstream
 	if body.is_in_group("player"):
 		if isHit == true:
 			Global.health -= damage + Global.dmgdebuff
@@ -45,6 +54,11 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 		else:
 			Global.health -= damage + Global.dmgdebuff
 			print (Global.health)
+=======
+	if body.is_in_group("player") and isHit == false:
+		isHit = true
+		state_machine.change_state("attack")
+>>>>>>> Stashed changes
 
 
 func upon_hit():
@@ -83,7 +97,7 @@ func take_damage() -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = true
-		cooldown.start(5)
+		cooldown.start(1)
 
 
 func _on_chase_detection_area_body_exited(body: Node3D) -> void:
@@ -93,7 +107,8 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
-		var direction_to_target = (position.direction_to(Global.player.position) - muzzle_location.global_position).normalized()
+		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
+		print(direction_to_target)
 		var projectile_instance = projectile.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)
 
