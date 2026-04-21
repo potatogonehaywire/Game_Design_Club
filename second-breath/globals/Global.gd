@@ -1,5 +1,6 @@
 extends Node
 var health = 100
+var maxHealth = 100
 var stamina = 100
 var stamina_bar
 
@@ -35,6 +36,9 @@ func _process(_delta: float) -> void:
 		staminaRecover()
 	else:
 		stamina = 100
+	
+	if health > maxHealth:
+		health = maxHealth
 	
 	if enemyIsHit == true || enemyHitID.size() > 0:
 		for node in get_tree().get_nodes_in_group("enemy"):

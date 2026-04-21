@@ -15,42 +15,27 @@ var enemyhp = ENEMY_HP_MAX
 @export var enemyType = 1
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
-
+@onready var state_machine: StateMachine = $StateMachine
+@export var starting_location: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
+	starting_location = global_position
 	my_id = self.id
 	print(name, " is id ", my_id)
 
 func _physics_process(_delta: float) -> void:
-	if is_on_floor():
-		velocity.y = 0
-	else:
-		velocity.y -= 3
-	
-	if isInRange == true:
-		velocity = Vector3.ZERO
-		velocity = position.direction_to(Global.player.position) * speed
-	else:
-		velocity.x = 0
-		velocity.z = 0
-	
 	move_and_slide()
 
 func _process(_delta: float) -> void:
 	if isHit == true:
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(1).timeout
 		isHit = false
 
+
 func _on_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		if isHit == true:
-			Global.health -= damage + Global.dmgdebuff
-			health_bar.health_changed()
-			print (Global.health)
-		else:
-			Global.health -= damage + Global.dmgdebuff
-			health_bar.health_changed()
-			print (Global.health)
+	if body.is_in_group("player") and isHit == false:
+		isHit = true
+		state_machine.change_state("attack")
 
 
 func upon_hit():
@@ -61,6 +46,7 @@ func upon_hit():
 			enemy_health_sprite.enemy_health_changed()
 	else:
 		print("sad")
+
 
 func take_damage() -> void:
 	if self.canDamage == true:
@@ -86,11 +72,10 @@ func take_damage() -> void:
 			self.canDamage = true
 	
 
-
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = true
-		cooldown.start(5)
+		cooldown.start(1)
 
 
 func _on_chase_detection_area_body_exited(body: Node3D) -> void:
@@ -98,9 +83,11 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 		isInRange = false
 		cooldown.stop()
 
+
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
-		var direction_to_target = (position.direction_to(Global.player.position) - muzzle_location.global_position).normalized()
+		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
+		print(direction_to_target)
 		var projectile_instance = projectile.instantiate()
 		get_tree().current_scene.add_child(projectile_instance)
 

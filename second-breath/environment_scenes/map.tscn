@@ -761,3 +761,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 10.08122
 
 [node name="bridge_test22" parent="." unique_id=1601093820 instance=ExtResource("15_ilmlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 0.2863083)
+
+[node name="testdummy5" parent="." unique_id=287914276 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 204.21556, -11.930185, 31.800909)
+id = 4
+
+[node name="testdummy6" parent="." unique_id=2093585621 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 163.7245, -4.913627, 44.19654)
+id = 5
+
+[node name="testdummy7" parent="." unique_id=1680238094 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 152.2899, -4.913631, 48.855347)
+id = 6
+
+[node name="testdummy8" parent="." unique_id=975944032 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 166.67351, -4.913631, 46.51116)
+id = 7
+
+[node name="testdummy9" parent="." unique_id=2051886515 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 160.46841, -4.91363, 46.28302)
+id = 8
+
+[node name="testdummy10" parent="." unique_id=398603499 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 195.47903, -11.542479, 76.53932)
+id = 9
+
+[node name="testdummy11" parent="." unique_id=2020355358 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 190.72548, -11.542463, 80.17763)
+id = 10
