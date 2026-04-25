@@ -24,7 +24,7 @@ func physics_update(_delta:float) -> void:
 	#if enemy.isInRange == true:
 		#enemy.velocity = Vector3.ZERO
 	enemy.velocity = enemy.position.direction_to(Global.player.position) * enemy.speed * 2
-	if enemy.isInRange != true:
+	if enemy.isInRange != true and Global.aggro_enemies.size() > 0:
 		Global.aggro_enemies.remove_at(0)
 		state_machine.change_state("return")
 	#else:

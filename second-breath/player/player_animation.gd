@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var animation_tree: AnimationTree = $"../AnimationTree"
 @onready var player : Player = get_owner()
+@onready var weapon_animation_tree: AnimationTree = $"../AttackHitbox/WeaponAnimationTree"
+
 
 var stopped : bool = true
 
