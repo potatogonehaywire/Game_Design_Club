@@ -1,6 +1,5 @@
 extends State
 class_name EnemyPursuit
-signal enemies_calm()
 var player: CharacterBody3D = null
 @onready var enemy: CharacterBody3D = $"../.."
 
@@ -24,14 +23,9 @@ func physics_update(_delta:float) -> void:
 	
 	#if enemy.isInRange == true:
 		#enemy.velocity = Vector3.ZERO
-	enemy.velocity = enemy.position.direction_to(Global.player.position) * enemy.speed
+	enemy.velocity = enemy.position.direction_to(Global.player.position) * enemy.speed * 2
 	if enemy.isInRange != true:
 		Global.aggro_enemies.remove_at(0)
-		if Global.aggro_enemies.is_empty():
-			print("EMPTY")
-			enemies_calm.emit()
-		else:
-			print(Global.aggro_enemies.is_empty())
 		state_machine.change_state("return")
 	#else:
 		#velocity.x = 0

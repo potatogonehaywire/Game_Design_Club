@@ -881,7 +881,7 @@ graph_offset = Vector2(97, 28)
 animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
-graph_offset = Vector2(-169.01932, 186.76257)
+graph_offset = Vector2(-277.9893, 87.67175)
 nodes/output/position = Vector2(528, 192)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
 nodes/StateMachine/position = Vector2(-16, 176)

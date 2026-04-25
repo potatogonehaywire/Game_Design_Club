@@ -17,6 +17,8 @@ var enemyhp = ENEMY_HP_MAX
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
 @onready var state_machine: StateMachine = $StateMachine
 @export var starting_location: Vector3 = Vector3.ZERO
+@onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
+
 
 func _ready() -> void:
 	starting_location = global_position
@@ -27,6 +29,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	enemy_animation_tree.set("parameters/Idle/blend_position", Vector2(velocity.x,velocity.z))
 	if isHit == true:
 		await get_tree().create_timer(1).timeout
 		isHit = false
@@ -85,15 +88,14 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_projectile_cooldown_timeout() -> void:
-	pass
-	#if isInRange == true:
-		#var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
-		#print(direction_to_target)
-		#var projectile_instance = projectile.instantiate()
-		#get_tree().current_scene.add_child(projectile_instance)
-#
-		#projectile_instance.global_position = muzzle_location.global_position
-		#projectile_instance.move_direction = direction_to_target
-		#projectile_instance.isPlayer = false
-	#else:
-		#pass
+	if isInRange == true:
+		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
+		print(direction_to_target)
+		var projectile_instance = projectile.instantiate()
+		get_tree().current_scene.add_child(projectile_instance)
+
+		projectile_instance.global_position = muzzle_location.global_position
+		projectile_instance.move_direction = direction_to_target
+		projectile_instance.isPlayer = false
+	else:
+		pass
