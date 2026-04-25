@@ -12,7 +12,8 @@ func _physics_process(_delta: float) -> void:
 		stopped = true
 	else:
 		stopped = false
-	
+
+	animation_tree.set("parameters/StateMachine/conditions/jump", !player.is_on_floor())
 	animation_tree.set("parameters/StateMachine/conditions/melee", !player.attack.disabled)
 	animation_tree.set("parameters/StateMachine/conditions/walking", !stopped)
 	animation_tree.set("parameters/StateMachine/conditions/idle", stopped)

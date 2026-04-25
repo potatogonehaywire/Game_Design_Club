@@ -6,7 +6,7 @@ signal toggle_skilltree()
 signal interact_hover()
 
 const speed = 5
-const jumpspeed = 20
+const jumpspeed = 15
 var jump = 2
 var cooldownOff = true
 var rangedCooldownOff = true
@@ -180,7 +180,7 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 	else:
-		velocity.y -= 2
+		velocity.y -= 1
 		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
 			Global.stamina -= 15
 			velocity.y = 0

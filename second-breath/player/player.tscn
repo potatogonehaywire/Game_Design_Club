@@ -76,6 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://c2dblcuu233kd" path="res://sprites/kolita/idle_right/kolita_idle_right0015.png" id="52_es2j2"]
 [ext_resource type="Texture2D" uid="uid://cd6j7xb3xb5t" path="res://sprites/kolita/idle_right/kolita_idle_right0016.png" id="53_dbpvf"]
 [ext_resource type="Texture2D" uid="uid://de8oibbgw4jv8" path="res://sprites/kolita/idle_right/kolita_idle_right0017.png" id="54_68g1w"]
+[ext_resource type="Texture2D" uid="uid://dhql4pffddqp1" path="res://sprites/kolita/kolita_jump.png" id="55_jfgxe"]
 [ext_resource type="Texture2D" uid="uid://byak4wb8rur7g" path="res://sprites/spear_side/frame0000.png" id="76_20bc7"]
 [ext_resource type="Texture2D" uid="uid://bgj0fi5v25arf" path="res://sprites/spear_side/frame0001.png" id="77_jfgxe"]
 [ext_resource type="Texture2D" uid="uid://d1uha8kqo4hik" path="res://sprites/spear_side/frame0002.png" id="78_yg0n1"]
@@ -88,6 +89,38 @@
 [ext_resource type="Texture2D" uid="uid://bch2w8w7e13xd" path="res://sprites/spear_side/frame0009.png" id="85_rnncm"]
 [ext_resource type="Texture2D" uid="uid://b3cka1dq7o5g5" path="res://sprites/spear_side/frame0010.png" id="86_nj2w7"]
 [ext_resource type="Texture2D" uid="uid://batscwfwughie" path="res://sprites/spear_side/frame0011.png" id="87_iojyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfgxe"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(0, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg0n1"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(195, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjt2w"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(200, 10, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lfai"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(390, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3o0i"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(585, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgo6y"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(780, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm6yy"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(975, 10, 195, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcmgo"]
+atlas = ExtResource("55_jfgxe")
+region = Rect2(1170, 10, 195, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -206,10 +239,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_j3o0i")
+"texture": ExtResource("21_pgo6y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_pgo6y")
+"texture": ExtResource("20_j3o0i")
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_qm6yy")
@@ -317,6 +350,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfgxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg0n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjt2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lfai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3o0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgo6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm6yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcmgo")
+}],
+"loop": false,
+"name": &"jump_backward",
 "speed": 12.0
 }, {
 "frames": [{
@@ -797,6 +859,36 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_qjt2w"]
+resource_name = "jump_backwards"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"jump_backward", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_onxu2"]
 resource_name = "melee_backward"
 length = 0.8333
@@ -971,6 +1063,7 @@ _data = {
 &"idle_forward": SubResource("Animation_jdjat"),
 &"idle_left": SubResource("Animation_kcq4v"),
 &"idle_right": SubResource("Animation_j420s"),
+&"jump_backwards": SubResource("Animation_qjt2w"),
 &"melee_backward": SubResource("Animation_onxu2"),
 &"walk_backward": SubResource("Animation_bd26m"),
 &"walk_forward": SubResource("Animation_qavcc"),
@@ -1002,6 +1095,28 @@ blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_j420s")
 blend_point_3/pos = Vector2(0, 1)
 blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfgxe"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yg0n1"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qjt2w"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lfai"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_j3o0i"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jfgxe")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_yg0n1")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qjt2w")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2lfai")
+blend_point_3/pos = Vector2(1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kcq4v"]
 animation = &"walk_forward"
@@ -1037,21 +1152,39 @@ advance_condition = &"walking"
 advance_mode = 2
 advance_condition = &"idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgo6y"]
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qm6yy"]
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gcmgo"]
+advance_mode = 2
+advance_expression = "idle && !jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rnncm"]
+advance_mode = 2
+advance_expression = "walking && !jump"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bd26m"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kcq4v")
-states/Idle/position = Vector2(434, 70.4)
+states/Idle/position = Vector2(446, 100.8)
+states/Jump/node = SubResource("AnimationNodeBlendSpace2D_j3o0i")
+states/Jump/position = Vector2(566.8, 216.8)
 states/Start/position = Vector2(232.8, 99.68)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_nxclr")
 states/Walk/position = Vector2(689.2, 88.799995)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34")]
-graph_offset = Vector2(97, 28)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_pgo6y"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_qm6yy"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_gcmgo"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_rnncm")]
+graph_offset = Vector2(160, -16)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nxclr"]
 animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
-graph_offset = Vector2(-277.9893, 87.67175)
-nodes/output/position = Vector2(528, 192)
+graph_offset = Vector2(-99.35388, -38.89437)
+nodes/output/position = Vector2(656, 288)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
 nodes/StateMachine/position = Vector2(-16, 176)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_onxu2")
@@ -1135,8 +1268,10 @@ libraries/ = SubResource("AnimationLibrary_jdjat")
 tree_root = SubResource("AnimationNodeBlendTree_lufic")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/conditions/idle = false
+parameters/StateMachine/conditions/jump = false
 parameters/StateMachine/conditions/walking = false
 parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
+parameters/StateMachine/Jump/blend_position = Vector2(0, 0)
 parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
