@@ -20,6 +20,7 @@ var windup = 2
 var projectileType = 0
 
 var player
+var aggro_enemies = []
 
 func use_slot_data(slot_data: SlotData) -> void:
 	slot_data.item_data.use(player)

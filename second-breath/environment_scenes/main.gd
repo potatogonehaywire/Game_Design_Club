@@ -55,3 +55,6 @@ func show_interact_hover(visible) -> void:
 		ui.find_child("InteractLabel").show()
 	else:
 		ui.find_child("InteractLabel").hide()
+
+func enemies_calm() -> void:
+	pass

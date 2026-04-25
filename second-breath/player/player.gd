@@ -23,6 +23,8 @@ var interact_label = false
 @onready var rangedCooldown = $rangedCooldown
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
+@onready var camera_target: Node3D = $camera_controller/camera_target
+
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
@@ -161,8 +163,13 @@ func _physics_process(_delta: float) -> void:
 			jump -= 1
 	move_and_slide()
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
-
-
+	
+	if Global.aggro_enemies.is_empty():
+		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
+	else:
+		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
 #func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	#if body.is_in_group("enemy") && attack.disabled == false:
 		#if body.has_method("upon_hit"): 

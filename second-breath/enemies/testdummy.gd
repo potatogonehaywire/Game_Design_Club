@@ -85,14 +85,15 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_projectile_cooldown_timeout() -> void:
-	if isInRange == true:
-		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
-		print(direction_to_target)
-		var projectile_instance = projectile.instantiate()
-		get_tree().current_scene.add_child(projectile_instance)
-
-		projectile_instance.global_position = muzzle_location.global_position
-		projectile_instance.move_direction = direction_to_target
-		projectile_instance.isPlayer = false
-	else:
-		pass
+	pass
+	#if isInRange == true:
+		#var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
+		#print(direction_to_target)
+		#var projectile_instance = projectile.instantiate()
+		#get_tree().current_scene.add_child(projectile_instance)
+#
+		#projectile_instance.global_position = muzzle_location.global_position
+		#projectile_instance.move_direction = direction_to_target
+		#projectile_instance.isPlayer = false
+	#else:
+		#pass

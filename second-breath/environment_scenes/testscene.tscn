@@ -39,7 +39,18 @@ environment = SubResource("Environment_612pj")
 
 [node name="testdummy" parent="." unique_id=35917985 instance=ExtResource("2_fvmrd")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 1.1488247, 0)
+
+[node name="testdummy2" parent="." unique_id=505480189 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.1123185, 1.1488247, -2.3087618)
 id = 1
+
+[node name="testdummy3" parent="." unique_id=157571338 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.5710044, 1.1488247, -1.0471704)
+id = 2
+
+[node name="testdummy4" parent="." unique_id=2050969600 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.4615283, 1.1488247, -3.4619524)
+id = 3
 
 [node name="Enemies" type="Node" parent="." unique_id=1799270182]
 
