@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1uha8kqo4hik"
-path.s3tc="res://.godot/imported/frame0002.png-876afa0975a7f46f8fe3fdd6b0721be9.s3tc.ctex"
+uid="uid://c15hxv0oixir8"
+path.s3tc="res://.godot/imported/frame0006.png-43e22a5c82cdda1500f787fd826df4f5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/spear_side/frame0002.png"
-dest_files=["res://.godot/imported/frame0002.png-876afa0975a7f46f8fe3fdd6b0721be9.s3tc.ctex"]
+source_file="res://sprites/weapons/spear_side/frame0006.png"
+dest_files=["res://.godot/imported/frame0006.png-43e22a5c82cdda1500f787fd826df4f5.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://batscwfwughie"
-path.s3tc="res://.godot/imported/frame0011.png-d8bab640da6969d0936772c6f4a06754.s3tc.ctex"
+uid="uid://bbo6ycl5qxbcb"
+path.s3tc="res://.godot/imported/frame0000.png-d70b2167b7085c8bdd2cd6ddb0d109dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/spear_side/frame0011.png"
-dest_files=["res://.godot/imported/frame0011.png-d8bab640da6969d0936772c6f4a06754.s3tc.ctex"]
+source_file="res://sprites/weapons/energy_ball_mono/frame0000.png"
+dest_files=["res://.godot/imported/frame0000.png-d70b2167b7085c8bdd2cd6ddb0d109dc.s3tc.ctex"]
 
 [params]
 

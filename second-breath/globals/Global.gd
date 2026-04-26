@@ -1,6 +1,6 @@
 extends Node
-var health = 100
-var maxHealth = 100
+var maxHealth = 200
+var health = maxHealth
 var stamina = 100
 var stamina_bar
 

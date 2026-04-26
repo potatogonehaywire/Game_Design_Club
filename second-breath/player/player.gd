@@ -265,8 +265,8 @@ func get_drop_position() -> Vector3:
 
 func heal(heal_value:int) -> void:
 	Global.health += heal_value
-	if Global.health > 100:
-		Global.health = 100
+	if Global.health > Global.maxHealth:
+		Global.health = Global.maxHealth
 	health_bar.health_changed()
 	print("player health: " + str(Global.health))
 

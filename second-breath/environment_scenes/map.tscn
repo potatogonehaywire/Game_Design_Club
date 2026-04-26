@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7fyrv4as4jk5" path="res://3dmodels/mountain.glb" id="18_qy8pf"]
 [ext_resource type="PackedScene" uid="uid://7jlu3kp2x0vj" path="res://3dmodels/generic_island2.glb" id="18_xrfvn"]
 [ext_resource type="Texture2D" uid="uid://cv5wxep8jlb6a" path="res://sprites/environment/pngegg.png" id="19_ddsj8"]
+[ext_resource type="PackedScene" uid="uid://dmdresa0lo8o3" path="res://background/pink_tree.tscn" id="19_qy8pf"]
 [ext_resource type="Texture2D" uid="uid://bnyvgw0tk51fq" path="res://sprites/environment/tree_green.png" id="20_c2frf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
@@ -59,6 +60,9 @@ transform = Transform3D(8.129471, 0, 0, 0, 8.403035, 0, 0, 0, 0.30239326, 0, 272
 transform = Transform3D(10.337, 0, 0, 0, 7.5099335, 0.12668201, 0, -1.0428914, 0.912246, -0.7266133, -29.076454, -268.4499)
 modulate = Color(0.62018454, 0.8470327, 0.86542594, 1)
 texture = ExtResource("4_wojsv")
+
+[node name="PinkTree" parent="Wall" unique_id=1932440726 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(0.12300923, 0, 0, 0, 0.11900462, 0, 0, 0, 3.306952, 0.65755814, -32.74078, 757.6361)
 
 [node name="bg_trees" type="StaticBody3D" parent="." unique_id=367239712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.246963)
@@ -306,13 +310,14 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.16432357, -2.4303968, 4.25
 shape = SubResource("ConcavePolygonShape3D_ddsj8")
 
 [node name="Shrine" type="StaticBody3D" parent="Village_LoveBoss/VillageSquare" unique_id=100115215]
+transform = Transform3D(0.73384374, 0, 0, 0, 0.80770814, 0, 0, 0, 0.99999976, 0, 0.3225541, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/VillageSquare/Shrine" unique_id=1027325554]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.13118887, 3.7994914, 4.2588787)
 shape = SubResource("BoxShape3D_ddsj8")
 
 [node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/VillageSquare/Shrine" unique_id=446164288]
-transform = Transform3D(0.37, 0, 0, 0, 0.66, 0, 0, 0, 1, -0.31975326, 4.0764084, 4.6874)
+transform = Transform3D(0.36999995, 0, 0, 0, 0.66, 0, 0, 0, 0.9999998, -0.31975317, 5.2344327, 4.6873984)
 texture = ExtResource("17_spr5q")
 
 [node name="Ruins" type="StaticBody3D" parent="Village_LoveBoss" unique_id=909770204]
@@ -789,3 +794,47 @@ id = 9
 [node name="testdummy11" parent="." unique_id=2020355358 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 190.72548, -11.542463, 80.17763)
 id = 10
+
+[node name="PinkTree" parent="." unique_id=104455027 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.29621, -2.7125857, 15.140512)
+
+[node name="PinkTree2" parent="." unique_id=1439586492 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9534597, -2.7125857, 12.659533)
+
+[node name="PinkTree3" parent="." unique_id=1398379575 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.922619, -2.7125843, 9.056896)
+
+[node name="PinkTree4" parent="." unique_id=1759070183 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.743118, -2.712581, 4.931492)
+
+[node name="PinkTree5" parent="." unique_id=266934363 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5879669, -2.7125828, 5.0073643)
+
+[node name="PinkTree6" parent="." unique_id=1139158631 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.932753, -2.712581, 6.901396)
+
+[node name="PinkTree7" parent="." unique_id=1586228462 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.459005, -2.5768526, 11.513659)
+
+[node name="PinkTree8" parent="." unique_id=1249658475 instance=ExtResource("19_qy8pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.521526, -2.7125795, 23.232864)
+
+[node name="testdummy12" parent="." unique_id=489453860 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 10.39602, -3.1349504, 13.147484)
+id = 11
+
+[node name="testdummy13" parent="." unique_id=1473731213 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 21.105354, -3.0077786, 3.1529465)
+id = 12
+
+[node name="testdummy14" parent="." unique_id=841156783 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 6.1144447, -3.00778, 9.403049)
+id = 13
+
+[node name="testdummy15" parent="." unique_id=686749972 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.2386856, -3.00778, 11.75182)
+id = 14
+
+[node name="testdummy16" parent="." unique_id=177190763 instance=ExtResource("13_ol8ra")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 11.823992, -2.872044, 18.657188)
+id = 15

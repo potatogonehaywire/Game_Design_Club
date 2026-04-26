@@ -549,7 +549,7 @@ debug_color = Color(0.3997097, 0.59280473, 0.40508422, 0.41960785)
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=41634338]
 
 [node name="ProjectileCooldown" type="Timer" parent="." unique_id=339049869]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 5.1063757, 0)
