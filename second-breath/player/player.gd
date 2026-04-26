@@ -8,7 +8,6 @@ signal interact_hover()
 const speed = 5
 const jumpspeed = 15
 var jump = 2
-#var jumping = false
 var cooldownOff = true
 var rangedCooldownOff = true
 var damaged = null
@@ -33,6 +32,7 @@ var interact_label = false
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
@@ -177,23 +177,20 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = 0
 		jump = 2
 		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
-			#jumping = true
 			Global.stamina -= 15
 			velocity.y += jumpspeed
 			jump -= 1
-			#await get_tree().create_timer(0.58).timeout
-			#jumping = false
+			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			
 	else:
 		velocity.y -= 1
 		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
-			#jumping = true
 			Global.stamina -= 15
 			velocity.y = 0
 			velocity.y += jumpspeed
 			jump -= 1
-			#await get_tree().create_timer(0.58).timeout
-			#jumping = false
+			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
 	move_and_slide()
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 	

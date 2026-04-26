@@ -711,6 +711,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_gcmgo"]
 resource_name = "fall_backwards"
 length = 5.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -876,7 +877,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_qjt2w"]
 resource_name = "jump_backwards"
-length = 5.0
+length = 0.58
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1087,6 +1088,11 @@ _data = {
 &"walk_right": SubResource("Animation_lufic")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rnncm"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nj2w7"]
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_onxu2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_48p26"]
@@ -1112,28 +1118,6 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_j420s")
 blend_point_3/pos = Vector2(0, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfgxe"]
-animation = &"jump_backwards"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yg0n1"]
-animation = &"jump_backwards"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qjt2w"]
-animation = &"jump_backwards"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lfai"]
-animation = &"jump_backwards"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_j3o0i"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jfgxe")
-blend_point_0/pos = Vector2(0, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_yg0n1")
-blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_qjt2w")
-blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_2lfai")
-blend_point_3/pos = Vector2(1, 0)
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kcq4v"]
 animation = &"walk_forward"
 
@@ -1157,6 +1141,9 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_lufic")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcmgo"]
+animation = &"fall_backwards"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qavcc"]
 advance_mode = 2
 
@@ -1168,46 +1155,50 @@ advance_expression = "is_on_floor() && (velocity.x != 0 || velocity.z !=0)"
 advance_mode = 2
 advance_expression = "velocity == Vector3(0,0,0)"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgo6y"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iojyt"]
 advance_mode = 2
 advance_expression = "not is_on_floor()"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qm6yy"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vhicv"]
 advance_mode = 2
 advance_expression = "not is_on_floor()"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gcmgo"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hrakr"]
+advance_mode = 2
+advance_expression = "is_on_floor() && (velocity.x != 0 || velocity.z != 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2s0vo"]
 advance_mode = 2
 advance_expression = "is_on_floor() && velocity.x == 0 && velocity.z == 0"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rnncm"]
-advance_mode = 2
-advance_expression = "(velocity.x != 0 || velocity.z !=0) && is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bd26m"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kcq4v")
 states/Idle/position = Vector2(446, 100.8)
-states/Jump/node = SubResource("AnimationNodeBlendSpace2D_j3o0i")
-states/Jump/position = Vector2(566.8, 216.8)
 states/Start/position = Vector2(232.8, 99.68)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_nxclr")
 states/Walk/position = Vector2(722, 101.76)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_pgo6y"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_qm6yy"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_gcmgo"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_rnncm")]
+states/fall_backwards/node = SubResource("AnimationNodeAnimation_gcmgo")
+states/fall_backwards/position = Vector2(593.2, 218.40002)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "Walk", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_iojyt"), "Idle", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_vhicv"), "fall_backwards", "Walk", SubResource("AnimationNodeStateMachineTransition_hrakr"), "fall_backwards", "Idle", SubResource("AnimationNodeStateMachineTransition_2s0vo")]
 graph_offset = Vector2(160, -16)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nxclr"]
 animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
-graph_offset = Vector2(-186.4, 87.2)
+graph_offset = Vector2(-268.29703, 149.26956)
 nodes/output/position = Vector2(656, 288)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
-nodes/StateMachine/position = Vector2(-16, 176)
+nodes/StateMachine/position = Vector2(-256, 176)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_onxu2")
-nodes/OneShot/position = Vector2(304, 320)
+nodes/OneShot/position = Vector2(368, 304)
 nodes/melee/node = SubResource("AnimationNodeAnimation_nxclr")
-nodes/melee/position = Vector2(48, 496)
-node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"StateMachine", &"OneShot", 1, &"melee"]
+nodes/melee/position = Vector2(64, 576)
+"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_nj2w7")
+"nodes/OneShot 2/position" = Vector2(48, 224)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_rnncm")
+nodes/Animation/position = Vector2(-272, 464)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"OneShot", 1, &"melee", &"OneShot 2", 0, &"StateMachine", &"OneShot 2", 1, &"Animation"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
@@ -1285,11 +1276,13 @@ tree_root = SubResource("AnimationNodeBlendTree_lufic")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
-parameters/StateMachine/Jump/blend_position = Vector2(0, 0)
 parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+"parameters/OneShot 2/active" = false
+"parameters/OneShot 2/internal_active" = false
+"parameters/OneShot 2/request" = 0
 
 [node name="InteractRay" type="RayCast3D" parent="." unique_id=963342766]
 
