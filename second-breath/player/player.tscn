@@ -76,7 +76,14 @@
 [ext_resource type="Texture2D" uid="uid://c2dblcuu233kd" path="res://sprites/kolita/idle_right/kolita_idle_right0015.png" id="52_es2j2"]
 [ext_resource type="Texture2D" uid="uid://cd6j7xb3xb5t" path="res://sprites/kolita/idle_right/kolita_idle_right0016.png" id="53_dbpvf"]
 [ext_resource type="Texture2D" uid="uid://de8oibbgw4jv8" path="res://sprites/kolita/idle_right/kolita_idle_right0017.png" id="54_68g1w"]
-[ext_resource type="Texture2D" uid="uid://dhql4pffddqp1" path="res://sprites/kolita/kolita_jump.png" id="55_jfgxe"]
+[ext_resource type="Texture2D" uid="uid://bnygfarla582e" path="res://sprites/kolita/kolita_jump_backward/frame0000.png" id="55_gcmgo"]
+[ext_resource type="Texture2D" uid="uid://ck70clrgo807i" path="res://sprites/kolita/kolita_jump_backward/frame0001.png" id="56_rnncm"]
+[ext_resource type="Texture2D" uid="uid://bfrwtgotqvcxn" path="res://sprites/kolita/kolita_jump_backward/frame0002.png" id="57_nj2w7"]
+[ext_resource type="Texture2D" uid="uid://bss0ubhbj3oe6" path="res://sprites/kolita/kolita_jump_backward/frame0003.png" id="58_iojyt"]
+[ext_resource type="Texture2D" uid="uid://dlxmm7idk5g46" path="res://sprites/kolita/kolita_jump_backward/frame0004.png" id="59_vhicv"]
+[ext_resource type="Texture2D" uid="uid://du7hxewg0cpvx" path="res://sprites/kolita/kolita_jump_backward/frame0005.png" id="60_hrakr"]
+[ext_resource type="Texture2D" uid="uid://bxo5q1rmcuto" path="res://sprites/kolita/kolita_jump_backward/frame0006.png" id="61_wsa1w"]
+[ext_resource type="Texture2D" uid="uid://dxm5dvt82pf8a" path="res://sprites/kolita/kolita_jump_backward/frame0007.png" id="62_2s0vo"]
 [ext_resource type="Texture2D" uid="uid://byak4wb8rur7g" path="res://sprites/spear_side/frame0000.png" id="76_20bc7"]
 [ext_resource type="Texture2D" uid="uid://bgj0fi5v25arf" path="res://sprites/spear_side/frame0001.png" id="77_jfgxe"]
 [ext_resource type="Texture2D" uid="uid://d1uha8kqo4hik" path="res://sprites/spear_side/frame0002.png" id="78_yg0n1"]
@@ -89,38 +96,6 @@
 [ext_resource type="Texture2D" uid="uid://bch2w8w7e13xd" path="res://sprites/spear_side/frame0009.png" id="85_rnncm"]
 [ext_resource type="Texture2D" uid="uid://b3cka1dq7o5g5" path="res://sprites/spear_side/frame0010.png" id="86_nj2w7"]
 [ext_resource type="Texture2D" uid="uid://batscwfwughie" path="res://sprites/spear_side/frame0011.png" id="87_iojyt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jfgxe"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(0, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yg0n1"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(195, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjt2w"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(200, 10, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lfai"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(390, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j3o0i"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(585, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgo6y"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(780, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qm6yy"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(975, 10, 195, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gcmgo"]
-atlas = ExtResource("55_jfgxe")
-region = Rect2(1170, 10, 195, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -184,6 +159,17 @@ region = Rect2(200, 403, 200, 196)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_anp34"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_2s0vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_2s0vo")
+}],
+"loop": true,
+"name": &"fall_backward",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_anp34")
@@ -354,28 +340,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jfgxe")
+"texture": ExtResource("55_gcmgo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yg0n1")
+"texture": ExtResource("56_rnncm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qjt2w")
+"texture": ExtResource("57_nj2w7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2lfai")
+"texture": ExtResource("58_iojyt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j3o0i")
+"texture": ExtResource("59_vhicv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pgo6y")
+"texture": ExtResource("60_hrakr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qm6yy")
+"texture": ExtResource("61_wsa1w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gcmgo")
+"texture": ExtResource("62_2s0vo")
 }],
 "loop": false,
 "name": &"jump_backward",
@@ -675,7 +661,6 @@ _data = {
 animation = &"basic_right"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_j3o0i"]
-graph_offset = Vector2(-404.44067, 55.19707)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_20bc7")
 nodes/Animation/position = Vector2(48, 208)
 node_connections = [&"output", 0, &"Animation"]
@@ -721,6 +706,36 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gcmgo"]
+resource_name = "fall_backwards"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fall_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"fall_backward", 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_anp34"]
@@ -1059,6 +1074,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdjat"]
 _data = {
 &"RESET": SubResource("Animation_48p26"),
+&"fall_backwards": SubResource("Animation_gcmgo"),
 &"idle_backward": SubResource("Animation_anp34"),
 &"idle_forward": SubResource("Animation_jdjat"),
 &"idle_left": SubResource("Animation_kcq4v"),
@@ -1146,27 +1162,27 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48p26"]
 advance_mode = 2
-advance_condition = &"walking"
+advance_expression = "is_on_floor() && (velocity.x != 0 || velocity.z !=0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_anp34"]
 advance_mode = 2
-advance_condition = &"idle"
+advance_expression = "velocity == Vector3(0,0,0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgo6y"]
 advance_mode = 2
-advance_condition = &"jump"
+advance_expression = "not is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qm6yy"]
 advance_mode = 2
-advance_condition = &"jump"
+advance_expression = "not is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gcmgo"]
 advance_mode = 2
-advance_expression = "idle && !jump"
+advance_expression = "is_on_floor() && velocity.x == 0 && velocity.z == 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rnncm"]
 advance_mode = 2
-advance_expression = "walking && !jump"
+advance_expression = "(velocity.x != 0 || velocity.z !=0) && is_on_floor()"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bd26m"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kcq4v")
@@ -1175,7 +1191,7 @@ states/Jump/node = SubResource("AnimationNodeBlendSpace2D_j3o0i")
 states/Jump/position = Vector2(566.8, 216.8)
 states/Start/position = Vector2(232.8, 99.68)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_nxclr")
-states/Walk/position = Vector2(689.2, 88.799995)
+states/Walk/position = Vector2(722, 101.76)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_pgo6y"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_qm6yy"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_gcmgo"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_rnncm")]
 graph_offset = Vector2(160, -16)
 
@@ -1183,7 +1199,7 @@ graph_offset = Vector2(160, -16)
 animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
-graph_offset = Vector2(-99.35388, -38.89437)
+graph_offset = Vector2(-186.4, 87.2)
 nodes/output/position = Vector2(656, 288)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
 nodes/StateMachine/position = Vector2(-16, 176)
@@ -1266,10 +1282,8 @@ libraries/ = SubResource("AnimationLibrary_jdjat")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1095977158]
 tree_root = SubResource("AnimationNodeBlendTree_lufic")
+advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/StateMachine/conditions/idle = false
-parameters/StateMachine/conditions/jump = false
-parameters/StateMachine/conditions/walking = false
 parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
 parameters/StateMachine/Jump/blend_position = Vector2(0, 0)
 parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
