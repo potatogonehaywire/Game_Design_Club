@@ -9,7 +9,7 @@ const speed = 5
 const jumpspeed = 20
 var jump = 2
 var cooldownOff = true
-var rangedCooldownOff = true
+var skillCooldownOff = true
 var damaged = null
 var direction: Vector3
 var bullseye = preload("uid://boe62hylmoryp")
@@ -20,7 +20,7 @@ var interact_label = false
 
 @onready var attack = $AttackHitbox/AttackHitboxCollision
 @onready var cooldown = $cooldown
-@onready var rangedCooldown = $rangedCooldown
+@onready var skillCooldown = $rangedCooldown
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
@@ -38,6 +38,9 @@ var ray_origin
 var ray_direction
 var ray_length: float = 50.0
 var close_enough
+var explosion = preload("res://attack_skills/explosion.tscn")
+var explodes = false
+var healthDrain = false
 
 func _ready() -> void:
 	Global.player = self
@@ -78,20 +81,19 @@ func _process(_delta: float) -> void:
 		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 		attack.disabled = true
 		cooldown.start(0.5)
-	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
-		rangedCooldownOff = false
-<<<<<<< Updated upstream
-		rangedCooldown.start(0.5)
-=======
-		rangedCooldown.start(1)
-		await get_tree().create_timer(Global.windup).timeout
->>>>>>> Stashed changes
-		shoot()
+	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
+		skillCooldownOff = false
+		if Global.skillType == 0 || Global.skillType == 2:
+			await get_tree().create_timer(Global.windup).timeout
+			shoot()
+		else:
+			check_skill()
 	
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
 		
-	ray_origin = camera.project_ray_origin(Vector2.ZERO)
+	#ray_origin = camera.project_ray_origin(Vector2.ZERO)
+	ray_origin = camera.project_ray_origin(mouse_position)
 	ray_direction = camera.project_ray_normal(mouse_position)
 	
 	# Move the RayCast3D to the camera's position
@@ -122,7 +124,6 @@ func _process(_delta: float) -> void:
 		else:
 			Input.set_custom_mouse_cursor(null)
 	
-
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -167,38 +168,44 @@ func _physics_process(_delta: float) -> void:
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 
 
-#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("enemy") && attack.disabled == false:
-		#if body.has_method("upon_hit"): 
-			#var id = body.id
-			#Global.enemyHitID.append(id)
-			#enemy_hit()
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemy") && attack.disabled == false:
+		if body.has_method("upon_hit"): 
+			var id = body.id
+			Global.enemyHitID.append(id)
+			enemy_hit()
+			print(Global.enemyHitID)
+			if Global.skillType == 6:
+				Global.health += 6
+			elif Global.skillType == 9:
+				Global.health += 2
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
+	
 
 func _on_cooldown_timeout() -> void:
 	cooldownOff = true
 
-func _on_ranged_cooldown_timeout() -> void:
-	rangedCooldownOff = true
+func _on_skill_cooldown_timeout() -> void:
+	skillCooldownOff = true
 
 func shoot():
 	if talent_tree.visible == false:
 		#var mouse_position = get_viewport().get_mouse_position()
 		#var ray_origin = camera.project_ray_origin(mouse_position)
 		#var ray_direction = camera.project_ray_normal(mouse_position)
-		#var ray_length = 500.0 
-		#var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+		var ray_length = 100.0 
+		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
 
-		#var space_state = get_world_3d().direct_space_state
-		#var result = space_state.intersect_ray(query)
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_ray(query)
 
 		var target_point: Vector3
 		var collider = interact_ray.get_collider()
 		var collision_point = interact_ray.get_collision_point()
 		print(collision_point)
-		#ray_origin + ray_direction * ray_length
+		ray_origin + ray_direction * ray_length
 		if collider is Node:
 			if collider.is_in_group("enemy"):
 				target_point = interact_ray.get_collision_normal()
@@ -225,7 +232,6 @@ func interact() -> void:
 			collider.player_interact()
 
 
-
 func get_drop_position() -> Vector3:
 	return global_position + direction + Vector3(0, 1,0)
 
@@ -244,3 +250,61 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 			var id = area.get_parent().id
 			Global.enemyHitID.append(id)
 			enemy_hit()
+
+#note make sure to transfer all changes to testdummy as well
+func check_skill() -> void:
+	match Global.skillType:
+		1: #basic anger
+			healthDrain = true
+			Global.debuff = 5
+			skillCooldown.start(1)
+		3: #basic envy
+			Global.dmgdebuff = 3
+			skillCooldown.start(1)
+		4: #max level anger
+			healthDrain = true
+			Global.debuff = 8
+			skillCooldown.start(1)
+		5: #max level fear
+			explodes = true
+			Global.debuff = -10 * Global.ranged
+			skillCooldown.start(1)
+		6: #max level envy
+			pass
+			Global.debuff = -2
+			skillCooldown.start(1)
+		7: #anger/fear hybrid
+			Global.maxHealth = 80
+			skillCooldown.start(1)
+			#Global.weapon += 2, reverse after cooldown.. Global thing for speed and multiply character speed in player script by the global thing
+		8: #fear/envy
+			pass
+			skillCooldown.start(1)
+			#make bom go boom but no dmg but debuff
+		9: #anger/envy
+			pass
+			skillCooldown.start(1)
+			#Strong buffs(atk+hp) and debuff every enemy you hit(reduce enemy atk)
+		_:
+			Global.skillType = 0
+	use_skill()
+
+func use_skill() -> void:
+	if healthDrain == true:
+		if Global.skillType == 1:
+			Global.health -= 10
+		if Global.skillType == 4:
+			Global.health -= 20
+			print (Global.health)
+			healthDrain = false
+	Global.enemyIsHit = true
+	if explodes == true:
+		explode()
+
+func explode() -> void:
+	var explosion_instance = explosion.instantiate()
+	add_child(explosion_instance)
+	explosion_instance.global_position = self.global_position
+	Global.debuff = 0
+	await get_tree().create_timer(1).timeout
+	explosion_instance.queue_free()
