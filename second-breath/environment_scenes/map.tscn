@@ -820,21 +820,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.459005, -2.5768526, 11.513
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.521526, -2.7125795, 23.232864)
 
 [node name="testdummy12" parent="." unique_id=489453860 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 10.39602, -3.1349504, 13.147484)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 6.7088203, -3.1349504, 13.147484)
 id = 11
 
 [node name="testdummy13" parent="." unique_id=1473731213 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 21.105354, -3.0077786, 3.1529465)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 17.418156, -3.0077786, 3.1529465)
 id = 12
 
 [node name="testdummy14" parent="." unique_id=841156783 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 6.1144447, -3.00778, 9.403049)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.4272451, -3.00778, 9.403049)
 id = 13
 
 [node name="testdummy15" parent="." unique_id=686749972 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.2386856, -3.00778, 11.75182)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.448514, -3.00778, 11.75182)
 id = 14
 
 [node name="testdummy16" parent="." unique_id=177190763 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 11.823992, -2.872044, 18.657188)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 8.136792, -2.872044, 18.657188)
 id = 15

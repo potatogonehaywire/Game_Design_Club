@@ -9,7 +9,6 @@ const PickUp = preload("res://item/pick_up/pick_up.tscn")
 @onready var talent_tree: TalentTree = $UI/talent_tree
 @onready var ui: CanvasLayer = $UI
 
-
 func _ready() -> void:
 	player.toggle_inventory.connect(toggle_inventory_root)
 	player.toggle_skilltree.connect(toggle_skilltree_interface)
@@ -55,6 +54,3 @@ func show_interact_hover(visible) -> void:
 		ui.find_child("InteractLabel").show()
 	else:
 		ui.find_child("InteractLabel").hide()
-
-func enemies_calm() -> void:
-	pass

@@ -258,7 +258,6 @@ func interact() -> void:
 			collider.player_interact()
 
 
-
 func get_drop_position() -> Vector3:
 	return global_position + direction + Vector3(0, 1,0)
 
@@ -268,7 +267,6 @@ func heal(heal_value:int) -> void:
 	if Global.health > Global.maxHealth:
 		Global.health = Global.maxHealth
 	health_bar.health_changed()
-	print("player health: " + str(Global.health))
 
 
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
@@ -277,3 +275,6 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 			var id = area.get_parent().id
 			Global.enemyHitID.append(id)
 			enemy_hit()
+
+func damage_taken() -> void:
+	health_bar.health_changed()

@@ -98,10 +98,12 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 			elif Global.projectileType == 9:
 				Global.health += 2
 			enemy_hit()
+			
 	elif body.is_in_group("player") && isPlayer == false:
 		#not hitting player, fix later (and also give health to enemies)
 		#also do the same sorta code thing in explosion.gd once it works
 		Global.health -= 10 + Global.debuff
+		body.damage_taken()
 
 func enemy_hit() -> void:
 	if healthDrain == true:
