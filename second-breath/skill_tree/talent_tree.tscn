@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p30b8qbm3n7e"]
+[gd_scene format=3 uid="uid://p30b8qbm3n7e"]
 
 [ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://menus/Micro5-Regular.ttf" id="1_51xa5"]
 [ext_resource type="Script" uid="uid://djibti1mdftqm" path="res://skill_tree/talent_tree.gd" id="1_h8x7a"]
@@ -13,17 +13,9 @@ region = Rect2(320, 416, 32, 32)
 atlas = ExtResource("4_cjy42")
 region = Rect2(288, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f00np"]
-atlas = ExtResource("4_cjy42")
-region = Rect2(64, 352, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvu2r"]
 atlas = ExtResource("4_cjy42")
 region = Rect2(352, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gubjn"]
-atlas = ExtResource("4_cjy42")
-region = Rect2(128, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqaal"]
 atlas = ExtResource("4_cjy42")
@@ -41,7 +33,7 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("4_cjy42")
 region = Rect2(160, 96, 32, 32)
 
-[node name="talent_tree" type="Control"]
+[node name="talent_tree" type="Control" unique_id=94532346]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h8x7a")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1676800045]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.25565878, 0.25565878, 0.25565878, 0.49019608)
 
-[node name="PointsLabel" type="Label" parent="."]
+[node name="PointsLabel" type="Label" parent="." unique_id=387426709]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1063.0
@@ -71,7 +63,7 @@ theme_override_font_sizes/font_size = 44
 text = "0"
 horizontal_alignment = 2
 
-[node name="BaseTalent" parent="." instance=ExtResource("3_mugwv")]
+[node name="BaseTalent" parent="." unique_id=538188348 instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 312.0
@@ -80,7 +72,7 @@ offset_bottom = 344.0
 texture_normal = SubResource("AtlasTexture_evv38")
 talent_id = "base"
 
-[node name="Anger1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger1" parent="." unique_id=1779023738 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 528.0
 offset_top = 280.0
@@ -91,7 +83,7 @@ talent_id = "anger1"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
-[node name="Anger2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger2a" parent="." unique_id=1144516064 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 216.0
@@ -102,7 +94,7 @@ talent_id = "anger2a"
 tier = 3
 depends_on = [NodePath("../Anger1")]
 
-[node name="Anger2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger2b" parent="." unique_id=1491037975 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 456.0
 offset_top = 264.0
@@ -113,7 +105,7 @@ talent_id = "anger2b"
 tier = 3
 depends_on = [NodePath("../Anger1")]
 
-[node name="Anger3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger3a" parent="." unique_id=420939200 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 464.0
 offset_top = 160.0
@@ -124,7 +116,7 @@ talent_id = "anger3a"
 tier = 4
 depends_on = [NodePath("../Anger2a")]
 
-[node name="Anger3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger3b" parent="." unique_id=119486477 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 400.0
 offset_top = 224.0
@@ -135,7 +127,7 @@ talent_id = "anger3b"
 tier = 4
 depends_on = [NodePath("../Anger2b")]
 
-[node name="Anger4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Anger4" parent="." unique_id=794917001 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 392.0
 offset_top = 152.0
@@ -146,95 +138,18 @@ talent_id = "anger4"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Anger3b")]
 
-[node name="Regret1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 593.0
-offset_top = 344.0
-offset_right = 625.0
-offset_bottom = 376.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret1"
-tier = 2
-depends_on = [NodePath("../BaseTalent")]
-
-[node name="Regret2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 665.0
-offset_top = 328.0
-offset_right = 697.0
-offset_bottom = 360.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret2a"
-tier = 3
-depends_on = [NodePath("../Regret1")]
-
-[node name="Regret2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 609.0
-offset_top = 400.0
-offset_right = 641.0
-offset_bottom = 432.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret2b"
-tier = 3
-depends_on = [NodePath("../Regret1")]
-
-[node name="Regret3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 729.0
-offset_top = 368.0
-offset_right = 761.0
-offset_bottom = 400.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret3a"
-tier = 4
-depends_on = [NodePath("../Regret2a")]
-
-[node name="Regret3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 665.0
-offset_top = 448.0
-offset_right = 697.0
-offset_bottom = 480.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret3b"
-tier = 4
-depends_on = [NodePath("../Regret2b")]
-
-[node name="Regret4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 745.0
-offset_top = 440.0
-offset_right = 777.0
-offset_bottom = 472.0
-texture_normal = SubResource("AtlasTexture_f00np")
-talent_id = "regret4"
-tier = 5
-depends_on = [NodePath("../Regret3a"), NodePath("../Regret3b")]
-
-[node name="AngerEnvy" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="AngerEnvy" parent="." unique_id=1636019598 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 357.0
 offset_top = 299.0
 offset_right = 389.0
 offset_bottom = 331.0
 texture_normal = SubResource("AtlasTexture_yvu2r")
-talent_id = "wrath_sorrow"
+talent_id = "wrath_envy"
 tier = 5
 depends_on = [NodePath("../Anger3b"), NodePath("../Envy3b")]
 
-[node name="FearRegret" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
-layout_mode = 0
-offset_left = 767.0
-offset_top = 303.0
-offset_right = 799.0
-offset_bottom = 335.0
-texture_normal = SubResource("AtlasTexture_gubjn")
-talent_id = "fear_regret"
-tier = 5
-depends_on = [NodePath("../Regret3a"), NodePath("../Fear3b")]
-
-[node name="Fear1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear1" parent="." unique_id=2112093393 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 592.0
 offset_top = 280.0
@@ -245,7 +160,7 @@ talent_id = "fear1"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
-[node name="Fear2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear2a" parent="." unique_id=1811320640 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 608.0
 offset_top = 208.0
@@ -256,7 +171,7 @@ talent_id = "fear2a"
 tier = 3
 depends_on = [NodePath("../Fear1")]
 
-[node name="Fear2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear2b" parent="." unique_id=1665576891 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 672.0
 offset_top = 264.0
@@ -267,7 +182,7 @@ talent_id = "fear2b"
 tier = 3
 depends_on = [NodePath("../Fear1")]
 
-[node name="Fear3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear3a" parent="." unique_id=2137919866 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 648.0
 offset_top = 160.0
@@ -278,7 +193,7 @@ talent_id = "fear3a"
 tier = 4
 depends_on = [NodePath("../Fear2a")]
 
-[node name="Fear3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear3b" parent="." unique_id=603850004 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 728.0
 offset_top = 216.0
@@ -289,7 +204,7 @@ talent_id = "fear3b"
 tier = 4
 depends_on = [NodePath("../Fear2b")]
 
-[node name="Fear4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Fear4" parent="." unique_id=505517741 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 733.0
 offset_top = 143.0
@@ -300,7 +215,7 @@ talent_id = "fear4"
 tier = 5
 depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
 
-[node name="AngerFear" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="AngerFear" parent="." unique_id=1773001912 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 558.0
 offset_top = 139.0
@@ -311,7 +226,7 @@ talent_id = "wrath_fear"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Fear3a")]
 
-[node name="Envy1" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy1" parent="." unique_id=1419981934 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 529.0
 offset_top = 344.0
@@ -322,7 +237,7 @@ talent_id = "envy1"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
-[node name="Envy2a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy2a" parent="." unique_id=1060837740 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 521.0
 offset_top = 408.0
@@ -333,7 +248,7 @@ talent_id = "envy2a"
 tier = 3
 depends_on = [NodePath("../Envy1")]
 
-[node name="Envy2b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy2b" parent="." unique_id=795528445 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 465.0
 offset_top = 336.0
@@ -344,7 +259,7 @@ talent_id = "envy2b"
 tier = 3
 depends_on = [NodePath("../Envy1")]
 
-[node name="Envy3a" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy3a" parent="." unique_id=1025337655 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 465.0
 offset_top = 456.0
@@ -355,7 +270,7 @@ talent_id = "envy3a"
 tier = 4
 depends_on = [NodePath("../Envy2a")]
 
-[node name="Envy3b" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy3b" parent="." unique_id=1467945865 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 368.0
@@ -366,7 +281,7 @@ talent_id = "envy3b"
 tier = 4
 depends_on = [NodePath("../Envy2b")]
 
-[node name="Envy4" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="Envy4" parent="." unique_id=783468988 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
 offset_left = 385.0
 offset_top = 448.0
@@ -377,13 +292,13 @@ talent_id = "envy4"
 tier = 5
 depends_on = [NodePath("../Envy3a"), NodePath("../Envy3b")]
 
-[node name="EnvyRegret" parent="." node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+[node name="EnvyFear" parent="." unique_id=614146403 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
-offset_left = 569.0
-offset_top = 471.0
-offset_right = 601.0
-offset_bottom = 503.0
+offset_left = 687.0
+offset_top = 408.0
+offset_right = 719.0
+offset_bottom = 440.0
 texture_normal = SubResource("AtlasTexture_s5ac7")
-talent_id = "envy_regret"
+talent_id = "envy_fear"
 tier = 5
-depends_on = [NodePath("../Envy3a"), NodePath("../Regret3b")]
+depends_on = [NodePath("../Envy3a"), NodePath("../Fear3b")]

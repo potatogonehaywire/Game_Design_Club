@@ -11,7 +11,8 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
-	pass
+	if enemy.isInRange == true:
+		state_machine.change_state("pursuit")
 
 func physics_update(_delta:float) -> void:
 	if enemy.is_on_floor():

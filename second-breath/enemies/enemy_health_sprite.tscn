@@ -19,7 +19,6 @@ transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_7p70c")
 script = ExtResource("1_3tglm")
-max_hp = null
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=984894522]
 transparent_bg = true
@@ -41,6 +40,6 @@ offset_right = 102.0
 offset_bottom = 10.0
 theme_override_styles/background = SubResource("StyleBoxFlat_7p70c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0u52l")
-max_value = 30.0
+max_value = 50.0
 value = 15.0
 show_percentage = false
