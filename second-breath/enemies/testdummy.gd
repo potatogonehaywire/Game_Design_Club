@@ -47,8 +47,6 @@ func upon_hit():
 		if self.enemyhp > 0:
 			take_damage()
 			enemy_health_sprite.enemy_health_changed()
-	else:
-		print("sad")
 
 
 func take_damage() -> void:
@@ -68,6 +66,7 @@ func take_damage() -> void:
 			Global.dmgdebuff = 0
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
+			Global.aggro_enemies.remove_at(0)
 			self.queue_free()
 			print("eurgh")
 		else:

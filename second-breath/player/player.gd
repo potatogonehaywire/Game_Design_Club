@@ -67,6 +67,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if Global.health <= 0:
 		Global.health = 100
+		Global.aggro_enemies.clear()
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)
