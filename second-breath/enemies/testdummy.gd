@@ -19,6 +19,8 @@ var enemyhp = ENEMY_HP_MAX
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
 @onready var state_machine: StateMachine = $StateMachine
 @export var starting_location: Vector3 = Vector3.ZERO
+@onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
+
 
 var explosion = preload("res://attack_skills/explosion.tscn")
 var explodes = false
@@ -37,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
+	enemy_animation_tree.set("parameters/Idle/blend_position", Vector2(velocity.x,velocity.z))
 	if isHit == true:
 		await get_tree().create_timer(1).timeout
 		isHit = false
@@ -56,8 +59,6 @@ func upon_hit():
 		if self.enemyhp > 0:
 			take_damage()
 			enemy_health_sprite.enemy_health_changed()
-	else:
-		print("sad")
 
 
 func take_damage() -> void:
@@ -82,6 +83,7 @@ func take_damage() -> void:
 			Global.dmgdebuff = 0
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
+			Global.aggro_enemies.remove_at(0)
 			self.queue_free()
 			print("eurgh")
 		else:

@@ -19,15 +19,20 @@ var interact_label = false
 @export var equip_inventory_data: InventoryDataEquip
 
 @onready var attack = $AttackHitbox/AttackHitboxCollision
+@onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
+
 @onready var cooldown = $cooldown
 @onready var skillCooldown = $rangedCooldown
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
+@onready var camera_target: Node3D = $camera_controller/camera_target
+
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
@@ -65,6 +70,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if Global.health <= 0:
 		Global.health = 100
+		Global.aggro_enemies.clear()
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)
@@ -75,12 +81,36 @@ func _process(_delta: float) -> void:
 		attack.disabled = false
 		Global.stamina -= 10
 		cooldownOff = false
-		attack_hitbox.position = direction * 0.6
+		attack_hitbox.position = direction * 0.9
+		match direction:
+			Vector3(1, 0 ,0):
+				attack_hitbox.rotation = Vector3(0,0,0)
+			Vector3(1, 0, 1):
+				attack_hitbox.rotation = Vector3(-PI/2,0,0)
+			Vector3(0, 0 ,1):
+				attack_hitbox.rotation = Vector3(PI/2,0,0)
+			Vector3(-1, 0, 1):
+				attack_hitbox.rotation = Vector3(-PI/2,PI,0)
+			Vector3(-1, 0 ,0):
+				attack_hitbox.rotation = Vector3(0,PI,0)
+			Vector3(1, 0, -1):
+				attack_hitbox.rotation = Vector3(PI/2,0,0)
+			Vector3(-1, 0, -1):
+				attack_hitbox.rotation = Vector3(PI/2,PI,0)
+			Vector3(0, 0, -1):
+				attack_hitbox.rotation = Vector3(-PI/2,0,0)
+			_:
+				attack_hitbox.rotation = Vector3(0,0,0)
+				
 		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		await get_tree().create_timer(0.4).timeout
+		melee_sprite.visible = true
+			
+		await get_tree().create_timer(1).timeout
 		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
+		melee_sprite.visible = false
 		attack.disabled = true
 		cooldown.start(0.5)
+
 	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
 		skillCooldownOff = false
 		if Global.skillType == 0 || Global.skillType == 2:
@@ -88,6 +118,13 @@ func _process(_delta: float) -> void:
 			shoot()
 		else:
 			check_skill()
+
+	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
+		rangedCooldownOff = false
+		rangedCooldown.start(1)
+		await get_tree().create_timer(Global.windup).timeout
+		shoot()
+
 	
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
@@ -157,13 +194,17 @@ func _physics_process(_delta: float) -> void:
 			Global.stamina -= 15
 			velocity.y += jumpspeed
 			jump -= 1
+			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			
 	else:
-		velocity.y -= 2
+		velocity.y -= 1
 		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
 			Global.stamina -= 15
 			velocity.y = 0
 			velocity.y += jumpspeed
 			jump -= 1
+			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
 	move_and_slide()
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 
@@ -179,6 +220,21 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 				Global.health += 6
 			elif Global.skillType == 9:
 				Global.health += 2
+
+	
+	if Global.aggro_enemies.is_empty():
+		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
+	else:
+		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
+#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	#if body.is_in_group("enemy") && attack.disabled == false:
+		#if body.has_method("upon_hit"): 
+			#var id = body.id
+			#Global.enemyHitID.append(id)
+			#enemy_hit()
+
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
@@ -238,10 +294,9 @@ func get_drop_position() -> Vector3:
 
 func heal(heal_value:int) -> void:
 	Global.health += heal_value
-	if Global.health > 100:
-		Global.health = 100
+	if Global.health > Global.maxHealth:
+		Global.health = Global.maxHealth
 	health_bar.health_changed()
-	print("player health: " + str(Global.health))
 
 
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
@@ -308,3 +363,6 @@ func explode() -> void:
 	Global.debuff = 0
 	await get_tree().create_timer(1).timeout
 	explosion_instance.queue_free()
+
+func damage_taken() -> void:
+	health_bar.health_changed()

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dmdresa0lo8o3"]
+
+[ext_resource type="Texture2D" uid="uid://dchft5b45jwuu" path="res://sprites/environment/pink_tree.png" id="1_4c4go"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_npxis"]
+size = Vector3(1.9511414, 4.328064, 1.6542969)
+
+[node name="PinkTree" type="StaticBody3D" unique_id=1932440726]
+
+[node name="TreeCollision" type="CollisionShape3D" parent="." unique_id=922942394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0714224, 2.128758, -0.05078125)
+shape = SubResource("BoxShape3D_npxis")
+
+[node name="PinkTreeSprite" type="Sprite3D" parent="." unique_id=208996797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5487573, 3.3898041, 0)
+texture = ExtResource("1_4c4go")
+region_enabled = true
+region_rect = Rect2(201, 0, 1504, 887)

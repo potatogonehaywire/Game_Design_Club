@@ -1,6 +1,6 @@
 extends Node
-var health = 100
-var maxHealth = 100
+var maxHealth = 200
+var health = maxHealth
 var stamina = 100
 var stamina_bar
 
@@ -20,6 +20,7 @@ var windup = 2
 var skillType = 0
 
 var player
+var aggro_enemies = []
 
 func use_slot_data(slot_data: SlotData) -> void:
 	slot_data.item_data.use(player)

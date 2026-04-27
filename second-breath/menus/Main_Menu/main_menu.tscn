@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://el5wcxv5a4bn"]
+
+[ext_resource type="Script" uid="uid://pfmxgqe0eut7" path="res://menus/Main_Menu/main_menu.gd" id="1_jht8a"]
+[ext_resource type="Texture2D" uid="uid://11arhajctsf7" path="res://menus/Graphics/Menu/promo_image_mirrored.png" id="2_by2mg"]
+[ext_resource type="PackedScene" uid="uid://bkxh3tdpimpiu" path="res://menus/Option_Menu/options.tscn" id="3_6qckm"]
+[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://menus/Micro5-Regular.ttf" id="3_xjol7"]
+
+[node name="Main_Menu" type="Control" unique_id=86582445]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jht8a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=289233251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_by2mg")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1969125030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 11.0
+offset_right = -3.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2109860968]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer" unique_id=133619040]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1881886022]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1.347661e-06, 0.3265675, 0.4585848, 1)
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_font_sizes/font_size = 300
+text = "Second Breath"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1046168165]
+layout_mode = 2
+theme_override_constants/separation = 256
+alignment = 1
+
+[node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1871157242]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1799001347]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=410540585]
+layout_mode = 2
+
+[node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=670313562]
+layout_mode = 2
+
+[node name="Seperator4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=123700834]
+layout_mode = 2
+
+[node name="Seperator5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1968400119]
+layout_mode = 2
+
+[node name="Seperator6" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=537594503]
+layout_mode = 2
+
+[node name="Seperator7" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1153825183]
+layout_mode = 2
+
+[node name="Seperator8" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1829458250]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=833515046]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_font_sizes/font_size = 100
+text = "Start Game"
+
+[node name="Option_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1892322306]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=889930738]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_font_sizes/font_size = 100
+text = "Exit Game"
+
+[node name="Options_menu" parent="." unique_id=48153190 instance=ExtResource("3_6qckm")]
+visible = false
+layout_mode = 1
