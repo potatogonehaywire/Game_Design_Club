@@ -26,6 +26,7 @@ var interact_label = false
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
+@onready var cam_collider: RayCast3D = $CamCollider
 
 @onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
@@ -41,6 +42,7 @@ var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn"
 var mouse_position
 var ray_origin
 var ray_direction
+var camray_direction
 var ray_length: float = 50.0
 var close_enough
 
@@ -118,11 +120,27 @@ func _process(_delta: float) -> void:
 		
 	ray_origin = camera.project_ray_origin(Vector2.ZERO)
 	ray_direction = camera.project_ray_normal(mouse_position)
+	cam_collider.target_position = camera_controller.global_position - position
 	
 	# Move the RayCast3D to the camera's position
 	interact_ray.global_position = Global.get_global_position()
 	# Point it in the direction of the mouse
 	interact_ray.target_position = ray_direction * 50.0
+	
+	if cam_collider.is_colliding():
+		var camera_obstacle = cam_collider.get_collider()
+		for obstacle_child in camera_obstacle.find_children("*"):
+			if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
+				obstacle_child.modulate.a = 0.5
+				
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
+	
+	if Global.aggro_enemies.is_empty():
+		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
+	else:
+		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
 	
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
@@ -193,14 +211,7 @@ func _physics_process(_delta: float) -> void:
 			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 	move_and_slide()
-	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 	
-	if Global.aggro_enemies.is_empty():
-		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
-		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
-	else:
-		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
-		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
 #func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	#if body.is_in_group("enemy") && attack.disabled == false:
 		#if body.has_method("upon_hit"): 

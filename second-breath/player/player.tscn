@@ -1286,6 +1286,9 @@ parameters/OneShot/request = 0
 
 [node name="InteractRay" type="RayCast3D" parent="." unique_id=963342766]
 
+[node name="CamCollider" type="RayCast3D" parent="." unique_id=1300638165]
+target_position = Vector3(0, 0, 0)
+
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

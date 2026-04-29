@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://k8ldr1pdbc3j" path="res://3dmodels/generic_island.glb" id="17_wojsv"]
 [ext_resource type="PackedScene" uid="uid://b7fyrv4as4jk5" path="res://3dmodels/mountain.glb" id="18_qy8pf"]
 [ext_resource type="PackedScene" uid="uid://7jlu3kp2x0vj" path="res://3dmodels/generic_island2.glb" id="18_xrfvn"]
-[ext_resource type="Texture2D" uid="uid://cv5wxep8jlb6a" path="res://sprites/environment/pngegg.png" id="19_ddsj8"]
 [ext_resource type="PackedScene" uid="uid://dmdresa0lo8o3" path="res://background/pink_tree.tscn" id="19_qy8pf"]
 [ext_resource type="Texture2D" uid="uid://bnyvgw0tk51fq" path="res://sprites/environment/tree_green.png" id="20_c2frf"]
 
@@ -49,6 +48,11 @@ size = Vector3(2.0761719, 3.1766357, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b7xsl"]
 height = 5.704834
 radius = 1.074707
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrfvn"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qy8pf"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="testscene" type="Node3D" unique_id=1214572928]
 script = ExtResource("1_aneo3")
@@ -389,66 +393,6 @@ modulate = Color(0.30698428, 0.52827585, 0.57128185, 1)
 texture = ExtResource("17_qy8pf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/Gate2" unique_id=571062563]
-transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
-shape = SubResource("BoxShape3D_spr5q")
-
-[node name="House" type="StaticBody3D" parent="Village_LoveBoss" unique_id=726460919]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500008, 8.372487, 18.593185)
-
-[node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/House" unique_id=656179135]
-transform = Transform3D(0.29516986, 0, 0, 0, 0.6989951, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(0.546145, 0.7808787, 0.82858676, 1)
-texture = ExtResource("19_ddsj8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/House" unique_id=1486244118]
-transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
-shape = SubResource("BoxShape3D_spr5q")
-
-[node name="House2" type="StaticBody3D" parent="Village_LoveBoss" unique_id=341197568]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.468702, 8.372487, 14.849808)
-
-[node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/House2" unique_id=1417801219]
-transform = Transform3D(0.29516986, 0, 0, 0, 0.6989951, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(0.546145, 0.7808787, 0.82858676, 1)
-texture = ExtResource("19_ddsj8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/House2" unique_id=1593993802]
-transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
-shape = SubResource("BoxShape3D_spr5q")
-
-[node name="House3" type="StaticBody3D" parent="Village_LoveBoss" unique_id=556138631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.70803, 8.372487, 23.621685)
-
-[node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/House3" unique_id=1966064815]
-transform = Transform3D(0.29516986, 0, 0, 0, 0.6989951, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(0.546145, 0.7808787, 0.82858676, 1)
-texture = ExtResource("19_ddsj8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/House3" unique_id=109371349]
-transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
-shape = SubResource("BoxShape3D_spr5q")
-
-[node name="House4" type="StaticBody3D" parent="Village_LoveBoss" unique_id=123401346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.724907, 8.372487, 20.664574)
-
-[node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/House4" unique_id=547898341]
-transform = Transform3D(0.29516986, 0, 0, 0, 0.6989951, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(0.546145, 0.7808787, 0.82858676, 1)
-texture = ExtResource("19_ddsj8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/House4" unique_id=579634272]
-transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
-shape = SubResource("BoxShape3D_spr5q")
-
-[node name="House5" type="StaticBody3D" parent="Village_LoveBoss" unique_id=763077785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7143035, 8.372487, 16.785038)
-
-[node name="Sprite3D" type="Sprite3D" parent="Village_LoveBoss/House5" unique_id=1296514150]
-transform = Transform3D(0.29516986, 0, 0, 0, 0.6989951, 0, 0, 0, 1, 0, 0, 0)
-modulate = Color(0.546145, 0.7808787, 0.82858676, 1)
-texture = ExtResource("19_ddsj8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Village_LoveBoss/House5" unique_id=548627706]
 transform = Transform3D(2.6, 0, 0, 0, 2.6000001, 0, 0, 0, 2.5999992, -0.120129585, 0.08140898, -0.6306405)
 shape = SubResource("BoxShape3D_spr5q")
 
@@ -838,3 +782,14 @@ id = 14
 [node name="testdummy16" parent="." unique_id=177190763 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 8.136792, -2.872044, 18.657188)
 id = 15
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1231240450]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.6412277, -2.872044, 25.91752)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=733680671]
+transform = Transform3D(30.974945, 0, 0, 0, 19.116137, 0, 0, 0, 4.4509687, 0, 2.315401, 0)
+mesh = SubResource("BoxMesh_xrfvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1469386347]
+transform = Transform3D(30.974945, 0, 0, 0, 19.116137, 0, 0, 0, 4.4509687, 0, 2.315401, 0)
+shape = SubResource("ConcavePolygonShape3D_qy8pf")
