@@ -1260,7 +1260,7 @@ anim_player = NodePath("../WeaponAnimationPlayer")
 
 [node name="cooldown" type="Timer" parent="." unique_id=1327199867]
 
-[node name="rangedCooldown" type="Timer" parent="." unique_id=2088825572]
+[node name="skillCooldown" type="Timer" parent="." unique_id=2088825572]
 
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=1805611559]
 script = SubResource("GDScript_qjkh3")
@@ -1292,4 +1292,4 @@ target_position = Vector3(0, 0, 0)
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
-[connection signal="timeout" from="rangedCooldown" to="." method="_on_ranged_cooldown_timeout"]
+[connection signal="timeout" from="skillCooldown" to="." method="_on_skill_cooldown_timeout"]

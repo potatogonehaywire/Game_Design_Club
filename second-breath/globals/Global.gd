@@ -17,7 +17,7 @@ var isProjectile = false
 var debuff = 0
 var dmgdebuff = 0
 var windup = 2
-var projectileType = 0
+var skillType = 0
 
 var player
 var aggro_enemies = []
@@ -50,8 +50,8 @@ func _process(_delta: float) -> void:
 					enemyHitID.erase(node.get("id"))
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
-		projectileType += 1
-		print(projectileType)
+		skillType += 1
+		print(skillType)
 
 
 func staminaRecover() -> void:

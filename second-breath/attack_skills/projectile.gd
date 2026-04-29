@@ -5,7 +5,7 @@ var speed := 15.0
 var life_timer := 2.0 
 var enemyType = 0
 var isPlayer = false
-var projectileType = Global.projectileType
+var projectileType = Global.skillType
 var explosion = preload("res://attack_skills/explosion.tscn")
 @onready var projectile_sprite: AnimatedSprite3D = $ProjectileSprite
 
@@ -13,12 +13,16 @@ var explosion = preload("res://attack_skills/explosion.tscn")
 #everything from here is for each type of projectile
 var explodes = false
 var healthDrain = false
+var debuff = 0
 
 #Global.debuff not working, to fix. all basic attack work.
 func _ready():
+	if isPlayer == false:
+		projectileType = enemyType
 	match projectileType:
 		0:
 			life_timer = 2.0
+
 			projectile_sprite.set_modulate("ff4b64")
 		1: #basic anger
 			healthDrain = true
@@ -26,6 +30,7 @@ func _ready():
 			if isPlayer == true:
 				Global.debuff = 5
 			projectile_sprite.set_modulate("ff4b64")
+
 		2: #basic fear
 			life_timer = 2.0
 			speed = 10
@@ -33,6 +38,8 @@ func _ready():
 			if isPlayer == true:
 				life_timer = 3.0
 				speed = 13
+
+
 			projectile_sprite.set_modulate("9337ff")
 		3: #basic envy
 			Global.dmgdebuff = 2
@@ -62,7 +69,7 @@ func _ready():
 			pass
 			#Strong buffs(atk+hp) and debuff every enemy you hit(reduce enemy atk)
 		_:
-			Global.projectileType = 0
+			pass
 	print(projectileType)
 	await get_tree().create_timer(life_timer).timeout
 	if explodes == true:
@@ -71,18 +78,6 @@ func _ready():
 		queue_free()
 
 func _physics_process(_delta):
-	if projectileType == 4:
-		if speed > 0:
-			speed -= 0.15
-		elif speed <= 0:
-			speed = 0
-			await get_tree().create_timer(0.1).timeout
-			queue_free()
-	else:
-		if speed > 3.0:
-			speed -= 0.075
-		else:
-			speed -= 0
 	velocity = move_direction * speed
 	move_and_slide()
 
@@ -93,11 +88,16 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 			Global.enemyHitID.append(id)
 			Global.isProjectile = true
 			print(Global.enemyHitID)
-			if Global.projectileType == 6:
-				Global.health += 6
-			elif Global.projectileType == 9:
-				Global.health += 2
-			enemy_hit()
+	elif body.is_in_group("player") && isPlayer == false:
+		#not hitting player, fix later (and also give health to enemies)
+		#also do the same sorta code thing in explosion.gd once it works
+		Global.health -= 10 + debuff
+		print(Global.health)
+		if Global.projectileType == 6:
+			Global.health += 6
+		elif Global.projectileType == 9:
+			Global.health += 2
+		enemy_hit()
 			
 	elif body.is_in_group("player") && isPlayer == false:
 		#not hitting player, fix later (and also give health to enemies)
