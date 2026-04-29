@@ -22,7 +22,7 @@ var interact_label = false
 @onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
 
 @onready var cooldown = $cooldown
-@onready var skillCooldown = $rangedCooldown
+@onready var skillCooldown = $skillCooldown
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
@@ -48,6 +48,9 @@ var close_enough
 var explosion = preload("res://attack_skills/explosion.tscn")
 var explodes = false
 var healthDrain = false
+var sprites_between_cam = []
+var current_obstacle_sprite
+var camera_has_obstacle = false
 
 func _ready() -> void:
 	Global.player = self
@@ -121,11 +124,11 @@ func _process(_delta: float) -> void:
 		else:
 			check_skill()
 
-	if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
-		rangedCooldownOff = false
-		rangedCooldown.start(1)
-		await get_tree().create_timer(Global.windup).timeout
-		shoot()
+	#if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
+		#rangedCooldownOff = false
+		#rangedCooldown.start(1)
+		#await get_tree().create_timer(Global.windup).timeout
+		#shoot()
 
 	
 	if is_inside_tree() == true and get_viewport() != null:
@@ -145,7 +148,23 @@ func _process(_delta: float) -> void:
 		var camera_obstacle = cam_collider.get_collider()
 		for obstacle_child in camera_obstacle.find_children("*"):
 			if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
+				camera_has_obstacle = true
+				current_obstacle_sprite = obstacle_child
 				obstacle_child.modulate.a = 0.5
+				sprites_between_cam.append(obstacle_child)
+				break
+			else:
+				camera_has_obstacle = false
+	else:
+		camera_has_obstacle = false
+	
+	if !camera_has_obstacle:
+		current_obstacle_sprite = null
+
+	for other_obstacle in sprites_between_cam:
+		if other_obstacle != current_obstacle_sprite:
+			other_obstacle.modulate.a = 1
+			sprites_between_cam.remove_at(0)
 				
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 	
@@ -262,17 +281,17 @@ func shoot():
 		#var mouse_position = get_viewport().get_mouse_position()
 		#var ray_origin = camera.project_ray_origin(mouse_position)
 		#var ray_direction = camera.project_ray_normal(mouse_position)
-		var ray_length = 100.0 
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
+		#var ray_length = 100.0 
+		#var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
 
-		var space_state = get_world_3d().direct_space_state
-		var result = space_state.intersect_ray(query)
+		#var space_state = get_world_3d().direct_space_state
+		#var result = space_state.intersect_ray(query)
 
 		var target_point: Vector3
 		var collider = interact_ray.get_collider()
 		var collision_point = interact_ray.get_collision_point()
 		print(collision_point)
-		ray_origin + ray_direction * ray_length
+		#ray_origin + ray_direction * ray_length
 		if collider is Node:
 			if collider.is_in_group("enemy"):
 				target_point = interact_ray.get_collision_normal()
