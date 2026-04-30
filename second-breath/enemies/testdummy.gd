@@ -62,7 +62,6 @@ func upon_hit():
 
 
 func take_damage() -> void:
-	if self.canDamage == true:
 		Global.enemyIsHit = false
 		self.canDamage = false
 		if Global.isProjectile == true:
@@ -83,17 +82,20 @@ func take_damage() -> void:
 			Global.dmgdebuff = 0
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
-			Global.aggro_enemies.remove_at(0)
+			if my_id in Global.aggro_enemies:
+				Global.aggro_enemies.remove_at(0)
 			self.queue_free()
 			print("eurgh")
 		else:
 			print (self.enemyhp)
 			self.canDamage = true
 
+
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = true
 		cooldown.start(2)
+
 
 func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -116,6 +118,7 @@ func _on_projectile_cooldown_timeout() -> void:
 	else:
 		pass
 
+
 func check_skill() -> void:
 	match self.skillType:
 		1: #basic anger
@@ -134,6 +137,7 @@ func check_skill() -> void:
 			debuff = -4
 		_:
 			skillType = 0
+	
 			
 func explode() -> void:
 	var explosion_instance = explosion.instantiate()
@@ -143,3 +147,8 @@ func explode() -> void:
 	Global.debuff = 0
 	await get_tree().create_timer(1).timeout
 	explosion_instance.queue_free()
+
+
+func _on_hurtbox_body_shape_entered(_body_rid: RID, body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
+		if body.is_in_group("player"):
+			take_damage()

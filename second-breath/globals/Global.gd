@@ -51,6 +51,8 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
 		skillType += 1
+		if skillType > 6:
+			skillType = 0
 		print(skillType)
 
 

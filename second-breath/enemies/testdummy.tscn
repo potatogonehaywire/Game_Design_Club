@@ -581,6 +581,7 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.50140846, -0.15151513)
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="ChaseDetectionArea" to="." method="_on_chase_detection_area_body_exited"]
 [connection signal="timeout" from="ProjectileCooldown" to="." method="_on_projectile_cooldown_timeout"]

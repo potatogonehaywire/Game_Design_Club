@@ -124,12 +124,6 @@ func _process(_delta: float) -> void:
 		else:
 			check_skill()
 
-	#if Input.is_action_just_pressed("ranged") && rangedCooldownOff == true:
-		#rangedCooldownOff = false
-		#rangedCooldown.start(1)
-		#await get_tree().create_timer(Global.windup).timeout
-		#shoot()
-
 	
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
@@ -146,15 +140,18 @@ func _process(_delta: float) -> void:
 	
 	if cam_collider.is_colliding():
 		var camera_obstacle = cam_collider.get_collider()
-		for obstacle_child in camera_obstacle.find_children("*"):
-			if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
-				camera_has_obstacle = true
-				current_obstacle_sprite = obstacle_child
-				obstacle_child.modulate.a = 0.5
-				sprites_between_cam.append(obstacle_child)
-				break
-			else:
-				camera_has_obstacle = false
+		if camera_obstacle:
+			for obstacle_child in camera_obstacle.find_children("*"):
+				if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
+					camera_has_obstacle = true
+					current_obstacle_sprite = obstacle_child
+					obstacle_child.modulate.a = 0.5
+					sprites_between_cam.append(obstacle_child)
+					break
+				else:
+					camera_has_obstacle = false
+		else:
+			camera_has_obstacle = false
 	else:
 		camera_has_obstacle = false
 	
@@ -241,7 +238,15 @@ func _physics_process(_delta: float) -> void:
 			velocity.y += jumpspeed
 			jump -= 1
 			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
+	
+	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
+		skillCooldownOff = false
+		if Global.skillType == 0 || Global.skillType == 2:
+			await get_tree().create_timer(Global.windup).timeout
+			shoot()
+		else:
+			check_skill()
+	
 	move_and_slide()
 
 
@@ -307,8 +312,8 @@ func shoot():
 				projectile_instance.global_position = muzzle_location.global_position
 				projectile_instance.move_direction = direction_to_target
 				projectile_instance.isPlayer = true
-	
-	await get_tree().create_timer(Global.windup).timeout
+	skillCooldown.start(1)
+	#await get_tree().create_timer(Global.windup).timeout
 
 
 func interact() -> void:
@@ -373,6 +378,7 @@ func check_skill() -> void:
 		_:
 			Global.skillType = 0
 	use_skill()
+
 
 func use_skill() -> void:
 	if healthDrain == true:
