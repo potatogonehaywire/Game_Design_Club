@@ -46,8 +46,9 @@ func _process(_delta: float) -> void:
 			var f = node.get("id")
 			if f in enemyHitID:
 				if node.has_method("upon_hit"):
-					node.upon_hit()
-					enemyHitID.erase(node.get("id"))
+					node.take_damage()
+					#enemyHitID.erase(node.get("id"))
+				enemyHitID.erase(f)
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
 		skillType += 1

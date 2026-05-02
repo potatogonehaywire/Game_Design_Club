@@ -505,7 +505,7 @@ animations = [{
 size = Vector3(1, 1.05, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
-size = Vector3(2, 5, 1)
+size = Vector3(4, 5, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
 
@@ -1223,20 +1223,18 @@ animation = &"idle_backward"
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1673068153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014974594, -0.019769087, 0.0048724385)
-visible = false
 shape = SubResource("BoxShape3D_hqtel")
 
-[node name="hitbox" type="Area3D" parent="." unique_id=2001868917]
+[node name="hitbox" type="Area3D" parent="." unique_id=2001868917 groups=["playerHurtbox"]]
 
-[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox" unique_id=339407772]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.026, 0.001)
-visible = false
+[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox" unique_id=339407772 groups=["playerHurtbox"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.026, 0.001000002)
 shape = SubResource("BoxShape3D_sweqy")
 debug_color = Color(0.9754197, 0, 0.42305484, 0.41960785)
 
-[node name="AttackHitbox" type="Area3D" parent="." unique_id=1580685210]
+[node name="AttackHitbox" type="Area3D" parent="." unique_id=1580685210 groups=["playerHitbox"]]
 
-[node name="AttackHitboxCollision" type="CollisionShape3D" parent="AttackHitbox" unique_id=1782257117]
+[node name="AttackHitboxCollision" type="CollisionShape3D" parent="AttackHitbox" unique_id=1782257117 groups=["playerHitbox"]]
 shape = SubResource("BoxShape3D_onrkg")
 debug_color = Color(0.14366537, 0.6347878, 0.3525482, 0.41960785)
 

@@ -3,6 +3,7 @@ extends CharacterBody3D
 var canDamage = true
 var my_id = 0
 var isInRange = false
+var meleeInRange = false
 var isHit = false
 @onready var projectile: PackedScene = preload("res://attack_skills/projectile.tscn")
 @onready var cooldown = $ProjectileCooldown
@@ -41,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta: float) -> void:
 	enemy_animation_tree.set("parameters/Idle/blend_position", Vector2(velocity.x,velocity.z))
 	if isHit == true:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		isHit = false
 	if speed < 1:
 		speed += 0.2
@@ -50,7 +51,8 @@ func _process(_delta: float) -> void:
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and isHit == false:
 		isHit = true
-		state_machine.change_state("attack")
+		Global.health -= damage + Global.dmgdebuff
+		health_bar.health_changed()
 
 
 func upon_hit():
@@ -86,7 +88,7 @@ func take_damage() -> void:
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
 			if my_id in Global.aggro_enemies:
-				Global.aggro_enemies.remove_at(0)
+				Global.aggro_enemies.erase(my_id)
 			self.queue_free()
 			print("eurgh")
 		else:
@@ -154,6 +156,17 @@ func explode() -> void:
 	explosion_instance.queue_free()
 
 
-func _on_hurtbox_body_shape_entered(_body_rid: RID, body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
-		if body.is_in_group("player"):
-			take_damage()
+func _on_hurtbox_body_shape_entered(_body_rid: RID, _body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
+	pass
+	#if body.is_in_group("playerHitbox"):
+		#take_damage()
+
+
+func _on_melee_detection_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		meleeInRange = true
+
+
+func _on_melee_detection_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		meleeInRange = false

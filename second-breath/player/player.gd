@@ -55,7 +55,8 @@ var camera_has_obstacle = false
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
-	
+	melee_sprite.visible = false
+		
 
 func _unhandled_input(_event: InputEvent) -> void:
  
@@ -170,13 +171,13 @@ func _physics_process(_delta: float) -> void:
 			jump -= 1
 			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
-	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
-		skillCooldownOff = false
-		if Global.skillType == 0 || Global.skillType == 2:
-			await get_tree().create_timer(Global.windup).timeout
-			shoot()
-		else:
-			check_skill()
+	#if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
+		#skillCooldownOff = false
+		#if Global.skillType == 0 || Global.skillType == 2:
+			#await get_tree().create_timer(Global.windup).timeout
+			#shoot()
+		#else:
+			#check_skill()
 	
 	move_and_slide()
 	
@@ -221,7 +222,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# turn previous obstacles opaque
 	for other_obstacle in sprites_between_cam:
-		if other_obstacle != current_obstacle_sprite:
+		if other_obstacle != current_obstacle_sprite and is_instance_valid(other_obstacle):
 			other_obstacle.modulate.a = 1
 			sprites_between_cam.remove_at(0)
 				
@@ -378,7 +379,7 @@ func check_skill() -> void:
 			Global.debuff = -2
 			skillCooldown.start(1)
 		7: #anger/fear hybrid
-			Global.maxHealth = 80
+			Global.maxHealth = 180
 			skillCooldown.start(1)
 			#Global.weapon += 2, reverse after cooldown.. Global thing for speed and multiply character speed in player script by the global thing
 		8: #fear/envy

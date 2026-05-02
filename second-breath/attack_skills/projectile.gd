@@ -56,7 +56,7 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 		#not hitting player, fix later (and also give health to enemies)
 		#also do the same sorta code thing in explosion.gd once it works
 		Global.health -= 10 + debuff
-		print(Global.health)
+		print("player hp: ", Global.health)
 		#if Global.projectileType == 6:
 			#Global.health += 6
 		#elif Global.projectileType == 9:
