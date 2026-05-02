@@ -76,17 +76,19 @@ func _process(_delta: float) -> void:
 	if Global.health <= 0:
 		Global.health = 100
 		Global.aggro_enemies.clear()
+		# stop all other processes when player dies
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)
 		get_tree().reload_current_scene.call_deferred()
-
+	
 	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && cooldownOff == true:
 		Global.weapon_check()
 		attack.disabled = false
 		Global.stamina -= 10
 		cooldownOff = false
 		attack_hitbox.position = direction * 0.9
+		# change hitbox's sprite rotation based on player's direction
 		match direction:
 			Vector3(1, 0 ,0):
 				attack_hitbox.rotation = Vector3(0,0,0)
@@ -124,27 +126,32 @@ func _process(_delta: float) -> void:
 		else:
 			check_skill()
 
-	
+	# only check mouse position when viewport exists
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
 		
 	#ray_origin = camera.project_ray_origin(Vector2.ZERO)
+	
+	#setup raycast node's origin and direction
 	ray_origin = camera.project_ray_origin(mouse_position)
 	ray_direction = camera.project_ray_normal(mouse_position)
-	cam_collider.target_position = camera_controller.global_position - position
+	cam_collider.target_position = camera_target.global_position - position
 	
 	# Move the RayCast3D to the camera's position
 	interact_ray.global_position = Global.get_global_position()
 	# Point it in the direction of the mouse
 	interact_ray.target_position = ray_direction * 50.0
 	
+	# if something is between camera and the player
 	if cam_collider.is_colliding():
 		var camera_obstacle = cam_collider.get_collider()
 		if camera_obstacle:
+			# find the sprite 3D child of the obstacle
 			for obstacle_child in camera_obstacle.find_children("*"):
 				if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
 					camera_has_obstacle = true
 					current_obstacle_sprite = obstacle_child
+					# turn obstacle semi-transparent
 					obstacle_child.modulate.a = 0.5
 					sprites_between_cam.append(obstacle_child)
 					break
@@ -157,14 +164,18 @@ func _process(_delta: float) -> void:
 	
 	if !camera_has_obstacle:
 		current_obstacle_sprite = null
-
+	
+	# turn previous obstacles opaque
 	for other_obstacle in sprites_between_cam:
 		if other_obstacle != current_obstacle_sprite:
 			other_obstacle.modulate.a = 1
 			sprites_between_cam.remove_at(0)
 				
+	# move camera in the direction of the player's movement
 	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
 	
+	# if enemies are targeting player, change camera's position to look at objects from above
+	# otherwise, return camera position to horizontal
 	if Global.aggro_enemies.is_empty():
 		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
 		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
@@ -274,12 +285,14 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
 	
-
+	
 func _on_cooldown_timeout() -> void:
 	cooldownOff = true
 
+
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
+
 
 func shoot():
 	if talent_tree.visible == false:
@@ -341,6 +354,7 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 			Global.enemyHitID.append(id)
 			enemy_hit()
 
+
 #note make sure to transfer all changes to testdummy as well
 func check_skill() -> void:
 	match Global.skillType:
@@ -392,6 +406,7 @@ func use_skill() -> void:
 	if explodes == true:
 		explode()
 
+
 func explode() -> void:
 	var explosion_instance = explosion.instantiate()
 	add_child(explosion_instance)
@@ -399,6 +414,7 @@ func explode() -> void:
 	Global.debuff = 0
 	await get_tree().create_timer(1).timeout
 	explosion_instance.queue_free()
+
 
 func damage_taken() -> void:
 	health_bar.health_changed()

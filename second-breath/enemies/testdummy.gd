@@ -65,9 +65,9 @@ func take_damage() -> void:
 		Global.enemyIsHit = false
 		self.canDamage = false
 		if Global.isProjectile == true:
-			if Global.projectileType == 5:
+			if Global.skillType == 5:
 					self.speed *= -1
-			elif Global.projectileType == 8:
+			elif Global.skillType == 8:
 				pass
 			else:
 				self.enemyhp -= 10 * Global.ranged + Global.debuff

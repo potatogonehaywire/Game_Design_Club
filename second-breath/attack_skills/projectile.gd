@@ -21,17 +21,17 @@ func _ready():
 		projectileType = enemyType
 	match projectileType:
 		0:
-			life_timer = 2.0
 			projectile_sprite.set_modulate("ff4b64")
+			life_timer = 2.0
 
 		2: #basic fear
+			projectile_sprite.set_modulate("9337ff")
 			life_timer = 2.0
 			speed = 10
 			explodes = true
 			if isPlayer == true:
 				life_timer = 3.0
 				speed = 13
-			projectile_sprite.set_modulate("9337ff")
 		_:
 			pass
 	print(projectileType)
