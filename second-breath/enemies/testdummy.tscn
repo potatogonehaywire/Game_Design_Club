@@ -70,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://derjfm1ueqrsn" path="res://sprites/anger/anger_idle_front/frame0028.png" id="61_ohobb"]
 [ext_resource type="Texture2D" uid="uid://dh2lesnviuw3j" path="res://sprites/anger/anger_idle_front/frame0029.png" id="62_11ku3"]
 [ext_resource type="Texture2D" uid="uid://b8x3f60bjuecc" path="res://sprites/anger/anger_idle_front/frame0030.png" id="63_aguk8"]
+[ext_resource type="Script" uid="uid://cspil4hmrntts" path="res://enemies/enemy_ranged.gd" id="71_c4hip"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1ary"]
 animations = [{
@@ -582,6 +583,9 @@ script = ExtResource("7_vfj3n")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=448052107]
 script = ExtResource("8_cwm40")
+
+[node name="Ranged" type="Node" parent="StateMachine" unique_id=1180849080]
+script = ExtResource("71_c4hip")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1799282770]
 libraries/ = SubResource("AnimationLibrary_c4hip")

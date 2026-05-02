@@ -5,9 +5,8 @@ var my_id = 0
 var isInRange = false
 var meleeInRange = false
 var isHit = false
-@onready var projectile: PackedScene = preload("res://attack_skills/projectile.tscn")
+
 @onready var cooldown = $ProjectileCooldown
-@onready var muzzle_location: Marker3D = $projectileMarkerThing
 
 @export var speed = 1
 @export var id = 0
@@ -26,7 +25,7 @@ var enemyhp = ENEMY_HP_MAX
 var explosion = preload("res://attack_skills/explosion.tscn")
 var explodes = false
 var healthDrain = false
-var skillType = Global.skillType
+#var skillType = Global.skillType
 var debuff = 0
 var dmgdebuff = 0
 var windup = 2
@@ -110,50 +109,38 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_projectile_cooldown_timeout() -> void:
-	pass
-	#if isInRange == true:
-		#var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
-		#print(direction_to_target)
-		#var projectile_instance = projectile.instantiate()
-		#get_tree().current_scene.add_child(projectile_instance)
-#
-		#projectile_instance.global_position = muzzle_location.global_position
-		#projectile_instance.move_direction = direction_to_target
-		#projectile_instance.isPlayer = false
-		#projectile_instance.enemyType = self.enemyType
-		#projectile_instance.debuff = self.debuff
-	#else:
-		#pass
+	if isInRange == true:
+		state_machine.change_state("ranged")
 
 
-func check_skill() -> void:
-	match self.skillType:
-		1: #basic anger
-			healthDrain = true
-			debuff = 3
-		3: #basic envy
-			dmgdebuff = 2
-		4: #max level anger
-			healthDrain = true
-			debuff = 5 
-		5: #max level fear
-			explodes = true
-			debuff = -10 
-		6: #max level envy
-			pass
-			debuff = -4
-		_:
-			skillType = 0
+#func check_skill() -> void:
+	#match self.skillType:
+		#1: #basic anger
+			#healthDrain = true
+			#debuff = 3
+		#3: #basic envy
+			#dmgdebuff = 2
+		#4: #max level anger
+			#healthDrain = true
+			#debuff = 5 
+		#5: #max level fear
+			#explodes = true
+			#debuff = -10 
+		#6: #max level envy
+			#pass
+			#debuff = -4
+		#_:
+			#skillType = 0
 	
 			
-func explode() -> void:
-	var explosion_instance = explosion.instantiate()
-	add_child(explosion_instance)
-	explosion_instance.global_position = self.global_position
-	explosion_instance.isEnemy = true
-	Global.debuff = 0
-	await get_tree().create_timer(1).timeout
-	explosion_instance.queue_free()
+#func explode() -> void:
+	#var explosion_instance = explosion.instantiate()
+	#add_child(explosion_instance)
+	#explosion_instance.global_position = self.global_position
+	#explosion_instance.isEnemy = true
+	#Global.debuff = 0
+	#await get_tree().create_timer(1).timeout
+	#explosion_instance.queue_free()
 
 
 func _on_hurtbox_body_shape_entered(_body_rid: RID, _body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
