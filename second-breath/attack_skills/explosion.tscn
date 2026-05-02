@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3sivi454ohwp"]
 
 [ext_resource type="Script" uid="uid://d1xi1cbp0wbkv" path="res://attack_skills/explosion.gd" id="1_kytmt"]
+[ext_resource type="Texture2D" uid="uid://bbo6ycl5qxbcb" path="res://sprites/weapons/energy_ball_mono/frame0000.png" id="2_yd0y7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_irj5j"]
 radius = 0.1
@@ -11,5 +12,12 @@ script = ExtResource("1_kytmt")
 [node name="explosionRadius" type="CollisionShape3D" parent="." unique_id=1657131492]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 shape = SubResource("SphereShape3D_irj5j")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=103756430]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.34117648)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_yd0y7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

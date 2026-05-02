@@ -91,7 +91,6 @@ script = ExtResource("1_qxf0c")
 
 [node name="ProjectileSprite" type="AnimatedSprite3D" parent="." unique_id=1014983459]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
-modulate = Color(0.9999675, 0.2927625, 0.3922043, 1)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_52qyv")

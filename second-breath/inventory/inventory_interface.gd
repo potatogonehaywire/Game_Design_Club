@@ -4,7 +4,7 @@ signal drop_slot_data(slot_data: SlotData)
 signal force_close
 
 var grabbed_slot_data: SlotData
-var external_inventory_owner
+var external_inventory_owner : Node
 
 @onready var player_inventory: PanelContainer = $PlayerInventory
 @onready var grabbed_slot: PanelContainer = $GrabbedSlot
@@ -27,9 +27,9 @@ func set_equip_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	equip_inventory.set_inventory_data(inventory_data)
 	
-func set_external_inventory(_external_inventory_owner) -> void:
+func set_external_inventory(_external_inventory_owner : Node) -> void:
 	external_inventory_owner = _external_inventory_owner
-	var inventory_data = external_inventory_owner.inventory_data
+	var inventory_data : InventoryData = external_inventory_owner.inventory_data
 	
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	external_inventory.set_inventory_data(inventory_data)
@@ -39,7 +39,7 @@ func set_external_inventory(_external_inventory_owner) -> void:
 
 func clear_external_inventory() -> void:
 	if external_inventory_owner:
-		var inventory_data = external_inventory_owner.inventory_data
+		var inventory_data : InventoryData = external_inventory_owner.inventory_data
 		
 		inventory_data.inventory_interact.disconnect(on_inventory_interact)
 		external_inventory.clear_inventory_data(inventory_data)

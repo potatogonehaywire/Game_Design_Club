@@ -1,6 +1,6 @@
 extends Node
 
-const PickUp = preload("res://item/pick_up/pick_up.tscn")
+const PickUp : PackedScene = preload("res://item/pick_up/pick_up.tscn")
 
 @onready var player: CharacterBody3D = $Player
 @onready var inventory_interface: Control = $UI/InventoryRoot/InventoryInterface
@@ -18,7 +18,7 @@ func _ready() -> void:
 	inventory_interface.force_close.connect(toggle_inventory_root)
 	hot_bar_inventory.set_inventory_data(player.inventory_data)
 	
-	for node in get_tree().get_nodes_in_group("external_inventory"):
+	for node : Node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_root)
 
 
@@ -29,7 +29,7 @@ func toggle_skilltree_interface() -> void:
 	else:
 		hot_bar_inventory.show()
 
-func toggle_inventory_root(external_inventory_owner = null) -> void:
+func toggle_inventory_root(external_inventory_owner : Node = null) -> void:
 	inventory_root.visible = not inventory_root.visible
 	
 	if inventory_root.visible:
@@ -44,12 +44,12 @@ func toggle_inventory_root(external_inventory_owner = null) -> void:
 
 
 func _on_inventory_interface_drop_slot_data(slot_data: SlotData) -> void:
-	var pick_up = PickUp.instantiate()
+	var pick_up : Node = PickUp.instantiate()
 	pick_up.slot_data = slot_data
 	pick_up.position = player.get_drop_position()
 	add_child(pick_up)
 
-func show_interact_hover(visible) -> void:
+func show_interact_hover(visible : bool) -> void:
 	if visible:
 		ui.find_child("InteractLabel").show()
 	else:

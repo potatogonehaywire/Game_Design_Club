@@ -1,26 +1,25 @@
 extends Node
-var maxHealth = 200
-var health = maxHealth
-var stamina = 100
-var stamina_bar
+var maxHealth : float = 200
+var health : float = maxHealth
+var stamina : int = 100
 
-var s = 1
-var weapon = 1
-var equippedWeapon = 1
-var ranged = 1
-var equippedRanged = 1
+var s : int = 1
+var weapon : float = 1.0
+var equippedWeapon : int = 1
+var ranged : float = 1.0
+var equippedRanged : int = 1
 
 
-var enemyHitID = []
+var enemyHitID : Array = []
 var enemyIsHit: bool = false
-var isProjectile = false
-var debuff = 0
-var dmgdebuff = 0
-var windup = 2
-var projectileType = 0
+var isProjectile: bool = false
+var debuff : float = 0
+var dmgdebuff : int = 0
+var windup : int = 2
+var skillType : int = 0
 
-var player
-var aggro_enemies = []
+var player : Player
+var aggro_enemies : Array = []
 
 func use_slot_data(slot_data: SlotData) -> void:
 	slot_data.item_data.use(player)
@@ -42,16 +41,19 @@ func _process(_delta: float) -> void:
 		health = maxHealth
 	
 	if enemyIsHit == true || enemyHitID.size() > 0:
-		for node in get_tree().get_nodes_in_group("enemy"):
-			var f = node.get("id")
+		for node : Node in get_tree().get_nodes_in_group("enemy"):
+			var f: int = node.get("id")
 			if f in enemyHitID:
 				if node.has_method("upon_hit"):
-					node.upon_hit()
-					enemyHitID.erase(node.get("id"))
+					node.take_damage()
+					#enemyHitID.erase(node.get("id"))
+				enemyHitID.erase(f)
 	
 	if Input.is_action_just_pressed("projectileTypeTest"):
-		projectileType += 1
-		print(projectileType)
+		skillType += 1
+		if skillType > 6:
+			skillType = 0
+		print(skillType)
 
 
 func staminaRecover() -> void:

@@ -1,5 +1,5 @@
 extends State
-
+class_name EnemyIdle
 var wait_time: float 
 @onready var enemy: CharacterBody3D = $"../.."
 
