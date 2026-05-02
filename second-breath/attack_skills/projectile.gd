@@ -1,22 +1,22 @@
 extends CharacterBody3D
 
-var move_direction := Vector3.ZERO
-var speed := 15.0
-var life_timer := 2.0 
-var enemyType = 0
-var isPlayer = false
-var projectileType = Global.skillType
-var explosion = preload("res://attack_skills/explosion.tscn")
+var move_direction : Vector3 = Vector3.ZERO
+var speed : float = 15.0
+var life_timer : float = 2.0 
+var enemyType : int = 0
+var isPlayer : bool = false
+var projectileType : int = Global.skillType
+var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
 @onready var projectile_sprite: AnimatedSprite3D = $ProjectileSprite
 
 
 #everything from here is for each type of projectile
-var explodes = false
-var healthDrain = false
-var debuff = 0
+var explodes : bool = false
+var healthDrain : bool = false
+var debuff : float = 0
 
 #Global.debuff not working, to fix. all basic attack work.
-func _ready():
+func _ready() -> void:
 	if isPlayer == false:
 		projectileType = enemyType
 	match projectileType:
@@ -41,14 +41,14 @@ func _ready():
 	else:
 		queue_free()
 
-func _physics_process(_delta):
+func _physics_process(_delta : float) -> void:
 	velocity = move_direction * speed
 	move_and_slide()
 
 func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && isPlayer == true:
 		if body.has_method("upon_hit"): 
-			var id = body.id
+			var id : int = body.id
 			Global.enemyHitID.append(id)
 			Global.isProjectile = true
 			print(Global.enemyHitID)
@@ -70,7 +70,7 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 		body.damage_taken()
 
 func explode() -> void:
-	var explosion_instance = explosion.instantiate()
+	var explosion_instance : Area3D = explosion.instantiate()
 	add_child(explosion_instance)
 	explosion_instance.global_position = self.global_position
 	speed = 0

@@ -2,18 +2,18 @@ class_name MainMenu
 extends Control
 
 #Start Button
-@onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/Start_Button as Button
+@onready var start_button : Button = $MarginContainer/HBoxContainer/VBoxContainer/Start_Button
 #Exit Button
-@onready var exit_button = $MarginContainer/HBoxContainer/VBoxContainer/Exit_Button as Button
+@onready var exit_button : Button = $MarginContainer/HBoxContainer/VBoxContainer/Exit_Button
 #Option button
-@onready var option_button = $MarginContainer/HBoxContainer/VBoxContainer/Option_button as Button
-@onready var option_menu = $Options_menu as OptionsMenu
-@onready var margin_container = $MarginContainer as MarginContainer
+@onready var option_button :Button = $MarginContainer/HBoxContainer/VBoxContainer/Option_button
+@onready var option_menu : OptionsMenu = $Options_menu
+@onready var margin_container : MarginContainer = $MarginContainer
 
-@onready var start_level = preload("res://environment_scenes/map.tscn") as PackedScene
+@onready var start_level: PackedScene = preload("uid://ckk0uk57jofg2")
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	handle_connecting_signal()
 
 

@@ -7,7 +7,7 @@ var states: Dictionary[String, State] = {}
 
 
 func _ready() -> void:
-	for child in get_children():
+	for child : Node in get_children():
 		if child is State:
 			child.state_machine = self
 			states[child.name.to_lower()] = child

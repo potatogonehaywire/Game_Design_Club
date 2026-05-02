@@ -1,19 +1,20 @@
 extends CharacterBody3D
 
-var canDamage = true
-var my_id = 0
-var isInRange = false
-var meleeInRange = false
-var isHit = false
+var canDamage : bool = true
+var my_id : int = 0
+var isInRange : bool = false
+var meleeInRange : bool = false
+var isHit : bool = false
 
-@onready var cooldown = $ProjectileCooldown
 
-@export var speed = 1
-@export var id = 0
-@export var ENEMY_HP_MAX = 30
-var enemyhp = ENEMY_HP_MAX
-@export var damage = 20
-@export var enemyType = 1
+@onready var cooldown: Timer = $ProjectileCooldown
+
+@export var speed : float = 1
+@export var id : int = 0
+@export var ENEMY_HP_MAX : float = 30
+var enemyhp : float = ENEMY_HP_MAX
+@export var damage : int = 20
+@export var enemyType : int = 1
 
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
@@ -22,13 +23,13 @@ var enemyhp = ENEMY_HP_MAX
 @onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
 
 
-var explosion = preload("res://attack_skills/explosion.tscn")
-var explodes = false
-var healthDrain = false
+#var explosion = preload("res://attack_skills/explosion.tscn")
+var explodes : bool = false
+var healthDrain : bool = false
 #var skillType = Global.skillType
-var debuff = 0
-var dmgdebuff = 0
-var windup = 2
+var debuff : int = 0
+var dmgdebuff : int = 0
+var windup : int = 2
 
 func _ready() -> void:
 	starting_location = global_position
@@ -54,12 +55,15 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 		health_bar.health_changed()
 
 
-func upon_hit():
-	my_id = Global.enemyHitID
-	if self.my_id == Global.enemyHitID:
-		if self.enemyhp > 0:
-			take_damage()
-			enemy_health_sprite.enemy_health_changed()
+func upon_hit() -> void:
+	#my_id = Global.enemyHitID
+	#if self.my_id == Global.enemyHitID:
+	#Global.enemyHitID.clear()
+	#Global.enemyHitID.append(my_id)
+	#if self.my_id in Global.enemyHitID:
+	if self.enemyhp > 0.0:
+		take_damage()
+		enemy_health_sprite.enemy_health_changed()
 
 
 func take_damage() -> void:

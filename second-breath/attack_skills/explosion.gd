@@ -1,7 +1,7 @@
 extends Area3D
 
-@onready var eradius = $explosionRadius
-var isEnemy = false
+@onready var eradius : CollisionShape3D = $explosionRadius
+var isEnemy : bool = false
 
 func _ready() -> void:
 	if Global.skillType == 5:
@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if Global.skillType == 5:
 		if body.has_method("upon_hit"): 
-			var id = body.id
+			var id : int = body.id
 			Global.enemyHitID.insert(0, id)
 			print(Global.enemyHitID)
 			Global.enemyIsHit = true
@@ -33,7 +33,7 @@ func _on_body_entered(body: Node3D) -> void:
 		Global.dmgdebuff = 3
 	else:
 		if body.has_method("upon_hit"): 
-			var id = body.id
+			var id : int = body.id
 			Global.enemyHitID.insert(0, id)
 			print(Global.enemyHitID)
 			Global.enemyIsHit = true

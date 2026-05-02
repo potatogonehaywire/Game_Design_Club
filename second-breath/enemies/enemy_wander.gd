@@ -3,7 +3,7 @@ class_name EnemyWander
 
 var wander_direction: Vector3
 var wander_time: float = 0.0 
-var wait_time
+var wait_time : float
 
 @onready var enemy: CharacterBody3D = $"../.."
 

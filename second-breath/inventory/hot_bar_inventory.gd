@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal hot_bar_use(index:int)
 
-const Slot = preload("res://inventory/slot.tscn")
+const Slot: PackedScene = preload("res://inventory/slot.tscn")
 
 @onready var h_box_container: HBoxContainer = $MarginContainer/HBoxContainer
 
@@ -19,11 +19,11 @@ func set_inventory_data(inventory_data: InventoryData) -> void:
 	hot_bar_use.connect(inventory_data.use_slot_data)
 
 func populate_hot_bar(inventory_data: InventoryData) -> void:
-	for child in h_box_container.get_children():
+	for child : Node in h_box_container.get_children():
 		child.queue_free()
 	
-	for slot_data in inventory_data.slot_datas.slice(0,6):
-		var slot = Slot.instantiate()
+	for slot_data : SlotData in inventory_data.slot_datas.slice(0,6):
+		var slot : Node= Slot.instantiate()
 		h_box_container.add_child(slot)
 		
 		if slot_data:

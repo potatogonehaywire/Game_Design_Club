@@ -5,24 +5,24 @@ signal toggle_inventory()
 signal toggle_skilltree()
 signal interact_hover()
 
-const speed = 5
-const jumpspeed = 20
-var jump = 2
-var cooldownOff = true
-var skillCooldownOff = true
-var damaged = null
+const speed : int = 5
+const jumpspeed : int = 20
+var jump : int = 2
+var cooldownOff : bool = true
+var skillCooldownOff : bool = true
+#var damaged = null
 var direction: Vector3
-var bullseye = preload("uid://boe62hylmoryp")
-var interact_label = false
+var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
+var interact_label : bool = false
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
 
-@onready var attack = $AttackHitbox/AttackHitboxCollision
+@onready var attack : CollisionShape3D = $AttackHitbox/AttackHitboxCollision
 @onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
 
-@onready var cooldown = $cooldown
-@onready var skillCooldown = $skillCooldown
+@onready var cooldown : Timer = $cooldown
+@onready var skillCooldown : Timer = $skillCooldown
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
@@ -39,18 +39,18 @@ var interact_label = false
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
 @onready var muzzle_location: Marker3D = $projectileMarkerThing
 @onready var interact_ray: RayCast3D = $InteractRay
-var mouse_position
-var ray_origin
-var ray_direction
-var camray_direction
+var mouse_position : Vector2
+var ray_origin : Vector3
+var ray_direction : Vector3
+var camray_direction : Vector3
 var ray_length: float = 50.0
-var close_enough
-var explosion = preload("res://attack_skills/explosion.tscn")
-var explodes = false
-var healthDrain = false
-var sprites_between_cam = []
-var current_obstacle_sprite
-var camera_has_obstacle = false
+var close_enough : bool
+var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
+var explodes : bool = false
+var healthDrain : bool = false
+var sprites_between_cam : Array = []
+var current_obstacle_sprite : Node
+var camera_has_obstacle : bool = false
 
 func _ready() -> void:
 	Global.player = self
@@ -199,10 +199,10 @@ func _physics_process(_delta: float) -> void:
 	
 	# if something is between camera and the player
 	if cam_collider.is_colliding():
-		var camera_obstacle = cam_collider.get_collider()
+		var camera_obstacle : Node = cam_collider.get_collider()
 		if camera_obstacle:
 			# find the sprite 3D child of the obstacle
-			for obstacle_child in camera_obstacle.find_children("*"):
+			for obstacle_child : Node in camera_obstacle.find_children("*"):
 				if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
 					camera_has_obstacle = true
 					current_obstacle_sprite = obstacle_child
@@ -221,6 +221,8 @@ func _physics_process(_delta: float) -> void:
 		current_obstacle_sprite = null
 	
 	# turn previous obstacles opaque
+	#ignore untyped declaration because other_obstacle could be freed
+	@warning_ignore("untyped_declaration")
 	for other_obstacle in sprites_between_cam:
 		if other_obstacle != current_obstacle_sprite and is_instance_valid(other_obstacle):
 			other_obstacle.modulate.a = 1
@@ -239,11 +241,11 @@ func _physics_process(_delta: float) -> void:
 		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
 	
 	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
+		var collider : Node = interact_ray.get_collider()
 
 		#print(collision_point)
 		if collider is Node:
-			var distance_with_collider = abs(position - collider.global_position) 
+			var distance_with_collider : Vector3 = abs(position - collider.global_position) 
 			if distance_with_collider.x < 3 and distance_with_collider.z < 3:
 				close_enough = true
 			else:
@@ -265,7 +267,7 @@ func _physics_process(_delta: float) -> void:
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
-			var id = body.id
+			var id : int = body.id
 			Global.enemyHitID.append(id)
 			enemy_hit()
 			print(Global.enemyHitID)
@@ -295,7 +297,7 @@ func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
 
 
-func shoot():
+func shoot() -> void:
 	if talent_tree.visible == false:
 		#var mouse_position = get_viewport().get_mouse_position()
 		#var ray_origin = camera.project_ray_origin(mouse_position)
@@ -307,8 +309,8 @@ func shoot():
 		#var result = space_state.intersect_ray(query)
 
 		var target_point: Vector3
-		var collider = interact_ray.get_collider()
-		var collision_point = interact_ray.get_collision_point()
+		var collider : Node = interact_ray.get_collider()
+		var collision_point : Vector3 = interact_ray.get_collision_point()
 		print(collision_point)
 		#ray_origin + ray_direction * ray_length
 		if collider is Node:
@@ -317,9 +319,9 @@ func shoot():
 			else:
 				target_point = interact_ray.get_collision_point()
 
-			var direction_to_target = muzzle_location.global_position.direction_to(target_point).normalized()
+			var direction_to_target : Vector3 = muzzle_location.global_position.direction_to(target_point).normalized()
 			print(direction_to_target)
-			var projectile_instance = ProjectileScene.instantiate()
+			var projectile_instance : Node = ProjectileScene.instantiate()
 			if inventory_root.visible == false:
 				get_tree().current_scene.add_child(projectile_instance)
 	
@@ -332,7 +334,7 @@ func shoot():
 
 func interact() -> void:
 	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
+		var collider : Node = interact_ray.get_collider()
 		if collider.has_method("player_interact"):
 			collider.player_interact()
 
@@ -351,7 +353,7 @@ func heal(heal_value:int) -> void:
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 	if area.is_in_group("enemyHurtbox") && attack.disabled == false:
 		if area.get_parent().has_method("upon_hit"): 
-			var id = area.get_parent().id
+			var id : int = area.get_parent().id
 			Global.enemyHitID.append(id)
 			enemy_hit()
 
@@ -372,7 +374,7 @@ func check_skill() -> void:
 			skillCooldown.start(1)
 		5: #max level fear
 			explodes = true
-			Global.debuff = -10 * Global.ranged
+			Global.debuff = -10.0 * Global.ranged
 			skillCooldown.start(1)
 		6: #max level envy
 			pass
@@ -409,7 +411,7 @@ func use_skill() -> void:
 
 
 func explode() -> void:
-	var explosion_instance = explosion.instantiate()
+	var explosion_instance : Node = explosion.instantiate()
 	add_child(explosion_instance)
 	explosion_instance.global_position = self.global_position
 	Global.debuff = 0

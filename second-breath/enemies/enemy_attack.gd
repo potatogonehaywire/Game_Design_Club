@@ -1,8 +1,8 @@
 extends State
 class_name EnemyAttack
 
-var wait_time = 0.1
-var attack_time = 1
+var wait_time : float = 0.1
+var attack_time : float = 1
 var player: CharacterBody3D = null
 var attack_direction: Vector3
 @onready var enemy: CharacterBody3D = $"../.."

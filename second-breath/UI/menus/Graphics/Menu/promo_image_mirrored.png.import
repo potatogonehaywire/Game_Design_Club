@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://563gjb8k2sut"
-path="res://.godot/imported/frame0002.png-eb30fb82f04048425b2b7628ba730388.ctex"
+uid="uid://11arhajctsf7"
+path="res://.godot/imported/promo_image_mirrored.png-41be3a133149379210863778a67024d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/weapons/energy_ball_small/frame0002.png"
-dest_files=["res://.godot/imported/frame0002.png-eb30fb82f04048425b2b7628ba730388.ctex"]
+source_file="res://UI/menus/Graphics/Menu/promo_image_mirrored.png"
+dest_files=["res://.godot/imported/promo_image_mirrored.png-41be3a133149379210863778a67024d5.ctex"]
 
 [params]
 

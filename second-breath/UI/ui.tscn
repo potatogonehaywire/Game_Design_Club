@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b11j6h46pc8b7"]
 
-[ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://skill_tree/talent_tree.tscn" id="1_cbfhl"]
+[ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
 [ext_resource type="Script" uid="uid://06uq0uv2jxlk" path="res://inventory/inventory_interface.gd" id="3_h81ot"]
 [ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="4_6rr40"]
 [ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="5_0w6e5"]
 [ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="6_o2jkc"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://menus/Micro5-Regular.ttf" id="7_4fiuh"]
+[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://UI/menus/Micro5-Regular.ttf" id="7_4fiuh"]
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
 [ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
 
