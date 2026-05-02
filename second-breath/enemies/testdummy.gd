@@ -67,6 +67,7 @@ func take_damage() -> void:
 		if Global.isProjectile == true:
 			if Global.skillType == 5:
 					self.speed *= -1
+					upon_hit()
 			elif Global.skillType == 8:
 				pass
 			else:
@@ -76,10 +77,12 @@ func take_damage() -> void:
 				Global.debuff = 0
 				Global.dmgdebuff = 0
 				Global.windup = 2
+				upon_hit()
 		else:
 			self.enemyhp -= 15 * Global.weapon + Global.debuff
 			Global.debuff = 0
 			Global.dmgdebuff = 0
+			upon_hit()
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
 			if my_id in Global.aggro_enemies:
@@ -89,6 +92,7 @@ func take_damage() -> void:
 		else:
 			print (self.enemyhp)
 			self.canDamage = true
+			upon_hit()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
@@ -104,19 +108,20 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_projectile_cooldown_timeout() -> void:
-	if isInRange == true:
-		var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
-		print(direction_to_target)
-		var projectile_instance = projectile.instantiate()
-		get_tree().current_scene.add_child(projectile_instance)
-
-		projectile_instance.global_position = muzzle_location.global_position
-		projectile_instance.move_direction = direction_to_target
-		projectile_instance.isPlayer = false
-		projectile_instance.enemyType = self.enemyType
-		projectile_instance.debuff = self.debuff
-	else:
-		pass
+	pass
+	#if isInRange == true:
+		#var direction_to_target = (global_position.direction_to(Global.get_global_position())).normalized()
+		#print(direction_to_target)
+		#var projectile_instance = projectile.instantiate()
+		#get_tree().current_scene.add_child(projectile_instance)
+#
+		#projectile_instance.global_position = muzzle_location.global_position
+		#projectile_instance.move_direction = direction_to_target
+		#projectile_instance.isPlayer = false
+		#projectile_instance.enemyType = self.enemyType
+		#projectile_instance.debuff = self.debuff
+	#else:
+		#pass
 
 
 func check_skill() -> void:

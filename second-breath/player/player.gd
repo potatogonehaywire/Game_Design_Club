@@ -125,86 +125,6 @@ func _process(_delta: float) -> void:
 			shoot()
 		else:
 			check_skill()
-
-	# only check mouse position when viewport exists
-	if is_inside_tree() == true and get_viewport() != null:
-		mouse_position = get_viewport().get_mouse_position()
-		
-	#ray_origin = camera.project_ray_origin(Vector2.ZERO)
-	
-	#setup raycast node's origin and direction
-	ray_origin = camera.project_ray_origin(mouse_position)
-	ray_direction = camera.project_ray_normal(mouse_position)
-	cam_collider.target_position = camera_target.global_position - position
-	
-	# Move the RayCast3D to the camera's position
-	interact_ray.global_position = Global.get_global_position()
-	# Point it in the direction of the mouse
-	interact_ray.target_position = ray_direction * 50.0
-	
-	# if something is between camera and the player
-	if cam_collider.is_colliding():
-		var camera_obstacle = cam_collider.get_collider()
-		if camera_obstacle:
-			# find the sprite 3D child of the obstacle
-			for obstacle_child in camera_obstacle.find_children("*"):
-				if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
-					camera_has_obstacle = true
-					current_obstacle_sprite = obstacle_child
-					# turn obstacle semi-transparent
-					obstacle_child.modulate.a = 0.5
-					sprites_between_cam.append(obstacle_child)
-					break
-				else:
-					camera_has_obstacle = false
-		else:
-			camera_has_obstacle = false
-	else:
-		camera_has_obstacle = false
-	
-	if !camera_has_obstacle:
-		current_obstacle_sprite = null
-	
-	# turn previous obstacles opaque
-	for other_obstacle in sprites_between_cam:
-		if other_obstacle != current_obstacle_sprite:
-			other_obstacle.modulate.a = 1
-			sprites_between_cam.remove_at(0)
-				
-	# move camera in the direction of the player's movement
-	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, 0,velocity.z + 3)*0.5, 0.04)
-	
-	# if enemies are targeting player, change camera's position to look at objects from above
-	# otherwise, return camera position to horizontal
-	if Global.aggro_enemies.is_empty():
-		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
-		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
-	else:
-		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
-		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
-	
-	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-
-		#print(collision_point)
-		if collider is Node:
-			var distance_with_collider = abs(position - collider.global_position) 
-			if distance_with_collider.x < 3 and distance_with_collider.z < 3:
-				close_enough = true
-			else:
-				close_enough = false
-			if collider.is_in_group("enemy"):
-				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(25,25))
-			elif collider.is_in_group("external_inventory") and close_enough:
-				interact_hover.emit(true)
-				interact_label = true
-				Input.set_custom_mouse_cursor(null)
-			else:
-				interact_label = false
-				interact_hover.emit(false)
-				Input.set_custom_mouse_cursor(null)
-		else:
-			Input.set_custom_mouse_cursor(null)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -259,6 +179,86 @@ func _physics_process(_delta: float) -> void:
 			check_skill()
 	
 	move_and_slide()
+	
+	# only check mouse position when viewport exists
+	if is_inside_tree() == true and get_viewport() != null:
+		mouse_position = get_viewport().get_mouse_position()
+		
+	#ray_origin = camera.project_ray_origin(Vector2.ZERO)
+	
+	#setup raycast node's origin and direction
+	ray_origin = camera.project_ray_origin(mouse_position)
+	ray_direction = camera.project_ray_normal(mouse_position)
+	cam_collider.target_position = camera_target.global_position - position
+	
+	# Move the RayCast3D to the camera's position
+	interact_ray.global_position = Global.get_global_position()
+	# Point it in the direction of the mouse
+	interact_ray.target_position = ray_direction * 50.0
+	
+	# if something is between camera and the player
+	if cam_collider.is_colliding():
+		var camera_obstacle = cam_collider.get_collider()
+		if camera_obstacle:
+			# find the sprite 3D child of the obstacle
+			for obstacle_child in camera_obstacle.find_children("*"):
+				if obstacle_child is AnimatedSprite3D or obstacle_child is Sprite3D:
+					camera_has_obstacle = true
+					current_obstacle_sprite = obstacle_child
+					# turn obstacle semi-transparent
+					obstacle_child.modulate.a = 0.5
+					sprites_between_cam.append(obstacle_child)
+					break
+				else:
+					camera_has_obstacle = false
+		else:
+			camera_has_obstacle = false
+	else:
+		camera_has_obstacle = false
+	
+	if !camera_has_obstacle:
+		current_obstacle_sprite = null
+	
+	# turn previous obstacles opaque
+	for other_obstacle in sprites_between_cam:
+		if other_obstacle != current_obstacle_sprite:
+			other_obstacle.modulate.a = 1
+			sprites_between_cam.remove_at(0)
+				
+	# move camera in the direction of the player's movement
+	camera_controller.position = lerp(camera_controller.position,position + Vector3(velocity.x, velocity.y * 0.7,velocity.z + 3)*0.5, 0.04)
+	
+	# if enemies are targeting player, change camera's position to look at objects from above
+	# otherwise, return camera position to horizontal
+	if Global.aggro_enemies.is_empty():
+		camera_target.position = lerp(camera_target.position, Vector3(0, 1.2, 4), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-15, 0, 0), 0.03)
+	else:
+		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
+		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
+	
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+
+		#print(collision_point)
+		if collider is Node:
+			var distance_with_collider = abs(position - collider.global_position) 
+			if distance_with_collider.x < 3 and distance_with_collider.z < 3:
+				close_enough = true
+			else:
+				close_enough = false
+			if collider.is_in_group("enemy"):
+				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(25,25))
+			elif collider.is_in_group("external_inventory") and close_enough:
+				interact_hover.emit(true)
+				interact_label = true
+				Input.set_custom_mouse_cursor(null)
+			else:
+				interact_label = false
+				interact_hover.emit(false)
+				Input.set_custom_mouse_cursor(null)
+		else:
+			Input.set_custom_mouse_cursor(null)
 
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
