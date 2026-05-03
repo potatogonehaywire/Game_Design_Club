@@ -5,7 +5,6 @@ var wait_time : float = 0.1
 var attack_time : float = 1
 var player: CharacterBody3D = null
 var attack_direction: Vector3
-@onready var enemy: CharacterBody3D = $"../.."
 @onready var hitbox: Area3D = $"../../Hitbox"
 
 func reset_time() -> void:
@@ -18,7 +17,7 @@ func enter() -> void:
 
 
 func attacking() -> void:
-	attack_direction = enemy.position.direction_to(Global.player.position)
+	attack_direction = parent.position.direction_to(Global.player.position)
 	hitbox.position = attack_direction * Vector3(5,2,5)
 
 func exit() -> void:
@@ -32,7 +31,7 @@ func update(delta:float) -> void:
 		if attack_time <= 0:
 			hitbox.position = Vector3(0,0,0)
 			reset_time()
-	if enemy.meleeInRange == false and attack_time == 1:
+	if parent.meleeInRange == false and attack_time == 1:
 		state_machine.change_state("pursuit")
 
 

@@ -10,7 +10,6 @@ const jumpspeed : int = 20
 var jump : int = 2
 var cooldownOff : bool = true
 var skillCooldownOff : bool = true
-#var damaged = null
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
@@ -34,11 +33,13 @@ var interact_label : bool = false
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: StateMachine = $PlayerStateMachine
 
 
 var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
 @onready var muzzle_location: Marker3D = $projectileMarkerThing
 @onready var interact_ray: RayCast3D = $InteractRay
+
 var mouse_position : Vector2
 var ray_origin : Vector3
 var ray_direction : Vector3
@@ -51,6 +52,10 @@ var healthDrain : bool = false
 var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
+
+@export var basicSkill : int
+@export var ESkill : int
+@export var QSkill : int
 
 func _ready() -> void:
 	Global.player = self
@@ -129,47 +134,12 @@ func _process(_delta: float) -> void:
 	
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("left"):
-		velocity.x = -speed
-		direction.x = -1
-	elif Input.is_action_pressed("right"):
-		velocity.x = speed
-		direction.x = 1
-	else:
-		velocity.x = 0
-		if velocity.z != 0:
-			direction.x = 0
 		
-	if Input.is_action_pressed("forward"):
-		velocity.z = -speed
-		direction.z = -1
-
-	elif Input.is_action_pressed("backward"):
-		velocity.z = speed
-		direction.z = 1
-
-	else:
-		velocity.z = 0
-		if velocity.x != 0:
-			direction.z = 0
-		
-	if is_on_floor():
+	if is_on_floor() and state_machine.return_current_state() != "jump":
 		velocity.y = 0
 		jump = 2
-		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
-			Global.stamina -= 15
-			velocity.y += jumpspeed
-			jump -= 1
-			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			
 	else:
 		velocity.y -= 1
-		if Input.is_action_just_pressed("jump") && jump >= 1 && Global.stamina >= 15:
-			Global.stamina -= 15
-			velocity.y = 0
-			velocity.y += jumpspeed
-			jump -= 1
-			animation_tree.set("parameters/OneShot 2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
 	#if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
 		#skillCooldownOff = false

@@ -1,6 +1,6 @@
 extends Node
 class_name State 
-
+@onready var parent: CharacterBody3D = $"../.."
 
 var state_machine: StateMachine
 

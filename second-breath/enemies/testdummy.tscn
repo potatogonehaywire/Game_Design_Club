@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqixxrkol83k1" path="res://enemies/enemy_health_sprite.tscn" id="3_0u52l"]
 [ext_resource type="Texture2D" uid="uid://blgsu3gmjxj1q" path="res://sprites/anger/anger_idle_back/frame0001.png" id="3_5xnn4"]
 [ext_resource type="Texture2D" uid="uid://b2p1ht2inoejq" path="res://sprites/anger/anger_idle_back/frame0002.png" id="4_gjf5q"]
-[ext_resource type="Script" uid="uid://dspv3bgoeph0y" path="res://enemies/enemy_state_machine.gd" id="4_t1ary"]
+[ext_resource type="Script" uid="uid://dspv3bgoeph0y" path="res://enemies/state_machine.gd" id="4_t1ary"]
 [ext_resource type="Texture2D" uid="uid://b1ork50romked" path="res://sprites/anger/anger_idle_back/frame0003.png" id="5_5ryew"]
 [ext_resource type="Script" uid="uid://cn7j5sh51g2qv" path="res://enemies/enemy_attack.gd" id="5_qmg4j"]
 [ext_resource type="Script" uid="uid://c7evj218bewb1" path="res://enemies/enemy_pursuit.gd" id="6_fap38"]
@@ -292,7 +292,7 @@ radius = 5.421875
 height = 1.6477051
 radius = 1.2045898
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8m6mp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c4hip"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_c4hip"]
@@ -563,7 +563,7 @@ wait_time = 10.0
 
 [node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 5.1063757, 0)
-texture = SubResource("ViewportTexture_8m6mp")
+texture = SubResource("ViewportTexture_c4hip")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1656563775 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_t1ary")

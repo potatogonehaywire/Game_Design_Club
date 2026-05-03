@@ -37,3 +37,7 @@ func change_state(new_state_name: String) -> void:
 	new_state.enter()
 	
 	current_state = new_state 
+
+func return_current_state() -> String:
+	var current_state_name : String = states.find_key(current_state)
+	return current_state_name
