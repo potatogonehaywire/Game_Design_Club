@@ -11,9 +11,12 @@ func update(_delta:float) -> void:
 	var vDirection : float= Input.get_axis("forward", "backward")
 	if hDirection != 0 or vDirection != 0:
 		state_machine.change_state("walk")
-	elif Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
+	
+	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
 		state_machine.change_state("jump")
-
+	
+	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
+		state_machine.change_state("melee")
 func physics_update(_delta:float) -> void:
 	pass
 

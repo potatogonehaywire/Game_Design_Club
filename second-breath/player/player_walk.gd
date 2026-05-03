@@ -36,8 +36,12 @@ func physics_update(_delta:float) -> void:
 	
 	if parent.velocity.x == 0 and parent.velocity.z == 0:
 		state_machine.change_state("idle")
-	elif Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
+		
+	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
 		state_machine.change_state("jump")
+	
+	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
+		state_machine.change_state("melee")
 
 func handle_input(_delta:float) -> void:
 	pass

@@ -87,42 +87,6 @@ func _process(_delta: float) -> void:
 		set_physics_process(false)
 		set_process_input(false)
 		get_tree().reload_current_scene.call_deferred()
-	
-	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && cooldownOff == true:
-		Global.weapon_check()
-		attack.disabled = false
-		Global.stamina -= 10
-		cooldownOff = false
-		attack_hitbox.position = direction * 0.9
-		# change hitbox's sprite rotation based on player's direction
-		match direction:
-			Vector3(1, 0 ,0):
-				attack_hitbox.rotation = Vector3(0,0,0)
-			Vector3(1, 0, 1):
-				attack_hitbox.rotation = Vector3(-PI/2,0,0)
-			Vector3(0, 0 ,1):
-				attack_hitbox.rotation = Vector3(PI/2,0,0)
-			Vector3(-1, 0, 1):
-				attack_hitbox.rotation = Vector3(-PI/2,PI,0)
-			Vector3(-1, 0 ,0):
-				attack_hitbox.rotation = Vector3(0,PI,0)
-			Vector3(1, 0, -1):
-				attack_hitbox.rotation = Vector3(PI/2,0,0)
-			Vector3(-1, 0, -1):
-				attack_hitbox.rotation = Vector3(PI/2,PI,0)
-			Vector3(0, 0, -1):
-				attack_hitbox.rotation = Vector3(-PI/2,0,0)
-			_:
-				attack_hitbox.rotation = Vector3(0,0,0)
-				
-		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		melee_sprite.visible = true
-			
-		await get_tree().create_timer(1).timeout
-		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
-		melee_sprite.visible = false
-		attack.disabled = true
-		cooldown.start(0.5)
 
 	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
 		skillCooldownOff = false
