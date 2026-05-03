@@ -27,17 +27,11 @@ var interact_label : bool = false
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
 
-@onready var inventory_root: Control = $"../UI/InventoryRoot"
 @onready var talent_tree: TalentTree = $"../UI/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $PlayerStateMachine
 
-
-var ProjectileScene: PackedScene = preload("res://attack_skills/projectile.tscn")
-@onready var muzzle_location: Marker3D = $projectileMarkerThing
 @onready var interact_ray: RayCast3D = $InteractRay
 
 var mouse_position : Vector2
@@ -53,9 +47,11 @@ var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
 
-@export var basicSkill : int
+# left click, E and Q skill
+@export var LSkill : int
 @export var ESkill : int
 @export var QSkill : int
+var lastSkill : int
 
 func _ready() -> void:
 	Global.player = self
@@ -96,14 +92,6 @@ func _physics_process(_delta: float) -> void:
 		jump = 2
 	else:
 		velocity.y -= 1
-	
-	#if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
-		#skillCooldownOff = false
-		#if Global.skillType == 0 || Global.skillType == 2:
-			#await get_tree().create_timer(Global.windup).timeout
-			#shoot()
-		#else:
-			#check_skill()
 	
 	move_and_slide()
 	
@@ -223,10 +211,6 @@ func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
 
 
-func shoot() -> void:
-	pass
-
-
 func interact() -> void:
 	if interact_ray.is_colliding():
 		var collider : Node = interact_ray.get_collider()
@@ -251,67 +235,6 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 			var id : int = area.get_parent().id
 			Global.enemyHitID.append(id)
 			enemy_hit()
-
-
-#note make sure to transfer all changes to testdummy as well
-func check_skill() -> void:
-	match Global.skillType:
-		1: #basic anger
-			healthDrain = true
-			Global.debuff = 5
-			skillCooldown.start(1)
-		3: #basic envy
-			Global.dmgdebuff = 3
-			skillCooldown.start(1)
-		4: #max level anger
-			healthDrain = true
-			Global.debuff = 8
-			skillCooldown.start(1)
-		5: #max level fear
-			explodes = true
-			Global.debuff = -10.0 * Global.ranged
-			skillCooldown.start(1)
-		6: #max level envy
-			pass
-			Global.debuff = -2
-			skillCooldown.start(1)
-		7: #anger/fear hybrid
-			Global.maxHealth = 180
-			skillCooldown.start(1)
-			#Global.weapon += 2, reverse after cooldown.. Global thing for speed and multiply character speed in player script by the global thing
-		8: #fear/envy
-			pass
-			skillCooldown.start(1)
-			#make bom go boom but no dmg but debuff
-		9: #anger/envy
-			pass
-			skillCooldown.start(1)
-			#Strong buffs(atk+hp) and debuff every enemy you hit(reduce enemy atk)
-		_:
-			Global.skillType = 0
-	use_skill()
-
-
-func use_skill() -> void:
-	if healthDrain == true:
-		if Global.skillType == 1:
-			Global.health -= 10
-		if Global.skillType == 4:
-			Global.health -= 20
-			print (Global.health)
-			healthDrain = false
-	Global.enemyIsHit = true
-	if explodes == true:
-		explode()
-
-
-func explode() -> void:
-	var explosion_instance : Node = explosion.instantiate()
-	add_child(explosion_instance)
-	explosion_instance.global_position = self.global_position
-	Global.debuff = 0
-	await get_tree().create_timer(1).timeout
-	explosion_instance.queue_free()
 
 
 func damage_taken() -> void:

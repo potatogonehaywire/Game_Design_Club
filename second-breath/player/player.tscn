@@ -102,6 +102,7 @@
 [ext_resource type="Script" uid="uid://cxfm6yj564lk0" path="res://player/player_walk.gd" id="99_vhicv"]
 [ext_resource type="Script" uid="uid://dh501u1rgx6mh" path="res://player/player_melee.gd" id="101_hrakr"]
 [ext_resource type="Script" uid="uid://dynojuma72jys" path="res://player/player_ranged.gd" id="102_wsa1w"]
+[ext_resource type="Script" uid="uid://cry3ntgqll3e0" path="res://player/player_check_skill.gd" id="103_2s0vo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -1210,8 +1211,9 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"One
 script = ExtResource("1_rkbax")
 inventory_data = ExtResource("2_yw30f")
 equip_inventory_data = ExtResource("3_yw30f")
-ESkill = 1
-QSkill = 2
+LSkill = 1
+ESkill = 2
+QSkill = 3
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
@@ -1313,6 +1315,9 @@ script = ExtResource("101_hrakr")
 
 [node name="Ranged" type="Node" parent="PlayerStateMachine" unique_id=1821602513]
 script = ExtResource("102_wsa1w")
+
+[node name="CheckSkill" type="Node" parent="PlayerStateMachine" unique_id=2134684287]
+script = ExtResource("103_2s0vo")
 
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]

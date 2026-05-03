@@ -35,24 +35,19 @@ func enter() -> void:
 			attack_hitbox.rotation = Vector3(0,0,0)
 	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	melee_sprite.visible = true
-		
 	await get_tree().create_timer(1).timeout
 	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	melee_sprite.visible = false
 	attack.disabled = true
-	parent.cooldown.start(0.5)
-
+	
 func exit() -> void:
-	pass
+	parent.cooldown.start(0.5)
 
 func update(_delta:float) -> void:
 	var hDirection : float = Input.get_axis("left", "right")
 	var vDirection : float= Input.get_axis("forward", "backward")
-
+	
 	if attack.disabled:
-		if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
-			state_machine.change_state("jump")
-			
 		if hDirection == 0 and vDirection == 0:
 			state_machine.change_state("idle")
 		else:

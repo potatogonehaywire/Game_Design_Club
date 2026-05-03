@@ -6,6 +6,8 @@ const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
 @onready var inventory_root: Control = $"../../../UI/InventoryRoot"
 
 func enter() -> void:
+	print("RANGED")
+	parent.skillCooldownOff = false
 	if talent_tree.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()

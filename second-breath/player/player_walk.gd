@@ -34,19 +34,22 @@ func physics_update(_delta:float) -> void:
 		if parent.velocity.x != 0:
 			parent.direction.z = 0
 	
-	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
-		parent.skillCooldownOff = false
-		if Global.skillType == 0 || Global.skillType == 2:
-			await get_tree().create_timer(Global.windup).timeout
-			state_machine.change_state("ranged")
-		else:
-			state_machine.change_state("melee")
+	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.cooldownOff == true:
+		parent.lastSkill = parent.QSkill
+		state_machine.change_state("checkskill")
+		
+	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
+		parent.lastSkill = parent.LSkill
+		state_machine.change_state("checkskill")
 		
 	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
 		state_machine.change_state("jump")
 	
-	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
-		state_machine.change_state("melee")
+	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
+		#if Global.skillType == 0 || Global.skillType == 2:
+			#await get_tree().create_timer(Global.windup).timeout
+		parent.lastSkill = parent.ESkill
+		state_machine.change_state("checkskill")
 	
 	if parent.velocity.x == 0 and parent.velocity.z == 0:
 		state_machine.change_state("idle")
