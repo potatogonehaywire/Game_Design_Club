@@ -88,14 +88,6 @@ func _process(_delta: float) -> void:
 		set_process_input(false)
 		get_tree().reload_current_scene.call_deferred()
 
-	if Input.is_action_just_pressed("skill") && skillCooldownOff == true:
-		skillCooldownOff = false
-		if Global.skillType == 0 || Global.skillType == 2:
-			await get_tree().create_timer(Global.windup).timeout
-			shoot()
-		else:
-			check_skill()
-	
 
 func _physics_process(_delta: float) -> void:
 		
@@ -232,38 +224,7 @@ func _on_skill_cooldown_timeout() -> void:
 
 
 func shoot() -> void:
-	if talent_tree.visible == false:
-		#var mouse_position = get_viewport().get_mouse_position()
-		#var ray_origin = camera.project_ray_origin(mouse_position)
-		#var ray_direction = camera.project_ray_normal(mouse_position)
-		#var ray_length = 100.0 
-		#var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
-
-		#var space_state = get_world_3d().direct_space_state
-		#var result = space_state.intersect_ray(query)
-
-		var target_point: Vector3
-		var collider : Node = interact_ray.get_collider()
-		var collision_point : Vector3 = interact_ray.get_collision_point()
-		print(collision_point)
-		#ray_origin + ray_direction * ray_length
-		if collider is Node:
-			if collider.is_in_group("enemy"):
-				target_point = interact_ray.get_collision_normal()
-			else:
-				target_point = interact_ray.get_collision_point()
-
-			var direction_to_target : Vector3 = muzzle_location.global_position.direction_to(target_point).normalized()
-			print(direction_to_target)
-			var projectile_instance : Node = ProjectileScene.instantiate()
-			if inventory_root.visible == false:
-				get_tree().current_scene.add_child(projectile_instance)
-	
-				projectile_instance.global_position = muzzle_location.global_position
-				projectile_instance.move_direction = direction_to_target
-				projectile_instance.isPlayer = true
-	skillCooldown.start(1)
-	#await get_tree().create_timer(Global.windup).timeout
+	pass
 
 
 func interact() -> void:
