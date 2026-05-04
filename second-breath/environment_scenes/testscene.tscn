@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bpu5jbnqrkoy7"]
+
+[ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_r6pyn"]
+[ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="2_fvmrd"]
+[ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="4_t5rxo"]
+[ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="5_lpvm5"]
+[ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="10_t5rxo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mdrg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jotil"]
+size = Vector3(10.020996, 1.0464478, 6.9675293)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
+
+[sub_resource type="Sky" id="Sky_44gc5"]
+sky_material = SubResource("ProceduralSkyMaterial_jotil")
+
+[sub_resource type="Environment" id="Environment_612pj"]
+background_mode = 2
+sky = SubResource("Sky_44gc5")
+
+[node name="testscene" type="Node3D" unique_id=1214572928]
+script = ExtResource("1_r6pyn")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1044421380]
+transform = Transform3D(4.075, 0, 0, 0, 4.075, 0, 0, 0, 4.075, 0, -1.5888016, 0)
+
+[node name="floorshape" type="MeshInstance3D" parent="floor" unique_id=875642947]
+transform = Transform3D(9.736645, 0, 0, 0, 1, 0, 0, 0, 6.895491, -0.0015132427, -0.09752458, 0.022745728)
+mesh = SubResource("BoxMesh_8mdrg")
+
+[node name="floorcollision" type="CollisionShape3D" parent="floor" unique_id=1198127828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09082031, -0.029563308, 0.0030517578)
+shape = SubResource("BoxShape3D_jotil")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=297983494]
+environment = SubResource("Environment_612pj")
+
+[node name="testdummy" parent="." unique_id=35917985 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.052557, 0.94868326, 0)
+
+[node name="testdummy2" parent="." unique_id=505480189 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.1123185, 0.94868326, -2.3087618)
+id = 1
+
+[node name="testdummy3" parent="." unique_id=157571338 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.5710044, 0.94868326, -1.0471704)
+
+[node name="testdummy4" parent="." unique_id=2050969600 instance=ExtResource("2_fvmrd")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.4615283, 0.94868326, -3.4619524)
+id = 3
+
+[node name="Enemies" type="Node" parent="." unique_id=1799270182]
+
+[node name="Chest" parent="." unique_id=647030195 instance=ExtResource("4_t5rxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.19232523, 0.587754)
+
+[node name="Player" parent="." unique_id=1436769523 instance=ExtResource("10_t5rxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4199739, 1.0424606, 1.5792758)
+
+[node name="UI" parent="." unique_id=725296579 instance=ExtResource("5_lpvm5")]
