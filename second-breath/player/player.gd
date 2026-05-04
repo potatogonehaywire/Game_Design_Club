@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-signal toggle_inventory()
 signal toggle_skilltree()
 signal interact_hover()
 
@@ -14,9 +13,6 @@ var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
 
-@export var inventory_data: InventoryData
-@export var equip_inventory_data: InventoryDataEquip
-
 @onready var attack : CollisionShape3D = $AttackHitbox/AttackHitboxCollision
 @onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
 
@@ -26,8 +22,7 @@ var interact_label : bool = false
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
-
-@onready var talent_tree: TalentTree = $"../UI/talent_tree"
+@onready var talent_tree: TalentTree = $"../UI/UIRoot/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
@@ -63,9 +58,6 @@ func _unhandled_input(_event: InputEvent) -> void:
  
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	
-	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
