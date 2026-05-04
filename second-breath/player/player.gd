@@ -86,7 +86,6 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-		
 	if is_on_floor() and state_machine.return_current_state() != "jump":
 		velocity.y = 0
 		jump = 2
@@ -99,15 +98,13 @@ func _physics_process(_delta: float) -> void:
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
 		
-	#ray_origin = camera.project_ray_origin(Vector2.ZERO)
-	
 	#setup raycast node's origin and direction
 	ray_origin = camera.project_ray_origin(mouse_position)
 	ray_direction = camera.project_ray_normal(mouse_position)
 	cam_collider.target_position = camera_target.global_position - position
 	
 	# Move the RayCast3D to the camera's position
-	interact_ray.global_position = Global.get_global_position()
+	interact_ray.global_position = camera_target.global_position
 	# Point it in the direction of the mouse
 	interact_ray.target_position = ray_direction * 50.0
 	
