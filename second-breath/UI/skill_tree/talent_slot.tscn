@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item/item_atlas.tres" id="1_koksw"]
 [ext_resource type="Script" uid="uid://b8jshi3ba5cl2" path="res://UI/skill_tree/talent_slot.gd" id="2_1kuqh"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://UI/menus/Micro5-Regular.ttf" id="2_xqaru"]
 [ext_resource type="Script" uid="uid://gr33gpu0js8i" path="res://UI/skill_tree/talent_line.gd" id="3_4dqs8"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_lw025"]
 
 [node name="TalentSlot" type="TextureButton" unique_id=1273088684]
 z_index = 1
@@ -30,7 +30,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_xqaru")
+theme_override_fonts/font = ExtResource("3_lw025")
 theme_override_font_sizes/font_size = 13
 text = "
 0/3"

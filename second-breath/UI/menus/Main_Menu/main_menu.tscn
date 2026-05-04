@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pfmxgqe0eut7" path="res://UI/menus/Main_Menu/main_menu.gd" id="1_jht8a"]
 [ext_resource type="Texture2D" uid="uid://11arhajctsf7" path="res://UI/menus/Graphics/Menu/promo_image_mirrored.png" id="2_by2mg"]
 [ext_resource type="PackedScene" uid="uid://bkxh3tdpimpiu" path="res://UI/menus/Option_Menu/options.tscn" id="3_6qckm"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://UI/menus/Micro5-Regular.ttf" id="3_xjol7"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_gj40y"]
 
 [node name="Main_Menu" type="Control" unique_id=86582445]
 layout_mode = 3
@@ -52,7 +52,7 @@ theme_override_colors/font_outline_color = Color(1.347661e-06, 0.3265675, 0.4585
 theme_override_constants/shadow_offset_x = 12
 theme_override_constants/shadow_offset_y = 12
 theme_override_constants/outline_size = 50
-theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_fonts/font = ExtResource("3_gj40y")
 theme_override_font_sizes/font_size = 300
 text = "Second Breath"
 horizontal_alignment = 1
@@ -93,23 +93,26 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=833515046]
+texture_filter = 1
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_fonts/font = ExtResource("3_gj40y")
 theme_override_font_sizes/font_size = 100
 text = "Start Game"
 
 [node name="Option_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1892322306]
+texture_filter = 1
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_fonts/font = ExtResource("3_gj40y")
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=889930738]
+texture_filter = 1
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_xjol7")
+theme_override_fonts/font = ExtResource("3_gj40y")
 theme_override_font_sizes/font_size = 100
 text = "Exit Game"
 

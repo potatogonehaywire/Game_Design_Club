@@ -31,7 +31,6 @@ func update(_delta:float) -> void:
 		
 func physics_update(_delta:float) -> void:
 	
-	
 	if Input.is_action_pressed("left"):
 		parent.velocity.x = -parent.speed
 		parent.direction.x = -1

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bgk2gd1h7m3o" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dlati3a8dxit6" path="res://sprites/kolita/kolita_walk.png" id="2_g1dw6"]
-[ext_resource type="Resource" uid="uid://bsqnnijn6ig64" path="res://player/player_inventory.tres" id="2_yw30f"]
-[ext_resource type="Resource" uid="uid://bo3taghxsbrr7" path="res://player/player_equip.tres" id="3_yw30f"]
 [ext_resource type="Texture2D" uid="uid://dxmte0ud1ngx7" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0000.png" id="4_anp34"]
 [ext_resource type="Texture2D" uid="uid://dgej3ajffknud" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0001.png" id="5_jdjat"]
 [ext_resource type="Texture2D" uid="uid://dferadgbjanva" path="res://sprites/kolita/melee_backward/frame0000.png" id="5_knn7v"]
@@ -1209,8 +1207,6 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"One
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
-inventory_data = ExtResource("2_yw30f")
-equip_inventory_data = ExtResource("3_yw30f")
 LSkill = 1
 ESkill = 2
 QSkill = 8

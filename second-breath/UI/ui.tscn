@@ -2,16 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://UI/menus/Micro5-Regular.ttf" id="7_4fiuh"]
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
 [ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_h81ot"]
-font = ExtResource("7_4fiuh")
-font_size = 30
-outline_size = 5
-outline_color = Color(0.15179357, 0.08936966, 0.54960394, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiium"]
 bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
@@ -48,24 +44,28 @@ script = ExtResource("2_4fiuh")
 [node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
 layout_mode = 1
 
-[node name="InteractLabel" type="Label" parent="." unique_id=1223076594]
+[node name="InteractLabel" type="Label" parent="." unique_id=307289589]
+texture_filter = 1
 offset_left = 39.0
 offset_top = 160.0
-offset_right = 103.0
-offset_bottom = 177.0
+offset_right = 79.0
+offset_bottom = 183.0
+theme_override_colors/font_outline_color = Color(0.11511584, 3.4269095e-05, 0.42940018, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 64
 text = "F: Interact"
-label_settings = SubResource("LabelSettings_h81ot")
-horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_nm1m0")
 script = ExtResource("8_h81ot")
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=199650519]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -296.0
-offset_top = 33.0
-offset_right = -11.0
-offset_bottom = 47.0
+offset_left = -411.0
+offset_top = 32.0
+offset_right = -34.0
+offset_bottom = 59.0
 grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
@@ -76,10 +76,10 @@ script = ExtResource("7_2qbci")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -295.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = 26.0
+offset_left = -582.0
+offset_top = 72.0
+offset_right = -34.0
+offset_bottom = 104.0
 grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
