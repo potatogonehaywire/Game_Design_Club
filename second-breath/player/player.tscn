@@ -1213,7 +1213,7 @@ inventory_data = ExtResource("2_yw30f")
 equip_inventory_data = ExtResource("3_yw30f")
 LSkill = 1
 ESkill = 2
-QSkill = 3
+QSkill = 8
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true

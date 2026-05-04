@@ -14,7 +14,7 @@ var isHit : bool = false
 @export var ENEMY_HP_MAX : float = 50.0
 var enemyhp : float = ENEMY_HP_MAX
 @export var damage : int = 20
-@export var enemyType : int = 1
+@export var enemyType : int = 0
 
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
@@ -113,24 +113,24 @@ func _on_projectile_cooldown_timeout() -> void:
 		state_machine.change_state("ranged")
 
 
-#func check_skill() -> void:
-	#match self.skillType:
-		#1: #basic anger
-			#healthDrain = true
-			#debuff = 3
-		#3: #basic envy
-			#dmgdebuff = 2
-		#4: #max level anger
-			#healthDrain = true
-			#debuff = 5 
-		#5: #max level fear
-			#explodes = true
-			#debuff = -10 
-		#6: #max level envy
-			#pass
-			#debuff = -4
-		#_:
-			#skillType = 0
+func check_skill() -> void:
+	match self.enemyType:
+		1: #basic anger
+			healthDrain = true
+			debuff = 3
+		3: #basic envy
+			dmgdebuff = 2
+		4: #max level anger
+			healthDrain = true
+			debuff = 5 
+		5: #max level fear
+			explodes = true
+			debuff = -10 
+		6: #max level envy
+			pass
+			debuff = -4
+		_:
+			enemyType = 0
 	
 			
 #func explode() -> void:

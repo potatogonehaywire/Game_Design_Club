@@ -6,13 +6,10 @@ const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
 @onready var inventory_root: Control = $"../../../UI/InventoryRoot"
 
 func enter() -> void:
-	print("RANGED")
 	parent.skillCooldownOff = false
 	if talent_tree.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()
-		var collision_point : Vector3 = interact_ray.get_collision_point()
-		print(collision_point)
 		#ray_origin + ray_direction * ray_length
 		if collider is Node:
 			if collider.is_in_group("enemy"):
@@ -24,8 +21,8 @@ func enter() -> void:
 			print(direction_to_target)
 			var projectile_instance : Node = ProjectileScene.instantiate()
 			if inventory_root.visible == false:
+				projectile_instance.get_projectile_type(parent.lastSkill)
 				get_tree().current_scene.add_child(projectile_instance)
-	
 				projectile_instance.global_position = muzzle_location.global_position
 				projectile_instance.move_direction = direction_to_target
 				projectile_instance.isPlayer = true

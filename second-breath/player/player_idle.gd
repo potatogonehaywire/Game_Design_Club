@@ -1,4 +1,5 @@
 extends State
+@onready var animation_tree: AnimationTree = $"../../AnimationTree"
 
 func enter() -> void:
 	pass
@@ -7,6 +8,8 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
+	animation_tree.set("parameters/StateMachine/Idle/blend_position", Vector2(parent.direction.x, parent.direction.z))
+	
 	var hDirection : float = Input.get_axis("left", "right")
 	var vDirection : float= Input.get_axis("forward", "backward")
 	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:

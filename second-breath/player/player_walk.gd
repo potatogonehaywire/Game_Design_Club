@@ -1,4 +1,5 @@
 extends State
+@onready var animation_tree: AnimationTree = $"../../AnimationTree"
 
 func enter() -> void:
 	pass
@@ -7,7 +8,7 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
-	pass
+	animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(parent.direction.x, parent.direction.z))
 
 func physics_update(_delta:float) -> void:
 	if Input.is_action_pressed("left"):

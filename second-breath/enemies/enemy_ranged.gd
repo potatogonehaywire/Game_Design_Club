@@ -11,12 +11,12 @@ func enter() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	var direction_to_target : Vector3 = (parent.global_position.direction_to(Global.get_global_position())).normalized()
 	var projectile_instance : CharacterBody3D = projectile.instantiate()
+	projectile_instance.get_projectile_type(parent.enemyType)
 	get_tree().current_scene.add_child(projectile_instance)
-
 	projectile_instance.global_position = muzzle_location.global_position
 	projectile_instance.move_direction = direction_to_target
 	projectile_instance.isPlayer = false
-	projectile_instance.enemyType = parent.enemyType
+	#projectile_instance.enemyType = parent.enemyType
 	projectile_instance.debuff = parent.debuff
 
 func exit() -> void:
