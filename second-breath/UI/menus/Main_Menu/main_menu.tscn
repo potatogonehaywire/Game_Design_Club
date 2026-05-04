@@ -114,6 +114,7 @@ theme_override_font_sizes/font_size = 100
 text = "Exit Game"
 
 [node name="Options_menu" parent="." unique_id=48153190 instance=ExtResource("3_6qckm")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -122,3 +123,5 @@ offset_left = 523.5
 offset_top = 658.5
 offset_right = 877.5
 offset_bottom = 658.5
+grow_horizontal = 1
+grow_vertical = 1
