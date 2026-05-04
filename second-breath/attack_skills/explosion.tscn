@@ -9,15 +9,15 @@ radius = 0.1
 [node name="explosion" type="Area3D" unique_id=1299193810]
 script = ExtResource("1_kytmt")
 
-[node name="explosionRadius" type="CollisionShape3D" parent="." unique_id=1657131492]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
-shape = SubResource("SphereShape3D_irj5j")
-
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=103756430]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+transform = Transform3D(3.0000002, 0, 0, 0, 3.0000002, 0, 0, 0, 3.0000002, 0, 0, 0)
 modulate = Color(1, 1, 1, 0.34117648)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_yd0y7")
+
+[node name="explosionRadius" type="CollisionShape3D" parent="." unique_id=1657131492]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+shape = SubResource("SphereShape3D_irj5j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

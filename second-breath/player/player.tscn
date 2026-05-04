@@ -96,6 +96,13 @@
 [ext_resource type="Texture2D" uid="uid://bch2w8w7e13xd" path="res://sprites/weapons/spear_side/frame0009.png" id="85_rnncm"]
 [ext_resource type="Texture2D" uid="uid://b3cka1dq7o5g5" path="res://sprites/weapons/spear_side/frame0010.png" id="86_nj2w7"]
 [ext_resource type="Texture2D" uid="uid://batscwfwughie" path="res://sprites/weapons/spear_side/frame0011.png" id="87_iojyt"]
+[ext_resource type="Script" uid="uid://dspv3bgoeph0y" path="res://enemies/state_machine.gd" id="97_rnncm"]
+[ext_resource type="Script" uid="uid://co8pthrvfa6ee" path="res://player/player_idle.gd" id="98_iojyt"]
+[ext_resource type="Script" uid="uid://bh0i0hsr8npqu" path="res://player/player_jump.gd" id="99_hrakr"]
+[ext_resource type="Script" uid="uid://cxfm6yj564lk0" path="res://player/player_walk.gd" id="99_vhicv"]
+[ext_resource type="Script" uid="uid://dh501u1rgx6mh" path="res://player/player_melee.gd" id="101_hrakr"]
+[ext_resource type="Script" uid="uid://dynojuma72jys" path="res://player/player_ranged.gd" id="102_wsa1w"]
+[ext_resource type="Script" uid="uid://cry3ntgqll3e0" path="res://player/player_check_skill.gd" id="103_2s0vo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -1204,6 +1211,9 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"One
 script = ExtResource("1_rkbax")
 inventory_data = ExtResource("2_yw30f")
 equip_inventory_data = ExtResource("3_yw30f")
+LSkill = 1
+ESkill = 2
+QSkill = 8
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
@@ -1286,6 +1296,28 @@ parameters/OneShot/request = 0
 
 [node name="CamCollider" type="RayCast3D" parent="." unique_id=1300638165]
 target_position = Vector3(0, 0, 0)
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1163426395 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("97_rnncm")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="PlayerStateMachine" unique_id=1717289953]
+script = ExtResource("98_iojyt")
+
+[node name="Jump" type="Node" parent="PlayerStateMachine" unique_id=1263818886]
+script = ExtResource("99_hrakr")
+
+[node name="Walk" type="Node" parent="PlayerStateMachine" unique_id=1947982783]
+script = ExtResource("99_vhicv")
+
+[node name="Melee" type="Node" parent="PlayerStateMachine" unique_id=258301290]
+script = ExtResource("101_hrakr")
+
+[node name="Ranged" type="Node" parent="PlayerStateMachine" unique_id=1821602513]
+script = ExtResource("102_wsa1w")
+
+[node name="CheckSkill" type="Node" parent="PlayerStateMachine" unique_id=2134684287]
+script = ExtResource("103_2s0vo")
 
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]

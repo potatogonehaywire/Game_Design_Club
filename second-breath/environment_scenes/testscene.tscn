@@ -46,7 +46,6 @@ id = 1
 
 [node name="testdummy3" parent="." unique_id=157571338 instance=ExtResource("2_fvmrd")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.5710044, 0.94868326, -1.0471704)
-id = 2
 
 [node name="testdummy4" parent="." unique_id=2050969600 instance=ExtResource("2_fvmrd")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.4615283, 0.94868326, -3.4619524)

@@ -2,7 +2,6 @@ extends State
 class_name EnemyReturn
 
 var player: CharacterBody3D = null
-@onready var enemy: CharacterBody3D = $"../.."
 
 func enter() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -11,19 +10,19 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
-	if enemy.isInRange == true:
+	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
 
 func physics_update(_delta:float) -> void:
-	if enemy.is_on_floor():
-		enemy.velocity.y = 0
+	if parent.is_on_floor():
+		parent.velocity.y = 0
 	else:
-		enemy.velocity.y -= 3
+		parent.velocity.y -= 3
 	
-	#if enemy.isInRange == true:
-		#enemy.velocity = Vector3.ZERO
-	enemy.velocity = enemy.global_position.direction_to(enemy.starting_location) * enemy.speed
-	if enemy.global_position.distance_squared_to(enemy.starting_location) < 5:
+	#if parent.isInRange == true:
+		#parent.velocity = Vector3.ZERO
+	parent.velocity = parent.global_position.direction_to(parent.starting_location) * parent.speed
+	if parent.global_position.distance_squared_to(parent.starting_location) < 5:
 		state_machine.change_state("idle")
 	#else:
 		#velocity.x = 0

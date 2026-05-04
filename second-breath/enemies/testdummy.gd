@@ -11,10 +11,10 @@ var isHit : bool = false
 
 @export var speed : float = 1
 @export var id : int = 0
-@export var ENEMY_HP_MAX : float = 30
+@export var ENEMY_HP_MAX : float = 50.0
 var enemyhp : float = ENEMY_HP_MAX
 @export var damage : int = 20
-@export var enemyType : int = 1
+@export var enemyType : int = 0
 
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
@@ -72,7 +72,6 @@ func take_damage() -> void:
 		if Global.isProjectile == true:
 			if Global.skillType == 5:
 					self.speed *= -1
-					upon_hit()
 			elif Global.skillType == 8:
 				pass
 			else:
@@ -82,12 +81,10 @@ func take_damage() -> void:
 				Global.debuff = 0
 				Global.dmgdebuff = 0
 				Global.windup = 2
-				upon_hit()
 		else:
 			self.enemyhp -= 15 * Global.weapon + Global.debuff
 			Global.debuff = 0
 			Global.dmgdebuff = 0
-			upon_hit()
 		if self.enemyhp <= 0:
 			Global.enemyIsHit = false
 			if my_id in Global.aggro_enemies:
@@ -97,7 +94,6 @@ func take_damage() -> void:
 		else:
 			print (self.enemyhp)
 			self.canDamage = true
-			upon_hit()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
@@ -117,24 +113,24 @@ func _on_projectile_cooldown_timeout() -> void:
 		state_machine.change_state("ranged")
 
 
-#func check_skill() -> void:
-	#match self.skillType:
-		#1: #basic anger
-			#healthDrain = true
-			#debuff = 3
-		#3: #basic envy
-			#dmgdebuff = 2
-		#4: #max level anger
-			#healthDrain = true
-			#debuff = 5 
-		#5: #max level fear
-			#explodes = true
-			#debuff = -10 
-		#6: #max level envy
-			#pass
-			#debuff = -4
-		#_:
-			#skillType = 0
+func check_skill() -> void:
+	match self.enemyType:
+		1: #basic anger
+			healthDrain = true
+			debuff = 3
+		3: #basic envy
+			dmgdebuff = 2
+		4: #max level anger
+			healthDrain = true
+			debuff = 5 
+		5: #max level fear
+			explodes = true
+			debuff = -10 
+		6: #max level envy
+			pass
+			debuff = -4
+		_:
+			enemyType = 0
 	
 			
 #func explode() -> void:

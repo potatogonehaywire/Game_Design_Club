@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 			var f: int = node.get("id")
 			if f in enemyHitID:
 				if node.has_method("upon_hit"):
-					node.take_damage()
+					node.upon_hit()
 					#enemyHitID.erase(node.get("id"))
 				enemyHitID.erase(f)
 	
@@ -69,6 +69,7 @@ func weapon_check() -> void:
 		weapon = 1
 	elif equippedWeapon == 2:
 		weapon = 1.5
+
 
 func ranged_weapon_check() -> void:
 	if equippedRanged == 1:
