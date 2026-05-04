@@ -7,7 +7,7 @@ extends Control
 @onready var exit_button : Button = $MarginContainer/HBoxContainer/VBoxContainer/Exit_Button
 #Option button
 @onready var option_button :Button = $MarginContainer/HBoxContainer/VBoxContainer/Option_button
-@onready var option_menu : OptionsMenu = $Options_menu
+@onready var option_menu: OptionsMenu = $Option_Menu
 @onready var margin_container : MarginContainer = $MarginContainer
 
 @onready var start_level: PackedScene = preload("uid://ckk0uk57jofg2")

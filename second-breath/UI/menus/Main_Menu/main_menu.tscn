@@ -113,7 +113,6 @@ theme_override_fonts/font = ExtResource("3_xjol7")
 theme_override_font_sizes/font_size = 100
 text = "Exit Game"
 
-[node name="Options_menu" parent="." unique_id=48153190 instance=ExtResource("3_6qckm")]
+[node name="Option_Menu" parent="." unique_id=48153190 instance=ExtResource("3_6qckm")]
 visible = false
 layout_mode = 1
-script = null

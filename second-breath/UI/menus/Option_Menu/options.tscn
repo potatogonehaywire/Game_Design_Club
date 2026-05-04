@@ -4,6 +4,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_8wglx"]
 font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
 
 [node name="Options" type="Control" unique_id=48153190]
 layout_mode = 3
