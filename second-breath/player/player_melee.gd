@@ -6,6 +6,7 @@ extends State
 
 
 func enter() -> void:
+	# player stops moving when attacking, player would slide around otherwise
 	parent.velocity.x = 0
 	parent.velocity.z = 0
 	Global.weapon_check()
@@ -13,23 +14,23 @@ func enter() -> void:
 	Global.stamina -= 10
 	parent.cooldownOff = false
 	attack_hitbox.position = parent.direction * 0.9
-		# change hitbox's sprite rotation based on player's direction
+	# change hitbox's sprite rotation based on player's direction
 	match parent.direction:
-		Vector3(1, 0 ,0):
+		Vector3(1, 0 ,0): #right
 			attack_hitbox.rotation = Vector3(0,0,0)
-		Vector3(1, 0, 1):
+		Vector3(1, 0, 1): #backwardright
 			attack_hitbox.rotation = Vector3(-PI/2,0,0)
-		Vector3(0, 0 ,1):
+		Vector3(0, 0 ,1): #backwards
 			attack_hitbox.rotation = Vector3(PI/2,0,0)
-		Vector3(-1, 0, 1):
+		Vector3(-1, 0, 1): #backwardleft
 			attack_hitbox.rotation = Vector3(-PI/2,PI,0)
-		Vector3(-1, 0 ,0):
+		Vector3(-1, 0 ,0): #left
 			attack_hitbox.rotation = Vector3(0,PI,0)
-		Vector3(1, 0, -1):
+		Vector3(1, 0, -1): #forwardright
 			attack_hitbox.rotation = Vector3(PI/2,0,0)
-		Vector3(-1, 0, -1):
+		Vector3(-1, 0, -1): #forwardleft
 			attack_hitbox.rotation = Vector3(PI/2,PI,0)
-		Vector3(0, 0, -1):
+		Vector3(0, 0, -1): #forward
 			attack_hitbox.rotation = Vector3(-PI/2,0,0)
 		_:
 			attack_hitbox.rotation = Vector3(0,0,0)
@@ -44,6 +45,7 @@ func exit() -> void:
 	parent.cooldown.start(0.5)
 
 func update(_delta:float) -> void:
+	# check if player uses WASD
 	var hDirection : float = Input.get_axis("left", "right")
 	var vDirection : float= Input.get_axis("forward", "backward")
 	

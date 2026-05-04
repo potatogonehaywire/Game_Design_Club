@@ -18,7 +18,7 @@ func jump() -> void:
 func update(delta:float) -> void:
 	delayTime -= delta
 	if delayTime <= 0:
-		if parent.velocity.y == 0:
+		if parent.is_on_floor():
 			if parent.velocity == Vector3.ZERO:
 				state_machine.change_state("idle")
 			else:
@@ -37,7 +37,4 @@ func update(delta:float) -> void:
 		state_machine.change_state("checkskill")
 
 func physics_update(_delta:float) -> void:
-	pass
-
-func handle_input(_delta:float) -> void:
 	pass

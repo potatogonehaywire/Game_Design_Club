@@ -47,13 +47,8 @@ func physics_update(_delta:float) -> void:
 		state_machine.change_state("jump")
 	
 	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
-		#if Global.skillType == 0 || Global.skillType == 2:
-			#await get_tree().create_timer(Global.windup).timeout
 		parent.lastSkill = parent.ESkill
 		state_machine.change_state("checkskill")
 	
 	if parent.velocity.x == 0 and parent.velocity.z == 0:
 		state_machine.change_state("idle")
-
-func handle_input(_delta:float) -> void:
-	pass

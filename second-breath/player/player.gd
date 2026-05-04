@@ -77,6 +77,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if Global.health <= 0:
 		Global.health = 100
+		# stop combat mode
 		Global.aggro_enemies.clear()
 		# stop all other processes when player dies
 		set_process(false)
@@ -98,7 +99,7 @@ func _physics_process(_delta: float) -> void:
 	if is_inside_tree() == true and get_viewport() != null:
 		mouse_position = get_viewport().get_mouse_position()
 		
-	#setup raycast node's origin and direction
+	#setup cam_collider raycast node's origin and direction
 	ray_origin = camera.project_ray_origin(mouse_position)
 	ray_direction = camera.project_ray_normal(mouse_position)
 	cam_collider.target_position = camera_target.global_position - position
@@ -154,7 +155,6 @@ func _physics_process(_delta: float) -> void:
 	if interact_ray.is_colliding():
 		var collider : Node = interact_ray.get_collider()
 
-		#print(collision_point)
 		if collider is Node:
 			var distance_with_collider : Vector3 = abs(position - collider.global_position) 
 			if distance_with_collider.x < 3 and distance_with_collider.z < 3:
@@ -162,7 +162,7 @@ func _physics_process(_delta: float) -> void:
 			else:
 				close_enough = false
 			if collider.is_in_group("enemy"):
-				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(25,25))
+				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
 			elif collider.is_in_group("external_inventory") and close_enough:
 				interact_hover.emit(true)
 				interact_label = true

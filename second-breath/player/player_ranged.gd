@@ -10,7 +10,6 @@ func enter() -> void:
 	if talent_tree.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()
-		#ray_origin + ray_direction * ray_length
 		if collider is Node:
 			if collider.is_in_group("enemy"):
 				target_point = interact_ray.get_collision_normal()
@@ -27,12 +26,12 @@ func enter() -> void:
 				projectile_instance.move_direction = direction_to_target
 				projectile_instance.isPlayer = true
 	parent.skillCooldown.start(1)
-	#await get_tree().create_timer(Global.windup).timeout
 
 func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
+	# check if player used WASD
 	var hDirection : float = Input.get_axis("left", "right")
 	var vDirection : float= Input.get_axis("forward", "backward")
 

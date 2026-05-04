@@ -3,7 +3,6 @@ extends CharacterBody3D
 var move_direction : Vector3 = Vector3.ZERO
 var speed : float = 15.0
 var life_timer : float = 2.0 
-#var enemyType : int = 0
 var isPlayer : bool = false
 var projectileType : int = 0
 var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
@@ -52,6 +51,7 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy") && isPlayer == true:
 		if body.has_method("upon_hit"): 
 			var id : int = body.id
+			Global.enemyIsHit = true
 			Global.enemyHitID.append(id)
 			Global.isProjectile = true
 			print(Global.enemyHitID)
