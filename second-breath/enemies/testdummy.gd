@@ -30,6 +30,7 @@ var healthDrain : bool = false
 var debuff : int = 0
 var dmgdebuff : int = 0
 var windup : int = 2
+var gotdmgDebuff : int = 0
 
 func _ready() -> void:
 	starting_location = global_position
@@ -46,21 +47,19 @@ func _process(_delta: float) -> void:
 		isHit = false
 	if speed < 1:
 		speed += 0.2
+	if gotdmgDebuff != 0:
+		await get_tree().create_timer(10).timeout
+		gotdmgDebuff = 0
 
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and isHit == false:
 		isHit = true
-		Global.health -= damage + Global.dmgdebuff
+		Global.health -= damage + gotdmgDebuff
 		health_bar.health_changed()
 
 
 func upon_hit() -> void:
-	#my_id = Global.enemyHitID
-	#if self.my_id == Global.enemyHitID:
-	#Global.enemyHitID.clear()
-	#Global.enemyHitID.append(my_id)
-	#if self.my_id in Global.enemyHitID:
 	if self.enemyhp > 0.0:
 		take_damage()
 		enemy_health_sprite.enemy_health_changed()
@@ -69,18 +68,17 @@ func upon_hit() -> void:
 func take_damage() -> void:
 		Global.enemyIsHit = false
 		self.canDamage = false
+		gotdmgDebuff = Global.dmgdebuff
 		if Global.isProjectile == true:
 			if Global.skillType == 5:
-					self.speed *= -1
+				self.speed = -16
+				self.enemyhp -= 10 * Global.ranged + Global.ebuff
 			elif Global.skillType == 8:
 				pass
 			else:
 				self.enemyhp -= 10 * Global.ranged + Global.debuff
-				Global.isProjectile = false
 				isHit = true
-				Global.debuff = 0
-				Global.dmgdebuff = 0
-				Global.windup = 2
+				Global.isProjectile = false
 		else:
 			self.enemyhp -= 15 * Global.weapon + Global.debuff
 			Global.debuff = 0

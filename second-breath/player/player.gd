@@ -75,6 +75,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
+	Global.skillType = lastSkill
+	
+	if skillCooldownOff == false:
+		skillCooldown.start()
+	
 	if Global.health <= 0:
 		Global.health = 100
 		# stop combat mode
@@ -182,19 +187,10 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 			Global.enemyHitID.append(id)
 			enemy_hit()
 			print(Global.enemyHitID)
-			if Global.skillType == 6:
+			if lastSkill == 6:
 				Global.health += 6
-			elif Global.skillType == 9:
+			elif lastSkill == 9:
 				Global.health += 2
-
-	
-#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("enemy") && attack.disabled == false:
-		#if body.has_method("upon_hit"): 
-			#var id = body.id
-			#Global.enemyHitID.append(id)
-			#enemy_hit()
-
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true

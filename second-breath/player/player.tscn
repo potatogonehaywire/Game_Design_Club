@@ -1212,7 +1212,7 @@ script = ExtResource("1_rkbax")
 inventory_data = ExtResource("2_yw30f")
 equip_inventory_data = ExtResource("3_yw30f")
 LSkill = 1
-ESkill = 2
+ESkill = 5
 QSkill = 8
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]

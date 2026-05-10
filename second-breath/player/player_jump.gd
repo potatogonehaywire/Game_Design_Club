@@ -24,6 +24,9 @@ func update(delta:float) -> void:
 			else:
 				state_machine.change_state("walk")
 	
+	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
+		jump()
+	
 	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.cooldownOff == true:
 		parent.lastSkill = parent.QSkill
 		state_machine.change_state("checkskill")
@@ -37,4 +40,26 @@ func update(delta:float) -> void:
 		state_machine.change_state("checkskill")
 
 func physics_update(_delta:float) -> void:
-	pass
+	if Input.is_action_pressed("left"):
+		parent.velocity.x = -parent.speed
+		parent.direction.x = -1
+	elif Input.is_action_pressed("right"):
+		parent.velocity.x = parent.speed
+		parent.direction.x = 1
+	else:
+		parent.velocity.x = 0
+		if parent.velocity.z != 0:
+			parent.direction.x = 0
+		
+	if Input.is_action_pressed("forward"):
+		parent.velocity.z = -parent.speed
+		parent.direction.z = -1
+
+	elif Input.is_action_pressed("backward"):
+		parent.velocity.z = parent.speed
+		parent.direction.z = 1
+
+	else:
+		parent.velocity.z = 0
+		if parent.velocity.x != 0:
+			parent.direction.z = 0

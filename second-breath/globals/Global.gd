@@ -48,12 +48,9 @@ func _process(_delta: float) -> void:
 					node.upon_hit()
 					#enemyHitID.erase(node.get("id"))
 				enemyHitID.erase(f)
-	
-	if Input.is_action_just_pressed("projectileTypeTest"):
-		skillType += 1
-		if skillType > 6:
-			skillType = 0
-		print(skillType)
+		debuff = 0
+		dmgdebuff = 0
+		windup = 2
 
 
 func staminaRecover() -> void:

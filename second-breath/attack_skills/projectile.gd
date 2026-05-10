@@ -29,6 +29,9 @@ func _ready() -> void:
 			if isPlayer == true:
 				life_timer = 3.0
 				speed = 13
+		5: #max level fear
+			explodes = true
+			Global.debuff = 5
 		8: # fear & envy
 			projectile_sprite.set_modulate("5600eb")
 			explodes = true
@@ -63,10 +66,6 @@ func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
 		#also do the same sorta code thing in explosion.gd once it works
 		Global.health -= 10 + debuff
 		print("player hp: ", Global.health)
-		if projectileType == 6:
-			Global.health += 6
-		elif projectileType == 9:
-			Global.health += 2
 		body.damage_taken()
 		#enemy_hit()
 		if explodes:
