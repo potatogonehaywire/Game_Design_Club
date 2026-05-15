@@ -5,11 +5,14 @@ signal toggle_inventory()
 signal toggle_skilltree()
 signal interact_hover()
 
-const speed : int = 5
 const jumpspeed : int = 20
+var speed : int = 5
 var jump : int = 2
 var cooldownOff : bool = true
 var skillCooldownOff : bool = true
+var skillCooldownOff2 : bool = true
+var isESkill : bool = false
+var isQSkill : bool = false
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
@@ -22,6 +25,7 @@ var interact_label : bool = false
 
 @onready var cooldown : Timer = $cooldown
 @onready var skillCooldown : Timer = $skillCooldown
+@onready var skillCooldown2 : Timer = $skillCooldown2
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
@@ -76,9 +80,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	Global.skillType = lastSkill
-	
-	if skillCooldownOff == false:
-		skillCooldown.start()
 	
 	if Global.health <= 0:
 		Global.health = 100
@@ -195,14 +196,16 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
 	
-	
 func _on_cooldown_timeout() -> void:
 	cooldownOff = true
 
-
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
+	print("can use E skill again")
 
+func _on_skill_cooldown_2_timeout() -> void:
+	skillCooldownOff2 = true
+	print("can use Q skill again")
 
 func interact() -> void:
 	if interact_ray.is_colliding():

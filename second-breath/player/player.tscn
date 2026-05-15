@@ -1211,9 +1211,8 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"One
 script = ExtResource("1_rkbax")
 inventory_data = ExtResource("2_yw30f")
 equip_inventory_data = ExtResource("3_yw30f")
-LSkill = 1
 ESkill = 5
-QSkill = 8
+QSkill = 9
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
@@ -1269,6 +1268,10 @@ anim_player = NodePath("../WeaponAnimationPlayer")
 [node name="cooldown" type="Timer" parent="." unique_id=1327199867]
 
 [node name="skillCooldown" type="Timer" parent="." unique_id=2088825572]
+one_shot = true
+
+[node name="skillCooldown2" type="Timer" parent="." unique_id=1861526541]
+one_shot = true
 
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=1805611559]
 script = SubResource("GDScript_qjkh3")
@@ -1323,3 +1326,4 @@ script = ExtResource("103_2s0vo")
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="skillCooldown" to="." method="_on_skill_cooldown_timeout"]
+[connection signal="timeout" from="skillCooldown2" to="." method="_on_skill_cooldown_2_timeout"]

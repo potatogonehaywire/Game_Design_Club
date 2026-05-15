@@ -17,10 +17,6 @@ var debuff : float = 0
 #Global.debuff not working, to fix. all basic attack work.
 func _ready() -> void:
 	match projectileType:
-		0:
-			projectile_sprite.set_modulate("ff4b64")
-			life_timer = 2.0
-
 		2: #basic fear
 			projectile_sprite.set_modulate("9337ff")
 			life_timer = 2.0
@@ -36,7 +32,8 @@ func _ready() -> void:
 			projectile_sprite.set_modulate("5600eb")
 			explodes = true
 		_:
-			pass
+			projectile_sprite.set_modulate("ff4b64")
+			life_timer = 2.0
 	print(projectileType)
 	await get_tree().create_timer(life_timer).timeout
 	if explodes == true:

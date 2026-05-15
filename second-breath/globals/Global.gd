@@ -1,5 +1,5 @@
 extends Node
-var maxHealth : float = 200
+var maxHealth : float = 100
 var health : float = maxHealth
 var stamina : int = 100
 
