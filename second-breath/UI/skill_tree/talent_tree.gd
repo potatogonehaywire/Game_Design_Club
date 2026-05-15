@@ -8,7 +8,7 @@ var talent_points : int = 30
 func _ready() -> void:
 	set_points_label()
 	setup_points()
-	
+
 
 func setup_points() -> void:
 	for talent : Node in get_children():

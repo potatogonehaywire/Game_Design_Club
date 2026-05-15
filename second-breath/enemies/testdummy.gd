@@ -26,7 +26,6 @@ var enemyhp : float = ENEMY_HP_MAX
 #var explosion = preload("res://attack_skills/explosion.tscn")
 var explodes : bool = false
 var healthDrain : bool = false
-#var skillType = Global.skillType
 var debuff : int = 0
 var dmgdebuff : int = 0
 var windup : int = 2

@@ -1207,7 +1207,6 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"One
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
-LSkill = 1
 ESkill = 2
 QSkill = 8
 
