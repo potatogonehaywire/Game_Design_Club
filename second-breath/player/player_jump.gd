@@ -41,6 +41,7 @@ func update(delta:float) -> void:
 		parent.isESkill = true
 		state_machine.change_state("checkskill")
 
+
 func physics_update(_delta:float) -> void:
 	if Input.is_action_pressed("left"):
 		parent.velocity.x = -parent.speed

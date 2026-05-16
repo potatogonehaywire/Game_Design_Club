@@ -2,20 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
-[ext_resource type="Script" uid="uid://06uq0uv2jxlk" path="res://inventory/inventory_interface.gd" id="3_h81ot"]
-[ext_resource type="PackedScene" uid="uid://c5c7c2avxlum1" path="res://inventory/inventory.tscn" id="4_6rr40"]
-[ext_resource type="PackedScene" uid="uid://cyura1ymcr10q" path="res://inventory/slot.tscn" id="5_0w6e5"]
-[ext_resource type="PackedScene" uid="uid://dsnrnhk67ms6o" path="res://inventory/hot_bar_inventory.tscn" id="6_o2jkc"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
-[ext_resource type="FontFile" uid="uid://n3d07pw2ksip" path="res://UI/menus/Micro5-Regular.ttf" id="7_4fiuh"]
+[ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/crystal1.png" id="7_h81ot"]
+[ext_resource type="Script" uid="uid://cytj16rhmqpqj" path="res://UI/cooldown_ui.gd" id="7_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/crystal2.png" id="8_6rr40"]
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
 [ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/crystal3.png" id="9_0w6e5"]
+[ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/crystal4.png" id="10_o2jkc"]
+[ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/crystal1_outline.png" id="11_2qbci"]
+[ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/crystal2_outline.png" id="12_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/crystal3_outline.png" id="13_o2t6a"]
+[ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/crystal4_outline.png" id="14_8gukh"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_h81ot"]
-font = ExtResource("7_4fiuh")
-font_size = 30
-outline_size = 5
-outline_color = Color(0.15179357, 0.08936966, 0.54960394, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiium"]
 bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
@@ -31,10 +32,7 @@ bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=725296579]
 
-[node name="talent_tree" parent="." unique_id=1533451348 instance=ExtResource("1_cbfhl")]
-visible = false
-
-[node name="InventoryRoot" type="Control" parent="." unique_id=987893219]
+[node name="UIRoot" type="Control" parent="." unique_id=987893219]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -43,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClickCatcher" type="Control" parent="InventoryRoot" unique_id=2034638472]
+[node name="ClickCatcher" type="Control" parent="UIRoot" unique_id=2034638472]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,89 +50,121 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_4fiuh")
 
-[node name="InventoryInterface" type="Control" parent="InventoryRoot" unique_id=1229202163]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_h81ot")
-metadata/_edit_use_anchors_ = true
+[node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
+layout_mode = 1
 
-[node name="PlayerInventory" parent="InventoryRoot/InventoryInterface" unique_id=856403716 instance=ExtResource("4_6rr40")]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="EquipInventory" parent="InventoryRoot/InventoryInterface" unique_id=1438440324 instance=ExtResource("4_6rr40")]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 10.0
-offset_right = 490.0
-offset_bottom = 50.0
-
-[node name="ExternalInventory" parent="InventoryRoot/InventoryInterface" unique_id=2038878647 instance=ExtResource("4_6rr40")]
-visible = false
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 50.0
-
-[node name="GrabbedSlot" parent="InventoryRoot/InventoryInterface" unique_id=1741843201 instance=ExtResource("5_0w6e5")]
-visible = false
-modulate = Color(1, 1, 1, 0.7529412)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="HotBarInventory" parent="." unique_id=395103607 instance=ExtResource("6_o2jkc")]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 430.0
-offset_bottom = 90.0
-
-[node name="InteractLabel" type="Label" parent="." unique_id=1223076594]
-offset_left = 39.0
-offset_top = 160.0
-offset_right = 103.0
-offset_bottom = 177.0
+[node name="InteractLabel" type="Label" parent="." unique_id=307289589]
+texture_filter = 1
+offset_left = 91.0
+offset_top = 391.0
+offset_right = 142.0
+offset_bottom = 406.0
+scale = Vector2(5, 5)
+theme_override_colors/font_outline_color = Color(0.11511584, 3.4269095e-05, 0.42940018, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 64
 text = "F: Interact"
-label_settings = SubResource("LabelSettings_h81ot")
-horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_nm1m0")
 script = ExtResource("8_h81ot")
 
 [node name="StaminaBar" type="ProgressBar" parent="." unique_id=199650519]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -296.0
-offset_top = 33.0
-offset_right = -11.0
-offset_bottom = 47.0
-grow_horizontal = 0
+offset_left = 34.0
+offset_top = 37.0
+offset_right = 505.0
+offset_bottom = 66.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
+value = 50.0
 show_percentage = false
 script = ExtResource("7_2qbci")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1363857212]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -295.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = 26.0
-grow_horizontal = 0
+offset_left = 35.0
+offset_top = 82.0
+offset_right = 696.0
+offset_bottom = 116.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
 value = 50.0
 show_percentage = false
 script = ExtResource("8_ow1yt")
 
-[connection signal="visibility_changed" from="InventoryRoot" to="InventoryRoot/InventoryInterface" method="_on_inventory_root_visibility_changed"]
-[connection signal="gui_input" from="InventoryRoot/ClickCatcher" to="InventoryRoot/InventoryInterface" method="_on_click_catcher_gui_input"]
-[connection signal="gui_input" from="InventoryRoot/InventoryInterface" to="InventoryRoot/InventoryInterface" method="_on_gui_input"]
-[connection signal="visibility_changed" from="InventoryRoot/InventoryInterface" to="InventoryRoot/InventoryInterface" method="_on_visibility_changed"]
+[node name="Cooldown" type="Control" parent="." unique_id=1638233206]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_ow1yt")
+
+[node name="LSkill" type="TextureRect" parent="Cooldown" unique_id=845591713]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 778.0
+offset_right = 1812.0
+offset_bottom = 977.0
+texture = ExtResource("7_h81ot")
+
+[node name="ESkill" type="TextureRect" parent="Cooldown" unique_id=931593038]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1418.0
+offset_top = 786.0
+offset_right = 1510.0
+offset_bottom = 982.0
+texture = ExtResource("8_6rr40")
+
+[node name="QSkill" type="TextureRect" parent="Cooldown" unique_id=1220108257]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1275.0
+offset_top = 782.0
+offset_right = 1373.0
+offset_bottom = 960.0
+texture = ExtResource("9_0w6e5")
+
+[node name="RSkill" type="TextureRect" parent="Cooldown" unique_id=621361298]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1564.0
+offset_top = 780.0
+offset_right = 1660.0
+offset_bottom = 978.0
+texture = ExtResource("10_o2jkc")
+
+[node name="LSkillOutline" type="TextureRect" parent="Cooldown" unique_id=1120035536]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 778.0
+offset_right = 1812.0
+offset_bottom = 977.0
+texture = ExtResource("11_2qbci")
+
+[node name="ESkillOutline" type="TextureRect" parent="Cooldown" unique_id=1090597628]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1418.0
+offset_top = 786.0
+offset_right = 1510.0
+offset_bottom = 982.0
+texture = ExtResource("12_ow1yt")
+
+[node name="QSkillOutline" type="TextureRect" parent="Cooldown" unique_id=333321672]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1275.0
+offset_top = 782.0
+offset_right = 1373.0
+offset_bottom = 960.0
+texture = ExtResource("13_o2t6a")
+
+[node name="RSkillOutline" type="TextureRect" parent="Cooldown" unique_id=1527062465]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1564.0
+offset_top = 780.0
+offset_right = 1660.0
+offset_bottom = 978.0
+texture = ExtResource("14_8gukh")

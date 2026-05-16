@@ -1,13 +1,12 @@
 extends State
-@onready var talent_tree: TalentTree = $"../../../UI/talent_tree"
+@onready var ui_root: Control = $"../../../UI/UIRoot"
 @onready var interact_ray: RayCast3D = $"../../InteractRay"
 @onready var muzzle_location: Marker3D = $"../../projectileMarkerThing"
 const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
-@onready var inventory_root: Control = $"../../../UI/InventoryRoot"
 
 func enter() -> void:
 	parent.skillCooldownOff = false
-	if talent_tree.visible == false:
+	if ui_root.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()
 		if collider is Node:
@@ -19,7 +18,7 @@ func enter() -> void:
 			var direction_to_target : Vector3 = muzzle_location.global_position.direction_to(target_point).normalized()
 			print(direction_to_target)
 			var projectile_instance : Node = ProjectileScene.instantiate()
-			if inventory_root.visible == false:
+			if ui_root.visible == false:
 				projectile_instance.get_projectile_type(parent.lastSkill)
 				get_tree().current_scene.add_child(projectile_instance)
 				projectile_instance.global_position = muzzle_location.global_position
