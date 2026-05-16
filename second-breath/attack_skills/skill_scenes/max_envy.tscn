@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bpf7k3wdxheud"]
+
+[ext_resource type="Script" uid="uid://6ub2b3o78c7d" path="res://attack_skills/skill_scenes/max_envy.gd" id="1_wfttm"]
+
+[node name="MaxEnvy" type="Node3D" unique_id=1645413142]
+script = ExtResource("1_wfttm")

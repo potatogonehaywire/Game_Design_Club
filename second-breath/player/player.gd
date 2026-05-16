@@ -57,6 +57,17 @@ var camera_has_obstacle : bool = false
 @export var QSkill : int
 var lastSkill : int
 
+# skill scenes
+var s1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
+var s2 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
+var s3 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
+var s4 : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var s5 : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
+var s6 : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
+var s7 : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
+var s8 : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
+var s9 : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
+
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
@@ -201,10 +212,20 @@ func _on_cooldown_timeout() -> void:
 
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	health_bar.max_value = Global.maxHealth
+	health_bar.health_changed()
 	print("can use E skill again")
 
 func _on_skill_cooldown_2_timeout() -> void:
 	skillCooldownOff2 = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	health_bar.max_value = Global.maxHealth
+	health_bar.health_changed()
 	print("can use Q skill again")
 
 func interact() -> void:

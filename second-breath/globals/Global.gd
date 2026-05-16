@@ -15,7 +15,7 @@ var enemyIsHit: bool = false
 var isProjectile: bool = false
 var debuff : float = 0
 var dmgdebuff : int = 0
-var windup : int = 2
+#var windup : int = 2
 var skillType : int = 0
 
 var player : Player
@@ -48,9 +48,7 @@ func _process(_delta: float) -> void:
 					node.upon_hit()
 					#enemyHitID.erase(node.get("id"))
 				enemyHitID.erase(f)
-		debuff = 0
-		dmgdebuff = 0
-		windup = 2
+		#windup = 2
 
 
 func staminaRecover() -> void:

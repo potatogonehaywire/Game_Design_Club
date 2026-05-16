@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c8n50bglo54a2"]
+
+[ext_resource type="Script" uid="uid://d35epnc0weoe" path="res://attack_skills/skill_scenes/basic_anger.gd" id="1_0m80u"]
+
+[node name="BasicAnger" type="Node3D" unique_id=2019239238]
+script = ExtResource("1_0m80u")

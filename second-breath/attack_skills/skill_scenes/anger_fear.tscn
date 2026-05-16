@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cfvwftbkkb3j4"]
+
+[ext_resource type="Script" uid="uid://lngkey53dnxo" path="res://attack_skills/skill_scenes/anger_fear.gd" id="1_te28w"]
+
+[node name="AngerFear" type="Node3D" unique_id=865460548]
+script = ExtResource("1_te28w")
