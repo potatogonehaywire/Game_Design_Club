@@ -4,11 +4,14 @@ class_name Player
 signal toggle_skilltree()
 signal interact_hover()
 
-const speed : int = 5
 const jumpspeed : int = 20
+var speed : int = 5
 var jump : int = 2
 var cooldownOff : bool = true
 var skillCooldownOff : bool = true
+var skillCooldownOff2 : bool = true
+var isESkill : bool = false
+var isQSkill : bool = false
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
@@ -18,6 +21,7 @@ var interact_label : bool = false
 
 @onready var cooldown : Timer = $cooldown
 @onready var skillCooldown : Timer = $skillCooldown
+@onready var skillCooldown2 : Timer = $skillCooldown2
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
@@ -48,6 +52,17 @@ var camera_has_obstacle : bool = false
 @export var QSkill : int
 var lastSkill : int
 
+# skill scenes
+var s1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
+var s2 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
+var s3 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
+var s4 : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var s5 : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
+var s6 : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
+var s7 : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
+var s8 : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
+var s9 : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
+
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
@@ -67,6 +82,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
+	Global.skillType = lastSkill
+	
 	if Global.health <= 0:
 		Global.health = 100
 		# stop combat mode
@@ -174,31 +191,34 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 			Global.enemyHitID.append(id)
 			enemy_hit()
 			print(Global.enemyHitID)
-			if Global.skillType == 6:
+			if lastSkill == 6:
 				Global.health += 6
-			elif Global.skillType == 9:
+			elif lastSkill == 9:
 				Global.health += 2
-
-	
-#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("enemy") && attack.disabled == false:
-		#if body.has_method("upon_hit"): 
-			#var id = body.id
-			#Global.enemyHitID.append(id)
-			#enemy_hit()
-
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
 	
-	
 func _on_cooldown_timeout() -> void:
 	cooldownOff = true
 
-
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	health_bar.max_value = Global.maxHealth
+	health_bar.health_changed()
+	print("can use E skill again")
 
+func _on_skill_cooldown_2_timeout() -> void:
+	skillCooldownOff2 = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	health_bar.max_value = Global.maxHealth
+	health_bar.health_changed()
+	print("can use Q skill again")
 
 func interact() -> void:
 	if interact_ray.is_colliding():

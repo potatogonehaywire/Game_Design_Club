@@ -1,5 +1,5 @@
 extends Node
-var maxHealth : float = 200
+var maxHealth : float = 100
 var health : float = maxHealth
 var stamina : int = 100
 
@@ -15,7 +15,7 @@ var enemyIsHit: bool = false
 var isProjectile: bool = false
 var debuff : float = 0
 var dmgdebuff : int = 0
-var windup : int = 2
+#var windup : int = 2
 var skillType : int = 0
 
 var player : Player
@@ -48,12 +48,7 @@ func _process(_delta: float) -> void:
 					node.upon_hit()
 					#enemyHitID.erase(node.get("id"))
 				enemyHitID.erase(f)
-	
-	if Input.is_action_just_pressed("projectileTypeTest"):
-		skillType += 1
-		if skillType > 6:
-			skillType = 0
-		print(skillType)
+		#windup = 2
 
 
 func staminaRecover() -> void:

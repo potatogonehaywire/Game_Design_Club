@@ -24,7 +24,6 @@ func enter() -> void:
 				projectile_instance.global_position = muzzle_location.global_position
 				projectile_instance.move_direction = direction_to_target
 				projectile_instance.isPlayer = true
-	parent.skillCooldown.start(1)
 
 func exit() -> void:
 	pass

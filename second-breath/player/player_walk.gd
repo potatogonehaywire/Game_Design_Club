@@ -9,6 +9,25 @@ func exit() -> void:
 
 func update(_delta:float) -> void:
 	animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(parent.direction.x, parent.direction.z))
+	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.skillCooldownOff2 == true:
+		parent.lastSkill = parent.QSkill
+		parent.isQSkill = true
+		state_machine.change_state("checkskill")
+		
+	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.skillCooldownOff == true:
+		parent.lastSkill = parent.LSkill
+		state_machine.change_state("checkskill")
+		
+	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
+		state_machine.change_state("jump")
+	
+	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
+		parent.lastSkill = parent.ESkill
+		parent.isESkill = true
+		state_machine.change_state("checkskill")
+	
+	if parent.velocity.x == 0 and parent.velocity.z == 0:
+		state_machine.change_state("idle")
 
 	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.cooldownOff == true:
 		parent.lastSkill = parent.QSkill
@@ -55,3 +74,4 @@ func physics_update(_delta:float) -> void:
 		parent.velocity.z = 0
 		if parent.velocity.x != 0:
 			parent.direction.z = 0
+	

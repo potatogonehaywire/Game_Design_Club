@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1xsre1dmmukx"]
+
+[ext_resource type="Script" uid="uid://buvuphx0fqd8i" path="res://attack_skills/skill_scenes/max_fear.gd" id="1_srmmk"]
+
+[node name="maxFear" type="Node3D" unique_id=1028764644]
+script = ExtResource("1_srmmk")

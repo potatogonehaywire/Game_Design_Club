@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rcqigetnxqx8"]
+
+[ext_resource type="Script" uid="uid://dliocc712htgv" path="res://attack_skills/skill_scenes/anger_envy.gd" id="1_2x2kq"]
+
+[node name="AngerEnvy" type="Node3D" unique_id=1662241396]
+script = ExtResource("1_2x2kq")
