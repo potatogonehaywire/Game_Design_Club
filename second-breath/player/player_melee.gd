@@ -56,4 +56,27 @@ func update(_delta:float) -> void:
 			state_machine.change_state("walk")
 
 func physics_update(_delta:float) -> void:
-	pass
+	if Input.is_action_pressed("left"):
+		parent.velocity.x = -parent.speed
+		parent.direction.x = -1
+		
+	elif Input.is_action_pressed("right"):
+		parent.velocity.x = parent.speed
+		parent.direction.x = 1
+	else:
+		parent.velocity.x = 0
+		if parent.velocity.z != 0:
+			parent.direction.x = 0
+		
+	if Input.is_action_pressed("forward"):
+		parent.velocity.z = -parent.speed
+		parent.direction.z = -1
+
+	elif Input.is_action_pressed("backward"):
+		parent.velocity.z = parent.speed
+		parent.direction.z = 1
+
+	else:
+		parent.velocity.z = 0
+		if parent.velocity.x != 0:
+			parent.direction.z = 0

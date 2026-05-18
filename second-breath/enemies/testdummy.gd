@@ -6,7 +6,6 @@ var isInRange : bool = false
 var meleeInRange : bool = false
 var isHit : bool = false
 
-
 @onready var cooldown: Timer = $ProjectileCooldown
 
 @export var speed : float = 1
@@ -21,6 +20,7 @@ var enemyhp : float = ENEMY_HP_MAX
 @onready var state_machine: StateMachine = $StateMachine
 @export var starting_location: Vector3 = Vector3.ZERO
 @onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
+@onready var hurtbox: Area3D = $Hurtbox
 
 
 #var explosion = preload("res://attack_skills/explosion.tscn")
@@ -34,6 +34,7 @@ var gotdmgDebuff : int = 0
 func _ready() -> void:
 	starting_location = global_position
 	my_id = self.id
+	#hurtbox.disabled = true
 	print(name, " is id ", my_id)
 
 func _physics_process(_delta: float) -> void:

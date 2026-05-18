@@ -62,6 +62,8 @@ func _on_gui_input(event: InputEvent) -> void:
 		var next_level : int = level
 		if event.button_index == MOUSE_BUTTON_LEFT and can_be_increased():
 			next_level += 1
+			if next_level == 1:
+				Global.available_skills.append(talent_id)
 		elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
 			next_level -= 1
 		set_new_level(next_level)

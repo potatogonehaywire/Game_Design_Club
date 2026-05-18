@@ -30,7 +30,6 @@ var interact_label : bool = false
 @onready var health_bar: ProgressBar = $"../UI/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
-
 @onready var interact_ray: RayCast3D = $InteractRay
 
 var mouse_position : Vector2
@@ -41,7 +40,6 @@ var ray_length: float = 50.0
 var close_enough : bool
 var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
 var explodes : bool = false
-var healthDrain : bool = false
 var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
@@ -50,18 +48,22 @@ var camera_has_obstacle : bool = false
 @export var LSkill : int
 @export var ESkill : int
 @export var QSkill : int
+#@export var RSkill : int
 var lastSkill : int
+@onready var skill_effect: CPUParticles3D = $SkillEffect
 
 # skill scenes
-var s1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
-var s2 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
-var s3 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
-var s4 : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
-var s5 : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
-var s6 : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
-var s7 : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
-var s8 : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
-var s9 : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
+var base : PackedScene = preload("uid://b5d5qciwolq3a")
+var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
+var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
+var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
+var angerMax : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var fearMax : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
+var envyMax : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
+var anger_fear : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
+var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
+var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
+var heal1 : PackedScene = preload("uid://b5d5qciwolq3a")
 
 func _ready() -> void:
 	Global.player = self

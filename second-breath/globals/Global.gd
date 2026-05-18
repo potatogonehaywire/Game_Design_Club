@@ -20,6 +20,7 @@ var skillType : int = 0
 
 var player : Player
 var aggro_enemies : Array = []
+var available_skills : Array = []
 
 func use_slot_data(slot_data: SlotData) -> void:
 	slot_data.item_data.use(player)

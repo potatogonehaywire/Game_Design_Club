@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ch8lkj7n45odp"]
+
+[ext_resource type="Script" uid="uid://bl8stm4w7wcuu" path="res://attack_skills/skill_scenes/basic_heal.gd" id="1_jhntw"]
+
+[node name="basic_heal" type="Node3D" unique_id=4165408]
+script = ExtResource("1_jhntw")

@@ -134,7 +134,7 @@ offset_top = 152.0
 offset_right = 424.0
 offset_bottom = 184.0
 texture_normal = SubResource("AtlasTexture_gdvun")
-talent_id = "anger4"
+talent_id = "angerMax"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Anger3b")]
 
@@ -145,7 +145,7 @@ offset_top = 299.0
 offset_right = 389.0
 offset_bottom = 331.0
 texture_normal = SubResource("AtlasTexture_yvu2r")
-talent_id = "wrath_envy"
+talent_id = "anger_envy"
 tier = 5
 depends_on = [NodePath("../Anger3b"), NodePath("../Envy3b")]
 
@@ -211,7 +211,7 @@ offset_top = 143.0
 offset_right = 765.0
 offset_bottom = 175.0
 texture_normal = SubResource("AtlasTexture_xqaal")
-talent_id = "fear4"
+talent_id = "fearMax"
 tier = 5
 depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
 
@@ -222,7 +222,7 @@ offset_top = 139.0
 offset_right = 590.0
 offset_bottom = 171.0
 texture_normal = SubResource("AtlasTexture_66lel")
-talent_id = "wrath_fear"
+talent_id = "anger_fear"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Fear3a")]
 
@@ -288,7 +288,7 @@ offset_top = 448.0
 offset_right = 417.0
 offset_bottom = 480.0
 texture_normal = SubResource("AtlasTexture_n3jii")
-talent_id = "envy4"
+talent_id = "envyMax"
 tier = 5
 depends_on = [NodePath("../Envy3a"), NodePath("../Envy3b")]
 
@@ -299,6 +299,6 @@ offset_top = 408.0
 offset_right = 719.0
 offset_bottom = 440.0
 texture_normal = SubResource("AtlasTexture_s5ac7")
-talent_id = "envy_fear"
+talent_id = "fear_envy"
 tier = 5
 depends_on = [NodePath("../Envy3a"), NodePath("../Fear3b")]
