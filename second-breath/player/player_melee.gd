@@ -6,6 +6,26 @@ extends State
 
 
 func enter() -> void:
+	if parent.isQSkill == true:
+		if parent.canUseQSkill == true:
+			parent.isQSkill = false
+			attackActive()
+		else:
+			parent.restore_statsQ()
+	elif parent.isESkill == true:
+		if parent.canUseESkill == true:
+			parent.isESkill = false
+			attackActive()
+		else:
+			parent.restore_statsE()
+	else:
+		parent.isQSkill = false
+		parent.isESkill = false
+		parent.restore_statsE()
+		parent.restore_statsQ()
+	
+
+func attackActive() -> void:
 	# player stops moving when attacking, player would slide around otherwise
 	parent.velocity.x = 0
 	parent.velocity.z = 0
@@ -40,7 +60,7 @@ func enter() -> void:
 	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	melee_sprite.visible = false
 	attack.disabled = true
-	
+
 func exit() -> void:
 	parent.cooldown.start(0.5)
 

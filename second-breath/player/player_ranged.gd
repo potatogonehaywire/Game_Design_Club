@@ -5,7 +5,25 @@ extends State
 const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
 
 func enter() -> void:
-	parent.skillCooldownOff = false
+	#parent.skillCooldownOff = false
+	if parent.isQSkill == true:
+		if parent.canUseQSkill == true:
+			parent.isQSkill = false
+			shoot()
+		else:
+			parent.restore_statsQ()
+	elif parent.isESkill == true:
+		if parent.canUseESkill == true:
+			parent.isESkill = false
+			shoot()
+		else:
+			parent.restore_statsE()
+	else:
+		parent.isQSkill = false
+		parent.isESkill = false
+		parent.restore_stats()
+
+func shoot() -> void:
 	if ui_root.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()

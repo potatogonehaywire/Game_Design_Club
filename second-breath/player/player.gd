@@ -51,6 +51,11 @@ var camera_has_obstacle : bool = false
 @export var ESkill : int
 @export var QSkill : int
 var lastSkill : int
+var canUseESkill : bool = true
+var canUseQSkill : bool = true
+var lastStamina : int = 100
+var lastHealth : float = 100
+var lastMaxHealth : float = 100
 
 # skill scenes
 var s1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
@@ -248,3 +253,24 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 
 func damage_taken() -> void:
 	health_bar.health_changed()
+
+func store_stats() -> void:
+	lastStamina = Global.stamina
+	lastHealth = Global.health
+	lastMaxHealth = Global.maxHealth
+
+func restore_statsE() -> void:
+	Global.stamina = lastStamina
+	Global.health = lastHealth
+	Global.maxHealth = lastMaxHealth
+	skillCooldown.stop()
+	skillCooldown.wait_time = 0
+	skillCooldownOff = true
+	
+func restore_statsQ() -> void:
+	Global.stamina = lastStamina
+	Global.health = lastHealth
+	Global.maxHealth = lastMaxHealth
+	skillCooldown2.stop()
+	skillCooldown2.wait_time = 0
+	skillCooldownOff2 = true

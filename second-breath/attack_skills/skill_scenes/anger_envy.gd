@@ -6,3 +6,4 @@ var healthDrain : int = 0
 var debuff : int = 5
 var dmgDebuff : int = 5
 var maxHealth : int = 120
+var staminaDrain : int = 15
