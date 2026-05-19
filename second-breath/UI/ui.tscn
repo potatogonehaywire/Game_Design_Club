@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/crystal4.png" id="10_o2jkc"]
 [ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/crystal1_outline.png" id="11_2qbci"]
 [ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/crystal2_outline.png" id="12_ow1yt"]
+[ext_resource type="FontFile" uid="uid://chvofm58i0yvg" path="res://UI/ModernDOS8x8.ttf" id="13_8gukh"]
 [ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/crystal3_outline.png" id="13_o2t6a"]
 [ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/crystal4_outline.png" id="14_8gukh"]
 
@@ -142,6 +143,19 @@ offset_right = 1812.0
 offset_bottom = 977.0
 texture = ExtResource("11_2qbci")
 
+[node name="Label" type="Label" parent="Cooldown/LSkillOutline" unique_id=1664626082]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 122.0
+offset_bottom = 232.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 25
+text = "Left Click"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
 [node name="ESkillOutline" type="TextureRect" parent="Cooldown" unique_id=1090597628]
 texture_filter = 1
 layout_mode = 0
@@ -150,6 +164,18 @@ offset_top = 786.0
 offset_right = 1510.0
 offset_bottom = 982.0
 texture = ExtResource("12_ow1yt")
+
+[node name="Label" type="Label" parent="Cooldown/ESkillOutline" unique_id=1169644175]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 102.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 32
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="QSkillOutline" type="TextureRect" parent="Cooldown" unique_id=333321672]
 texture_filter = 1
@@ -160,6 +186,18 @@ offset_right = 1373.0
 offset_bottom = 960.0
 texture = ExtResource("13_o2t6a")
 
+[node name="Label" type="Label" parent="Cooldown/QSkillOutline" unique_id=1364049221]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 105.0
+offset_bottom = 228.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="RSkillOutline" type="TextureRect" parent="Cooldown" unique_id=1527062465]
 texture_filter = 1
 layout_mode = 0
@@ -168,3 +206,15 @@ offset_top = 780.0
 offset_right = 1660.0
 offset_bottom = 978.0
 texture = ExtResource("14_8gukh")
+
+[node name="Label" type="Label" parent="Cooldown/RSkillOutline" unique_id=1250732907]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 102.0
+offset_bottom = 232.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 32
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 2
