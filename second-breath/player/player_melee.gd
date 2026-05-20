@@ -21,14 +21,18 @@ func enter() -> void:
 		else:
 			parent.restore_statsE()
 	elif parent.isRSkill == true:
-		parent.isESkill = false
-		parent.isQSkill = false
+		if parent.canUseRSkill == true:
+			parent.isESkill = false
+			parent.isQSkill = false
+			attackActive()
 	else:
 		parent.isQSkill = false
 		parent.isESkill = false
+		parent.isRSkill = false
 		parent.restore_statsE()
 		parent.restore_statsQ()
 		attackActive()
+		
 	
 
 func attackActive() -> void:

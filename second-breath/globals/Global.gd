@@ -6,7 +6,7 @@ var stamina : int = 100
 var s : int = 1
 var weapon : float = 1.0
 var equippedWeapon : int = 1
-var ranged : float = 1.0
+var ranged : float = 2.0
 var equippedRanged : int = 1
 
 
@@ -16,7 +16,7 @@ var isProjectile: bool = false
 var debuff : float = 0
 var dmgdebuff : int = 0
 #var windup : int = 2
-var skillType : int = 0
+var skillType : int = 5
 
 var player : Player
 var aggro_enemies : Array = []

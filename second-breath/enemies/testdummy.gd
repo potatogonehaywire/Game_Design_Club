@@ -66,32 +66,34 @@ func upon_hit() -> void:
 
 
 func take_damage() -> void:
+	Global.enemyIsHit = false
+	self.canDamage = false
+	gotdmgDebuff = Global.dmgdebuff
+	if Global.isProjectile == true:
+		if Global.skillType == 5:
+			self.speed = -16
+			self.enemyhp -= 10 * Global.ranged + Global.debuff
+		elif Global.skillType == 8:
+			self.speed = -16
+			self.enemyhp -= 10 * Global.ranged + Global.debuff
+		else:
+			self.enemyhp -= 10 * Global.ranged + Global.debuff
+			isHit = true
+			Global.isProjectile = false
+	else:
+		self.enemyhp -= 15 * Global.weapon + Global.debuff
+		Global.debuff = 0
+		Global.dmgdebuff = 0
+	if self.enemyhp <= 0:
 		Global.enemyIsHit = false
-		self.canDamage = false
-		gotdmgDebuff = Global.dmgdebuff
-		if Global.isProjectile == true:
-			if Global.skillType == 5:
-				self.speed = -16
-				self.enemyhp -= 10 * Global.ranged + Global.ebuff
-			elif Global.skillType == 8:
-				pass
-			else:
-				self.enemyhp -= 10 * Global.ranged + Global.debuff
-				isHit = true
-				Global.isProjectile = false
-		else:
-			self.enemyhp -= 15 * Global.weapon + Global.debuff
-			Global.debuff = 0
-			Global.dmgdebuff = 0
-		if self.enemyhp <= 0:
-			Global.enemyIsHit = false
-			if my_id in Global.aggro_enemies:
-				Global.aggro_enemies.erase(my_id)
-			self.queue_free()
-			print("eurgh")
-		else:
-			print (self.enemyhp)
-			self.canDamage = true
+		if my_id in Global.aggro_enemies:
+			Global.aggro_enemies.erase(my_id)
+		self.queue_free()
+		print("eurgh")
+	else:
+		print (self.enemyhp)
+		self.canDamage = true
+	health_bar.health_changed()
 
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
