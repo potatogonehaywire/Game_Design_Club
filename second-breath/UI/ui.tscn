@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
 [ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
 [ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/crystal3.png" id="9_0w6e5"]
+[ext_resource type="Script" uid="uid://b84krupvi35j3" path="res://UI/skill_cooldown.gd" id="10_8gukh"]
 [ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/crystal4.png" id="10_o2jkc"]
 [ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/crystal1_outline.png" id="11_2qbci"]
 [ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/crystal2_outline.png" id="12_ow1yt"]
@@ -98,123 +99,113 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_ow1yt")
 
-[node name="LSkill" type="TextureRect" parent="Cooldown" unique_id=845591713]
-texture_filter = 1
+[node name="LeftClickSkill" type="TextureProgressBar" parent="Cooldown" unique_id=384764465]
 layout_mode = 0
-offset_left = 1709.0
-offset_top = 778.0
-offset_right = 1812.0
-offset_bottom = 977.0
-texture = ExtResource("7_h81ot")
+offset_left = 1703.0
+offset_top = 732.0
+offset_right = 1806.0
+offset_bottom = 931.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("7_h81ot")
+texture_over = ExtResource("11_2qbci")
+texture_progress = ExtResource("7_h81ot")
+tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
+tint_over = Color(0.4520269, 0.510831, 0.6045966, 1)
+tint_progress = Color(0.17342657, 0.37691626, 0.6446892, 1)
+script = ExtResource("10_8gukh")
+button_pressed = "L"
 
-[node name="ESkill" type="TextureRect" parent="Cooldown" unique_id=931593038]
-texture_filter = 1
+[node name="LeftClick" type="Label" parent="Cooldown/LeftClickSkill" unique_id=552991620]
 layout_mode = 0
-offset_left = 1418.0
-offset_top = 786.0
-offset_right = 1510.0
-offset_bottom = 982.0
-texture = ExtResource("8_6rr40")
-
-[node name="QSkill" type="TextureRect" parent="Cooldown" unique_id=1220108257]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1275.0
-offset_top = 782.0
-offset_right = 1373.0
-offset_bottom = 960.0
-texture = ExtResource("9_0w6e5")
-
-[node name="RSkill" type="TextureRect" parent="Cooldown" unique_id=621361298]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1564.0
-offset_top = 780.0
-offset_right = 1660.0
-offset_bottom = 978.0
-texture = ExtResource("10_o2jkc")
-
-[node name="LSkillOutline" type="TextureRect" parent="Cooldown" unique_id=1120035536]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1709.0
-offset_top = 778.0
-offset_right = 1812.0
-offset_bottom = 977.0
-texture = ExtResource("11_2qbci")
-
-[node name="Label" type="Label" parent="Cooldown/LSkillOutline" unique_id=1664626082]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -4.0
-offset_right = 122.0
-offset_bottom = 232.0
+offset_left = 11.0
+offset_top = 215.0
+offset_right = 105.0
+offset_bottom = 250.0
 theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 25
-text = "Left Click"
+theme_override_font_sizes/font_size = 32
+text = "Left 
+Click"
 horizontal_alignment = 1
-vertical_alignment = 2
 uppercase = true
 
-[node name="ESkillOutline" type="TextureRect" parent="Cooldown" unique_id=1090597628]
-texture_filter = 1
+[node name="RSkill" type="TextureProgressBar" parent="Cooldown" unique_id=430957905]
 layout_mode = 0
-offset_left = 1418.0
-offset_top = 786.0
-offset_right = 1510.0
-offset_bottom = 982.0
-texture = ExtResource("12_ow1yt")
+offset_left = 1575.0
+offset_top = 736.0
+offset_right = 1678.0
+offset_bottom = 935.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("8_6rr40")
+texture_over = ExtResource("12_ow1yt")
+texture_progress = ExtResource("8_6rr40")
+tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
+tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
+tint_progress = Color(1, 0, 0, 1)
+script = ExtResource("10_8gukh")
+button_pressed = "R"
 
-[node name="Label" type="Label" parent="Cooldown/ESkillOutline" unique_id=1169644175]
+[node name="R" type="Label" parent="Cooldown/RSkill" unique_id=1860697927]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -4.0
-offset_right = 102.0
-offset_bottom = 224.0
-theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 32
-text = "E"
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="QSkillOutline" type="TextureRect" parent="Cooldown" unique_id=333321672]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1275.0
-offset_top = 782.0
-offset_right = 1373.0
-offset_bottom = 960.0
-texture = ExtResource("13_o2t6a")
-
-[node name="Label" type="Label" parent="Cooldown/QSkillOutline" unique_id=1364049221]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -4.0
-offset_right = 105.0
-offset_bottom = 228.0
-theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 32
-text = "Q"
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="RSkillOutline" type="TextureRect" parent="Cooldown" unique_id=1527062465]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1564.0
-offset_top = 780.0
-offset_right = 1660.0
-offset_bottom = 978.0
-texture = ExtResource("14_8gukh")
-
-[node name="Label" type="Label" parent="Cooldown/RSkillOutline" unique_id=1250732907]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -4.0
-offset_right = 102.0
+offset_left = 43.0
+offset_top = 216.0
+offset_right = 59.0
 offset_bottom = 232.0
 theme_override_fonts/font = ExtResource("13_8gukh")
 theme_override_font_sizes/font_size = 32
 text = "R"
-horizontal_alignment = 1
-vertical_alignment = 2
+
+[node name="ESkill" type="TextureProgressBar" parent="Cooldown" unique_id=624329387]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 753.0
+offset_right = 1542.0
+offset_bottom = 952.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("9_0w6e5")
+texture_over = ExtResource("13_o2t6a")
+texture_progress = ExtResource("9_0w6e5")
+tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
+tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
+tint_progress = Color(1, 0, 0, 1)
+script = ExtResource("10_8gukh")
+button_pressed = "E"
+
+[node name="E" type="Label" parent="Cooldown/ESkill" unique_id=1479873404]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 197.0
+offset_right = 69.0
+offset_bottom = 213.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 32
+text = "E"
+
+[node name="QSkill" type="TextureProgressBar" parent="Cooldown" unique_id=1914544665]
+layout_mode = 0
+offset_left = 1311.0
+offset_top = 731.0
+offset_right = 1414.0
+offset_bottom = 930.0
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("10_o2jkc")
+texture_over = ExtResource("14_8gukh")
+texture_progress = ExtResource("10_o2jkc")
+tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
+tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
+tint_progress = Color(1, 0, 0, 1)
+script = ExtResource("10_8gukh")
+button_pressed = "Q"
+
+[node name="Q" type="Label" parent="Cooldown/QSkill" unique_id=2142082377]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 217.0
+offset_right = 57.0
+offset_bottom = 233.0
+theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_font_sizes/font_size = 32
+text = "Q"

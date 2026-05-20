@@ -48,7 +48,7 @@ var camera_has_obstacle : bool = false
 @export var LSkill : int
 @export var ESkill : int
 @export var QSkill : int
-#@export var RSkill : int
+@export var RSkill : int
 var lastSkill : int
 @onready var skill_effect: CPUParticles3D = $SkillEffect
 

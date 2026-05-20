@@ -1228,7 +1228,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
-LSkill = 1
 ESkill = 10
 QSkill = 6
 
@@ -1284,12 +1283,15 @@ tree_root = SubResource("AnimationNodeBlendTree_j3o0i")
 anim_player = NodePath("../WeaponAnimationPlayer")
 
 [node name="cooldown" type="Timer" parent="." unique_id=1327199867]
+one_shot = true
 
 [node name="skillCooldown" type="Timer" parent="." unique_id=2088825572]
 one_shot = true
 
 [node name="skillCooldown2" type="Timer" parent="." unique_id=1861526541]
 one_shot = true
+
+[node name="skillCooldown3" type="Timer" parent="." unique_id=1766422590]
 
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=1805611559]
 script = SubResource("GDScript_qjkh3")
