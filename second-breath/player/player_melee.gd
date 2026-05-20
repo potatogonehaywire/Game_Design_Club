@@ -23,6 +23,7 @@ func enter() -> void:
 		parent.isESkill = false
 		parent.restore_statsE()
 		parent.restore_statsQ()
+		attackActive()
 	
 
 func attackActive() -> void:

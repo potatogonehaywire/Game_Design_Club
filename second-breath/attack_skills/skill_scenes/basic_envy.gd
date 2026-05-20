@@ -1,6 +1,6 @@
 extends Node3D
 
-var timeInEffect : int = 8
+var timeInEffect : float = 8
 var skillCooldown : int = 10
 var healthChange : int = 0
 var debuff : int = 0

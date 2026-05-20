@@ -1,6 +1,6 @@
 extends State
 
-var timeInEffect : int = 0
+var timeInEffect : float = 0
 var skillCooldown : int
 var skillCooldown2 : int
 var skillUsed : Node
@@ -52,24 +52,22 @@ func check_skill() -> void:
 			skillUsed = parent.heal1.instantiate()
 			state_machine.change_state("idle")
 		_:
+			skillUsed = parent.base.instantiate()
 			state_machine.change_state("melee")
 			
 	get_tree().current_scene.add_child(skillUsed)
 	
 	
 func enter() -> void:
-	print(parent)
 	skillUsed = parent.base.instantiate()
 
 func exit() -> void:
 	if skillUsed.staminaDrain < Global.stamina:
-		parent.skillCooldown.wait_time = skillUsed.skillCooldown
-		parent.skillCooldown2.wait_time = skillUsed.skillCooldown
 		
 		parent.store_stats()
 		
 		timeInEffect = skillUsed.timeInEffect
-		Global.health -= skillUsed.healthDrain
+		Global.health += skillUsed.healthChange
 		Global.stamina -= skillUsed.staminaDrain
 		Global.debuff = skillUsed.debuff
 		Global.dmgdebuff = skillUsed.dmgDebuff
@@ -78,20 +76,38 @@ func exit() -> void:
 		parent.health_bar.health_changed()
 		
 		if parent.isESkill == true:
+			parent.skillCooldown.wait_time = skillUsed.skillCooldown
+			parent.skillCooldown2.wait_time = timeInEffect
 			parent.skillCooldownOff = false
+			parent.skillCooldownOff2 = false
 			parent.canUseESkill = true
-			await get_tree().create_timer(timeInEffect).timeout
+			#await get_tree().create_timer(timeInEffect).timeout
 			parent.speed = 5
 			Global.weapon = 1
 			parent.skillCooldown.start()
+			parent.skillCooldown2.start()
 			print("E cooldown started")
 		elif parent.isQSkill == true:
+			parent.skillCooldown.wait_time = timeInEffect
+			parent.skillCooldown2.wait_time = skillUsed.skillCooldown
+			parent.skillCooldownOff = false
 			parent.skillCooldownOff2 = false
 			parent.canUseQSkill = true
-			await get_tree().create_timer(timeInEffect).timeout
+			#await get_tree().create_timer(timeInEffect).timeout
 			parent.speed = 5
+			parent.skillCooldown.start()
 			parent.skillCooldown2.start()
 			print("Q cooldown started")
+		#else:
+			#parent.skillCooldown.wait_time = timeInEffect
+			#parent.skillCooldown2.wait_time = timeInEffect
+			#parent.cooldownOff = false
+			#parent.skillCooldownOff = false
+			#parent.skillCooldownOff2 = false
+			#parent.cooldown.wait_time = skillUsed.skillCooldown
+			#parent.skillCooldown.start()
+			#parent.skillCooldown2.start()
+			#parent.cooldown.start()
 	else:
 		if parent.isESkill == true:
 			parent.skillCooldownOff = true

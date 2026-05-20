@@ -21,7 +21,7 @@ func enter() -> void:
 	else:
 		parent.isQSkill = false
 		parent.isESkill = false
-		parent.restore_stats()
+		parent.store_stats()
 
 func shoot() -> void:
 	if ui_root.visible == false:

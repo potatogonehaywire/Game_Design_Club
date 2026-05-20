@@ -1,6 +1,6 @@
 extends State
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
-var delayTime : float = 0.2
+var delayTime : float = 0.1
 
 func enter() -> void:
 	jump()

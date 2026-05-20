@@ -266,7 +266,7 @@ func restore_statsE() -> void:
 	Global.health = lastHealth
 	Global.maxHealth = lastMaxHealth
 	skillCooldown.stop()
-	skillCooldown.wait_time = 0
+	skillCooldown.wait_time = 100
 	skillCooldownOff = true
 	
 func restore_statsQ() -> void:
@@ -274,5 +274,5 @@ func restore_statsQ() -> void:
 	Global.health = lastHealth
 	Global.maxHealth = lastMaxHealth
 	skillCooldown2.stop()
-	skillCooldown2.wait_time = 0
+	skillCooldown2.wait_time = 100
 	skillCooldownOff2 = true
