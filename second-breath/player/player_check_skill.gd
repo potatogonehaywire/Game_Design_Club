@@ -4,9 +4,10 @@ var timeInEffect : int = 0
 var skillCooldown : int
 var skillCooldown2 : int
 var skillUsed : Node
+var ranged : bool = false
 
 #consume more stamina for higher level skills
-#not alloweed to use 2 skills at once
+#not alloweed to use 2 skills at once ?
 func check_skill() -> void:
 	match parent.lastSkill:
 		1: #basic anger
@@ -29,7 +30,6 @@ func check_skill() -> void:
 			skillUsed = parent.fearMax.instantiate()
 			state_machine.change_state("ranged")
 		6: #max level envy
-			Global.debuff = -2
 			skillUsed = parent.envyMax.instantiate()
 			state_machine.change_state("melee")
 		7: #anger/fear hybrid
@@ -62,33 +62,45 @@ func enter() -> void:
 	skillUsed = parent.base.instantiate()
 
 func exit() -> void:
-	parent.skillCooldown.wait_time = skillUsed.skillCooldown
-	parent.skillCooldown2.wait_time = skillUsed.skillCooldown
-	
-	timeInEffect = skillUsed.timeInEffect
-	if Global.health > skillUsed.healthChange:
-		Global.health += skillUsed.healthChange
-	Global.debuff = skillUsed.debuff
-	Global.dmgdebuff = skillUsed.dmgDebuff
-	Global.maxHealth = skillUsed.maxHealth
-	parent.health_bar.max_value = Global.maxHealth
-	parent.health_bar.health_changed()
-	
-	if parent.isESkill == true:
-		parent.skillCooldownOff = false
-		parent.isESkill = false
-		await get_tree().create_timer(timeInEffect).timeout
-		parent.speed = 5
-		parent.skillCooldown.start()
-		print("E cooldown started")
-		print(parent.skillCooldown.wait_time)
-	elif parent.isQSkill == true:
-		parent.skillCooldownOff2 = false
-		parent.isQSkill = false
-		await get_tree().create_timer(timeInEffect).timeout
-		parent.speed = 5
-		parent.skillCooldown2.start()
-		print("Q cooldown started")
+	if skillUsed.staminaDrain < Global.stamina:
+		parent.skillCooldown.wait_time = skillUsed.skillCooldown
+		parent.skillCooldown2.wait_time = skillUsed.skillCooldown
+		
+		parent.store_stats()
+		
+		timeInEffect = skillUsed.timeInEffect
+		Global.health -= skillUsed.healthDrain
+		Global.stamina -= skillUsed.staminaDrain
+		Global.debuff = skillUsed.debuff
+		Global.dmgdebuff = skillUsed.dmgDebuff
+		Global.maxHealth = skillUsed.maxHealth
+		parent.health_bar.max_value = Global.maxHealth
+		parent.health_bar.health_changed()
+		
+		if parent.isESkill == true:
+			parent.skillCooldownOff = false
+			parent.canUseESkill = true
+			await get_tree().create_timer(timeInEffect).timeout
+			parent.speed = 5
+			Global.weapon = 1
+			parent.skillCooldown.start()
+			print("E cooldown started")
+		elif parent.isQSkill == true:
+			parent.skillCooldownOff2 = false
+			parent.canUseQSkill = true
+			await get_tree().create_timer(timeInEffect).timeout
+			parent.speed = 5
+			parent.skillCooldown2.start()
+			print("Q cooldown started")
+	else:
+		if parent.isESkill == true:
+			parent.skillCooldownOff = true
+			parent.isESkill = false
+			parent.canUseESkill = false
+		elif parent.isQSkill == true:
+			parent.skillCooldownOff2 = true
+			parent.isQSkill = false
+			parent.canUseQSkill = false
 
 func update(_delta:float) -> void:
 	check_skill()
