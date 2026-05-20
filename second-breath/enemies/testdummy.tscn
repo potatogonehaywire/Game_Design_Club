@@ -313,7 +313,7 @@ radius = 5.421875
 height = 1.6477051
 radius = 1.2045898
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_12a4n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bk2n1"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_c4hip"]
@@ -592,7 +592,7 @@ wait_time = 10.0
 
 [node name="EnemyHealthSprite" parent="." unique_id=555377135 instance=ExtResource("3_0u52l")]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 5.1063757, 0)
-texture = SubResource("ViewportTexture_12a4n")
+texture = SubResource("ViewportTexture_bk2n1")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1656563775 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_t1ary")

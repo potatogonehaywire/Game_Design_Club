@@ -1228,8 +1228,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
-ESkill = 10
-QSkill = 8
+ESkill = 8
+QSkill = 1
+RSkill = 10
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
@@ -1292,6 +1293,7 @@ one_shot = true
 one_shot = true
 
 [node name="skillCooldown3" type="Timer" parent="." unique_id=1766422590]
+one_shot = true
 
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=1805611559]
 script = SubResource("GDScript_qjkh3")
@@ -1374,3 +1376,4 @@ color_ramp = SubResource("Gradient_2s0vo")
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="skillCooldown" to="." method="_on_skill_cooldown_timeout"]
 [connection signal="timeout" from="skillCooldown2" to="." method="_on_skill_cooldown_2_timeout"]
+[connection signal="timeout" from="skillCooldown3" to="." method="_on_skill_cooldown_3_timeout"]

@@ -40,6 +40,11 @@ func update(delta:float) -> void:
 		parent.lastSkill = parent.ESkill
 		parent.isESkill = true
 		state_machine.change_state("checkskill")
+		
+	if Input.is_action_just_pressed("skill3") && Global.stamina > 10 && parent.skillCooldownOff3 == true:
+		parent.lastSkill = parent.RSkill
+		parent.isRSkill = true
+		state_machine.change_state("checkskill")
 
 
 func physics_update(_delta:float) -> void:

@@ -10,8 +10,10 @@ var jump : int = 2
 var cooldownOff : bool = true
 var skillCooldownOff : bool = true
 var skillCooldownOff2 : bool = true
+var skillCooldownOff3 : bool = true
 var isESkill : bool = false
 var isQSkill : bool = false
+var isRSkill : bool = false
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
@@ -22,6 +24,8 @@ var interact_label : bool = false
 @onready var cooldown : Timer = $cooldown
 @onready var skillCooldown : Timer = $skillCooldown
 @onready var skillCooldown2 : Timer = $skillCooldown2
+@onready var skillCooldown3: Timer = $skillCooldown3
+
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
@@ -53,6 +57,7 @@ var lastSkill : int
 @onready var skill_effect: CPUParticles3D = $SkillEffect
 var canUseESkill : bool = true
 var canUseQSkill : bool = true
+var canUseRSkill : bool = true
 var lastStamina : int = 100
 var lastHealth : float = 100
 var lastMaxHealth : float = 100
@@ -68,7 +73,7 @@ var envyMax : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.t
 var anger_fear : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
 var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
 var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
-var heal1 : PackedScene = preload("uid://b5d5qciwolq3a")
+var heal1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_heal.tscn")
 
 func _ready() -> void:
 	Global.player = self
@@ -227,6 +232,7 @@ func _on_skill_cooldown_2_timeout() -> void:
 	health_bar.health_changed()
 	print("can use Q skill again")
 
+
 func interact() -> void:
 	if interact_ray.is_colliding():
 		var collider : Node = interact_ray.get_collider()
@@ -234,15 +240,15 @@ func interact() -> void:
 			collider.player_interact()
 
 
-func get_drop_position() -> Vector3:
-	return global_position + direction + Vector3(0, 1,0)
+#func get_drop_position() -> Vector3:
+	#return global_position + direction + Vector3(0, 1,0)
 
 
-func heal(heal_value:int) -> void:
-	Global.health += heal_value
-	if Global.health > Global.maxHealth:
-		Global.health = Global.maxHealth
-	health_bar.health_changed()
+#func heal(heal_value:int) -> void:
+	#Global.health += heal_value
+	#if Global.health > Global.maxHealth:
+		#Global.health = Global.maxHealth
+	#health_bar.health_changed()
 
 
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
@@ -276,3 +282,13 @@ func restore_statsQ() -> void:
 	skillCooldown2.stop()
 	skillCooldown2.wait_time = 100
 	skillCooldownOff2 = true
+
+
+func _on_skill_cooldown_3_timeout() -> void:
+	skillCooldownOff3 = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	health_bar.max_value = Global.maxHealth
+	health_bar.health_changed()
+	print("can use R skill again")

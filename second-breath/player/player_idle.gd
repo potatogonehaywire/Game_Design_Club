@@ -23,11 +23,16 @@ func update(_delta:float) -> void:
 		parent.lastSkill = parent.QSkill
 		parent.isQSkill = true
 		state_machine.change_state("checkskill")
-		
+	
 	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
 		parent.lastSkill = parent.LSkill
 		state_machine.change_state("checkskill")
-		
+	
+	if Input.is_action_just_pressed("skill3") && Global.stamina > 10 && parent.skillCooldownOff3 == true:
+		parent.lastSkill = parent.RSkill
+		parent.isRSkill = true
+		state_machine.change_state("checkskill")
+	
 	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
 		state_machine.change_state("jump")
 	

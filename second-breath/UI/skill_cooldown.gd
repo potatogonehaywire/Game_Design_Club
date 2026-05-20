@@ -45,7 +45,7 @@ func find_colour() -> void:
 		9 : 
 			tint_progress = "93924bff"
 		10 : 
-			tint_progress = "ba0043"
+			tint_progress = "ee1400"
 			
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
