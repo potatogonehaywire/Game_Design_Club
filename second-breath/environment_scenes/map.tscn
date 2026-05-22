@@ -142,7 +142,7 @@ environment = SubResource("Environment_612pj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, -3.7300467, 0.587754)
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("12_iw17c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.525734, -0.45894766, 71.80282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.281784, -0.45894766, 29.938637)
 
 [node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -59.28338, -2.5750506, 45.37375)
