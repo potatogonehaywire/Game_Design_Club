@@ -55,12 +55,19 @@ script = ExtResource("2_4fiuh")
 [node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
 layout_mode = 1
 
-[node name="InteractLabel" type="Label" parent="." unique_id=307289589]
-texture_filter = 1
+[node name="NotMenu" type="Control" parent="." unique_id=1268635304]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 91.0
 offset_top = 391.0
-offset_right = 142.0
-offset_bottom = 406.0
+offset_right = 131.0
+offset_bottom = 431.0
+
+[node name="InteractLabel" type="Label" parent="NotMenu" unique_id=307289589]
+texture_filter = 1
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 15.0
 scale = Vector2(5, 5)
 theme_override_colors/font_outline_color = Color(0.11511584, 3.4269095e-05, 0.42940018, 1)
 theme_override_constants/outline_size = 3
@@ -70,36 +77,39 @@ text = "F: Interact"
 label_settings = SubResource("LabelSettings_nm1m0")
 script = ExtResource("8_h81ot")
 
-[node name="StaminaBar" type="ProgressBar" parent="." unique_id=199650519]
-offset_left = 34.0
-offset_top = 37.0
-offset_right = 505.0
-offset_bottom = 66.0
+[node name="StaminaBar" type="ProgressBar" parent="NotMenu" unique_id=199650519]
+layout_mode = 0
+offset_left = -57.0
+offset_top = -354.0
+offset_right = 414.0
+offset_bottom = -325.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
 value = 50.0
 show_percentage = false
 script = ExtResource("7_2qbci")
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1363857212]
-offset_left = 35.0
-offset_top = 82.0
-offset_right = 696.0
-offset_bottom = 116.0
+[node name="HealthBar" type="ProgressBar" parent="NotMenu" unique_id=1363857212]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -309.0
+offset_right = 605.0
+offset_bottom = -275.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
 value = 50.0
 show_percentage = false
 script = ExtResource("8_ow1yt")
 
-[node name="Cooldown" type="Control" parent="." unique_id=1638233206]
-layout_mode = 3
+[node name="Cooldown" type="Control" parent="NotMenu" unique_id=1638233206]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -91.0
+offset_top = -391.0
+offset_right = -51.0
+offset_bottom = -351.0
 script = ExtResource("7_ow1yt")
 
-[node name="LeftClickSkill" type="TextureProgressBar" parent="Cooldown" unique_id=384764465]
+[node name="LeftClickSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=384764465]
 layout_mode = 0
 offset_left = 1703.0
 offset_top = 732.0
@@ -116,7 +126,7 @@ tint_progress = Color(0.17342657, 0.37691626, 0.6446892, 1)
 script = ExtResource("10_8gukh")
 button_pressed = "L"
 
-[node name="LeftClick" type="Label" parent="Cooldown/LeftClickSkill" unique_id=552991620]
+[node name="LeftClick" type="Label" parent="NotMenu/Cooldown/LeftClickSkill" unique_id=552991620]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 215.0
@@ -129,7 +139,7 @@ Click"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="RSkill" type="TextureProgressBar" parent="Cooldown" unique_id=430957905]
+[node name="RSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=430957905]
 layout_mode = 0
 offset_left = 1575.0
 offset_top = 736.0
@@ -146,7 +156,7 @@ tint_progress = Color(1, 0, 0, 1)
 script = ExtResource("10_8gukh")
 button_pressed = "R"
 
-[node name="R" type="Label" parent="Cooldown/RSkill" unique_id=1860697927]
+[node name="R" type="Label" parent="NotMenu/Cooldown/RSkill" unique_id=1860697927]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 216.0
@@ -156,7 +166,7 @@ theme_override_fonts/font = ExtResource("13_8gukh")
 theme_override_font_sizes/font_size = 32
 text = "R"
 
-[node name="ESkill" type="TextureProgressBar" parent="Cooldown" unique_id=624329387]
+[node name="ESkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=624329387]
 layout_mode = 0
 offset_left = 1439.0
 offset_top = 753.0
@@ -173,7 +183,7 @@ tint_progress = Color(1, 0, 0, 1)
 script = ExtResource("10_8gukh")
 button_pressed = "E"
 
-[node name="E" type="Label" parent="Cooldown/ESkill" unique_id=1479873404]
+[node name="E" type="Label" parent="NotMenu/Cooldown/ESkill" unique_id=1479873404]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 197.0
@@ -183,7 +193,7 @@ theme_override_fonts/font = ExtResource("13_8gukh")
 theme_override_font_sizes/font_size = 32
 text = "E"
 
-[node name="QSkill" type="TextureProgressBar" parent="Cooldown" unique_id=1914544665]
+[node name="QSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=1914544665]
 layout_mode = 0
 offset_left = 1311.0
 offset_top = 731.0
@@ -200,7 +210,7 @@ tint_progress = Color(1, 0, 0, 1)
 script = ExtResource("10_8gukh")
 button_pressed = "Q"
 
-[node name="Q" type="Label" parent="Cooldown/QSkill" unique_id=2142082377]
+[node name="Q" type="Label" parent="NotMenu/Cooldown/QSkill" unique_id=2142082377]
 layout_mode = 0
 offset_left = 41.0
 offset_top = 217.0

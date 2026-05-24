@@ -5,6 +5,9 @@ const PickUp : PackedScene = preload("res://item/pick_up/pick_up.tscn")
 @onready var player: CharacterBody3D = $Player
 @onready var talent_tree: TalentTree = $UI/UIRoot/talent_tree
 @onready var ui: CanvasLayer = $UI
+@onready var ui_root: Control = $UI/UIRoot
+@onready var not_menu: Control = $UI/NotMenu
+
 
 func _ready() -> void:
 	#player.toggle_inventory.connect(toggle_inventory_root)
@@ -20,8 +23,9 @@ func _ready() -> void:
 
 
 func toggle_skilltree_interface() -> void:
-	talent_tree.visible = not talent_tree.visible
-
+	ui_root.visible = not ui_root.visible
+	not_menu.visible = not not_menu.visible
+	#talent_tree.visible = not talent_tree.visible
 
 #func toggle_inventory_root(external_inventory_owner : Node = null) -> void:
 	#inventory_root.visible = not inventory_root.visible

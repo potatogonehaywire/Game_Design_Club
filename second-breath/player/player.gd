@@ -31,7 +31,7 @@ var interact_label : bool = false
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
 @onready var talent_tree: TalentTree = $"../UI/UIRoot/talent_tree"
-@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
 @onready var interact_ray: RayCast3D = $InteractRay
@@ -96,7 +96,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	Global.skillType = lastSkill
 	
-	if Global.health <= 0:
+	if Global.health <= 0 or position.y <= -25:
 		Global.health = 100
 		# stop combat mode
 		Global.aggro_enemies.clear()

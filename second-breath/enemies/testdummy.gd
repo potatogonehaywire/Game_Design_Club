@@ -15,13 +15,15 @@ var enemyhp : float = ENEMY_HP_MAX
 @export var damage : int = 20
 @export var enemyType : int = 0
 
-@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
 @onready var state_machine: StateMachine = $StateMachine
 @export var starting_location: Vector3 = Vector3.ZERO
 @onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
 @onready var hurtbox: Area3D = $Hurtbox
 
+var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic_anger.tscn")
+var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_anger.tscn")
 
 #var explosion = preload("res://attack_skills/explosion.tscn")
 var explodes : bool = false

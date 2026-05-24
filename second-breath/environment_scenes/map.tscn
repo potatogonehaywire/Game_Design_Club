@@ -146,18 +146,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.281784, -0.45894766, 29.938
 
 [node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -59.28338, -2.5750506, 45.37375)
+speed = 1.0
+id = 0
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy2" parent="." unique_id=1524244774 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -53.676395, -2.6864288, 46.15329)
+speed = 1.0
 id = 1
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy3" parent="." unique_id=1139285873 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -52.503857, -2.6864288, 46.080715)
+speed = 1.0
 id = 2
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy4" parent="." unique_id=510857639 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -52.938892, -2.6864288, 44.30968)
+speed = 1.0
 id = 3
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="bridge_test" parent="." unique_id=965578783 instance=ExtResource("15_ilmlt")]
 transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, -1.2468643, -2.9384177, 54.041092)
@@ -740,31 +761,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 0.286308
 
 [node name="testdummy5" parent="." unique_id=287914276 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 204.21556, -11.930185, 31.800909)
+speed = 1.0
 id = 4
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy6" parent="." unique_id=2093585621 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 163.7245, -4.913627, 44.19654)
+speed = 1.0
 id = 5
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy7" parent="." unique_id=1680238094 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 152.2899, -4.913631, 48.855347)
+speed = 1.0
 id = 6
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy8" parent="." unique_id=975944032 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 166.67351, -4.913631, 46.51116)
+speed = 1.0
 id = 7
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy9" parent="." unique_id=2051886515 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 160.46841, -4.91363, 46.28302)
+speed = 1.0
 id = 8
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy10" parent="." unique_id=398603499 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 195.47903, -11.542479, 76.53932)
+speed = 1.0
 id = 9
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy11" parent="." unique_id=2020355358 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 190.72548, -11.542463, 80.17763)
+speed = 1.0
 id = 10
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="PinkTree" parent="." unique_id=104455027 instance=ExtResource("19_qy8pf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.29621, -2.7125857, 15.140512)
@@ -918,28 +974,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.521526, -2.7125795, 23.232
 
 [node name="testdummy12" parent="." unique_id=489453860 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 6.7088203, -3.1349504, 13.147484)
+speed = 1.0
 id = 11
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy13" parent="." unique_id=1473731213 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 17.418156, -3.0077786, 3.1529465)
+speed = 1.0
 id = 12
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy14" parent="." unique_id=841156783 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.4272451, -3.00778, 9.403049)
+speed = 1.0
 id = 13
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy15" parent="." unique_id=686749972 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.448514, -3.00778, 11.75182)
+speed = 1.0
 id = 14
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy16" parent="." unique_id=177190763 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 8.136792, -2.872044, 18.657188)
+speed = 1.0
 id = 15
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy17" parent="." unique_id=1038002154 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.0225, 0, 0, 0, 0.0225, 0, 0, 0, 0.0225, 50.651363, 6.348174, -88.416145)
+speed = 1.0
 id = 16
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
 
 [node name="testdummy18" parent="." unique_id=1651062247 instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.0225, 0, 0, 0, 0.0225, 0, 0, 0, 0.0225, 100.541855, -3.8487732, 23.4669)
+speed = 1.0
 id = 17
+ENEMY_HP_MAX = 50.0
+damage = 20
+enemyType = 0
+starting_location = Vector3(0, 0, 0)
