@@ -17,7 +17,7 @@ func enter() -> void:
 	apply_buffs()
 
 func exit() -> void:
-	pass
+	skillUsed.queue_free()
 
 func update(_delta:float) -> void:
 	

@@ -3,9 +3,10 @@ extends State
 @onready var attack_hitbox: Area3D = $"../../AttackHitbox"
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
 @onready var melee_sprite: AnimatedSprite3D = $"../../AttackHitbox/MeleeSprite"
-
+var skillUsed : Node
 
 func enter() -> void:
+	parent.cooldown.start(0.8)
 	attackActive()
 		
 
@@ -46,7 +47,7 @@ func attackActive() -> void:
 	attack.disabled = true
 
 func exit() -> void:
-	parent.cooldown.start(0.5)
+	parent.skillUsed.queue_free()
 
 func update(_delta:float) -> void:
 	# check if player uses WASD

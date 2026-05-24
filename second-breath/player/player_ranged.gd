@@ -3,8 +3,10 @@ extends State
 @onready var interact_ray: RayCast3D = $"../../InteractRay"
 @onready var muzzle_location: Marker3D = $"../../projectileMarkerThing"
 const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
+var skillUsed : Node
 
 func enter() -> void:
+	skillUsed = parent.skillUsed
 	shoot()
 
 
@@ -29,7 +31,7 @@ func shoot() -> void:
 				projectile_instance.isPlayer = true
 
 func exit() -> void:
-	pass
+	skillUsed.queue_free()
 
 func update(_delta:float) -> void:
 	# check if player used WASD
