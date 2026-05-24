@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Enemy
 
 var canDamage : bool = true
 var my_id : int = 0
@@ -10,9 +11,10 @@ var isHit : bool = false
 
 @export var speed : float = 1
 @export var id : int = 0
-@export var ENEMY_HP_MAX : float = 50.0
-var enemyhp : float = ENEMY_HP_MAX
-@export var damage : int = 20
+@export var enemyMaxHp : float = 50.0
+var enemyhp : float = enemyMaxHp
+@export var BASE_DAMAGE : int = 20
+var damage : int = BASE_DAMAGE
 @export var enemyType : int = 0
 
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
@@ -24,13 +26,19 @@ var enemyhp : float = ENEMY_HP_MAX
 
 var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic_anger.tscn")
 var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var skillUsed : Node
+var lastSkill : int = 2
 
-#var explosion = preload("res://attack_skills/explosion.tscn")
+@onready var basic_cooldown: Timer = $BasicCooldown
+@onready var max_cooldown: Timer = $MaxCooldown
+var basicCooldownOff : bool = true
+var maxCooldownOff : bool = true
+
 var explodes : bool = false
 var healthDrain : bool = false
 var debuff : int = 0
 var dmgdebuff : int = 0
-var windup : int = 2
+#var windup : int = 2
 var gotdmgDebuff : int = 0
 
 func _ready() -> void:
@@ -113,26 +121,6 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 func _on_projectile_cooldown_timeout() -> void:
 	if isInRange == true:
 		state_machine.change_state("ranged")
-
-
-func check_skill() -> void:
-	match self.enemyType:
-		1: #basic anger
-			healthDrain = true
-			debuff = 3
-		3: #basic envy
-			dmgdebuff = 2
-		4: #max level anger
-			healthDrain = true
-			debuff = 5 
-		5: #max level fear
-			explodes = true
-			debuff = -10 
-		6: #max level envy
-			pass
-			debuff = -4
-		_:
-			enemyType = 0
 	
 			
 #func explode() -> void:
@@ -159,3 +147,21 @@ func _on_melee_detection_body_entered(body: Node3D) -> void:
 func _on_melee_detection_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		meleeInRange = false
+
+
+func _on_basic_cooldown_timeout() -> void:
+	basicCooldownOff = true
+	print("enemy basic skill cooldown ended")
+	skillUsed = basic_skill.instantiate()
+	get_tree().current_scene.add_child(skillUsed)
+	lastSkill = 0
+	state_machine.change_state("buff")
+	
+
+func _on_max_cooldown_timeout() -> void:
+	maxCooldownOff = true
+	print("enemy max skill cooldown ended")
+	skillUsed = basic_skill.instantiate()
+	get_tree().current_scene.add_child(skillUsed)
+	lastSkill = 1
+	state_machine.change_state("buff")

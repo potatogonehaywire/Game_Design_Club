@@ -4,7 +4,7 @@ extends Sprite3D
 
 
 func _ready() -> void:
-	enemy_health_bar.max_value = get_parent().ENEMY_HP_MAX
+	enemy_health_bar.max_value = get_parent().enemyMaxHp
 	enemy_health_bar.value = get_parent().enemyhp
 	
 
