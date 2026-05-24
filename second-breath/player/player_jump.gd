@@ -17,15 +17,16 @@ func jump() -> void:
 
 func update(delta:float) -> void:
 	delayTime -= delta
+	
+	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
+		jump()
+		
 	if delayTime <= 0:
 		if parent.is_on_floor():
 			if parent.velocity == Vector3.ZERO:
 				state_machine.change_state("idle")
 			else:
 				state_machine.change_state("walk")
-	
-	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
-		jump()
 	
 	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.skillCooldownOff2 == true:
 		parent.lastSkill = parent.QSkill

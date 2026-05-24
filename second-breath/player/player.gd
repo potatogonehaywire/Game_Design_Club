@@ -75,6 +75,13 @@ var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_env
 var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
 var heal1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_heal.tscn")
 
+var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
+								4: angerMax, 5: fearMax, 6: envyMax,
+								7 : anger_fear, 8 : fear_envy, 9 : anger_envy,
+								10 : heal1}
+
+var skillUsed : Node
+
 func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
@@ -219,7 +226,7 @@ func _on_skill_cooldown_timeout() -> void:
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
-	health_bar.max_value = Global.maxHealth
+	Global.weapon = 1
 	health_bar.health_changed()
 	print("can use E skill again")
 
@@ -228,7 +235,7 @@ func _on_skill_cooldown_2_timeout() -> void:
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
-	health_bar.max_value = Global.maxHealth
+	Global.weapon = 1
 	health_bar.health_changed()
 	print("can use Q skill again")
 
@@ -238,17 +245,6 @@ func interact() -> void:
 		var collider : Node = interact_ray.get_collider()
 		if collider.has_method("player_interact"):
 			collider.player_interact()
-
-
-#func get_drop_position() -> Vector3:
-	#return global_position + direction + Vector3(0, 1,0)
-
-
-#func heal(heal_value:int) -> void:
-	#Global.health += heal_value
-	#if Global.health > Global.maxHealth:
-		#Global.health = Global.maxHealth
-	#health_bar.health_changed()
 
 
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
@@ -262,33 +258,12 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 func damage_taken() -> void:
 	health_bar.health_changed()
 
-func store_stats() -> void:
-	lastStamina = Global.stamina
-	lastHealth = Global.health
-	lastMaxHealth = Global.maxHealth
-
-func restore_statsE() -> void:
-	Global.stamina = lastStamina
-	Global.health = lastHealth
-	Global.maxHealth = lastMaxHealth
-	skillCooldown.stop()
-	skillCooldown.wait_time = 100
-	skillCooldownOff = true
-	
-func restore_statsQ() -> void:
-	Global.stamina = lastStamina
-	Global.health = lastHealth
-	Global.maxHealth = lastMaxHealth
-	skillCooldown2.stop()
-	skillCooldown2.wait_time = 100
-	skillCooldownOff2 = true
-
 
 func _on_skill_cooldown_3_timeout() -> void:
 	skillCooldownOff3 = true
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
-	health_bar.max_value = Global.maxHealth
+	Global.weapon = 1
 	health_bar.health_changed()
 	print("can use R skill again")

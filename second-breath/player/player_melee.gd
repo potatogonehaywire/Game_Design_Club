@@ -6,34 +6,8 @@ extends State
 
 
 func enter() -> void:
-	if parent.isQSkill == true:
-		if parent.canUseQSkill == true:
-			parent.isQSkill = false
-			parent.isRSkill = false
-			attackActive()
-		else:
-			parent.restore_statsQ()
-	elif parent.isESkill == true:
-		if parent.canUseESkill == true:
-			parent.isESkill = false
-			parent.isRSkill = false
-			attackActive()
-		else:
-			parent.restore_statsE()
-	elif parent.isRSkill == true:
-		if parent.canUseRSkill == true:
-			parent.isESkill = false
-			parent.isQSkill = false
-			attackActive()
-	else:
-		parent.isQSkill = false
-		parent.isESkill = false
-		parent.isRSkill = false
-		parent.restore_statsE()
-		parent.restore_statsQ()
-		attackActive()
+	attackActive()
 		
-	
 
 func attackActive() -> void:
 	# player stops moving when attacking, player would slide around otherwise

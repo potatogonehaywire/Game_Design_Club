@@ -3,53 +3,34 @@ class_name CooldownBar
 var player : Player
 @export var button_pressed : String
 var skill_used : int
+var skill_node : Node
 var cooldown : Timer
-var cooldown_node : Timer
+var skill_colour : Color
 
-func check_skill() -> Timer:
+func check_skill() -> void:
 	match button_pressed:
 		"L":
 			skill_used = player.LSkill
-			cooldown_node = player.get_node("cooldown")
+			cooldown = player.get_node("cooldown")
 		"E":
 			skill_used = player.ESkill
-			cooldown_node = player.get_node("skillCooldown")
+			cooldown = player.get_node("skillCooldown")
 		"R":
 			skill_used = player.RSkill
-			cooldown_node = player.get_node("skillCooldown3")
+			cooldown = player.get_node("skillCooldown3")
 		"Q":
 			skill_used = player.QSkill
-			cooldown_node = player.get_node("skillCooldown2")
-	return cooldown_node
+			cooldown = player.get_node("skillCooldown2")
+
 
 func find_colour() -> void:
-	match skill_used:
-		0 :
-			tint_progress = "73829a"
-		1 :
-			tint_progress = "ff417c"
-		2 : 
-			tint_progress = "cf01f9"
-		3 :
-			tint_progress = "00b972"
-		4 : 
-			tint_progress = "ba0043"
-		5 :
-			tint_progress = "8601e4"
-		6 :
-			tint_progress = "007a52"
-		7 : 
-			tint_progress = "980097ff"
-		8 : 
-			tint_progress = "2c60a4"
-		9 : 
-			tint_progress = "93924bff"
-		10 : 
-			tint_progress = "ee1400"
+	skill_node = player.skill_dict[skill_used].instantiate()
+	tint_progress = skill_node.colour
+	
 			
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	cooldown = check_skill()
+	check_skill()
 	find_colour()
 
 func _process(_delta: float) -> void:
