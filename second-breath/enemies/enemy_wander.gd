@@ -37,5 +37,7 @@ func update(delta:float) -> void:
 func physics_update(_delta:float) -> void:
 	parent.velocity = wander_direction * parent.speed
 
-	if not parent.is_on_floor():
-		parent.velocity.y = -3
+	if parent.is_on_floor():
+		parent.velocity.y = 0
+	else:
+		parent.velocity.y -= 3

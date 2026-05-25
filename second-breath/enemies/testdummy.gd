@@ -9,6 +9,7 @@ var isHit : bool = false
 
 @onready var cooldown: Timer = $ProjectileCooldown
 
+
 @export var speed : float = 1
 @export var id : int = 0
 @export var enemyMaxHp : float = 50.0
@@ -28,6 +29,7 @@ var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic
 var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_anger.tscn")
 var skillUsed : Node
 var lastSkill : int = 2
+@onready var skill_effect: GPUParticles3D = $SkillEffect
 
 @onready var basic_cooldown: Timer = $BasicCooldown
 @onready var max_cooldown: Timer = $MaxCooldown
@@ -60,6 +62,10 @@ func _process(_delta: float) -> void:
 	if gotdmgDebuff != 0:
 		await get_tree().create_timer(10).timeout
 		gotdmgDebuff = 0
+	
+	if position.y <= -25:
+		enemyhp = 0
+		take_damage()
 
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
@@ -119,8 +125,9 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 
 
 func _on_projectile_cooldown_timeout() -> void:
-	if isInRange == true:
-		state_machine.change_state("ranged")
+	pass
+	#if isInRange == true:
+		#state_machine.change_state("ranged")
 	
 			
 #func explode() -> void:
@@ -155,7 +162,13 @@ func _on_basic_cooldown_timeout() -> void:
 	skillUsed = basic_skill.instantiate()
 	get_tree().current_scene.add_child(skillUsed)
 	lastSkill = 0
-	state_machine.change_state("buff")
+	if isInRange:
+		if skillUsed.type == "buff":
+			state_machine.change_state("buff")
+		elif skillUsed.type == "ranged":
+			state_machine.change_state("ranged")
+		elif skillUsed.type == "melee":
+			state_machine.change_state("attack")
 	
 
 func _on_max_cooldown_timeout() -> void:
@@ -164,4 +177,10 @@ func _on_max_cooldown_timeout() -> void:
 	skillUsed = basic_skill.instantiate()
 	get_tree().current_scene.add_child(skillUsed)
 	lastSkill = 1
-	state_machine.change_state("buff")
+	if isInRange:
+		if skillUsed.type == "buff":
+			state_machine.change_state("buff")
+		elif skillUsed.type == "ranged":
+			state_machine.change_state("ranged")
+		elif skillUsed.type == "melee":
+			state_machine.change_state("attack")

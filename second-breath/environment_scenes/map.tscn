@@ -917,7 +917,7 @@ transform = Transform3D(0.6885191, 0, -0.7252183, 0, 1, 0, 0.7252183, 0, 0.68851
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.521526, -2.7125795, 23.232864)
 
 [node name="testdummy12" parent="." unique_id=489453860 instance=ExtResource("13_ol8ra")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 6.7088203, -3.1349504, 13.147484)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.367074, -2.814895, 13.952805)
 id = 11
 
 [node name="testdummy13" parent="." unique_id=1473731213 instance=ExtResource("13_ol8ra")]

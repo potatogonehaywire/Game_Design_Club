@@ -31,6 +31,7 @@ func update(delta:float) -> void:
 		if attack_time <= 0:
 			hitbox.position = Vector3(0,0,0)
 			reset_time()
+			
 	if parent.meleeInRange == false and attack_time == 1:
 		state_machine.change_state("pursuit")
 

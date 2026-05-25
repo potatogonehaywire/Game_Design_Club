@@ -11,7 +11,9 @@ func enter() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	if parent.my_id not in Global.aggro_enemies:
 		Global.aggro_enemies.append(parent.my_id)
-		
+	
+	# if one skill is used but another skill's cooldown is almost running out
+	# force other skill to increase cooldown
 	if parent.lastSkill == 0 && parent.basicCooldownOff:
 		parent.basic_cooldown.wait_time = randf_range(skill1.skillCooldown, skill1.skillCooldown * 2)
 		if parent.max_cooldown.time_left < 1:
@@ -41,7 +43,13 @@ func exit() -> void:
 
 
 func update(_delta:float) -> void:
-	pass
+	if parent.meleeInRange:
+		state_machine.change_state("attack")
+		
+	
+	if !parent.isInRange and parent.my_id in Global.aggro_enemies:
+		Global.aggro_enemies.erase(parent.my_id)
+		state_machine.change_state("return")
 
 
 func physics_update(_delta:float) -> void:
@@ -51,13 +59,4 @@ func physics_update(_delta:float) -> void:
 		parent.velocity.y -= 3
 	
 	parent.velocity = parent.position.direction_to(Global.player.position) * parent.speed * 2
-	
-	if parent.meleeInRange:
-		state_machine.change_state("attack")
-		
-	
-	if parent.isInRange != true and Global.aggro_enemies.size() > 0:
-		Global.aggro_enemies.erase(parent.my_id)
-		state_machine.change_state("return")
-
 	

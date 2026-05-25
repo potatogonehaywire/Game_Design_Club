@@ -3,6 +3,9 @@ class_name EnemyIdle
 var wait_time: float 
 
 func enter() -> void:
+	if parent.my_id in Global.aggro_enemies:
+		Global.aggro_enemies.erase(parent.my_id)
+		
 	randomize()
 	wait_time = randf_range(5, 15)
 	
