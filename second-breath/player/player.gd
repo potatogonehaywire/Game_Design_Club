@@ -1,37 +1,39 @@
 extends CharacterBody3D
 class_name Player
 
-signal toggle_inventory()
 signal toggle_skilltree()
 signal interact_hover()
 
-const speed : int = 5
 const jumpspeed : int = 20
+var speed : int = 5
 var jump : int = 2
 var cooldownOff : bool = true
 var skillCooldownOff : bool = true
+var skillCooldownOff2 : bool = true
+var skillCooldownOff3 : bool = true
+var isESkill : bool = false
+var isQSkill : bool = false
+var isRSkill : bool = false
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
-
-@export var inventory_data: InventoryData
-@export var equip_inventory_data: InventoryDataEquip
 
 @onready var attack : CollisionShape3D = $AttackHitbox/AttackHitboxCollision
 @onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
 
 @onready var cooldown : Timer = $cooldown
 @onready var skillCooldown : Timer = $skillCooldown
+@onready var skillCooldown2 : Timer = $skillCooldown2
+@onready var skillCooldown3: Timer = $skillCooldown3
+
 @onready var camera: Camera3D = $camera_controller/camera_target/Camera3D
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
-
-@onready var talent_tree: TalentTree = $"../UI/talent_tree"
-@onready var health_bar: ProgressBar = $"../UI/HealthBar"
+@onready var talent_tree: TalentTree = $"../UI/UIRoot/talent_tree"
+@onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
-
 @onready var interact_ray: RayCast3D = $InteractRay
 
 var mouse_position : Vector2
@@ -42,7 +44,6 @@ var ray_length: float = 50.0
 var close_enough : bool
 var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
 var explodes : bool = false
-var healthDrain : bool = false
 var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
@@ -51,7 +52,35 @@ var camera_has_obstacle : bool = false
 @export var LSkill : int
 @export var ESkill : int
 @export var QSkill : int
+@export var RSkill : int
 var lastSkill : int
+@onready var skill_effect: CPUParticles3D = $SkillEffect
+var canUseESkill : bool = true
+var canUseQSkill : bool = true
+var canUseRSkill : bool = true
+var lastStamina : int = 100
+var lastHealth : float = 100
+var lastMaxHealth : float = 100
+
+# skill scenes
+var base : PackedScene = preload("uid://b5d5qciwolq3a")
+var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
+var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
+var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
+var angerMax : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var fearMax : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
+var envyMax : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
+var anger_fear : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
+var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
+var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
+var heal1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_heal.tscn")
+
+var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
+								4: angerMax, 5: fearMax, 6: envyMax,
+								7 : anger_fear, 8 : fear_envy, 9 : anger_envy,
+								10 : heal1}
+
+var skillUsed : Node
 
 func _ready() -> void:
 	Global.player = self
@@ -64,9 +93,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 	
-	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
-	
 	if Input.is_action_just_pressed("interact"):
 		interact()
 	
@@ -75,7 +101,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
-	if Global.health <= 0:
+	Global.skillType = lastSkill
+	
+	if Global.health <= 0 or position.y <= -25:
 		Global.health = 100
 		# stop combat mode
 		Global.aggro_enemies.clear()
@@ -182,30 +210,34 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 			Global.enemyHitID.append(id)
 			enemy_hit()
 			print(Global.enemyHitID)
-			if Global.skillType == 6:
+			if lastSkill == 6:
 				Global.health += 6
-			elif Global.skillType == 9:
+			elif lastSkill == 9:
 				Global.health += 2
-
-	
-#func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("enemy") && attack.disabled == false:
-		#if body.has_method("upon_hit"): 
-			#var id = body.id
-			#Global.enemyHitID.append(id)
-			#enemy_hit()
-
 
 func enemy_hit() -> void:
 	Global.enemyIsHit = true
 	
-	
 func _on_cooldown_timeout() -> void:
 	cooldownOff = true
 
-
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	Global.weapon = 1
+	health_bar.health_changed()
+	print("can use E skill again")
+
+func _on_skill_cooldown_2_timeout() -> void:
+	skillCooldownOff2 = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	Global.weapon = 1
+	health_bar.health_changed()
+	print("can use Q skill again")
 
 
 func interact() -> void:
@@ -213,17 +245,6 @@ func interact() -> void:
 		var collider : Node = interact_ray.get_collider()
 		if collider.has_method("player_interact"):
 			collider.player_interact()
-
-
-func get_drop_position() -> Vector3:
-	return global_position + direction + Vector3(0, 1,0)
-
-
-func heal(heal_value:int) -> void:
-	Global.health += heal_value
-	if Global.health > Global.maxHealth:
-		Global.health = Global.maxHealth
-	health_bar.health_changed()
 
 
 func _on_attack_hitbox_area_entered(area: Area3D) -> void:
@@ -236,3 +257,13 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 
 func damage_taken() -> void:
 	health_bar.health_changed()
+
+
+func _on_skill_cooldown_3_timeout() -> void:
+	skillCooldownOff3 = true
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	Global.weapon = 1
+	health_bar.health_changed()
+	print("can use R skill again")

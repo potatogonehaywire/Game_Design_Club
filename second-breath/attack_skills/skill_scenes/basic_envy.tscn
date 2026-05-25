@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bei6wyru0hiwf"]
+
+[ext_resource type="Script" uid="uid://ddf2ydvbh2o40" path="res://attack_skills/skill_scenes/basic_envy.gd" id="1_y57gi"]
+
+[node name="basicEnvy" type="Node3D" unique_id=345270200]
+script = ExtResource("1_y57gi")

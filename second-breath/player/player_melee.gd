@@ -3,9 +3,14 @@ extends State
 @onready var attack_hitbox: Area3D = $"../../AttackHitbox"
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
 @onready var melee_sprite: AnimatedSprite3D = $"../../AttackHitbox/MeleeSprite"
-
+var skillUsed : Node
 
 func enter() -> void:
+	parent.cooldown.start(0.8)
+	attackActive()
+		
+
+func attackActive() -> void:
 	# player stops moving when attacking, player would slide around otherwise
 	parent.velocity.x = 0
 	parent.velocity.z = 0
@@ -40,9 +45,9 @@ func enter() -> void:
 	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	melee_sprite.visible = false
 	attack.disabled = true
-	
+
 func exit() -> void:
-	parent.cooldown.start(0.5)
+	parent.skillUsed.queue_free()
 
 func update(_delta:float) -> void:
 	# check if player uses WASD
@@ -56,4 +61,27 @@ func update(_delta:float) -> void:
 			state_machine.change_state("walk")
 
 func physics_update(_delta:float) -> void:
-	pass
+	if Input.is_action_pressed("left"):
+		parent.velocity.x = -parent.speed
+		parent.direction.x = -1
+		
+	elif Input.is_action_pressed("right"):
+		parent.velocity.x = parent.speed
+		parent.direction.x = 1
+	else:
+		parent.velocity.x = 0
+		if parent.velocity.z != 0:
+			parent.direction.x = 0
+		
+	if Input.is_action_pressed("forward"):
+		parent.velocity.z = -parent.speed
+		parent.direction.z = -1
+
+	elif Input.is_action_pressed("backward"):
+		parent.velocity.z = parent.speed
+		parent.direction.z = 1
+
+	else:
+		parent.velocity.z = 0
+		if parent.velocity.x != 0:
+			parent.direction.z = 0

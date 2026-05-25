@@ -5,6 +5,7 @@ var player: CharacterBody3D = null
 
 func enter() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	parent.lastSkill = 2
 
 func exit() -> void:
 	pass

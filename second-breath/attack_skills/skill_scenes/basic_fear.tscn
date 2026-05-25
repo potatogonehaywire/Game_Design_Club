@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cs8yevu48vmmc"]
+
+[ext_resource type="Script" uid="uid://dwr4ajmexvj25" path="res://attack_skills/skill_scenes/basic_fear.gd" id="1_oqpma"]
+
+[node name="basicFear" type="Node3D" unique_id=2116355939]
+script = ExtResource("1_oqpma")

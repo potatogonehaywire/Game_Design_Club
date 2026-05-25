@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://qtqd6vraj20"]
+
+[ext_resource type="Script" uid="uid://bfigiaqex5mo0" path="res://attack_skills/skill_scenes/max_anger.gd" id="1_d0jup"]
+
+[node name="maxAnger" type="Node3D" unique_id=865848315]
+script = ExtResource("1_d0jup")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bd17srr6fuaeu"]
+
+[ext_resource type="Script" uid="uid://dpi7fi72s5nyl" path="res://attack_skills/skill_scenes/fear_envy.gd" id="1_37f4c"]
+
+[node name="fearEnvy" type="Node3D" unique_id=640907592]
+script = ExtResource("1_37f4c")

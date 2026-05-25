@@ -14,15 +14,15 @@ func reset_time() -> void:
 func enter() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	randomize()
-
-
+	
+	
 func attacking() -> void:
 	attack_direction = parent.position.direction_to(Global.player.position)
 	hitbox.position = attack_direction * Vector3(5,2,5)
 
 func exit() -> void:
 	hitbox.position = Vector3(0,0,0)
-
+	
 func update(delta:float) -> void:
 	wait_time -= delta
 	if wait_time <= 0:
@@ -31,6 +31,7 @@ func update(delta:float) -> void:
 		if attack_time <= 0:
 			hitbox.position = Vector3(0,0,0)
 			reset_time()
+			
 	if parent.meleeInRange == false and attack_time == 1:
 		state_machine.change_state("pursuit")
 

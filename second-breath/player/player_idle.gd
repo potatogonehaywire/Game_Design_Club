@@ -2,7 +2,8 @@ extends State
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
 
 func enter() -> void:
-	pass
+	parent.velocity.x = 0
+	parent.velocity.z = 0
 
 func exit() -> void:
 	pass
@@ -16,16 +17,23 @@ func update(_delta:float) -> void:
 	
 	if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
 		parent.lastSkill = parent.ESkill
+		parent.isESkill = true
 		state_machine.change_state("checkskill")
 
-	if Input.is_action_just_pressed("skill2") && Global.stamina > 10 && parent.cooldownOff == true:
+	if Input.is_action_just_pressed("skill2") && parent.skillCooldownOff2 == true:
 		parent.lastSkill = parent.QSkill
+		parent.isQSkill = true
 		state_machine.change_state("checkskill")
-		
-	if Input.is_action_just_pressed("attack") && Global.stamina > 10 && parent.cooldownOff == true:
+	
+	if Input.is_action_just_pressed("attack") && Global.stamina >= 10 && parent.cooldownOff == true:
 		parent.lastSkill = parent.LSkill
 		state_machine.change_state("checkskill")
-		
+	
+	if Input.is_action_just_pressed("skill3") && parent.skillCooldownOff3 == true:
+		parent.lastSkill = parent.RSkill
+		parent.isRSkill = true
+		state_machine.change_state("checkskill")
+	
 	if Input.is_action_just_pressed("jump") && parent.jump >= 1 && Global.stamina >= 15:
 		state_machine.change_state("jump")
 	
