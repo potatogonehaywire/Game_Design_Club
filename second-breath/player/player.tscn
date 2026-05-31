@@ -99,7 +99,7 @@
 [ext_resource type="Script" uid="uid://bh0i0hsr8npqu" path="res://player/player_jump.gd" id="99_hrakr"]
 [ext_resource type="Script" uid="uid://cxfm6yj564lk0" path="res://player/player_walk.gd" id="99_vhicv"]
 [ext_resource type="Script" uid="uid://dh501u1rgx6mh" path="res://player/player_melee.gd" id="101_hrakr"]
-[ext_resource type="Script" uid="uid://cwlxcag1mndos" path="res://player/player_buff.gd" id="102_2s0vo"]
+[ext_resource type="Script" path="res://player/player_buff.gd" id="102_2s0vo"]
 [ext_resource type="Script" uid="uid://dynojuma72jys" path="res://player/player_ranged.gd" id="102_wsa1w"]
 [ext_resource type="Script" uid="uid://cry3ntgqll3e0" path="res://player/player_check_skill.gd" id="103_2s0vo"]
 
@@ -1229,9 +1229,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
-ESkill = 8
-QSkill = 1
-RSkill = 10
+ESkill = 3
+QSkill = 8
+RSkill = 5
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true

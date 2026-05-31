@@ -1,6 +1,5 @@
 extends TextureButton
 class_name TalentSlot
-
 const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 
 @export var talent_id: String
@@ -64,6 +63,7 @@ func _on_gui_input(event: InputEvent) -> void:
 			next_level += 1
 			if next_level == 1:
 				Global.available_skills.append(talent_id)
+				print(Global.available_skills)
 		elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
 			next_level -= 1
 		set_new_level(next_level)

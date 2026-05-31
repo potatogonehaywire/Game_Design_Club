@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
+[ext_resource type="PackedScene" uid="uid://ck7nb2vhas58m" path="res://UI/skill_manager.tscn" id="3_8gkfd"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
 [ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/crystal1.png" id="7_h81ot"]
@@ -53,6 +54,9 @@ grow_vertical = 2
 script = ExtResource("2_4fiuh")
 
 [node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
+layout_mode = 1
+
+[node name="SkillManager" parent="UIRoot" unique_id=1638622206 instance=ExtResource("3_8gkfd")]
 layout_mode = 1
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]

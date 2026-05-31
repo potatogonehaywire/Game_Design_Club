@@ -17,6 +17,7 @@ var isRSkill : bool = false
 var direction: Vector3
 var bullseye : CompressedTexture2D = preload("uid://boe62hylmoryp")
 var interact_label : bool = false
+@onready var ui_root : Node = $"../UI/UIRoot"
 
 @onready var attack : CollisionShape3D = $AttackHitbox/AttackHitboxCollision
 @onready var melee_sprite: AnimatedSprite3D = $AttackHitbox/MeleeSprite
@@ -48,11 +49,6 @@ var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
 
-# left click, E and Q skill
-@export var LSkill : int
-@export var ESkill : int
-@export var QSkill : int
-@export var RSkill : int
 var lastSkill : int
 @onready var skill_effect: CPUParticles3D = $SkillEffect
 var canUseESkill : bool = true
@@ -63,7 +59,7 @@ var lastHealth : float = 100
 var lastMaxHealth : float = 100
 
 # skill scenes
-var base : PackedScene = preload("uid://b5d5qciwolq3a")
+var base : PackedScene = preload("res://attack_skills/skill_scenes/basic.tscn")
 var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
 var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
 var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
@@ -80,6 +76,11 @@ var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
 								7 : anger_fear, 8 : fear_envy, 9 : anger_envy,
 								10 : heal1}
 
+# left click, R, E and Q skill
+@export var LSkill : int
+@export var ESkill : int
+@export var QSkill : int
+@export var RSkill : int
 var skillUsed : Node
 
 func _ready() -> void:
@@ -98,7 +99,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("skill_tree"):
 		toggle_skilltree.emit()
-
+	
 
 func _process(_delta: float) -> void:
 	Global.skillType = lastSkill
@@ -137,6 +138,7 @@ func _physics_process(_delta: float) -> void:
 	# Point it in the direction of the mouse
 	interact_ray.target_position = ray_direction * 50.0
 	
+
 	# if something is between camera and the player
 	if cam_collider.is_colliding():
 		var camera_obstacle : Node = cam_collider.get_collider()

@@ -61,7 +61,7 @@ func staminaRecover() -> void:
 		
 
 func weapon_check() -> void:
-	if equippedWeapon == 1:
+	if equippedWeapon == 1:   
 		weapon = 1
 	elif equippedWeapon == 2:
 		weapon = 1.5
