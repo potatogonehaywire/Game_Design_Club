@@ -199,6 +199,15 @@ func _physics_process(_delta: float) -> void:
 				interact_label = false
 				interact_hover.emit(false)
 				Input.set_custom_mouse_cursor(null)
+				
+		if collider.is_in_group("has_dialogue") and Input.is_action_pressed("attack"):
+			var dialogue_identifier = collider.dialogue_identifier
+			message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
+						  [dialogue_identifier]] )
+		if "tutorial_identifiers" in collider:
+			var tutorial_identifiers = collider.tutorial_identifiers
+			message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
+						  tutorial_identifiers] )
 		else:
 			Input.set_custom_mouse_cursor(null)
 
