@@ -13,6 +13,10 @@ func exit() -> void:
 func update(_delta:float) -> void:
 	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
+	else:
+		parent.velocity.x = 0
+		parent.velocity.z = 0
+		state_machine.change_state("wander")
 
 func physics_update(_delta:float) -> void:
 	if parent.is_on_floor():

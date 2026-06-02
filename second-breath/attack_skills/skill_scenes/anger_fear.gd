@@ -4,6 +4,7 @@ var timeInEffect : float = 15
 var animationTime : float = 0.5
 var skillCooldown : int = 20
 var healthChange : int = 0
+var dmgDealt : int = 0
 var debuff : int = 0
 var dmgDebuff : int = 0
 var weaponBuff : float = 1

@@ -13,6 +13,8 @@ var equippedRanged : int = 1
 var enemyHitID : Array = []
 var enemyIsHit: bool = false
 var isProjectile: bool = false
+var dmg : int = 15
+var Pdmg : int = 10
 var debuff : float = 0
 var dmgdebuff : int = 0
 #var windup : int = 2
@@ -42,7 +44,7 @@ func _process(_delta: float) -> void:
 		health = maxHealth
 	
 	if enemyIsHit == true || enemyHitID.size() > 0:
-		for node : Node in get_tree().get_nodes_in_group("enemy"):
+		for node : Node in get_tree().get_nodes_in_group("enemies"):
 			var f: int = node.get("id")
 			if f in enemyHitID:
 				if node.has_method("upon_hit"):

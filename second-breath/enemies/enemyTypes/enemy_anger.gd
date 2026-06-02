@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name Enemy
+class_name AngerEnemy
 
 var canDamage : bool = true
 var my_id : int = 0

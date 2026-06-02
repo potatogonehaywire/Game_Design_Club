@@ -36,11 +36,11 @@ window/size/viewport_height=1080
 [global_group]
 
 player=""
-enemy=""
 enemyHurtbox=""
 playerHitbox=""
 playerHurtbox=""
 external_inventory=""
+enemies=""
 
 [input]
 

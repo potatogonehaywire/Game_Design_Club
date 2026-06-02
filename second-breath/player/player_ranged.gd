@@ -7,6 +7,7 @@ var skillUsed : Node
 
 func enter() -> void:
 	skillUsed = parent.skillUsed
+	Global.Pdmg = skillUsed.dmgDealt
 	shoot()
 
 
@@ -15,7 +16,7 @@ func shoot() -> void:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()
 		if collider is Node:
-			if collider.is_in_group("enemy"):
+			if collider.is_in_group("enemies"):
 				target_point = interact_ray.get_collision_point()
 			else:
 				target_point = interact_ray.get_collision_point()
@@ -31,6 +32,7 @@ func shoot() -> void:
 				projectile_instance.isPlayer = true
 
 func exit() -> void:
+	Global.Pdmg = 0
 	skillUsed.queue_free()
 
 func update(_delta:float) -> void:

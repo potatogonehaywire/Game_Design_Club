@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name Enemy
+class_name EnvyEnemy
 
 var canDamage : bool = true
 var my_id : int = 0
@@ -25,8 +25,8 @@ var damage : int = BASE_DAMAGE
 @onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
 @onready var hurtbox: Area3D = $Hurtbox
 
-var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic_anger.tscn")
-var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic_envy.tscn")
+var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_envy.tscn")
 var skillUsed : Node
 var lastSkill : int = 2
 @onready var skill_effect: GPUParticles3D = $SkillEffect

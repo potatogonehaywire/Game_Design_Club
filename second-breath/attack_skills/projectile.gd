@@ -48,7 +48,7 @@ func _physics_process(_delta : float) -> void:
 
 
 func _on_projectile_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && isPlayer == true:
+	if body.is_in_group("enemies") && isPlayer == true:
 		if body.has_method("upon_hit"): 
 			var id : int = body.id
 			Global.enemyIsHit = true

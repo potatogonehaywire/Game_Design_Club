@@ -3,10 +3,10 @@ var skillUsed : Node
 
 func apply_buffs() -> void:
 	Global.health += skillUsed.healthChange
-	Global.debuff = skillUsed.debuff
+	Global.debuff += skillUsed.debuff
 	Global.dmgdebuff = skillUsed.dmgDebuff
 	Global.maxHealth = skillUsed.maxHealth
-	Global.weapon += skillUsed.weaponBuff
+	Global.weapon = skillUsed.weaponBuff
 	parent.speed += skillUsed.speedBuff
 	parent.health_bar.health_changed()
 	parent.skill_effect.mesh.material.emission = skillUsed.colour
@@ -17,10 +17,12 @@ func enter() -> void:
 	apply_buffs()
 
 func exit() -> void:
+	await get_tree().create_timer(skillUsed.timeInEffect).timeout
+	parent.skill_effects_clear()
+	Global.weapon -= skillUsed.weaponBuff
 	skillUsed.queue_free()
 
 func update(_delta:float) -> void:
-	
 	# check if player is pressing WASD
 	var hDirection : float = Input.get_axis("left", "right")
 	var vDirection : float= Input.get_axis("forward", "backward")

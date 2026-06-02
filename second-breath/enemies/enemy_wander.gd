@@ -29,6 +29,8 @@ func update(delta:float) -> void:
 	
 	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
+	else:
+		randomize_variables()
 	
 	if wait_time <= 0:
 		state_machine.change_state("idle")

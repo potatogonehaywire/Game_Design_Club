@@ -6,7 +6,9 @@ extends State
 var skillUsed : Node
 
 func enter() -> void:
+	skillUsed = parent.skillUsed
 	parent.cooldown.start(0.8)
+	Global.dmg = skillUsed.dmgDealt
 	attackActive()
 		
 
@@ -47,6 +49,7 @@ func attackActive() -> void:
 	attack.disabled = true
 
 func exit() -> void:
+	Global.dmg = 0
 	parent.skillUsed.queue_free()
 
 func update(_delta:float) -> void:

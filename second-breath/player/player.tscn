@@ -1230,7 +1230,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 [node name="Player" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
 script = ExtResource("1_rkbax")
 ESkill = 8
-QSkill = 1
+QSkill = 4
 RSkill = 10
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]

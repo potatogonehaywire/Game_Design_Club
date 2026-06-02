@@ -63,7 +63,7 @@ var lastHealth : float = 100
 var lastMaxHealth : float = 100
 
 # skill scenes
-var base : PackedScene = preload("uid://b5d5qciwolq3a")
+var base : PackedScene = preload("res://attack_skills/skill_scenes/basic.tscn")
 var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
 var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
 var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
@@ -189,7 +189,7 @@ func _physics_process(_delta: float) -> void:
 				close_enough = true
 			else:
 				close_enough = false
-			if collider.is_in_group("enemy"):
+			if collider.is_in_group("enemies"):
 				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
 			elif collider.is_in_group("external_inventory") and close_enough:
 				interact_hover.emit(true)
@@ -204,7 +204,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && attack.disabled == false:
+	if body.is_in_group("enemies") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
 			var id : int = body.id
 			Global.enemyHitID.append(id)
@@ -223,12 +223,8 @@ func _on_cooldown_timeout() -> void:
 
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
-	Global.debuff = 0
-	Global.dmgdebuff = 0
-	Global.maxHealth = 100
-	Global.weapon = 1
-	health_bar.health_changed()
 	print("can use E skill again")
+
 
 func _on_skill_cooldown_2_timeout() -> void:
 	skillCooldownOff2 = true
@@ -239,6 +235,12 @@ func _on_skill_cooldown_2_timeout() -> void:
 	health_bar.health_changed()
 	print("can use Q skill again")
 
+func skill_effects_clear() -> void:
+	Global.debuff = 0
+	Global.dmgdebuff = 0
+	Global.maxHealth = 100
+	Global.weapon = 1
+	health_bar.health_changed()
 
 func interact() -> void:
 	if interact_ray.is_colliding():
