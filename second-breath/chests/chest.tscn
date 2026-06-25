@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://do14ugg5i7a4p"]
+
+[ext_resource type="Script" uid="uid://drmrg4fo35aaa" path="res://chests/chest.gd" id="1_twpm2"]
+[ext_resource type="Script" uid="uid://bgl2hbo6a0b2n" path="res://inventory/inventory_data.gd" id="2_7raco"]
+[ext_resource type="Script" uid="uid://qeerjmaj1eqg" path="res://inventory/slot_data.gd" id="3_bxacl"]
+[ext_resource type="Resource" uid="uid://ck427y43u0jv6" path="res://item/items/health_potion.tres" id="4_bxacl"]
+[ext_resource type="Resource" uid="uid://diipf1wotl7fk" path="res://item/items/apple.tres" id="4_n6kd7"]
+
+[sub_resource type="Resource" id="Resource_7raco"]
+script = ExtResource("3_bxacl")
+item_data = ExtResource("4_n6kd7")
+quantity = 35
+metadata/_custom_type_script = "uid://qeerjmaj1eqg"
+
+[sub_resource type="Resource" id="Resource_bxacl"]
+script = ExtResource("3_bxacl")
+item_data = ExtResource("4_bxacl")
+quantity = 5
+metadata/_custom_type_script = "uid://qeerjmaj1eqg"
+
+[sub_resource type="Resource" id="Resource_n6kd7"]
+script = ExtResource("2_7raco")
+slot_datas = Array[ExtResource("3_bxacl")]([SubResource("Resource_7raco"), SubResource("Resource_bxacl"), null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bgl2hbo6a0b2n"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7raco"]
+size = Vector3(0.5854492, 0.49194336, 0.33605957)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2c6go"]
+load_path = "res://.godot/imported/transparent_icons.png-ece2d8a199e22f3b86922c65bf438730.s3tc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebbmy"]
+atlas = SubResource("CompressedTexture2D_2c6go")
+region = Rect2(352, 352, 32, 32)
+
+[node name="Chest" type="StaticBody3D" unique_id=1070604398 groups=["external_inventory"]]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_twpm2")
+inventory_data = SubResource("Resource_n6kd7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=286356209]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.012207031, 0.54174805, -0.0670166)
+shape = SubResource("BoxShape3D_7raco")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=927405803]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.5, 0)
+texture_filter = 0
+texture = SubResource("AtlasTexture_ebbmy")
