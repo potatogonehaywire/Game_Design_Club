@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7fyrv4as4jk5" path="res://3dmodels/mountain.glb" id="18_qy8pf"]
 [ext_resource type="PackedScene" uid="uid://7jlu3kp2x0vj" path="res://3dmodels/generic_island2.glb" id="18_xrfvn"]
 [ext_resource type="PackedScene" uid="uid://dmdresa0lo8o3" path="res://background/pink_tree.tscn" id="19_qy8pf"]
+[ext_resource type="PackedScene" uid="uid://donhgpsfip6di" path="res://enemies/enemyTypes/Enemy_anger.tscn" id="19_spr5q"]
 [ext_resource type="Texture2D" uid="uid://bnyvgw0tk51fq" path="res://sprites/environment/tree_green.png" id="20_c2frf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jotil"]
@@ -143,21 +144,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, -3.7300467, 0.5877
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("12_iw17c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.281784, -0.45894766, 29.938637)
+QSkill = 1
 
-[node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("13_ol8ra")]
+[node name="testdummy" parent="." unique_id=505480189 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -59.28338, -2.5750506, 45.37375)
 
-[node name="testdummy2" parent="." unique_id=1524244774 instance=ExtResource("13_ol8ra")]
+[node name="testdummy2" parent="." unique_id=1524244774 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -53.676395, -2.6864288, 46.15329)
-id = 1
 
-[node name="testdummy3" parent="." unique_id=1139285873 instance=ExtResource("13_ol8ra")]
+[node name="testdummy3" parent="." unique_id=1139285873 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -52.503857, -2.6864288, 46.080715)
-id = 2
 
-[node name="testdummy4" parent="." unique_id=510857639 instance=ExtResource("13_ol8ra")]
+[node name="testdummy4" parent="." unique_id=510857639 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -52.938892, -2.6864288, 44.30968)
-id = 3
 
 [node name="bridge_test" parent="." unique_id=965578783 instance=ExtResource("15_ilmlt")]
 transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, -1.2468643, -2.9384177, 54.041092)
@@ -738,33 +737,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 10.08122
 [node name="bridge_test22" parent="." unique_id=1601093820 instance=ExtResource("15_ilmlt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3951, -11.90873, 0.2863083)
 
-[node name="testdummy5" parent="." unique_id=287914276 instance=ExtResource("13_ol8ra")]
+[node name="testdummy5" parent="." unique_id=287914276 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 204.21556, -11.930185, 31.800909)
-id = 4
 
-[node name="testdummy6" parent="." unique_id=2093585621 instance=ExtResource("13_ol8ra")]
+[node name="testdummy6" parent="." unique_id=2093585621 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 163.7245, -4.913627, 44.19654)
-id = 5
 
-[node name="testdummy7" parent="." unique_id=1680238094 instance=ExtResource("13_ol8ra")]
+[node name="testdummy7" parent="." unique_id=1680238094 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 152.2899, -4.913631, 48.855347)
-id = 6
 
-[node name="testdummy8" parent="." unique_id=975944032 instance=ExtResource("13_ol8ra")]
+[node name="testdummy8" parent="." unique_id=975944032 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 166.67351, -4.913631, 46.51116)
-id = 7
 
-[node name="testdummy9" parent="." unique_id=2051886515 instance=ExtResource("13_ol8ra")]
+[node name="testdummy9" parent="." unique_id=2051886515 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 160.46841, -4.91363, 46.28302)
-id = 8
 
-[node name="testdummy10" parent="." unique_id=398603499 instance=ExtResource("13_ol8ra")]
+[node name="testdummy10" parent="." unique_id=398603499 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 195.47903, -11.542479, 76.53932)
-id = 9
 
-[node name="testdummy11" parent="." unique_id=2020355358 instance=ExtResource("13_ol8ra")]
+[node name="testdummy11" parent="." unique_id=2020355358 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 190.72548, -11.542463, 80.17763)
-id = 10
 
 [node name="PinkTree" parent="." unique_id=104455027 instance=ExtResource("19_qy8pf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.29621, -2.7125857, 15.140512)
@@ -916,30 +908,32 @@ transform = Transform3D(0.6885191, 0, -0.7252183, 0, 1, 0, 0.7252183, 0, 0.68851
 [node name="PinkTree8" parent="." unique_id=1249658475 instance=ExtResource("19_qy8pf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.521526, -2.7125795, 23.232864)
 
-[node name="testdummy12" parent="." unique_id=489453860 instance=ExtResource("13_ol8ra")]
+[node name="testdummy12" parent="." unique_id=489453860 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.367074, -2.814895, 13.952805)
-id = 11
 
-[node name="testdummy13" parent="." unique_id=1473731213 instance=ExtResource("13_ol8ra")]
+[node name="testdummy13" parent="." unique_id=1473731213 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 17.418156, -3.0077786, 3.1529465)
-id = 12
 
-[node name="testdummy14" parent="." unique_id=841156783 instance=ExtResource("13_ol8ra")]
+[node name="testdummy14" parent="." unique_id=841156783 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.4272451, -3.00778, 9.403049)
-id = 13
 
-[node name="testdummy15" parent="." unique_id=686749972 instance=ExtResource("13_ol8ra")]
+[node name="testdummy15" parent="." unique_id=686749972 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.448514, -3.00778, 11.75182)
-id = 14
 
-[node name="testdummy16" parent="." unique_id=177190763 instance=ExtResource("13_ol8ra")]
+[node name="testdummy16" parent="." unique_id=177190763 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 8.136792, -2.872044, 18.657188)
-id = 15
 
-[node name="testdummy17" parent="." unique_id=1038002154 instance=ExtResource("13_ol8ra")]
+[node name="testdummy17" parent="." unique_id=1038002154 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.0225, 0, 0, 0, 0.0225, 0, 0, 0, 0.0225, 50.651363, 6.348174, -88.416145)
-id = 16
 
-[node name="testdummy18" parent="." unique_id=1651062247 instance=ExtResource("13_ol8ra")]
+[node name="testdummy18" parent="." unique_id=1651062247 groups=["enemy"] instance=ExtResource("13_ol8ra")]
 transform = Transform3D(0.0225, 0, 0, 0, 0.0225, 0, 0, 0, 0.0225, 100.541855, -3.8487732, 23.4669)
-id = 17
+
+[node name="testdummy19" parent="." unique_id=1460639748 instance=ExtResource("19_spr5q")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.6982136, -3.0077786, 27.136524)
+speed = null
+id = 20
+enemyMaxHp = null
+BASE_DAMAGE = null
+enemyType = null
+starting_location = null
