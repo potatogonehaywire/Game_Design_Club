@@ -6,6 +6,7 @@ var LCooldownChanged : bool
 var ECooldownChanged : bool
 var QCooldownChanged : bool
 var RCooldownChanged : bool
+var isBuff : bool = true
 
 #consume more stamina for higher level skills
 #not alloweed to use 2 skills at once ?
@@ -19,6 +20,7 @@ func check_skill() -> void:
 				state_machine.change_state("melee")
 			"buff":
 				state_machine.change_state("buff")
+				isBuff = true
 			"ranged":
 				state_machine.change_state("ranged")
 	else:
@@ -62,19 +64,40 @@ func exit() -> void:
 		if parent.isESkill == true:
 			parent.skillCooldown.wait_time = skillUsed.skillCooldown
 			parent.isESkill = false
+			if isBuff == true:
+				parent.EIsBuff = true
+				isBuff = false
 		elif parent.isQSkill == true:
 			parent.skillCooldown2.wait_time = skillUsed.skillCooldown
 			parent.isQSkill = false
+			if isBuff == true:
+				parent.QIsBuff = true
+				isBuff = false
 		elif parent.isRSkill == true:
 			parent.skillCooldown3.wait_time = skillUsed.skillCooldown
 			parent.isRSkill = false
+			if isBuff == true:
+				parent.RIsBuff = true
+				isBuff = false
 		
 		if ECooldownChanged:
-			parent.skillCooldown.start()
+			if !parent.EIsBuff:
+				parent.skillCooldown.start()
+			else:
+				await get_tree().create_timer(skillUsed.timeInEffect).timeout
+				parent.skillCooldown.start()
 		if QCooldownChanged:
-			parent.skillCooldown2.start()
+			if !parent.QIsBuff:
+				parent.skillCooldown2.start()
+			else:
+				await get_tree().create_timer(skillUsed.timeInEffect).timeout
+				parent.skillCooldown2.start()
 		if RCooldownChanged:
-			parent.skillCooldown3.start()
+			if !parent.RIsBuff:
+				parent.skillCooldown3.start()
+			else:
+				await get_tree().create_timer(skillUsed.timeInEffect).timeout
+				parent.skillCooldown3.start()
 		if LCooldownChanged:
 			parent.cooldown.start()
 

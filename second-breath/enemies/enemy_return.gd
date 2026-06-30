@@ -4,6 +4,8 @@ class_name EnemyReturn
 var player: CharacterBody3D = null
 
 func enter() -> void:
+	parent.velocity.x = 0
+	parent.velocity.z = 0
 	player = get_tree().get_first_node_in_group("player")
 	parent.lastSkill = 2
 
@@ -13,10 +15,9 @@ func exit() -> void:
 func update(_delta:float) -> void:
 	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
-	else:
-		parent.velocity.x = 0
-		parent.velocity.z = 0
-		state_machine.change_state("wander")
+	elif parent.global_position.distance_squared_to(parent.starting_location) < 5:
+		await get_tree().create_timer(2).timeout
+		state_machine.change_state("idle")
 
 func physics_update(_delta:float) -> void:
 	if parent.is_on_floor():
@@ -26,9 +27,11 @@ func physics_update(_delta:float) -> void:
 	
 	#if parent.isInRange == true:
 		#parent.velocity = Vector3.ZERO
+		
 	parent.velocity = parent.global_position.direction_to(parent.starting_location) * parent.speed
-	if parent.global_position.distance_squared_to(parent.starting_location) < 5:
-		state_machine.change_state("idle")
+	#if parent.global_position.distance_squared_to(parent.starting_location) < 5:
+		#state_machine.change_state("idle")
+		
 	#else:
 		#velocity.x = 0
 		#velocity.z = 0

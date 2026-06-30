@@ -58,6 +58,9 @@ var lastSkill : int
 var canUseESkill : bool = true
 var canUseQSkill : bool = true
 var canUseRSkill : bool = true
+var EIsBuff : bool = false
+var QIsBuff : bool = false
+var RIsBuff : bool = false
 var lastStamina : int = 100
 var lastHealth : float = 100
 var lastMaxHealth : float = 100
@@ -239,7 +242,6 @@ func skill_effects_clear() -> void:
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
-	Global.weapon = 1
 	health_bar.health_changed()
 
 func interact() -> void:

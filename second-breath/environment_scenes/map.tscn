@@ -931,9 +931,4 @@ transform = Transform3D(0.0225, 0, 0, 0, 0.0225, 0, 0, 0, 0.0225, 100.541855, -3
 
 [node name="testdummy19" parent="." unique_id=1460639748 instance=ExtResource("19_spr5q")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.6982136, -3.0077786, 27.136524)
-speed = null
 id = 20
-enemyMaxHp = null
-BASE_DAMAGE = null
-enemyType = null
-starting_location = null

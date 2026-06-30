@@ -6,7 +6,7 @@ func apply_buffs() -> void:
 	Global.debuff += skillUsed.debuff
 	Global.dmgdebuff = skillUsed.dmgDebuff
 	Global.maxHealth = skillUsed.maxHealth
-	Global.weapon = skillUsed.weaponBuff
+	Global.weapon *= skillUsed.weaponBuff
 	parent.speed += skillUsed.speedBuff
 	parent.health_bar.health_changed()
 	parent.skill_effect.mesh.material.emission = skillUsed.colour
@@ -15,11 +15,12 @@ func apply_buffs() -> void:
 func enter() -> void:
 	skillUsed = parent.skillUsed
 	apply_buffs()
+	print(Global.weapon)
 
 func exit() -> void:
 	await get_tree().create_timer(skillUsed.timeInEffect).timeout
 	parent.skill_effects_clear()
-	Global.weapon -= skillUsed.weaponBuff
+	print(Global.weapon)
 	skillUsed.queue_free()
 
 func update(_delta:float) -> void:

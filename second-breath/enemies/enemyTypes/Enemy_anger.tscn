@@ -556,6 +556,12 @@ orientation = 2
 [node name="testdummy" type="CharacterBody3D" unique_id=505480189 groups=["enemies"]]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("1_wpjhi")
+speed = null
+id = null
+enemyMaxHp = null
+BASE_DAMAGE = null
+enemyType = null
+starting_location = null
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=615579984 groups=["enemyHurtbox"]]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, -0.2042631, 0, 0)

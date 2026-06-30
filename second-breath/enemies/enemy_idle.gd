@@ -7,15 +7,17 @@ func enter() -> void:
 		Global.aggro_enemies.erase(parent.my_id)
 		
 	randomize()
-	wait_time = randf_range(5, 15)
+	wait_time = randf_range(3, 5)
 	
 
 func exit() -> void:
 	pass
 
 func update(delta:float) -> void:
+	parent.velocity.x = 0
+	parent.velocity.z = 0
 	wait_time -= delta
-	if wait_time < 0:
+	if wait_time <= 0:
 		state_machine.change_state("wander")
 	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
