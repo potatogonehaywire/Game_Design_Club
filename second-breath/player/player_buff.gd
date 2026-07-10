@@ -1,5 +1,6 @@
 extends State
 var skillUsed : Node
+var timeInEffect : int
 
 func apply_buffs() -> void:
 	Global.health += skillUsed.healthChange
@@ -14,14 +15,18 @@ func apply_buffs() -> void:
 
 func enter() -> void:
 	skillUsed = parent.skillUsed
+	parent.lastWeapon = Global.weapon
+	timeInEffect = skillUsed.timeInEffect
 	apply_buffs()
 	print(Global.weapon)
 
 func exit() -> void:
-	await get_tree().create_timer(skillUsed.timeInEffect).timeout
-	parent.skill_effects_clear()
-	print(Global.weapon)
 	skillUsed.queue_free()
+	await get_tree().create_timer(timeInEffect).timeout
+	parent.skill_effects_clear()
+	if !parent.lastWeapon == 1:
+		parent.lastWeapon = 1
+	print(Global.weapon)
 
 func update(_delta:float) -> void:
 	# check if player is pressing WASD

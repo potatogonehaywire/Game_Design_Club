@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dac2b1hu1wyj6"]
 
-[ext_resource type="Script" path="res://enemies/enemyTypes/enemy_envy.gd" id="1_q4y6e"]
+[ext_resource type="Script" uid="uid://ddoso51bc8don" path="res://enemies/enemyTypes/enemy_envy.gd" id="1_q4y6e"]
 [ext_resource type="Texture2D" uid="uid://y4g5a08csd8r" path="res://sprites/anger/anger_leftarm.png" id="2_p6sjv"]
 [ext_resource type="Texture2D" uid="uid://dqrsqjxoi662n" path="res://sprites/anger/anger_basic.png" id="3_68qrc"]
 [ext_resource type="Texture2D" uid="uid://dvh8wf3leyhf2" path="res://sprites/anger/anger_idle_back/frame0000.png" id="4_sjr16"]

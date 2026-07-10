@@ -64,6 +64,7 @@ var RIsBuff : bool = false
 var lastStamina : int = 100
 var lastHealth : float = 100
 var lastMaxHealth : float = 100
+var lastWeapon : float
 
 # skill scenes
 var base : PackedScene = preload("res://attack_skills/skill_scenes/basic.tscn")
@@ -231,18 +232,19 @@ func _on_skill_cooldown_timeout() -> void:
 
 func _on_skill_cooldown_2_timeout() -> void:
 	skillCooldownOff2 = true
-	Global.debuff = 0
-	Global.dmgdebuff = 0
-	Global.maxHealth = 100
-	Global.weapon = 1
-	health_bar.health_changed()
 	print("can use Q skill again")
+
+func _on_skill_cooldown_3_timeout() -> void:
+	skillCooldownOff3 = true
+	print("can use R skill again")
 
 func skill_effects_clear() -> void:
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
+	Global.weapon = lastWeapon
 	health_bar.health_changed()
+	
 
 func interact() -> void:
 	if interact_ray.is_colliding():
@@ -261,13 +263,3 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 
 func damage_taken() -> void:
 	health_bar.health_changed()
-
-
-func _on_skill_cooldown_3_timeout() -> void:
-	skillCooldownOff3 = true
-	Global.debuff = 0
-	Global.dmgdebuff = 0
-	Global.maxHealth = 100
-	Global.weapon = 1
-	health_bar.health_changed()
-	print("can use R skill again")
