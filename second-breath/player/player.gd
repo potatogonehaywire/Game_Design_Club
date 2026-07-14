@@ -65,6 +65,7 @@ var lastStamina : int = 100
 var lastHealth : float = 100
 var lastMaxHealth : float = 100
 var lastWeapon : float
+var particleColour : Color
 
 # skill scenes
 var base : PackedScene = preload("res://attack_skills/skill_scenes/basic.tscn")

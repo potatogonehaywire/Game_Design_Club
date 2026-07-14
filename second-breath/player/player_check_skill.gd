@@ -21,6 +21,7 @@ func check_skill() -> void:
 			"buff":
 				state_machine.change_state("buff")
 				isBuff = true
+				parent.particleColour = skillUsed.colour
 			"ranged":
 				state_machine.change_state("ranged")
 	else:

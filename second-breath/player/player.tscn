@@ -102,6 +102,7 @@
 [ext_resource type="Script" uid="uid://cwlxcag1mndos" path="res://player/player_buff.gd" id="102_2s0vo"]
 [ext_resource type="Script" uid="uid://dynojuma72jys" path="res://player/player_ranged.gd" id="102_wsa1w"]
 [ext_resource type="Script" uid="uid://cry3ntgqll3e0" path="res://player/player_check_skill.gd" id="103_2s0vo"]
+[ext_resource type="Script" uid="uid://dvag42mma0uu0" path="res://player/skill_effect.gd" id="103_hgm8h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -1376,6 +1377,7 @@ damping_max = 7.0
 scale_amount_curve = SubResource("Curve_hgm8h")
 color = Color(1, 0, 1, 1)
 color_ramp = SubResource("Gradient_2s0vo")
+script = ExtResource("103_hgm8h")
 
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
