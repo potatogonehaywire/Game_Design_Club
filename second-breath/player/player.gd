@@ -34,6 +34,7 @@ var interact_label : bool = false
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
+@onready var animation_tree : AnimationTree = $AnimationTree
 @onready var interact_ray: RayCast3D = $InteractRay
 
 var mouse_position : Vector2
@@ -91,7 +92,7 @@ func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
 	melee_sprite.visible = false
-		
+	animation_tree.set("parameters/StateMachine/Idle/blend_position", Vector2(direction.x, direction.z))
 
 func _unhandled_input(_event: InputEvent) -> void:
  
