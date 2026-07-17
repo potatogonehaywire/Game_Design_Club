@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c25hkvjtq6uqh"
-path.s3tc="res://.godot/imported/promo_image.png-057f3de939bbfb07547ff19ccf9dc02c.s3tc.ctex"
+uid="uid://be4y8ctex0ghm"
+path.s3tc="res://.godot/imported/village_Material.png-7e74251b97e81294df6a2d4f35e12ea5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4b737d6839099edc9082c0978727306a"
+}
 
 [deps]
 
-source_file="res://UI/menus/Graphics/Menu/promo_image.png"
-dest_files=["res://.godot/imported/promo_image.png-057f3de939bbfb07547ff19ccf9dc02c.s3tc.ctex"]
+source_file="res://3dmodels/village_Material.png"
+dest_files=["res://.godot/imported/village_Material.png-7e74251b97e81294df6a2d4f35e12ea5.s3tc.ctex"]
 
 [params]
 
