@@ -47,7 +47,7 @@ func update(_delta:float) -> void:
 				parent.speed = 5 #figure out how to change animation speed
 				animation_tree.set("parameters/StateMachine/Walk/tScale/scale", 1.0)
 		else: 
-			parent.speed = 5 #figure out how to change animation speed
+			parent.speed = 5 
 			animation_tree.set("parameters/StateMachine/Walk/tScale/scale", 1.0)
 
 		

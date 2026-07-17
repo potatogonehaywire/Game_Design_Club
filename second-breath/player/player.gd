@@ -92,7 +92,7 @@ func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
 	melee_sprite.visible = false
-	animation_tree.set("parameters/StateMachine/Idle/blend_position", Vector2(direction.x, direction.z))
+	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 
 func _unhandled_input(_event: InputEvent) -> void:
  

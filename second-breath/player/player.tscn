@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dxmte0ud1ngx7" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0000.png" id="4_anp34"]
 [ext_resource type="Texture2D" uid="uid://dgej3ajffknud" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0001.png" id="5_jdjat"]
 [ext_resource type="Texture2D" uid="uid://dferadgbjanva" path="res://sprites/kolita/melee_backward/frame0000.png" id="5_knn7v"]
-[ext_resource type="Script" uid="uid://dqmmd5bw3o8n0" path="res://player/player_animation.gd" id="5_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://cxgx17wlypr7r" path="res://sprites/kolita/melee_backward/frame0001.png" id="6_7pqkx"]
 [ext_resource type="Texture2D" uid="uid://c52c04wimje2v" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0002.png" id="6_j420s"]
 [ext_resource type="Texture2D" uid="uid://damob5q3ko307" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0003.png" id="7_kcq4v"]
@@ -673,10 +672,6 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_20bc7")
 nodes/Animation/position = Vector2(0, 160)
 node_connections = [&"output", 0, &"Animation"]
 
-[sub_resource type="GDScript" id="GDScript_qjkh3"]
-script/source = "extends Node
-"
-
 [sub_resource type="Animation" id="Animation_48p26"]
 length = 0.001
 tracks/0/type = "value"
@@ -1151,12 +1146,12 @@ blend_point_3/pos = Vector2(0, 1)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_2s0vo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1g4h8"]
-graph_offset = Vector2(-271.68002, 64.31996)
+graph_offset = Vector2(-343.6799, 27.839996)
 nodes/output/position = Vector2(430, 200)
 nodes/WalkAnim/node = SubResource("AnimationNodeBlendSpace2D_v0nfp")
 nodes/WalkAnim/position = Vector2(-60, 150)
 nodes/tScale/node = SubResource("AnimationNodeTimeScale_2s0vo")
-nodes/tScale/position = Vector2(140, 180)
+nodes/tScale/position = Vector2(180, 180)
 node_connections = [&"output", 0, &"tScale", &"tScale", 0, &"WalkAnim"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcmgo"]
@@ -1194,7 +1189,7 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kcq4v")
 states/Idle/position = Vector2(446, 100.15)
 states/Start/position = Vector2(232.8, 99.68)
 states/Walk/node = SubResource("AnimationNodeBlendTree_1g4h8")
-states/Walk/position = Vector2(727.62494, 100.075)
+states/Walk/position = Vector2(750.12494, 100.075)
 states/fall_backwards/node = SubResource("AnimationNodeAnimation_gcmgo")
 states/fall_backwards/position = Vector2(593.2, 218.40002)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_vhicv"), "fall_backwards", "Idle", SubResource("AnimationNodeStateMachineTransition_2s0vo"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "fall_backwards", "Walk", SubResource("AnimationNodeStateMachineTransition_hrakr"), "Walk", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_iojyt")]
@@ -1204,12 +1199,12 @@ graph_offset = Vector2(-20.900213, 48.13251)
 animation = &"melee_backward"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
-graph_offset = Vector2(-459.41986, 143.96104)
-nodes/output/position = Vector2(656, 288)
+graph_offset = Vector2(-397.02106, 72.92124)
+nodes/output/position = Vector2(620, 320)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
 nodes/StateMachine/position = Vector2(-460, 190)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_onxu2")
-nodes/OneShot/position = Vector2(368, 304)
+nodes/OneShot/position = Vector2(340, 300)
 nodes/melee/node = SubResource("AnimationNodeAnimation_nxclr")
 nodes/melee/position = Vector2(64, 576)
 "nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_nj2w7")
@@ -1309,10 +1304,8 @@ one_shot = true
 one_shot = true
 
 [node name="projectileMarkerThing" type="Marker3D" parent="." unique_id=1805611559]
-script = SubResource("GDScript_qjkh3")
 
 [node name="player_animation" type="Node3D" parent="." unique_id=2105502787]
-script = ExtResource("5_qjkh3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1449083884]
 libraries/ = SubResource("AnimationLibrary_jdjat")
@@ -1324,7 +1317,7 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
 parameters/StateMachine/Walk/WalkAnim/blend_position = Vector2(0, 0)
-parameters/StateMachine/Walk/tScale/scale = 32.0
+parameters/StateMachine/Walk/tScale/scale = 1.0
 parameters/OneShot/active = true
 parameters/OneShot/internal_active = true
 parameters/OneShot/request = 0
