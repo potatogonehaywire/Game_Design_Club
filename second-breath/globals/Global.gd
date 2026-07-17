@@ -1,7 +1,7 @@
 extends Node
 var maxHealth : float = 100
 var health : float = maxHealth
-var stamina : int = 100
+var stamina : float = 100
 
 var s : int = 1
 var weapon : float = 1.0

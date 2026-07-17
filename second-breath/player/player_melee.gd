@@ -18,7 +18,7 @@ func attackActive() -> void:
 	parent.velocity.z = 0
 	Global.weapon_check()
 	attack.disabled = false
-	Global.stamina -= 10
+	Global.stamina -= skillUsed.staminaDrain
 	parent.cooldownOff = false
 	attack_hitbox.position = parent.direction * 0.9
 	# change hitbox's sprite rotation based on player's direction
