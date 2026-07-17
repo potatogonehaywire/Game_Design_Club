@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_hjqxc"]
 [ext_resource type="PackedScene" uid="uid://bagsbg44dggpw" path="res://environment_scenes/islands.tscn" id="1_ubm4t"]
 [ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="2_0k66g"]
+[ext_resource type="PackedScene" uid="uid://cqehghc8l78qh" path="res://environment_scenes/water.tscn" id="2_4ioqa"]
 [ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="3_hjqxc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k66g"]
@@ -27,6 +28,9 @@ volumetric_fog_length = 50.0
 
 [node name="Main" type="Node3D" unique_id=473672351]
 script = ExtResource("1_hjqxc")
+
+[node name="Water" parent="." unique_id=198594831 instance=ExtResource("2_4ioqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.063095, 0.47388077, -43.154213)
 
 [node name="SkyBox" type="WorldEnvironment" parent="." unique_id=725230901]
 environment = SubResource("Environment_4ioqa")

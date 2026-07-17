@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr8yf6r3utjih"]
+
+[ext_resource type="Shader" uid="uid://dqtn6cnoy4uhc" path="res://shaders/Stylized-Water-Shader-main/ocean.gdshader" id="1_rk4y7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rk4y7")
