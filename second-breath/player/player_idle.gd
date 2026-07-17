@@ -9,7 +9,7 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
-	animation_tree.set("parameters/StateMachine/Idle/blend_position", Vector2(parent.direction.x, parent.direction.z))
+	animation_tree.set("parameters/BlendTree/StateMachine/Idle/blend_position", Vector2(parent.direction.x, parent.direction.z))
 	
 	# check if player is pressing WASD
 	var hDirection : float = Input.get_axis("left", "right")

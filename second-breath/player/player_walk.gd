@@ -8,7 +8,7 @@ func exit() -> void:
 	pass
 
 func update(_delta:float) -> void:
-	animation_tree.set("parameters/StateMachine/Walk/blend_position", Vector2(parent.direction.x, parent.direction.z))
+	animation_tree.set("parameters/BlendTree/StateMachine/Walk/blend_position", Vector2(parent.direction.x, parent.direction.z))
 	
 	# check if player is pressing WASD
 	var hDirection : float = Input.get_axis("left", "right")
@@ -41,8 +41,8 @@ func update(_delta:float) -> void:
 		if Input.is_action_pressed("sprint") && Global.stamina > 0:
 			parent.speed = 8
 			Global.stamina -= 0.5
-			animation_tree.set("parameters/BlendTree/TimeScale/scale", 0) #1.6
-		else:
+			animation_tree.set("parameters/BlendTree/TimeScale/scale", 2.0) #1.6
+		else: 
 			parent.speed = 5 #figure out how to change animation speed
 			animation_tree.set("parameters/BlendTree/TimeScale/scale", 1.0)
 
