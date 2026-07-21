@@ -9,7 +9,9 @@ noise_type = 0
 noise = SubResource("FastNoiseLite_rk4y7")
 
 [sub_resource type="Gradient" id="Gradient_0lqu7"]
-offsets = PackedFloat32Array(0.7601156, 1)
+offsets = PackedFloat32Array(0, 0.1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fang3"]
 noise_type = 2
@@ -33,7 +35,7 @@ render_priority = 0
 shader = ExtResource("1_rk4y7")
 shader_parameter/absorption_color = Color(0.9999998, 0.21544284, 0.67927724, 1)
 shader_parameter/fresnel_radius = 2.0
-shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
+shader_parameter/fresnel_color = Color(0, 0.57549644, 0.6845795, 1)
 shader_parameter/roughness = 0.15
 shader_parameter/specular = 0.25
 shader_parameter/depth_distance = 25.0

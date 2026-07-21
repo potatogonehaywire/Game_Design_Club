@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://environment_scenes/main.gd" id="1_hjqxc"]
 [ext_resource type="PackedScene" uid="uid://bagsbg44dggpw" path="res://environment_scenes/islands.tscn" id="1_ubm4t"]
 [ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="2_0k66g"]
-[ext_resource type="PackedScene" uid="uid://cqehghc8l78qh" path="res://environment_scenes/water.tscn" id="2_4ioqa"]
+[ext_resource type="PackedScene" uid="uid://qfku3d3vkrbw" path="res://environment_scenes/water.tscn" id="2_4ioqa"]
 [ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="3_hjqxc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k66g"]
@@ -42,6 +42,6 @@ light_color = Color(0.6896453, 0.76223814, 1, 1)
 [node name="Islands" parent="." unique_id=10303803 instance=ExtResource("1_ubm4t")]
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("2_0k66g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.430779, 14.2748, 53.232445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.97357, 14.2748, -121.02136)
 
 [node name="UI" parent="." unique_id=725296579 instance=ExtResource("3_hjqxc")]
