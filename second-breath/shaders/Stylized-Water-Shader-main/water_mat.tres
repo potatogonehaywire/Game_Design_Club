@@ -8,20 +8,28 @@ noise_type = 0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iu6ko"]
 noise = SubResource("FastNoiseLite_rk4y7")
 
-[sub_resource type="Gradient" id="Gradient_0lqu7"]
-offsets = PackedFloat32Array(0, 0.1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-metadata/_snap_enabled = true
+[sub_resource type="Gradient" id="Gradient_rk4y7"]
+offsets = PackedFloat32Array(0, 0.25144508)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fang3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iu6ko"]
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bxb83"]
-noise = SubResource("FastNoiseLite_fang3")
-color_ramp = SubResource("Gradient_0lqu7")
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_iu6ko")
+color_ramp = SubResource("Gradient_rk4y7")
+normalize = false
+
+[sub_resource type="Gradient" id="Gradient_0lqu7"]
+offsets = PackedFloat32Array(0, 0.54046243)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fang3"]
+gradient = SubResource("Gradient_0lqu7")
 
 [sub_resource type="Gradient" id="Gradient_5or1b"]
-colors = PackedColorArray(0.1706155, 5.1018596e-05, 0.60871214, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.79479766)
+colors = PackedColorArray(0.25586915, 0.41561988, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dgqcd"]
 noise_type = 2
@@ -46,10 +54,11 @@ shader_parameter/displacement_scroll_offset = Vector2(-0.2, 0.3)
 shader_parameter/displacement_scale_offset = 0.5
 shader_parameter/displacement_scale = Vector2(0.04, 0.04)
 shader_parameter/displacement_texture = SubResource("NoiseTexture2D_iu6ko")
-shader_parameter/edge_thickness = 0.3
+shader_parameter/edge_thickness = 1.0
 shader_parameter/edge_speed = 0.35
 shader_parameter/edge_noise_scale = Vector2(0.4, 0.4)
 shader_parameter/edge_noise = SubResource("NoiseTexture2D_bxb83")
+shader_parameter/edge_ramp = SubResource("GradientTexture1D_fang3")
 shader_parameter/influence_size = 1.0
 shader_parameter/player_wave_frequenzy = 10.0
 shader_parameter/player_wave_speed = 5.0
