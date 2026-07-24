@@ -30,6 +30,7 @@ var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_ang
 var skillUsed : Node
 var lastSkill : int = 2
 @onready var skill_effect: GPUParticles3D = $SkillEffect
+var particleColour : Color = Color(1.0, 1.0, 1.0, 1.0)
 
 @onready var basic_cooldown: Timer = $BasicCooldown
 @onready var max_cooldown: Timer = $MaxCooldown
@@ -173,7 +174,7 @@ func _on_basic_cooldown_timeout() -> void:
 func _on_max_cooldown_timeout() -> void:
 	maxCooldownOff = true
 	print("enemy max skill cooldown ended")
-	skillUsed = basic_skill.instantiate()
+	skillUsed = max_skill.instantiate()
 	get_tree().current_scene.add_child(skillUsed)
 	lastSkill = 1
 	if isInRange:
