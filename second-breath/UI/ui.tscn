@@ -2,20 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
 [ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
-[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_c7tqi"]
-[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
-[ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/crystal1.png" id="7_h81ot"]
+[ext_resource type="PackedScene" uid="uid://bxa32uqtnm02g" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_c7tqi"]
+[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/stamina_bar.gd" id="7_2qbci"]
+[ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/menus/Graphics/crystal1.png" id="7_h81ot"]
 [ext_resource type="Script" uid="uid://cytj16rhmqpqj" path="res://UI/cooldown_ui.gd" id="7_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/crystal2.png" id="8_6rr40"]
+[ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/menus/Graphics/crystal2.png" id="8_6rr40"]
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
-[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/crystal3.png" id="9_0w6e5"]
+[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://UI/health_bar.gd" id="8_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/menus/Graphics/crystal3.png" id="9_0w6e5"]
 [ext_resource type="Script" uid="uid://b84krupvi35j3" path="res://UI/skill_cooldown.gd" id="10_8gukh"]
-[ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/crystal4.png" id="10_o2jkc"]
-[ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/crystal1_outline.png" id="11_2qbci"]
-[ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/crystal2_outline.png" id="12_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/crystal3_outline.png" id="13_o2t6a"]
-[ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/crystal4_outline.png" id="14_8gukh"]
+[ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/menus/Graphics/crystal4.png" id="10_o2jkc"]
+[ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/menus/Graphics/crystal1_outline.png" id="11_2qbci"]
+[ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/menus/Graphics/crystal2_outline.png" id="12_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/menus/Graphics/crystal3_outline.png" id="13_o2t6a"]
+[ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/menus/Graphics/crystal4_outline.png" id="14_8gukh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
 font = ExtResource("3_c7tqi")
@@ -55,6 +56,8 @@ script = ExtResource("2_4fiuh")
 
 [node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
 layout_mode = 1
+
+[node name="DialogueBox" parent="UIRoot" unique_id=56727151 instance=ExtResource("3_8gukh")]
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]
 layout_mode = 3

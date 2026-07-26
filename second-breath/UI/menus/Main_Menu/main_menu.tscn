@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://pfmxgqe0eut7" path="res://UI/menus/Main_Menu/main_menu.gd" id="1_jht8a"]
 [ext_resource type="Texture2D" uid="uid://11arhajctsf7" path="res://UI/menus/Graphics/Menu/promo_image_mirrored.png" id="2_by2mg"]
 [ext_resource type="PackedScene" uid="uid://bkxh3tdpimpiu" path="res://UI/menus/Option_Menu/options.tscn" id="3_6qckm"]
-[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_gj40y"]
-[ext_resource type="FontFile" uid="uid://dgi81hu8rvh3y" path="res://UI/ModernDOS9x16.ttf" id="3_ix11v"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_gj40y"]
+[ext_resource type="FontFile" uid="uid://dgi81hu8rvh3y" path="res://UI/fonts/ModernDOS9x16.ttf" id="3_ix11v"]
 
 [node name="Main_Menu" type="Control" unique_id=86582445]
 layout_mode = 3

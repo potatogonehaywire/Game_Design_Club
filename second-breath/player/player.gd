@@ -3,6 +3,7 @@ class_name Player
 
 signal toggle_skilltree()
 signal interact_hover()
+signal message()
 
 const jumpspeed : int = 20
 var speed : int = 5
@@ -42,7 +43,7 @@ var ray_direction : Vector3
 var camray_direction : Vector3
 var ray_length: float = 50.0
 var close_enough : bool
-var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
+var explosion : PackedScene = preload("res://skills/explosion.tscn")
 var explodes : bool = false
 var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
@@ -68,17 +69,17 @@ var lastWeapon : float
 var particleColour : Color
 
 # skill scenes
-var base : PackedScene = preload("res://attack_skills/skill_scenes/basic.tscn")
-var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
-var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
-var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
-var angerMax : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
-var fearMax : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
-var envyMax : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
-var anger_fear : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
-var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
-var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
-var heal1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_heal.tscn")
+var base : PackedScene = preload("res://skills/skill_scenes/basic.tscn")
+var anger1 : PackedScene = preload("res://skills/skill_scenes/basic_anger.tscn")
+var fear1 : PackedScene = preload("res://skills/skill_scenes/basic_fear.tscn")
+var envy1 : PackedScene = preload("res://skills/skill_scenes/basic_envy.tscn")
+var angerMax : PackedScene = preload("res://skills/skill_scenes/max_anger.tscn")
+var fearMax : PackedScene = preload("res://skills/skill_scenes/max_fear.tscn")
+var envyMax : PackedScene = preload("res://skills/skill_scenes/max_envy.tscn")
+var anger_fear : PackedScene = preload("res://skills/skill_scenes/anger_fear.tscn")
+var fear_envy : PackedScene = preload("res://skills/skill_scenes/fear_envy.tscn")
+var anger_envy : PackedScene = preload("res://skills/skill_scenes/anger_envy.tscn")
+var heal1 : PackedScene = preload("res://skills/skill_scenes/basic_heal.tscn")
 
 var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
 								4: angerMax, 5: fearMax, 6: envyMax,
@@ -196,14 +197,22 @@ func _physics_process(_delta: float) -> void:
 				close_enough = false
 			if collider.is_in_group("enemies"):
 				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
-			elif collider.is_in_group("external_inventory") and close_enough:
+			elif collider.is_in_group("can_talk") and close_enough:
 				interact_hover.emit(true)
 				interact_label = true
 				Input.set_custom_mouse_cursor(null)
+				if Input.is_action_pressed("interact"):
+					var dialogue_identifier : String = collider.dialogue_identifier
+					message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
+								  [dialogue_identifier]] )
 			else:
 				interact_label = false
 				interact_hover.emit(false)
 				Input.set_custom_mouse_cursor(null)
+			if "tutorial_identifiers" in collider:
+				var tutorial_identifiers : Array = collider.tutorial_identifiers
+				message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
+							  tutorial_identifiers] )
 		else:
 			Input.set_custom_mouse_cursor(null)
 
@@ -248,7 +257,7 @@ func skill_effects_clear() -> void:
 	
 
 func interact() -> void:
-	if interact_ray.is_colliding():
+	if interact_ray.is_colliding() && interact_label:
 		var collider : Node = interact_ray.get_collider()
 		if collider.has_method("player_interact"):
 			collider.player_interact()
