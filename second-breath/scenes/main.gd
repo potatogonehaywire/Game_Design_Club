@@ -3,7 +3,7 @@ extends Node
 @onready var player: CharacterBody3D = $Player
 @onready var talent_tree: TalentTree = $UI/UIRoot/talent_tree
 @onready var ui: CanvasLayer = $UI
-@onready var ui_root: Control = $UI/UIRoot
+@onready var talent_root: Control = $UI/TalentRoot
 @onready var not_menu: Control = $UI/NotMenu
 
 
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func toggle_skilltree_interface() -> void:
-	ui_root.visible = not ui_root.visible
+	talent_root.visible = not talent_root.visible
 	not_menu.visible = not not_menu.visible
 
 

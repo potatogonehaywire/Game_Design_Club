@@ -1,15 +1,25 @@
-[gd_scene format=3 uid="uid://bxa32uqtnm02g"]
+[gd_scene format=3 uid="uid://caam7awi1whsx"]
 
-[ext_resource type="Script" uid="uid://c0gsse8n2874t" path="res://dialogue/dialogue_box.gd" id="1_fs1ng"]
-[ext_resource type="Script" uid="uid://cluk25et87n6k" path="res://dialogue/dialogue_data.gd" id="2_gboqh"]
+[ext_resource type="Script" uid="uid://1ubb6avd5r41" path="res://dialogue/dialogue_box.gd" id="1_fs1ng"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="2_gboqh"]
+[ext_resource type="Script" uid="uid://cluk25et87n6k" path="res://dialogue/dialogue_data.gd" id="3_dcftc"]
 
-[node name="DialogueBox" type="Node2D" unique_id=56727151]
+[node name="DialogueBox" type="Control" unique_id=1170056814]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_fs1ng")
 
-[node name="DialogueText" type="Label" parent="." unique_id=1567493204]
+[node name="DialogueText" type="Label" parent="." unique_id=1338504640]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "This is a placeholder.  It will be replaced when a dialogue box opens."
+theme_override_fonts/font = ExtResource("2_gboqh")
+theme_override_font_sizes/font_size = 32
+text = "This is a test, actual dialogue will show up in game"
 
-[node name="DialogueData" type="Node" parent="." unique_id=2096706526]
-script = ExtResource("2_gboqh")
+[node name="DialogueData" type="Node" parent="." unique_id=1866791404]
+script = ExtResource("3_dcftc")

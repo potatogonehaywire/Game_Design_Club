@@ -3,7 +3,7 @@
 # I've put an instance into the player scene already, but it may fail if you try to use it outside of that.
 # Actual dialogue messages should be stored in DialogueData.
 
-extends Control
+extends Node2D
 
 var player : Player = null
 

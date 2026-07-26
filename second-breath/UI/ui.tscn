@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x48gchfymr18" path="res://UI/click_catcher.gd" id="1_8gukh"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
-[ext_resource type="PackedScene" uid="uid://bxa32uqtnm02g" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
+[ext_resource type="PackedScene" uid="uid://caam7awi1whsx" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/stamina_bar.gd" id="7_2qbci"]
 [ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/menus/Graphics/crystal1.png" id="7_h81ot"]
@@ -36,7 +36,7 @@ bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=725296579]
 
-[node name="UIRoot" type="Control" parent="." unique_id=987893219]
+[node name="TalentRoot" type="Control" parent="." unique_id=987893219]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -45,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClickCatcher" type="Control" parent="UIRoot" unique_id=2034638472]
+[node name="ClickCatcher" type="Control" parent="TalentRoot" unique_id=2034638472]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,10 +54,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8gukh")
 
-[node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
+[node name="talent_tree" parent="TalentRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
 layout_mode = 1
 
-[node name="DialogueBox" parent="UIRoot" unique_id=56727151 instance=ExtResource("3_8gukh")]
+[node name="DialogueRoot" type="Control" parent="." unique_id=541298765]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1914.0
+offset_bottom = 1079.0
+
+[node name="ClickCatcher2" type="Control" parent="DialogueRoot" unique_id=1576099136]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogueBox" parent="DialogueRoot" unique_id=1170056814 instance=ExtResource("3_8gukh")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 50.0
+offset_top = -179.0
+offset_right = 50.0
+offset_bottom = -179.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]
 layout_mode = 3
