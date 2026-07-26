@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnr4t4xujgpwx"]
 
-[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://item/item_atlas.tres" id="1_koksw"]
+[ext_resource type="Texture2D" uid="uid://eakkbv86ac5x" path="res://sprites/item_atlas.tres" id="1_koksw"]
 [ext_resource type="Script" uid="uid://b8jshi3ba5cl2" path="res://UI/skill_tree/talent_slot.gd" id="2_1kuqh"]
 [ext_resource type="Script" uid="uid://gr33gpu0js8i" path="res://UI/skill_tree/talent_line.gd" id="3_4dqs8"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_lw025"]

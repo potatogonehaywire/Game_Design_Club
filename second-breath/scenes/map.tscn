@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="4_xrfvn"]
 [ext_resource type="Texture2D" uid="uid://baxhoob5b8mml" path="res://sprites/background/zone1_trees.png" id="5_xrfvn"]
 [ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="12_iw17c"]
-[ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="13_jle6x"]
 [ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="13_ol8ra"]
 [ext_resource type="Texture2D" uid="uid://cyxycpcxf3ij8" path="res://sprites/environment/81-811514_28-collection-of-log-clipart-transparent-log-clipart.jpg" id="15_b7xsl"]
 [ext_resource type="PackedScene" uid="uid://do667otx82w08" path="res://environment/3dmodels/bridge_test.glb" id="15_ilmlt"]
@@ -138,9 +137,6 @@ texture = ExtResource("5_xrfvn")
 environment = SubResource("Environment_612pj")
 
 [node name="UI" parent="." unique_id=725296579 instance=ExtResource("4_xrfvn")]
-
-[node name="Chest" parent="." unique_id=647030195 instance=ExtResource("13_jle6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, -3.7300467, 0.587754)
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("12_iw17c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.281784, -0.45894766, 29.938637)

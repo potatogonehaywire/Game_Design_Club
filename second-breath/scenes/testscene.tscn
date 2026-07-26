@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d03ive56d55mu" path="res://scenes/main.gd" id="1_r6pyn"]
 [ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="2_fvmrd"]
-[ext_resource type="PackedScene" uid="uid://do14ugg5i7a4p" path="res://chests/chest.tscn" id="4_t5rxo"]
 [ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="5_lpvm5"]
 [ext_resource type="PackedScene" uid="uid://b3k1b34pmgqvm" path="res://player/player.tscn" id="10_t5rxo"]
 
@@ -52,9 +51,6 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 3.4615283, 0.9486832
 id = 3
 
 [node name="Enemies" type="Node" parent="." unique_id=1799270182]
-
-[node name="Chest" parent="." unique_id=647030195 instance=ExtResource("4_t5rxo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3874961, 0.19232523, 0.587754)
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("10_t5rxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4199739, 1.0424606, 1.5792758)

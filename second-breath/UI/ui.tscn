@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b11j6h46pc8b7"]
 
+[ext_resource type="Script" uid="uid://x48gchfymr18" path="res://UI/click_catcher.gd" id="1_8gukh"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
-[ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
 [ext_resource type="PackedScene" uid="uid://bxa32uqtnm02g" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/stamina_bar.gd" id="7_2qbci"]
@@ -52,7 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_4fiuh")
+script = ExtResource("1_8gukh")
 
 [node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
 layout_mode = 1

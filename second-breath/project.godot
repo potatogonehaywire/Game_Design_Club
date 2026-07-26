@@ -39,7 +39,6 @@ player=""
 enemyHurtbox=""
 playerHitbox=""
 playerHurtbox=""
-external_inventory=""
 enemies=""
 can_talk=""
 
