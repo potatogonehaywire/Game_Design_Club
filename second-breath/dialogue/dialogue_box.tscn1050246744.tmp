@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://caam7awi1whsx"]
+
+[ext_resource type="Script" uid="uid://6em3mv2rw7sn" path="res://dialogue_box.gd" id="1_fs1ng"]
+[ext_resource type="Script" uid="uid://cluk25et87n6k" path="res://dialogue/dialogue_data.gd" id="2_gboqh"]
+
+[node name="DialogueBox" type="Node2D" unique_id=56727151]
+script = ExtResource("1_fs1ng")
+
+[node name="DialogueText" type="Label" parent="." unique_id=1567493204]
+offset_left = 318.0
+offset_top = 415.0
+offset_right = 843.0
+offset_bottom = 438.0
+text = "This is a placeholder.  It will be replaced when a dialogue box opens."
+autowrap_mode = 2
+
+[node name="DialogueData" type="Node" parent="." unique_id=2096706526]
+script = ExtResource("2_gboqh")
