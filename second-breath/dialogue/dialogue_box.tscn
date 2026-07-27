@@ -18,7 +18,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("2_gboqh")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "This is a test, actual dialogue will show up in game"
 
 [node name="DialogueData" type="Node" parent="." unique_id=1866791404]

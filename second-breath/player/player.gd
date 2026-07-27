@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 signal toggle_skilltree()
+signal toggle_dialogue()
 signal interact_hover()
 signal message()
 
@@ -31,6 +32,8 @@ var interact_label : bool = false
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
+@onready var talent_root : Control = $"../UI/TalentRoot"
+@onready var dialogue_root : Control = $"../UI/DialogueRoot"
 @onready var talent_tree: TalentTree = $"../UI/TalentRoot/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
@@ -92,6 +95,7 @@ func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
 	melee_sprite.visible = false
+	camera_controller.position = position + Vector3(0,0,0.8)
 		
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -198,13 +202,21 @@ func _physics_process(_delta: float) -> void:
 			if collider.is_in_group("enemies"):
 				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
 			elif collider.is_in_group("can_talk") and close_enough:
-				interact_hover.emit(true)
-				interact_label = true
 				Input.set_custom_mouse_cursor(null)
 				if Input.is_action_pressed("interact"):
+					interact_label = false
+					interact_hover.emit(false)
+					toggle_dialogue.emit(true)
 					var dialogue_identifier : String = collider.dialogue_identifier
 					message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
 								  [dialogue_identifier]] )
+				elif dialogue_root.visible or talent_root.visible:
+					interact_hover.emit(false)
+					interact_label = false
+				else:
+					interact_hover.emit(true)
+					interact_label = true
+					
 			else:
 				interact_label = false
 				interact_hover.emit(false)

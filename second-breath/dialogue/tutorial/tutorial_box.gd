@@ -3,9 +3,10 @@
 # I've put an instance into the player scene already, but it may fail if you try to use it outside of that.
 # Actual tutorial messages should be stored in TutorialData.
 
-extends Node2D
+extends Control
 
-
+@onready var dialogue_root: Control = $".."
+var player : Player = null
 
 var all_tutorials : Array = ["Use WASD to move around."]
 var current_tutorial : int = -1
@@ -16,30 +17,32 @@ const GUI_HELP_INFO : String = "[J] Back  [K] Next"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_parent().connect("message", message) # Enables messaging with the player.
+	player = $"../../../Player"
+	player.connect("message", message) # Enables messaging with the player.
 	$TutorialText.text = str(all_tutorials[current_tutorial])
 	$TutorialIcon.animation = "26-05-04 sprites v1"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("dialogue_next") or tutorial_section_needs_update:
-		if current_tutorial < len(all_tutorials) - 1:
-			current_tutorial += 1
-	if Input.is_action_just_pressed("dialogue_last"):
-		if current_tutorial > 0:
-			current_tutorial -= 1
-	
-	if Input.is_action_just_pressed("dialogue_last") or tutorial_section_needs_update or Input.is_action_just_pressed("tutorial_next"):
-		var correct_tutorial_text : String = "HELP\n" + str(all_tutorials[current_tutorial])
-		correct_tutorial_text += "\n" + GUI_HELP_INFO
-		if current_tutorial == len(all_tutorials) - 1:
-			correct_tutorial_text += "\n(!) End of available tutorials"
+	if dialogue_root.visible and self.visible:
+		if Input.is_action_just_pressed("dialogue_next") or tutorial_section_needs_update:
+			if current_tutorial < len(all_tutorials) - 1:
+				current_tutorial += 1
+		if Input.is_action_just_pressed("dialogue_last"):
+			if current_tutorial > 0:
+				current_tutorial -= 1
 		
-		$TutorialText.text = correct_tutorial_text
-		$TutorialIcon.frame = 0
-		
-		tutorial_section_needs_update = false
+		if Input.is_action_just_pressed("dialogue_last") or tutorial_section_needs_update or Input.is_action_just_pressed("dialogue_next"):
+			var correct_tutorial_text : String = "HELP\n" + str(all_tutorials[current_tutorial])
+			correct_tutorial_text += "\n" + GUI_HELP_INFO
+			if current_tutorial == len(all_tutorials) - 1:
+				correct_tutorial_text += "\n(!) End of available tutorials"
+			
+			$TutorialText.text = correct_tutorial_text
+			$TutorialIcon.frame = 0
+			
+			tutorial_section_needs_update = false
 	
 
 

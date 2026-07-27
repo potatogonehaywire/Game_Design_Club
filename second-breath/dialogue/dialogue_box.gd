@@ -5,6 +5,9 @@
 
 extends Control
 
+@onready var dialogue_root: Control = $".."
+@onready var not_menu: Control = $"../../NotMenu"
+
 var player : Player = null
 
 
@@ -35,10 +38,14 @@ func _process(_delta: float) -> void:
 		var correct_dialogue_text : String = str(current_dialogue[current_line][0]) + "\n" + str(current_dialogue[current_line][1])
 		correct_dialogue_text += "\n" + GUI_HELP_INFO
 		if current_line == len(current_dialogue) - 1:
-			correct_dialogue_text += "\n(!) End of available dialogue"
+			correct_dialogue_text += "\n(!) Press [attack] to end dialogue"
 		
 		$DialogueText.text = correct_dialogue_text
 		dialogue_section_needs_update = false
+	
+	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack"):
+		dialogue_root.visible = false	
+		not_menu.visible = true
 
 
 func message(msg: Array) -> void:

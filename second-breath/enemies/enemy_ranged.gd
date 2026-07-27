@@ -4,7 +4,7 @@ class_name EnemyRanged
 var attack_time : float = 1
 var player: CharacterBody3D = null
 var attack_direction: Vector3
-@onready var projectile: PackedScene = preload("res://attack_skills/projectile.tscn")
+@onready var projectile: PackedScene = preload("res://skills/projectile.tscn")
 @onready var muzzle_location: Marker3D = $"../../projectileMarkerThing"
 
 func enter() -> void:
