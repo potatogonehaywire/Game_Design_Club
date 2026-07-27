@@ -25,11 +25,12 @@ var damage : int = BASE_DAMAGE
 @onready var enemy_animation_tree: AnimationTree = $EnemyAnimationTree
 @onready var hurtbox: Area3D = $Hurtbox
 
-var basic_skill : PackedScene =  preload("res://attack_skills/skill_scenes/basic_anger.tscn")
-var max_skill : PackedScene =  preload("res://attack_skills/skill_scenes/max_anger.tscn")
+var basic_skill : PackedScene =  preload("res://skills/skill_scenes/basic_anger.tscn")
+var max_skill : PackedScene =  preload("res://skills/skill_scenes/max_anger.tscn")
 var skillUsed : Node
 var lastSkill : int = 2
 @onready var skill_effect: GPUParticles3D = $SkillEffect
+var particleColour : Color = Color(1.0, 1.0, 1.0, 1.0)
 
 @onready var basic_cooldown: Timer = $BasicCooldown
 @onready var max_cooldown: Timer = $MaxCooldown
@@ -88,16 +89,16 @@ func take_damage() -> void:
 	if Global.isProjectile == true:
 		if Global.skillType == 5:
 			self.speed = -16
-			self.enemyhp -= 10 * Global.ranged + Global.debuff
+			self.enemyhp -= Global.Pdmg * Global.ranged + Global.debuff
 		elif Global.skillType == 8:
 			self.speed = -16
-			self.enemyhp -= 10 * Global.ranged + Global.debuff
+			self.enemyhp -= Global.Pdmg * Global.ranged + Global.debuff
 		else:
-			self.enemyhp -= 10 * Global.ranged + Global.debuff
+			self.enemyhp -= Global.Pdmg * Global.ranged + Global.debuff
 			isHit = true
 			Global.isProjectile = false
 	else:
-		self.enemyhp -= 15 * Global.weapon + Global.debuff
+		self.enemyhp -= Global.dmg * Global.weapon + Global.debuff
 		Global.debuff = 0
 		Global.dmgdebuff = 0
 	if self.enemyhp <= 0:
@@ -124,8 +125,7 @@ func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 		cooldown.stop()
 
 
-func _on_projectile_cooldown_timeout() -> void:
-	pass
+#func _on_projectile_cooldown_timeout() -> void:
 	#if isInRange == true:
 		#state_machine.change_state("ranged")
 	
@@ -174,7 +174,7 @@ func _on_basic_cooldown_timeout() -> void:
 func _on_max_cooldown_timeout() -> void:
 	maxCooldownOff = true
 	print("enemy max skill cooldown ended")
-	skillUsed = basic_skill.instantiate()
+	skillUsed = max_skill.instantiate()
 	get_tree().current_scene.add_child(skillUsed)
 	lastSkill = 1
 	if isInRange:

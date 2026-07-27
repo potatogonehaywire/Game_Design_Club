@@ -1,5 +1,5 @@
 extends State
-@onready var ui_root: Control = $"../../../UI/UIRoot"
+@onready var talent_root: Control = $"../../../UI/TalentRoot"
 @onready var interact_ray: RayCast3D = $"../../InteractRay"
 @onready var muzzle_location: Marker3D = $"../../projectileMarkerThing"
 const ProjectileScene : PackedScene = preload("uid://cypk7ydkr5r7b")
@@ -7,15 +7,16 @@ var skillUsed : Node
 
 func enter() -> void:
 	skillUsed = parent.skillUsed
+	Global.Pdmg = skillUsed.dmgDealt
 	shoot()
 
 
 func shoot() -> void:
-	if ui_root.visible == false:
+	if talent_root.visible == false:
 		var target_point: Vector3
 		var collider : Node = interact_ray.get_collider()
 		if collider is Node:
-			if collider.is_in_group("enemy"):
+			if collider.is_in_group("enemies"):
 				target_point = interact_ray.get_collision_point()
 			else:
 				target_point = interact_ray.get_collision_point()
@@ -23,7 +24,7 @@ func shoot() -> void:
 			var direction_to_target : Vector3 = muzzle_location.global_position.direction_to(target_point).normalized()
 			print(direction_to_target)
 			var projectile_instance : Node = ProjectileScene.instantiate()
-			if ui_root.visible == false:
+			if talent_root.visible == false:
 				projectile_instance.get_projectile_type(parent.lastSkill)
 				get_tree().current_scene.add_child(projectile_instance)
 				projectile_instance.global_position = muzzle_location.global_position
@@ -31,6 +32,7 @@ func shoot() -> void:
 				projectile_instance.isPlayer = true
 
 func exit() -> void:
+	Global.Pdmg = 0
 	skillUsed.queue_free()
 
 func update(_delta:float) -> void:

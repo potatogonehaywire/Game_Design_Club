@@ -2,7 +2,9 @@ extends CharacterBody3D
 class_name Player
 
 signal toggle_skilltree()
+signal toggle_dialogue()
 signal interact_hover()
+signal message()
 
 const jumpspeed : int = 20
 var speed : int = 5
@@ -30,7 +32,9 @@ var interact_label : bool = false
 @onready var camera_controller: Node3D = $camera_controller
 @onready var camera_target: Node3D = $camera_controller/camera_target
 @onready var cam_collider: RayCast3D = $CamCollider
-@onready var talent_tree: TalentTree = $"../UI/UIRoot/talent_tree"
+@onready var talent_root : Control = $"../UI/TalentRoot"
+@onready var dialogue_root : Control = $"../UI/DialogueRoot"
+@onready var talent_tree: TalentTree = $"../UI/TalentRoot/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
 @onready var state_machine: StateMachine = $PlayerStateMachine
@@ -42,7 +46,7 @@ var ray_direction : Vector3
 var camray_direction : Vector3
 var ray_length: float = 50.0
 var close_enough : bool
-var explosion : PackedScene = preload("res://attack_skills/explosion.tscn")
+var explosion : PackedScene = preload("res://skills/explosion.tscn")
 var explodes : bool = false
 var sprites_between_cam : Array = []
 var current_obstacle_sprite : Node
@@ -58,22 +62,27 @@ var lastSkill : int
 var canUseESkill : bool = true
 var canUseQSkill : bool = true
 var canUseRSkill : bool = true
+var EIsBuff : bool = false
+var QIsBuff : bool = false
+var RIsBuff : bool = false
 var lastStamina : int = 100
 var lastHealth : float = 100
 var lastMaxHealth : float = 100
+var lastWeapon : float
+var particleColour : Color
 
 # skill scenes
-var base : PackedScene = preload("uid://b5d5qciwolq3a")
-var anger1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_anger.tscn")
-var fear1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_fear.tscn")
-var envy1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_envy.tscn")
-var angerMax : PackedScene = preload("res://attack_skills/skill_scenes/max_anger.tscn")
-var fearMax : PackedScene = preload("res://attack_skills/skill_scenes/max_fear.tscn")
-var envyMax : PackedScene = preload("res://attack_skills/skill_scenes/max_envy.tscn")
-var anger_fear : PackedScene = preload("res://attack_skills/skill_scenes/anger_fear.tscn")
-var fear_envy : PackedScene = preload("res://attack_skills/skill_scenes/fear_envy.tscn")
-var anger_envy : PackedScene = preload("res://attack_skills/skill_scenes/anger_envy.tscn")
-var heal1 : PackedScene = preload("res://attack_skills/skill_scenes/basic_heal.tscn")
+var base : PackedScene = preload("res://skills/skill_scenes/basic.tscn")
+var anger1 : PackedScene = preload("res://skills/skill_scenes/basic_anger.tscn")
+var fear1 : PackedScene = preload("res://skills/skill_scenes/basic_fear.tscn")
+var envy1 : PackedScene = preload("res://skills/skill_scenes/basic_envy.tscn")
+var angerMax : PackedScene = preload("res://skills/skill_scenes/max_anger.tscn")
+var fearMax : PackedScene = preload("res://skills/skill_scenes/max_fear.tscn")
+var envyMax : PackedScene = preload("res://skills/skill_scenes/max_envy.tscn")
+var anger_fear : PackedScene = preload("res://skills/skill_scenes/anger_fear.tscn")
+var fear_envy : PackedScene = preload("res://skills/skill_scenes/fear_envy.tscn")
+var anger_envy : PackedScene = preload("res://skills/skill_scenes/anger_envy.tscn")
+var heal1 : PackedScene = preload("res://skills/skill_scenes/basic_heal.tscn")
 
 var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
 								4: angerMax, 5: fearMax, 6: envyMax,
@@ -86,6 +95,7 @@ func _ready() -> void:
 	Global.player = self
 	attack.disabled = true
 	melee_sprite.visible = false
+	camera_controller.position = position + Vector3(0,0,0.8)
 		
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -189,31 +199,38 @@ func _physics_process(_delta: float) -> void:
 				close_enough = true
 			else:
 				close_enough = false
-			if collider.is_in_group("enemy"):
+			if collider.is_in_group("enemies"):
 				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
-			elif collider.is_in_group("external_inventory") and close_enough:
-				interact_hover.emit(true)
-				interact_label = true
+			elif collider.is_in_group("can_talk") and close_enough:
 				Input.set_custom_mouse_cursor(null)
+				if Input.is_action_pressed("interact"):
+					interact_label = false
+					interact_hover.emit(false)
+					toggle_dialogue.emit(true)
+					var dialogue_identifier : String = collider.dialogue_identifier
+					message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
+								  [dialogue_identifier]] )
+				elif dialogue_root.visible or talent_root.visible:
+					interact_hover.emit(false)
+					interact_label = false
+				else:
+					interact_hover.emit(true)
+					interact_label = true
+					
 			else:
 				interact_label = false
 				interact_hover.emit(false)
 				Input.set_custom_mouse_cursor(null)
-				
-		if collider.is_in_group("has_dialogue") and Input.is_action_pressed("attack"):
-			var dialogue_identifier = collider.dialogue_identifier
-			message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
-						  [dialogue_identifier]] )
-		if "tutorial_identifiers" in collider:
-			var tutorial_identifiers = collider.tutorial_identifiers
-			message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
-						  tutorial_identifiers] )
+			if "tutorial_identifiers" in collider:
+				var tutorial_identifiers : Array = collider.tutorial_identifiers
+				message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
+							  tutorial_identifiers] )
 		else:
 			Input.set_custom_mouse_cursor(null)
 
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") && attack.disabled == false:
+	if body.is_in_group("enemies") && attack.disabled == false:
 		if body.has_method("upon_hit"): 
 			var id : int = body.id
 			Global.enemyHitID.append(id)
@@ -232,25 +249,27 @@ func _on_cooldown_timeout() -> void:
 
 func _on_skill_cooldown_timeout() -> void:
 	skillCooldownOff = true
-	Global.debuff = 0
-	Global.dmgdebuff = 0
-	Global.maxHealth = 100
-	Global.weapon = 1
-	health_bar.health_changed()
 	print("can use E skill again")
+
 
 func _on_skill_cooldown_2_timeout() -> void:
 	skillCooldownOff2 = true
+	print("can use Q skill again")
+
+func _on_skill_cooldown_3_timeout() -> void:
+	skillCooldownOff3 = true
+	print("can use R skill again")
+
+func skill_effects_clear() -> void:
 	Global.debuff = 0
 	Global.dmgdebuff = 0
 	Global.maxHealth = 100
-	Global.weapon = 1
+	Global.weapon = lastWeapon
 	health_bar.health_changed()
-	print("can use Q skill again")
-
+	
 
 func interact() -> void:
-	if interact_ray.is_colliding():
+	if interact_ray.is_colliding() && interact_label:
 		var collider : Node = interact_ray.get_collider()
 		if collider.has_method("player_interact"):
 			collider.player_interact()
@@ -266,13 +285,3 @@ func _on_attack_hitbox_area_entered(area: Area3D) -> void:
 
 func damage_taken() -> void:
 	health_bar.health_changed()
-
-
-func _on_skill_cooldown_3_timeout() -> void:
-	skillCooldownOff3 = true
-	Global.debuff = 0
-	Global.dmgdebuff = 0
-	Global.maxHealth = 100
-	Global.weapon = 1
-	health_bar.health_changed()
-	print("can use R skill again")

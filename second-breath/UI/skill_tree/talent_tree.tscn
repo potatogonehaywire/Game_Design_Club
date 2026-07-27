@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://p30b8qbm3n7e"]
 
 [ext_resource type="Script" uid="uid://djibti1mdftqm" path="res://UI/skill_tree/talent_tree.gd" id="1_h8x7a"]
-[ext_resource type="FontFile" uid="uid://cqgamq35h7bth" path="res://UI/ModernDOS8x16.ttf" id="3_aql1q"]
+[ext_resource type="FontFile" uid="uid://cqgamq35h7bth" path="res://UI/fonts/ModernDOS8x16.ttf" id="3_aql1q"]
 [ext_resource type="PackedScene" uid="uid://cnr4t4xujgpwx" path="res://UI/skill_tree/talent_slot.tscn" id="3_mugwv"]
 [ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="4_cjy42"]
 [ext_resource type="Texture2D" uid="uid://38yhfyrg183e" path="res://UI/skill_tree/skilltree_bg.png" id="5_aql1q"]

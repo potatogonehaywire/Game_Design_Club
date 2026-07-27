@@ -3,23 +3,26 @@
 # I've put an instance into the player scene already, but it may fail if you try to use it outside of that.
 # Actual dialogue messages should be stored in DialogueData.
 
-extends Node2D
+extends Control
+
+@onready var dialogue_root: Control = $".."
+@onready var not_menu: Control = $"../../NotMenu"
+
+var player : Player = null
 
 
+var current_dialogue : Array = [["GAME INFO", "Placeholder for dialogue box text."], ["GAME INFO", "Click on character with scribble on it (testcharacter) to get only currently added dialogue."]]
+var current_line : int = -1
 
-var current_dialogue = [["GAME INFO", "Placeholder for dialogue box text."], ["GAME INFO", "Click on character with scribble on it (testcharacter) to get only currently added dialogue."]]
-var current_line = -1
+var dialogue_section_needs_update : bool = true
 
-var dialogue_section_needs_update = true
-
-const GUI_HELP_INFO = "[J] Back  [K] Next"
+const GUI_HELP_INFO : String = "[J] Back  [K] Next"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_parent().connect("message", message) # Enables messaging with the player.
+	player = $"../../../Player"
+	player.connect("message", message) # Enables messaging with the player.
 	$DialogueText.text = str(current_dialogue[current_line])
-	$DialogueIcon.animation = "26-05-04 sprites v1"
-	$DialogueIcon.frame = $DialogueData.icon_lookup["info"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,20 +35,20 @@ func _process(_delta: float) -> void:
 			current_line -= 1
 	
 	if Input.is_action_just_pressed("dialogue_last") or dialogue_section_needs_update or Input.is_action_just_pressed("dialogue_next"):
-		var correct_dialogue_text = str(current_dialogue[current_line][0]) + "\n" + str(current_dialogue[current_line][1])
+		var correct_dialogue_text : String = str(current_dialogue[current_line][0]) + "\n" + str(current_dialogue[current_line][1])
 		correct_dialogue_text += "\n" + GUI_HELP_INFO
 		if current_line == len(current_dialogue) - 1:
-			correct_dialogue_text += "\n(!) End of available dialogue"
+			correct_dialogue_text += "\n(!) Press [attack] to end dialogue"
 		
 		$DialogueText.text = correct_dialogue_text
-		$DialogueIcon.frame = $DialogueData.icon_lookup[current_dialogue[current_line][0]]
-		
 		dialogue_section_needs_update = false
 	
+	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack"):
+		dialogue_root.visible = false	
+		not_menu.visible = true
 
 
-
-func message(msg: Array):
+func message(msg: Array) -> void:
 	if msg[0]["recipient"] == "dialogue scene":
 		if msg[0]["topic"] == "start dialogue":
 			if current_dialogue != $DialogueData.dialogue_output(msg[1][0]):

@@ -13,17 +13,15 @@ var equippedRanged : int = 1
 var enemyHitID : Array = []
 var enemyIsHit: bool = false
 var isProjectile: bool = false
+var dmg : int = 15
+var Pdmg : int = 10
 var debuff : float = 0
 var dmgdebuff : int = 0
-#var windup : int = 2
 var skillType : int = 5
 
 var player : Player
 var aggro_enemies : Array = []
 var available_skills : Array = []
-
-func use_slot_data(slot_data: SlotData) -> void:
-	slot_data.item_data.use(player)
 
 func get_global_position() -> Vector3:
 	return player.global_position
@@ -42,7 +40,7 @@ func _process(_delta: float) -> void:
 		health = maxHealth
 	
 	if enemyIsHit == true || enemyHitID.size() > 0:
-		for node : Node in get_tree().get_nodes_in_group("enemy"):
+		for node : Node in get_tree().get_nodes_in_group("enemies"):
 			var f: int = node.get("id")
 			if f in enemyHitID:
 				if node.has_method("upon_hit"):

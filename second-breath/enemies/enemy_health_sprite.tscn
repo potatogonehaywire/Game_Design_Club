@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqixxrkol83k1"]
 
-[ext_resource type="Script" uid="uid://cw457jviax8cg" path="res://enemies/enemy_health_sprite.gd" id="1_3tglm"]
+[ext_resource type="Script" uid="uid://cw457jviax8cg" path="res://characters/character_health_sprite.gd" id="1_3tglm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7p70c"]
 viewport_path = NodePath("SubViewport")

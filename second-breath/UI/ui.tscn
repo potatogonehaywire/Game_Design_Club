@@ -1,24 +1,27 @@
 [gd_scene format=3 uid="uid://b11j6h46pc8b7"]
 
+[ext_resource type="Script" uid="uid://x48gchfymr18" path="res://UI/click_catcher.gd" id="1_8gukh"]
 [ext_resource type="PackedScene" uid="uid://p30b8qbm3n7e" path="res://UI/skill_tree/talent_tree.tscn" id="1_cbfhl"]
-[ext_resource type="Script" uid="uid://cjtsii371x5am" path="res://inventory/click_catcher.gd" id="2_4fiuh"]
-[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_c7tqi"]
-[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://environment_scenes/stamina_bar.gd" id="7_2qbci"]
-[ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/crystal1.png" id="7_h81ot"]
+[ext_resource type="PackedScene" uid="uid://caam7awi1whsx" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_c7tqi"]
+[ext_resource type="PackedScene" uid="uid://k0ey3o8lx6v2" path="res://dialogue/tutorial/tutorial_box.tscn" id="4_8gkfd"]
+[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/stamina_bar.gd" id="7_2qbci"]
+[ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/menus/Graphics/crystal1.png" id="7_h81ot"]
 [ext_resource type="Script" uid="uid://cytj16rhmqpqj" path="res://UI/cooldown_ui.gd" id="7_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/crystal2.png" id="8_6rr40"]
+[ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/menus/Graphics/crystal2.png" id="8_6rr40"]
 [ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
-[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://environment_scenes/health_bar.gd" id="8_ow1yt"]
-[ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/crystal3.png" id="9_0w6e5"]
+[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://UI/health_bar.gd" id="8_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/menus/Graphics/crystal3.png" id="9_0w6e5"]
 [ext_resource type="Script" uid="uid://b84krupvi35j3" path="res://UI/skill_cooldown.gd" id="10_8gukh"]
-[ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/crystal4.png" id="10_o2jkc"]
-[ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/crystal1_outline.png" id="11_2qbci"]
-[ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/crystal2_outline.png" id="12_ow1yt"]
-[ext_resource type="FontFile" uid="uid://chvofm58i0yvg" path="res://UI/ModernDOS8x8.ttf" id="13_8gukh"]
-[ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/crystal3_outline.png" id="13_o2t6a"]
-[ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/crystal4_outline.png" id="14_8gukh"]
+[ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/menus/Graphics/crystal4.png" id="10_o2jkc"]
+[ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/menus/Graphics/crystal1_outline.png" id="11_2qbci"]
+[ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/menus/Graphics/crystal2_outline.png" id="12_ow1yt"]
+[ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/menus/Graphics/crystal3_outline.png" id="13_o2t6a"]
+[ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/menus/Graphics/crystal4_outline.png" id="14_8gukh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
+font = ExtResource("3_c7tqi")
+font_size = 64
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiium"]
 bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
@@ -34,7 +37,7 @@ bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=725296579]
 
-[node name="UIRoot" type="Control" parent="." unique_id=987893219]
+[node name="TalentRoot" type="Control" parent="." unique_id=987893219]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -43,46 +46,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClickCatcher" type="Control" parent="UIRoot" unique_id=2034638472]
+[node name="ClickCatcher" type="Control" parent="TalentRoot" unique_id=2034638472]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_4fiuh")
+script = ExtResource("1_8gukh")
 
-[node name="talent_tree" parent="UIRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
+[node name="talent_tree" parent="TalentRoot" unique_id=1533451348 instance=ExtResource("1_cbfhl")]
+layout_mode = 1
+
+[node name="DialogueRoot" type="Control" parent="." unique_id=541298765]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1914.0
+offset_bottom = 1079.0
+
+[node name="ClickCatcher2" type="Control" parent="DialogueRoot" unique_id=1576099136]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogueBox" parent="DialogueRoot" unique_id=1170056814 instance=ExtResource("3_8gukh")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 80.0
+offset_top = -279.0
+offset_right = 80.0
+offset_bottom = -279.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="TutorialBox" parent="DialogueRoot" unique_id=46890979 instance=ExtResource("4_8gkfd")]
+visible = false
 layout_mode = 1
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 91.0
-offset_top = 391.0
-offset_right = 131.0
-offset_bottom = 431.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="InteractLabel" type="Label" parent="NotMenu" unique_id=307289589]
 texture_filter = 1
 layout_mode = 0
 offset_right = 51.0
 offset_bottom = 15.0
-scale = Vector2(5, 5)
 theme_override_colors/font_outline_color = Color(0.11511584, 3.4269095e-05, 0.42940018, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_c7tqi")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 32
 text = "F: Interact"
 label_settings = SubResource("LabelSettings_nm1m0")
 script = ExtResource("8_h81ot")
 
 [node name="StaminaBar" type="ProgressBar" parent="NotMenu" unique_id=199650519]
 layout_mode = 0
-offset_left = -57.0
-offset_top = -354.0
-offset_right = 414.0
-offset_bottom = -325.0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 492.0
+offset_bottom = 53.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
 value = 50.0
@@ -91,10 +119,10 @@ script = ExtResource("7_2qbci")
 
 [node name="HealthBar" type="ProgressBar" parent="NotMenu" unique_id=1363857212]
 layout_mode = 0
-offset_left = -56.0
-offset_top = -309.0
-offset_right = 605.0
-offset_bottom = -275.0
+offset_left = 22.0
+offset_top = 69.0
+offset_right = 683.0
+offset_bottom = 103.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
 value = 50.0
@@ -111,10 +139,10 @@ script = ExtResource("7_ow1yt")
 
 [node name="LeftClickSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=384764465]
 layout_mode = 0
-offset_left = 1703.0
-offset_top = 732.0
-offset_right = 1806.0
-offset_bottom = 931.0
+offset_left = 1866.0
+offset_top = 1191.0
+offset_right = 1969.0
+offset_bottom = 1390.0
 value = 50.0
 fill_mode = 3
 texture_under = ExtResource("7_h81ot")
@@ -132,7 +160,8 @@ offset_left = 11.0
 offset_top = 215.0
 offset_right = 105.0
 offset_bottom = 250.0
-theme_override_fonts/font = ExtResource("13_8gukh")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_c7tqi")
 theme_override_font_sizes/font_size = 32
 text = "Left 
 Click"
@@ -141,10 +170,10 @@ uppercase = true
 
 [node name="RSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=430957905]
 layout_mode = 0
-offset_left = 1575.0
-offset_top = 736.0
-offset_right = 1678.0
-offset_bottom = 935.0
+offset_left = 1738.0
+offset_top = 1195.0
+offset_right = 1841.0
+offset_bottom = 1394.0
 value = 50.0
 fill_mode = 3
 texture_under = ExtResource("8_6rr40")
@@ -162,16 +191,16 @@ offset_left = 43.0
 offset_top = 216.0
 offset_right = 59.0
 offset_bottom = 232.0
-theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 48
 text = "R"
 
 [node name="ESkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=624329387]
 layout_mode = 0
-offset_left = 1439.0
-offset_top = 753.0
-offset_right = 1542.0
-offset_bottom = 952.0
+offset_left = 1602.0
+offset_top = 1212.0
+offset_right = 1705.0
+offset_bottom = 1411.0
 value = 50.0
 fill_mode = 3
 texture_under = ExtResource("9_0w6e5")
@@ -189,16 +218,16 @@ offset_left = 53.0
 offset_top = 197.0
 offset_right = 69.0
 offset_bottom = 213.0
-theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 48
 text = "E"
 
 [node name="QSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=1914544665]
 layout_mode = 0
-offset_left = 1311.0
-offset_top = 731.0
-offset_right = 1414.0
-offset_bottom = 930.0
+offset_left = 1474.0
+offset_top = 1190.0
+offset_right = 1577.0
+offset_bottom = 1389.0
 value = 50.0
 fill_mode = 3
 texture_under = ExtResource("10_o2jkc")
@@ -216,6 +245,6 @@ offset_left = 41.0
 offset_top = 217.0
 offset_right = 57.0
 offset_bottom = 233.0
-theme_override_fonts/font = ExtResource("13_8gukh")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 48
 text = "Q"

@@ -10,7 +10,7 @@ func apply_buffs() -> void:
 	parent.damage = parent.BASE_DAMAGE * (skillUsed.weaponBuff + 1)
 	parent.speed += skillUsed.speedBuff
 	parent.health_bar.health_changed()
-	#parent.skill_effect.mesh.material.emission = skillUsed.colour
+	parent.particleColour = skillUsed.colour
 	parent.skill_effect.emitting = true
 	
 	

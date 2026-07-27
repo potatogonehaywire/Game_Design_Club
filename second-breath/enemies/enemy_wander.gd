@@ -21,7 +21,7 @@ func exit() -> void:
 	
 
 func update(delta:float) -> void:
-	if wander_time < 0.0:
+	if wander_time <= 0.0:
 		randomize_variables()
 	
 	wander_time -= delta
@@ -29,6 +29,8 @@ func update(delta:float) -> void:
 	
 	if parent.isInRange == true:
 		state_machine.change_state("pursuit")
+	#else:
+		#randomize_variables()
 	
 	if wait_time <= 0:
 		state_machine.change_state("idle")

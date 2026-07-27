@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://pfmxgqe0eut7" path="res://UI/menus/Main_Menu/main_menu.gd" id="1_jht8a"]
 [ext_resource type="Texture2D" uid="uid://11arhajctsf7" path="res://UI/menus/Graphics/Menu/promo_image_mirrored.png" id="2_by2mg"]
 [ext_resource type="PackedScene" uid="uid://bkxh3tdpimpiu" path="res://UI/menus/Option_Menu/options.tscn" id="3_6qckm"]
-[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/Comicoro.ttf" id="3_gj40y"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_gj40y"]
+[ext_resource type="FontFile" uid="uid://dgi81hu8rvh3y" path="res://UI/fonts/ModernDOS9x16.ttf" id="3_ix11v"]
 
 [node name="Main_Menu" type="Control" unique_id=86582445]
 layout_mode = 3
@@ -52,8 +53,8 @@ theme_override_colors/font_outline_color = Color(1.347661e-06, 0.3265675, 0.4585
 theme_override_constants/shadow_offset_x = 12
 theme_override_constants/shadow_offset_y = 12
 theme_override_constants/outline_size = 50
-theme_override_fonts/font = ExtResource("3_gj40y")
-theme_override_font_sizes/font_size = 300
+theme_override_fonts/font = ExtResource("3_ix11v")
+theme_override_font_sizes/font_size = 250
 text = "Second Breath"
 horizontal_alignment = 1
 vertical_alignment = 1
