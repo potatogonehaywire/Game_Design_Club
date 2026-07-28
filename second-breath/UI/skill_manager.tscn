@@ -1,5 +1,18 @@
 [gd_scene format=3 uid="uid://ck7nb2vhas58m"]
 
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="1_aiabx"]
+[ext_resource type="Texture2D" uid="uid://d04aeigorso2u" path="res://icon.svg" id="2_g5084"]
+[ext_resource type="Script" uid="uid://cljt3piyugxhk" path="res://UI/choose_skill.gd" id="3_g5084"]
+
+[sub_resource type="Gradient" id="Gradient_g5084"]
+offsets = PackedFloat32Array(0.060096152, 1)
+colors = PackedColorArray(0.050980393, 0.14901961, 0.17254902, 0.8235294, 0.30312026, 0.46703357, 0.57290334, 0.7058824)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yodfl"]
+gradient = SubResource("Gradient_g5084")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.296875)
+
 [node name="SkillManager" type="Control" unique_id=1638622206]
 layout_mode = 3
 anchors_preset = 15
@@ -7,37 +20,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_g5084")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=143215969]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_yodfl")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1499551582]
 layout_mode = 0
-offset_top = 105.0
-offset_right = 40.0
-offset_bottom = 145.0
+offset_left = 981.0
+offset_top = 263.0
+offset_right = 1353.0
+offset_bottom = 819.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1728534365]
 layout_mode = 2
 
 [node name="LSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=1684210613]
 layout_mode = 2
-text = "Left Click"
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "L Click"
+icon = ExtResource("2_g5084")
+flat = false
 
 [node name="QSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=74633483]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
 text = "Q"
+icon = ExtResource("2_g5084")
+flat = false
 
 [node name="ESkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=1436733353]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
 text = "E"
+icon = ExtResource("2_g5084")
+flat = false
 
 [node name="RSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=849005497]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
 text = "R
 "
+icon = ExtResource("2_g5084")
+flat = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1101067408]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer" unique_id=1090925523]
-layout_mode = 2
+[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/LSkill" to="." method="_on_l_skill_about_to_popup"]
+[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/QSkill" to="." method="_on_q_skill_about_to_popup"]
+[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/ESkill" to="." method="_on_e_skill_about_to_popup"]
+[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/RSkill" to="." method="_on_r_skill_about_to_popup"]

@@ -1,8 +1,8 @@
 extends TextureProgressBar
-
+class_name CooldownBar
 var player : Player
 @export var button_pressed : String
-var skill_used : int
+var skill_used : String
 var skill_node : Node
 var cooldown : Timer
 var skill_colour : Color
@@ -27,13 +27,16 @@ func find_colour() -> void:
 	skill_node = player.skill_dict[skill_used].instantiate()
 	tint_progress = skill_node.colour
 	
+	
+func change_skill() -> void:
+	check_skill()
+	find_colour()
+		
 			
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	check_skill()
-	find_colour()
+	change_skill()
+
 
 func _process(_delta: float) -> void:
 	value = 100 - cooldown.time_left / cooldown.wait_time * 100
-
-	

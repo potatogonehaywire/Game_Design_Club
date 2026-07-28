@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1280mm"
+   height="270mm"
+   viewBox="0 0 1280 270"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="textbox.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.15966525"
+     inkscape:cx="2480.189"
+     inkscape:cy="1168.0688"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="1561.7132"
+       y="-637.27338"
+       width="78.675725"
+       height="114.0798"
+       id="rect5" />
+    <rect
+       x="1671.8592"
+       y="-660.87609"
+       width="302.90154"
+       height="849.69784"
+       id="rect4" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.5875;stroke-opacity:0"
+       id="rect1"
+       width="1278.4125"
+       height="268.41251"
+       x="0.79374999"
+       y="0.79374999" />
+    <rect
+       style="fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:20;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-9"
+       width="1278.4125"
+       height="268.41251"
+       x="2.5"
+       y="2.5" />
+    <rect
+       style="fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#ffffff;stroke-width:10;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2"
+       height="72.854301"
+       x="5"
+       y="5"
+       width="381.21436" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text4"
+       style="fill:#000000;-inkscape-font-specification:Futura;font-family:Futura;stroke:#ffffff;font-size:64px;fill-rule:evenodd;stroke-width:37.79527559;stroke-opacity:0;fill-opacity:1;stroke-dasharray:none;white-space:pre;shape-inside:url(#rect4)" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text5"
+       style="fill:#000000;-inkscape-font-specification:Futura;font-family:Futura;stroke:#ffffff;font-size:64px;fill-rule:evenodd;stroke-width:37.79527559;stroke-opacity:0;fill-opacity:1;stroke-dasharray:none;white-space:pre;shape-inside:url(#rect5)" />
+  </g>
+</svg>

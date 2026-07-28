@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 signal toggle_skilltree()
+signal toggle_stats()
 signal toggle_dialogue()
 signal interact_hover()
 signal message()
@@ -34,6 +35,7 @@ var interact_label : bool = false
 @onready var cam_collider: RayCast3D = $CamCollider
 @onready var talent_root : Control = $"../UI/TalentRoot"
 @onready var dialogue_root : Control = $"../UI/DialogueRoot"
+@onready var skill_root : Control = $"../UI/SkillRoot"
 @onready var talent_tree: TalentTree = $"../UI/TalentRoot/talent_tree"
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var attack_hitbox: Area3D = $AttackHitbox
@@ -53,11 +55,11 @@ var current_obstacle_sprite : Node
 var camera_has_obstacle : bool = false
 
 # left click, E and Q skill
-@export var LSkill : int
-@export var ESkill : int
-@export var QSkill : int
-@export var RSkill : int
-var lastSkill : int
+@export var LSkill : String
+@export var ESkill : String
+@export var QSkill : String
+@export var RSkill : String
+var lastSkill : String
 @onready var skill_effect: CPUParticles3D = $SkillEffect
 var canUseESkill : bool = true
 var canUseQSkill : bool = true
@@ -84,10 +86,10 @@ var fear_envy : PackedScene = preload("res://skills/skill_scenes/fear_envy.tscn"
 var anger_envy : PackedScene = preload("res://skills/skill_scenes/anger_envy.tscn")
 var heal1 : PackedScene = preload("res://skills/skill_scenes/basic_heal.tscn")
 
-var skill_dict : Dictionary = {0: base, 1 : anger1, 2:fear1, 3:envy1,
-								4: angerMax, 5: fearMax, 6: envyMax,
-								7 : anger_fear, 8 : fear_envy, 9 : anger_envy,
-								10 : heal1}
+var skill_dict : Dictionary = {"Basic": base, "Anger I" : anger1, "Fear I" : fear1, "Envy I" : envy1,
+								"Anger VI": angerMax, "Fear VI": fearMax, "Envy VI" : envyMax,
+								"Anger & Fear" : anger_fear, "Fear & Envy" : fear_envy, "Envy & Anger" : anger_envy,
+								"Heal" : heal1}
 
 var skillUsed : Node
 
@@ -108,6 +110,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("skill_tree"):
 		toggle_skilltree.emit()
+	
+	if Input.is_action_just_pressed("player_stats"):
+		toggle_stats.emit()
 
 
 func _process(_delta: float) -> void:
@@ -190,43 +195,44 @@ func _physics_process(_delta: float) -> void:
 		camera_target.position = lerp(camera_target.position, Vector3(0, 3.4, 5.6), 0.05)
 		camera_target.rotation_degrees = lerp(camera_target.rotation_degrees, Vector3(-30, 0, 0), 0.03)
 	
-	if interact_ray.is_colliding():
-		var collider : Node = interact_ray.get_collider()
+	if !skill_root.visible and !talent_root.visible and !dialogue_root.visible:
+		if interact_ray.is_colliding():
+			var collider : Node = interact_ray.get_collider()
 
-		if collider is Node:
-			var distance_with_collider : Vector3 = abs(position - collider.global_position) 
-			if distance_with_collider.x < 3 and distance_with_collider.z < 3:
-				close_enough = true
-			else:
-				close_enough = false
-			if collider.is_in_group("enemies"):
-				Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
-			elif collider.is_in_group("can_talk") and close_enough:
-				Input.set_custom_mouse_cursor(null)
-				if Input.is_action_pressed("interact"):
-					interact_label = false
-					interact_hover.emit(false)
-					toggle_dialogue.emit(true)
-					var dialogue_identifier : String = collider.dialogue_identifier
-					message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
-								  [dialogue_identifier]] )
-				elif dialogue_root.visible or talent_root.visible:
-					interact_hover.emit(false)
-					interact_label = false
+			if collider is Node:
+				var distance_with_collider : Vector3 = abs(position - collider.global_position) 
+				if distance_with_collider.x < 3 and distance_with_collider.z < 3:
+					close_enough = true
 				else:
-					interact_hover.emit(true)
-					interact_label = true
-					
+					close_enough = false
+				if collider.is_in_group("enemies"):
+					Input.set_custom_mouse_cursor(bullseye, Input.CURSOR_CROSS, Vector2(50,50))
+				elif collider.is_in_group("can_talk") and close_enough:
+					Input.set_custom_mouse_cursor(null)
+					if Input.is_action_pressed("interact"):
+						interact_label = false
+						interact_hover.emit(false)
+						toggle_dialogue.emit(true)
+						var dialogue_identifier : String = collider.dialogue_identifier
+						message.emit( [{"recipient": "dialogue scene", "topic": "start dialogue"},
+									  [dialogue_identifier]] )
+					elif dialogue_root.visible or talent_root.visible:
+						interact_hover.emit(false)
+						interact_label = false
+					else:
+						interact_hover.emit(true)
+						interact_label = true
+						
+				else:
+					interact_label = false
+					interact_hover.emit(false)
+					Input.set_custom_mouse_cursor(null)
+				if "tutorial_identifiers" in collider:
+					var tutorial_identifiers : Array = collider.tutorial_identifiers
+					message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
+								  tutorial_identifiers] )
 			else:
-				interact_label = false
-				interact_hover.emit(false)
 				Input.set_custom_mouse_cursor(null)
-			if "tutorial_identifiers" in collider:
-				var tutorial_identifiers : Array = collider.tutorial_identifiers
-				message.emit( [{"recipient": "tutorial scene", "topic": "start tutorial"},
-							  tutorial_identifiers] )
-		else:
-			Input.set_custom_mouse_cursor(null)
 
 
 func _on_attack_hitbox_body_entered(body: Node3D) -> void:
@@ -236,9 +242,9 @@ func _on_attack_hitbox_body_entered(body: Node3D) -> void:
 			Global.enemyHitID.append(id)
 			enemy_hit()
 			print(Global.enemyHitID)
-			if lastSkill == 6:
+			if lastSkill == "Fear VI":
 				Global.health += 6
-			elif lastSkill == 9:
+			elif lastSkill == "Fear & Envy":
 				Global.health += 2
 
 func enemy_hit() -> void:

@@ -5,16 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://caam7awi1whsx" path="res://dialogue/dialogue_box.tscn" id="3_8gukh"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_c7tqi"]
 [ext_resource type="PackedScene" uid="uid://k0ey3o8lx6v2" path="res://dialogue/tutorial/tutorial_box.tscn" id="4_8gkfd"]
-[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/stamina_bar.gd" id="7_2qbci"]
+[ext_resource type="PackedScene" uid="uid://ck7nb2vhas58m" path="res://UI/skill_manager.tscn" id="5_0tr35"]
+[ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/hud/interact_label.gd" id="6_8gkfd"]
+[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/hud/stamina_bar.gd" id="7_8gkfd"]
 [ext_resource type="Texture2D" uid="uid://c3spqr7ag3wsh" path="res://UI/menus/Graphics/crystal1.png" id="7_h81ot"]
-[ext_resource type="Script" uid="uid://cytj16rhmqpqj" path="res://UI/cooldown_ui.gd" id="7_ow1yt"]
+[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://UI/hud/health_bar.gd" id="8_0tr35"]
 [ext_resource type="Texture2D" uid="uid://cnhs2ebgn18t8" path="res://UI/menus/Graphics/crystal2.png" id="8_6rr40"]
-[ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/interact_label.gd" id="8_h81ot"]
-[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://UI/health_bar.gd" id="8_ow1yt"]
 [ext_resource type="Texture2D" uid="uid://b2rlcna7g68mm" path="res://UI/menus/Graphics/crystal3.png" id="9_0w6e5"]
-[ext_resource type="Script" uid="uid://b84krupvi35j3" path="res://UI/skill_cooldown.gd" id="10_8gukh"]
+[ext_resource type="Script" uid="uid://cytj16rhmqpqj" path="res://UI/hud/cooldown_ui.gd" id="9_8gkfd"]
 [ext_resource type="Texture2D" uid="uid://bcwkrvqykubcw" path="res://UI/menus/Graphics/crystal4.png" id="10_o2jkc"]
 [ext_resource type="Texture2D" uid="uid://5imvfa36qgst" path="res://UI/menus/Graphics/crystal1_outline.png" id="11_2qbci"]
+[ext_resource type="Script" uid="uid://b84krupvi35j3" path="res://UI/hud/skill_cooldown.gd" id="12_7j5ik"]
 [ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/menus/Graphics/crystal2_outline.png" id="12_ow1yt"]
 [ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/menus/Graphics/crystal3_outline.png" id="13_o2t6a"]
 [ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/menus/Graphics/crystal4_outline.png" id="14_8gukh"]
@@ -75,15 +76,35 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_left = 80.0
-offset_top = -279.0
-offset_right = 80.0
-offset_bottom = -279.0
+offset_left = 131.0
+offset_top = -435.0
+offset_right = 131.0
+offset_bottom = -435.0
 grow_horizontal = 1
 grow_vertical = 0
 
 [node name="TutorialBox" parent="DialogueRoot" unique_id=46890979 instance=ExtResource("4_8gkfd")]
 visible = false
+layout_mode = 1
+
+[node name="SkillRoot" type="Control" parent="." unique_id=960040653]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClickCatcher3" type="Control" parent="SkillRoot" unique_id=912036778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillManager" parent="SkillRoot" unique_id=1638622206 instance=ExtResource("5_0tr35")]
 layout_mode = 1
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]
@@ -103,7 +124,7 @@ theme_override_fonts/font = ExtResource("3_c7tqi")
 theme_override_font_sizes/font_size = 32
 text = "F: Interact"
 label_settings = SubResource("LabelSettings_nm1m0")
-script = ExtResource("8_h81ot")
+script = ExtResource("6_8gkfd")
 
 [node name="StaminaBar" type="ProgressBar" parent="NotMenu" unique_id=199650519]
 layout_mode = 0
@@ -115,7 +136,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
 value = 50.0
 show_percentage = false
-script = ExtResource("7_2qbci")
+script = ExtResource("7_8gkfd")
 
 [node name="HealthBar" type="ProgressBar" parent="NotMenu" unique_id=1363857212]
 layout_mode = 0
@@ -127,7 +148,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
 value = 50.0
 show_percentage = false
-script = ExtResource("8_ow1yt")
+script = ExtResource("8_0tr35")
 
 [node name="Cooldown" type="Control" parent="NotMenu" unique_id=1638233206]
 anchors_preset = 0
@@ -135,7 +156,7 @@ offset_left = -91.0
 offset_top = -391.0
 offset_right = -51.0
 offset_bottom = -351.0
-script = ExtResource("7_ow1yt")
+script = ExtResource("9_8gkfd")
 
 [node name="LeftClickSkill" type="TextureProgressBar" parent="NotMenu/Cooldown" unique_id=384764465]
 layout_mode = 0
@@ -151,7 +172,7 @@ texture_progress = ExtResource("7_h81ot")
 tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
 tint_over = Color(0.4520269, 0.510831, 0.6045966, 1)
 tint_progress = Color(0.17342657, 0.37691626, 0.6446892, 1)
-script = ExtResource("10_8gukh")
+script = ExtResource("12_7j5ik")
 button_pressed = "L"
 
 [node name="LeftClick" type="Label" parent="NotMenu/Cooldown/LeftClickSkill" unique_id=552991620]
@@ -182,7 +203,7 @@ texture_progress = ExtResource("8_6rr40")
 tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
 tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
 tint_progress = Color(1, 0, 0, 1)
-script = ExtResource("10_8gukh")
+script = ExtResource("12_7j5ik")
 button_pressed = "R"
 
 [node name="R" type="Label" parent="NotMenu/Cooldown/RSkill" unique_id=1860697927]
@@ -209,7 +230,7 @@ texture_progress = ExtResource("9_0w6e5")
 tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
 tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
 tint_progress = Color(1, 0, 0, 1)
-script = ExtResource("10_8gukh")
+script = ExtResource("12_7j5ik")
 button_pressed = "E"
 
 [node name="E" type="Label" parent="NotMenu/Cooldown/ESkill" unique_id=1479873404]
@@ -236,7 +257,7 @@ texture_progress = ExtResource("10_o2jkc")
 tint_under = Color(0.167867, 0.23330164, 0.43296415, 1)
 tint_over = Color(0.81995183, 0.0005280906, 0.8199462, 1)
 tint_progress = Color(1, 0, 0, 1)
-script = ExtResource("10_8gukh")
+script = ExtResource("12_7j5ik")
 button_pressed = "Q"
 
 [node name="Q" type="Label" parent="NotMenu/Cooldown/QSkill" unique_id=2142082377]

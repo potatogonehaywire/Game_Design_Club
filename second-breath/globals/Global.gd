@@ -17,11 +17,12 @@ var dmg : int = 15
 var Pdmg : int = 10
 var debuff : float = 0
 var dmgdebuff : int = 0
-var skillType : int = 5
+var skillType : String = "Basic"
 
 var player : Player
 var aggro_enemies : Array = []
-var available_skills : Array = []
+var available_skills : Array = ["Heal", "Anger I", "Anger VI", "Envy I"]
+var current_skills : Dictionary = {"L": [], "E": [], "Q": [], "R": []}
 
 func get_global_position() -> Vector3:
 	return player.global_position

@@ -35,8 +35,7 @@ func _process(_delta: float) -> void:
 			current_line -= 1
 	
 	if Input.is_action_just_pressed("dialogue_last") or dialogue_section_needs_update or Input.is_action_just_pressed("dialogue_next"):
-		var correct_dialogue_text : String = str(current_dialogue[current_line][0]) + "\n" + str(current_dialogue[current_line][1])
-		correct_dialogue_text += "\n" + GUI_HELP_INFO
+		var correct_dialogue_text : String = str(current_dialogue[current_line][0]) + "\n\n" + str(current_dialogue[current_line][1])
 		if current_line == len(current_dialogue) - 1:
 			correct_dialogue_text += "\n(!) Press [attack] to end dialogue"
 		

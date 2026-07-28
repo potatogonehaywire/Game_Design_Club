@@ -4,7 +4,7 @@ var move_direction : Vector3 = Vector3.ZERO
 var speed : float = 15.0
 var life_timer : float = 2.0 
 var isPlayer : bool = false
-var projectileType : int = 0
+var projectileType : String
 var explosion : PackedScene = preload("res://skills/explosion.tscn")
 @onready var projectile_sprite: AnimatedSprite3D = $ProjectileSprite
 
@@ -80,5 +80,5 @@ func explode() -> void:
 	explosion_instance.queue_free()
 	queue_free()
 
-func get_projectile_type(entity_type : int) -> void:
+func get_projectile_type(entity_type : String) -> void:
 	projectileType = entity_type

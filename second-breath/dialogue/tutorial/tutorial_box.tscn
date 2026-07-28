@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d73pymxiltcy" path="res://dialogue/tutorial/tutorial_data.gd" id="1_ikngb"]
 [ext_resource type="Script" uid="uid://bh7oayw4k5gkm" path="res://dialogue/tutorial/tutorial_box.gd" id="1_qj2gd"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="2_q1ud0"]
 [ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="3_jclg0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcftc"]
@@ -1832,7 +1833,8 @@ offset_left = 848.0
 offset_top = 322.0
 offset_right = 1108.0
 offset_bottom = 629.0
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("2_q1ud0")
+theme_override_font_sizes/font_size = 48
 text = "This is a placeholder.  It will be replaced when a tutorial box opens."
 autowrap_mode = 2
 

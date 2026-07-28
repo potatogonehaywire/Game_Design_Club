@@ -87,10 +87,10 @@ func take_damage() -> void:
 	self.canDamage = false
 	gotdmgDebuff = Global.dmgdebuff
 	if Global.isProjectile == true:
-		if Global.skillType == 5:
+		if Global.skillType == "Envy VI":
 			self.speed = -16
 			self.enemyhp -= Global.Pdmg * Global.ranged + Global.debuff
-		elif Global.skillType == 8:
+		elif Global.skillType == "Fear & Envy":
 			self.speed = -16
 			self.enemyhp -= Global.Pdmg * Global.ranged + Global.debuff
 		else:

@@ -2,6 +2,7 @@ extends State
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
 @onready var talent_root: Control = $"../../../UI/TalentRoot"
 @onready var dialogue_root: Control = $"../../../UI/DialogueRoot"
+@onready var skill_root : Control = $"../../../UI/SkillRoot"
 
 func enter() -> void:
 	parent.velocity.x = 0
@@ -18,7 +19,7 @@ func update(_delta:float) -> void:
 	var vDirection : float= Input.get_axis("forward", "backward")
 	
 	
-	if talent_root.visible == false && dialogue_root.visible == false:
+	if talent_root.visible == false && dialogue_root.visible == false  && skill_root.visible == false:
 		if Input.is_action_just_pressed("skill") && parent.skillCooldownOff == true:
 			parent.lastSkill = parent.ESkill
 			parent.isESkill = true
