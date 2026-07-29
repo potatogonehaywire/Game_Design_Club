@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://56uud2q430i2"]
+
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="1_go05t"]
+
+[resource]
+OptionButton/font_sizes/font_size = 64
+OptionButton/fonts/font = ExtResource("1_go05t")

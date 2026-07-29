@@ -77,7 +77,7 @@ offset_top = 226.0
 offset_right = 962.0
 offset_bottom = 258.0
 texture_normal = SubResource("AtlasTexture_evv38")
-talent_id = "base"
+talent_id = "Basic"
 
 [node name="Anger1" parent="." unique_id=1779023738 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0

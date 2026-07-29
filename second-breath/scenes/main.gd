@@ -21,23 +21,27 @@ func _ready() -> void:
 	skill_manager.changed_skill.connect(change_skill)
 
 func toggle_skilltree_interface() -> void:
-	skill_root.visible = false
+	if skill_root.visible:
+		toggle_player_stats()
 	if !dialogue_root.visible:
 		skill_manager.update_list()
 		talent_root.visible = not talent_root.visible
-		not_menu.visible = not not_menu.visible
+		not_menu.visible = not talent_root.visible
 
 func toggle_dialogue_box(visible : bool) -> void:
-	talent_root.visible = false
-	skill_root.visible = false
+	if talent_root.visible:
+		toggle_skilltree_interface()
+	if skill_root.visible:
+		toggle_player_stats()
 	dialogue_root.visible = visible
 	not_menu.visible = not visible
 
 func toggle_player_stats() -> void:
-	talent_root.visible = false
+	if talent_root.visible:
+		toggle_skilltree_interface()
 	if !dialogue_root.visible:
 		skill_root.visible = not skill_root.visible
-		not_menu.visible = not not_menu.visible
+		not_menu.visible = not skill_root.visible
 
 
 func show_interact_hover(visible : bool) -> void:
@@ -47,17 +51,17 @@ func show_interact_hover(visible : bool) -> void:
 		ui.find_child("InteractLabel").hide()
 
 
-func change_skill(button : String, skill : String) -> void:
+func change_skill(button : int, skill : String) -> void:
 	match button:
-		"L":
+		1:
 			player.LSkill = skill
 			l_cooldown.change_skill()
-		"E":
+		2:
 			player.ESkill = skill
 			e_cooldown.change_skill()
-		"R":
+		3:
 			player.RSkill = skill
 			r_cooldown.change_skill()
-		"Q":
+		4:
 			player.QSkill = skill
 			q_cooldown.change_skill()

@@ -3,13 +3,6 @@
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="1_aiabx"]
 [ext_resource type="Script" uid="uid://cljt3piyugxhk" path="res://UI/choose_skill.gd" id="3_g5084"]
 
-[sub_resource type="Theme" id="Theme_aiabx"]
-OptionButton/font_sizes/font_size = 48
-OptionButton/fonts/font = ExtResource("1_aiabx")
-PopupMenu/font_sizes/font_separator_size = 16
-PopupMenu/font_sizes/font_size = 48
-PopupMenu/fonts/font = ExtResource("1_aiabx")
-
 [sub_resource type="Gradient" id="Gradient_g5084"]
 offsets = PackedFloat32Array(0.060096152, 1)
 colors = PackedColorArray(0.050980393, 0.14901961, 0.17254902, 0.8235294, 0.30312026, 0.46703357, 0.57290334, 0.7058824)
@@ -26,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_aiabx")
 script = ExtResource("3_g5084")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=143215969]
@@ -48,36 +40,38 @@ color = Color(0.6027887, 0.8207297, 0.81256306, 1)
 
 [node name="ChangeSkill" type="VBoxContainer" parent="ColorRect" unique_id=1303548315]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 424.0
-offset_right = 296.0
-offset_bottom = 694.0
+offset_left = 952.0
+offset_top = 128.0
+offset_right = 1200.0
+offset_bottom = 380.0
 theme_override_constants/separation = 10
-alignment = 1
 
 [node name="Left" type="HBoxContainer" parent="ColorRect/ChangeSkill" unique_id=140799153]
 layout_mode = 2
 theme_override_constants/separation = 10
-alignment = 2
 
 [node name="L" type="Label" parent="ColorRect/ChangeSkill/Left" unique_id=540510301]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.10349908, 0.26388952, 0.29956165, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "L Click"
 
 [node name="OptionButton" type="OptionButton" parent="ColorRect/ChangeSkill/Left" unique_id=335969565]
 layout_mode = 2
+item_count = 3
+popup/item_0/text = "Anger I"
+popup/item_0/id = 0
+popup/item_1/text = "Anger II"
+popup/item_1/id = 1
+popup/item_2/text = "Envy I"
+popup/item_2/id = 2
 
 [node name="E" type="HBoxContainer" parent="ColorRect/ChangeSkill" unique_id=191512584]
 layout_mode = 2
 theme_override_constants/separation = 10
-alignment = 2
 
 [node name="E" type="Label" parent="ColorRect/ChangeSkill/E" unique_id=147885433]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "E"
@@ -88,11 +82,9 @@ layout_mode = 2
 [node name="R" type="HBoxContainer" parent="ColorRect/ChangeSkill" unique_id=1534458101]
 layout_mode = 2
 theme_override_constants/separation = 10
-alignment = 2
 
 [node name="R" type="Label" parent="ColorRect/ChangeSkill/R" unique_id=914288061]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "R"
@@ -103,11 +95,9 @@ layout_mode = 2
 [node name="Q" type="HBoxContainer" parent="ColorRect/ChangeSkill" unique_id=1307985272]
 layout_mode = 2
 theme_override_constants/separation = 10
-alignment = 2
 
 [node name="Q" type="Label" parent="ColorRect/ChangeSkill/Q" unique_id=2045326750]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "Q"
@@ -117,10 +107,8 @@ layout_mode = 2
 
 [node name="Stats" type="MarginContainer" parent="ColorRect" unique_id=1635853016]
 layout_mode = 1
-offset_left = 40.0
-offset_top = 24.0
-offset_right = 412.0
-offset_bottom = 580.0
+offset_right = 372.0
+offset_bottom = 556.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Stats" unique_id=1100016179]
 layout_mode = 2

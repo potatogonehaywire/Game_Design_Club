@@ -42,6 +42,10 @@ playerHurtbox=""
 enemies=""
 can_talk=""
 
+[gui]
+
+theme/custom="uid://56uud2q430i2"
+
 [input]
 
 left={

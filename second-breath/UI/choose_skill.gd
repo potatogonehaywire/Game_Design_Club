@@ -1,51 +1,32 @@
 extends Node
 
-signal changed_skill(button : String, skill : String)
-@onready var l_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/LSkill
-@onready var q_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/QSkill
-@onready var e_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/ESkill
-@onready var r_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/RSkill
-@onready var skill_container: VBoxContainer = $ColorRect/ChangeSkill/VBoxContainer
+signal changed_skill(button : int, skill : String)
+@onready var change_skill: VBoxContainer = $ColorRect/ChangeSkill
+
 
 var font : FontFile = preload("uid://blkksf3ub3qsr")
-var picked_skill : String
+var picked_skill : int = 0
 
 func update_list() -> void:
-	for child in skill_container.get_children():
-		child.queue_free()
+	for container : HBoxContainer in change_skill.get_children():
+		picked_skill += 1
+		for child : Node in container.get_children():
+			if child is OptionButton:
+				child.queue_free()
+			
+		var button : OptionButton = OptionButton.new()
+		container.add_child(button)
+		for skill : String in Global.available_skills:
+			button.add_item(skill)
 		
-	for skill : String in Global.available_skills:
-		l_skill.get_popup().add_item(skill)
-		q_skill.get_popup().add_item(skill)
-		e_skill.get_popup().add_item(skill)
-		r_skill.get_popup().add_item(skill)
-	l_skill.get_popup().set("font_size", 32)
-	l_skill.get_popup().set("font", font)
-	l_skill.get_popup().id_pressed.connect(select_skill)
-	q_skill.get_popup().id_pressed.connect(select_skill)
-	e_skill.get_popup().id_pressed.connect(select_skill)
-	r_skill.get_popup().id_pressed.connect(select_skill)
+		button.item_selected.connect(update_skill.bind(picked_skill))
+	
+	picked_skill = 0
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_list()
 	
-
-func select_skill(id : int) -> void:
-	changed_skill.emit(picked_skill,Global.available_skills[id])
-
-
-func _on_l_skill_about_to_popup() -> void:
-	picked_skill = "L"
-
-
-func _on_q_skill_about_to_popup() -> void:
-	picked_skill = "Q"
-
-
-func _on_e_skill_about_to_popup() -> void:
-	picked_skill = "E"
-
-
-func _on_r_skill_about_to_popup() -> void:
-	picked_skill = "R"
+func update_skill(id : int, button : int) -> void:
+	changed_skill.emit(button, Global.available_skills[id])

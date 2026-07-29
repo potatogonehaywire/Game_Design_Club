@@ -12,7 +12,7 @@ const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 @onready var disabled_panel: Panel = $DisabledPanel
 @onready var talent_line: TalentLine = $TalentLine
 
-var skill_talents : Array = ["Anger I", "Anger VI", "Fear I", "Fear VI", "Envy I", "Envy VI", 
+var skill_talents : Array = ["Basic", "Anger I", "Anger VI", "Fear I", "Fear VI", "Envy I", "Envy VI", 
 							"Anger & Fear", "Fear & Envy", "Envy & Anger"]
 
 var level: int = 0
