@@ -7,7 +7,6 @@ signal changed_skill(button : int, skill : String)
 @onready var speed: Label = $ColorRect/Stats/VBoxContainer/Speed
 @onready var atk: Label = $ColorRect/Stats/VBoxContainer/ATK
 
-
 var font : FontFile = preload("uid://blkksf3ub3qsr")
 var picked_skill : int = 0
 
@@ -39,3 +38,6 @@ func update_skill(id : int, button : int) -> void:
 
 func _process(_delta: float) -> void:
 	hp.text = "HP: " + str(Global.health) + "/" + str(Global.maxHealth)
+	stamina.text = "Stamina: " + str(Global.stamina) + "/" + str(Global.maxStamina)
+	speed.text = "Speed: " + str(Global.player.speed)
+	atk.text = "Atk: " + str(Global.weapon)

@@ -2,6 +2,7 @@ extends Node
 var maxHealth : float = 100
 var health : float = maxHealth
 var stamina : int = 100
+var maxStamina : int = 100
 
 var s : int = 1
 var weapon : float = 1.0
@@ -29,13 +30,13 @@ func get_global_position() -> Vector3:
 
 
 func _process(_delta: float) -> void:
-	if stamina < 100 && stamina > 0:
+	if stamina < maxStamina && stamina > 0:
 		staminaRecover()
 	elif stamina <= 0:
 		await get_tree().create_timer(2.0).timeout
 		staminaRecover()
 	else:
-		stamina = 100
+		stamina = maxStamina
 	
 	if health > maxHealth:
 		health = maxHealth

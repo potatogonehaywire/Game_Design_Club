@@ -19,13 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://c2un56g0x3w3u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0014.png" id="17_uoulk"]
 [ext_resource type="Texture2D" uid="uid://dfuj2g6ki64a0" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0015.png" id="18_nyaq2"]
 
-[sub_resource type="Theme" id="Theme_aiabx"]
-OptionButton/font_sizes/font_size = 48
-OptionButton/fonts/font = ExtResource("1_aiabx")
-PopupMenu/font_sizes/font_separator_size = 16
-PopupMenu/font_sizes/font_size = 48
-PopupMenu/fonts/font = ExtResource("1_aiabx")
-
 [sub_resource type="Gradient" id="Gradient_g5084"]
 offsets = PackedFloat32Array(0.060096152, 1)
 colors = PackedColorArray(0.045179367, 0.1379211, 0.1601769, 0.5882353, 0.23886803, 0.38148892, 0.47280276, 0.47058824)
@@ -98,7 +91,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_aiabx")
 script = ExtResource("3_g5084")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=143215969]
