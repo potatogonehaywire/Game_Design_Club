@@ -1,10 +1,10 @@
 extends Node
 
 signal changed_skill(button : String, skill : String)
-@onready var l_skill: MenuButton = $MarginContainer/VBoxContainer/LSkill
-@onready var q_skill: MenuButton = $MarginContainer/VBoxContainer/QSkill
-@onready var e_skill: MenuButton = $MarginContainer/VBoxContainer/ESkill
-@onready var r_skill: MenuButton = $MarginContainer/VBoxContainer/RSkill
+@onready var l_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/LSkill
+@onready var q_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/QSkill
+@onready var e_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/ESkill
+@onready var r_skill: MenuButton = $ColorRect/ChangeSkill/VBoxContainer/RSkill
 var font : FontFile = preload("uid://blkksf3ub3qsr")
 var picked_skill : String
 

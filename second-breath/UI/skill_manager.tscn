@@ -31,17 +31,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_yodfl")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1499551582]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1614484113]
 layout_mode = 0
-offset_left = 981.0
-offset_top = 263.0
-offset_right = 1353.0
-offset_bottom = 819.0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1656.0
+offset_bottom = 924.0
+color = Color(0.6027887, 0.8207297, 0.81256306, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1728534365]
+[node name="ChangeSkill" type="MarginContainer" parent="ColorRect" unique_id=1499551582]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 128.0
+offset_right = 1324.0
+offset_bottom = 684.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ChangeSkill" unique_id=1728534365]
 layout_mode = 2
 
-[node name="LSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=1684210613]
+[node name="LSkill" type="MenuButton" parent="ColorRect/ChangeSkill/VBoxContainer" unique_id=1684210613]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
@@ -49,7 +57,7 @@ text = "L Click"
 icon = ExtResource("2_g5084")
 flat = false
 
-[node name="QSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=74633483]
+[node name="QSkill" type="MenuButton" parent="ColorRect/ChangeSkill/VBoxContainer" unique_id=74633483]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
@@ -57,7 +65,7 @@ text = "Q"
 icon = ExtResource("2_g5084")
 flat = false
 
-[node name="ESkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=1436733353]
+[node name="ESkill" type="MenuButton" parent="ColorRect/ChangeSkill/VBoxContainer" unique_id=1436733353]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
@@ -65,7 +73,7 @@ text = "E"
 icon = ExtResource("2_g5084")
 flat = false
 
-[node name="RSkill" type="MenuButton" parent="MarginContainer/VBoxContainer" unique_id=849005497]
+[node name="RSkill" type="MenuButton" parent="ColorRect/ChangeSkill/VBoxContainer" unique_id=849005497]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
@@ -74,7 +82,43 @@ text = "R
 icon = ExtResource("2_g5084")
 flat = false
 
-[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/LSkill" to="." method="_on_l_skill_about_to_popup"]
-[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/QSkill" to="." method="_on_q_skill_about_to_popup"]
-[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/ESkill" to="." method="_on_e_skill_about_to_popup"]
-[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/RSkill" to="." method="_on_r_skill_about_to_popup"]
+[node name="Stats" type="MarginContainer" parent="ColorRect" unique_id=1635853016]
+layout_mode = 1
+offset_right = 372.0
+offset_bottom = 556.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Stats" unique_id=1100016179]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=590113155]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "HP: 100/100"
+
+[node name="STAMINA" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=373480245]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "Stamina: 100/100"
+
+[node name="Speed" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=465696936]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "Speed: 5"
+
+[node name="ATK" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=1056741909]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "ATK: 5"
+
+[connection signal="about_to_popup" from="ColorRect/ChangeSkill/VBoxContainer/LSkill" to="." method="_on_l_skill_about_to_popup"]
+[connection signal="about_to_popup" from="ColorRect/ChangeSkill/VBoxContainer/QSkill" to="." method="_on_q_skill_about_to_popup"]
+[connection signal="about_to_popup" from="ColorRect/ChangeSkill/VBoxContainer/ESkill" to="." method="_on_e_skill_about_to_popup"]
+[connection signal="about_to_popup" from="ColorRect/ChangeSkill/VBoxContainer/RSkill" to="." method="_on_r_skill_about_to_popup"]
