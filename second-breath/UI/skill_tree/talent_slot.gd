@@ -12,6 +12,9 @@ const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 @onready var disabled_panel: Panel = $DisabledPanel
 @onready var talent_line: TalentLine = $TalentLine
 
+var skill_talents : Array = ["Anger I", "Anger VI", "Fear I", "Fear VI", "Envy I", "Envy VI", 
+							"Anger & Fear", "Fear & Envy", "Envy & Anger"]
+
 var level: int = 0
 
 
@@ -62,7 +65,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		var next_level : int = level
 		if event.button_index == MOUSE_BUTTON_LEFT and can_be_increased():
 			next_level += 1
-			if next_level == 1:
+			if talent_id not in Global.available_skills && talent_id in skill_talents:
 				Global.available_skills.append(talent_id)
 		elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
 			next_level -= 1

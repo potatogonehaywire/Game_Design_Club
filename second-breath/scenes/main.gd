@@ -23,6 +23,7 @@ func _ready() -> void:
 func toggle_skilltree_interface() -> void:
 	skill_root.visible = false
 	if !dialogue_root.visible:
+		skill_manager.update_list()
 		talent_root.visible = not talent_root.visible
 		not_menu.visible = not not_menu.visible
 

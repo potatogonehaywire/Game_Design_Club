@@ -21,7 +21,7 @@ var skillType : String = "Basic"
 
 var player : Player
 var aggro_enemies : Array = []
-var available_skills : Array = ["Heal", "Anger I", "Anger VI", "Envy I"]
+var available_skills : Array = []
 var current_skills : Dictionary = {"L": [], "E": [], "Q": [], "R": []}
 
 func get_global_position() -> Vector3:

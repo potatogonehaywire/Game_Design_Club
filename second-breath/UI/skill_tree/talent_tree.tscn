@@ -86,7 +86,7 @@ offset_top = 446.0
 offset_right = 879.0
 offset_bottom = 478.0
 texture_normal = SubResource("AtlasTexture_gdvun")
-talent_id = "anger1"
+talent_id = "Anger I"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
@@ -141,7 +141,7 @@ offset_top = 997.0
 offset_right = 668.0
 offset_bottom = 1029.0
 texture_normal = SubResource("AtlasTexture_gdvun")
-talent_id = "angerMax"
+talent_id = "Anger VI"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Anger3b")]
 
@@ -152,7 +152,7 @@ offset_top = 1021.0
 offset_right = 933.0
 offset_bottom = 1053.0
 texture_normal = SubResource("AtlasTexture_yvu2r")
-talent_id = "anger_envy"
+talent_id = "Envy & Anger"
 tier = 5
 depends_on = [NodePath("../Anger3b"), NodePath("../Envy3b")]
 
@@ -163,7 +163,7 @@ offset_top = 309.0
 offset_right = 857.0
 offset_bottom = 341.0
 texture_normal = SubResource("AtlasTexture_xqaal")
-talent_id = "fear1"
+talent_id = "Fear I"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
@@ -218,7 +218,7 @@ offset_top = 603.0
 offset_right = 1836.0
 offset_bottom = 635.0
 texture_normal = SubResource("AtlasTexture_xqaal")
-talent_id = "fearMax"
+talent_id = "Fear VI"
 tier = 5
 depends_on = [NodePath("../Fear3a"), NodePath("../Fear3b")]
 
@@ -229,7 +229,7 @@ offset_top = 961.0
 offset_right = 208.0
 offset_bottom = 993.0
 texture_normal = SubResource("AtlasTexture_66lel")
-talent_id = "anger_fear"
+talent_id = "Anger & Fear"
 tier = 5
 depends_on = [NodePath("../Anger3a"), NodePath("../Fear3a")]
 
@@ -240,7 +240,7 @@ offset_top = 385.0
 offset_right = 1044.0
 offset_bottom = 417.0
 texture_normal = SubResource("AtlasTexture_n3jii")
-talent_id = "envy1"
+talent_id = "Envy I"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
 
@@ -295,7 +295,7 @@ offset_top = 933.0
 offset_right = 1425.0
 offset_bottom = 965.0
 texture_normal = SubResource("AtlasTexture_n3jii")
-talent_id = "envyMax"
+talent_id = "Envy VI"
 tier = 5
 depends_on = [NodePath("../Envy3a"), NodePath("../Envy3b")]
 
@@ -306,6 +306,6 @@ offset_top = 874.0
 offset_right = 1823.0
 offset_bottom = 906.0
 texture_normal = SubResource("AtlasTexture_s5ac7")
-talent_id = "fear_envy"
+talent_id = "Fear & Envy"
 tier = 5
 depends_on = [NodePath("../Envy3a"), NodePath("../Fear3b")]

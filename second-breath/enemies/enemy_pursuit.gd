@@ -12,12 +12,13 @@ func enter() -> void:
 	if parent.my_id not in Global.aggro_enemies:
 		Global.aggro_enemies.append(parent.my_id)
 	
+	
 	# if one skill is used but another skill's cooldown is almost running out
 	# force other skill to increase cooldown
-	if parent.lastSkill == 0 && parent.basicCooldownOff:
+	elif parent.lastSkill == 0 && parent.basicCooldownOff:
 		parent.basic_cooldown.wait_time = randf_range(skill1.skillCooldown, skill1.skillCooldown * 2)
 		if parent.max_cooldown.time_left < 1:
-			parent.max_cooldown.wait_time = randf_range(2, 5)
+			parent.max_cooldown.wait_time = randf_range(skill2.skillCooldown * 0.2, skill2.skillCooldown)
 			parent.max_cooldown.start()
 			parent.maxCooldownOff = false
 		parent.basicCooldownOff = false

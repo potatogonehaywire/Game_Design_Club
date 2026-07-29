@@ -7,9 +7,6 @@ var isInRange : bool = false
 var meleeInRange : bool = false
 var isHit : bool = false
 
-@onready var cooldown: Timer = $ProjectileCooldown
-
-
 @export var speed : float = 1
 @export var id : int = 0
 @export var enemyMaxHp : float = 50.0
@@ -116,13 +113,11 @@ func take_damage() -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = true
-		cooldown.start(2)
 
 
 func _on_chase_detection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		isInRange = false
-		cooldown.stop()
 
 
 #func _on_projectile_cooldown_timeout() -> void:
