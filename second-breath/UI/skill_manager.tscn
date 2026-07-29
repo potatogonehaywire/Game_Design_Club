@@ -1,7 +1,23 @@
 [gd_scene format=3 uid="uid://ck7nb2vhas58m"]
 
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="1_aiabx"]
+[ext_resource type="Texture2D" uid="uid://dxmte0ud1ngx7" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0000.png" id="3_2o4ee"]
 [ext_resource type="Script" uid="uid://cljt3piyugxhk" path="res://UI/choose_skill.gd" id="3_g5084"]
+[ext_resource type="Texture2D" uid="uid://dgej3ajffknud" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0001.png" id="4_6bsy6"]
+[ext_resource type="Texture2D" uid="uid://c52c04wimje2v" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0002.png" id="5_p6wso"]
+[ext_resource type="Texture2D" uid="uid://damob5q3ko307" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0003.png" id="6_kvi6b"]
+[ext_resource type="Texture2D" uid="uid://bkqx06vrnbt1g" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0004.png" id="7_7qh5j"]
+[ext_resource type="Texture2D" uid="uid://cy6tqde45aes" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0005.png" id="8_exawu"]
+[ext_resource type="Texture2D" uid="uid://bga0rdbr4kn1u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0006.png" id="9_l1xym"]
+[ext_resource type="Texture2D" uid="uid://doyhvu4qsbjpr" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0007.png" id="10_3oyor"]
+[ext_resource type="Texture2D" uid="uid://ln8ev6skh5co" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0008.png" id="11_wfuhv"]
+[ext_resource type="Texture2D" uid="uid://c4r0v7ch3k37r" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0009.png" id="12_kbbex"]
+[ext_resource type="Texture2D" uid="uid://n04pl6vl05e2" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0010.png" id="13_rc8mc"]
+[ext_resource type="Texture2D" uid="uid://cgyvnkobd44tx" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0011.png" id="14_jx14y"]
+[ext_resource type="Texture2D" uid="uid://bg5ql0s8t5a3q" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0012.png" id="15_3u6w2"]
+[ext_resource type="Texture2D" uid="uid://1w3onbqlu1wm" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0013.png" id="16_wxi4u"]
+[ext_resource type="Texture2D" uid="uid://c2un56g0x3w3u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0014.png" id="17_uoulk"]
+[ext_resource type="Texture2D" uid="uid://dfuj2g6ki64a0" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0015.png" id="18_nyaq2"]
 
 [sub_resource type="Theme" id="Theme_aiabx"]
 OptionButton/font_sizes/font_size = 48
@@ -12,12 +28,68 @@ PopupMenu/fonts/font = ExtResource("1_aiabx")
 
 [sub_resource type="Gradient" id="Gradient_g5084"]
 offsets = PackedFloat32Array(0.060096152, 1)
-colors = PackedColorArray(0.050980393, 0.14901961, 0.17254902, 0.8235294, 0.30312026, 0.46703357, 0.57290334, 0.7058824)
+colors = PackedColorArray(0.045179367, 0.1379211, 0.1601769, 0.5882353, 0.23886803, 0.38148892, 0.47280276, 0.47058824)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yodfl"]
 gradient = SubResource("Gradient_g5084")
 fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.296875)
+fill_to = Vector2(1, 0.4809028)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0amkq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2o4ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6bsy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p6wso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kvi6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7qh5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_exawu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l1xym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3oyor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wfuhv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kbbex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rc8mc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jx14y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3u6w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wxi4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uoulk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_nyaq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="SkillManager" type="Control" unique_id=1638622206]
 layout_mode = 3
@@ -38,20 +110,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_yodfl")
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=446414589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 432.0
+offset_top = 184.0
+offset_right = -432.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1614484113]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 1656.0
-offset_bottom = 924.0
-color = Color(0.6027887, 0.8207297, 0.81256306, 1)
+offset_left = 448.0
+offset_top = 200.0
+offset_right = 1472.0
+offset_bottom = 894.0
+color = Color(0.1087028, 0.15506029, 0.17044827, 1)
 
 [node name="ChangeSkill" type="VBoxContainer" parent="ColorRect" unique_id=1303548315]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 424.0
-offset_right = 296.0
-offset_bottom = 694.0
+offset_left = 40.0
+offset_top = 352.0
+offset_right = 412.0
+offset_bottom = 622.0
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -62,13 +146,14 @@ alignment = 2
 
 [node name="L" type="Label" parent="ColorRect/ChangeSkill/Left" unique_id=540510301]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.10349908, 0.26388952, 0.29956165, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "L Click"
 
 [node name="OptionButton" type="OptionButton" parent="ColorRect/ChangeSkill/Left" unique_id=335969565]
 layout_mode = 2
+item_count = 1
+popup/item_0/id = 0
 
 [node name="E" type="HBoxContainer" parent="ColorRect/ChangeSkill" unique_id=191512584]
 layout_mode = 2
@@ -77,7 +162,6 @@ alignment = 2
 
 [node name="E" type="Label" parent="ColorRect/ChangeSkill/E" unique_id=147885433]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "E"
@@ -92,7 +176,6 @@ alignment = 2
 
 [node name="R" type="Label" parent="ColorRect/ChangeSkill/R" unique_id=914288061]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "R"
@@ -107,7 +190,6 @@ alignment = 2
 
 [node name="Q" type="Label" parent="ColorRect/ChangeSkill/Q" unique_id=2045326750]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.2627451, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "Q"
@@ -127,28 +209,31 @@ layout_mode = 2
 
 [node name="HP" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=590113155]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "HP: 100/100"
 
 [node name="STAMINA" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=373480245]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "Stamina: 100/100"
 
 [node name="Speed" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=465696936]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "Speed: 5"
 
 [node name="ATK" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=1056741909]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.045956865, 0.20923439, 0.29077116, 1)
 theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "ATK: 5"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect" unique_id=1733051567]
+position = Vector2(680, 351.99997)
+scale = Vector2(1.925, 1.925)
+sprite_frames = SubResource("SpriteFrames_0amkq")
+autoplay = "default"
+frame_progress = 0.9156598

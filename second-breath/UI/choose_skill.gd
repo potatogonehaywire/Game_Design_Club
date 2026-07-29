@@ -2,6 +2,10 @@ extends Node
 
 signal changed_skill(button : int, skill : String)
 @onready var change_skill: VBoxContainer = $ColorRect/ChangeSkill
+@onready var hp: Label = $ColorRect/Stats/VBoxContainer/HP
+@onready var stamina: Label = $ColorRect/Stats/VBoxContainer/STAMINA
+@onready var speed: Label = $ColorRect/Stats/VBoxContainer/Speed
+@onready var atk: Label = $ColorRect/Stats/VBoxContainer/ATK
 
 
 var font : FontFile = preload("uid://blkksf3ub3qsr")
@@ -31,3 +35,7 @@ func _ready() -> void:
 	
 func update_skill(id : int, button : int) -> void:
 	changed_skill.emit(button, Global.available_skills[id])
+
+
+func _process(_delta: float) -> void:
+	hp.text = "HP: " + str(Global.health) + "/" + str(Global.maxHealth)
