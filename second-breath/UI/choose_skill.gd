@@ -12,6 +12,7 @@ func update_list() -> void:
 		picked_skill += 1
 		for child : Node in container.get_children():
 			if child is OptionButton:
+				container.remove_child(child)
 				child.queue_free()
 			
 		var button : OptionButton = OptionButton.new()
