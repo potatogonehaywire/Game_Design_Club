@@ -17,13 +17,13 @@ var skill_talents : Array = ["Basic", "Anger I", "Anger VI", "Fear I", "Fear VI"
 
 var talents : Dictionary = {
 	"_": ["Basic"], 
-	"anger": ["Anger I", "Anger VI", "anger2a", "anger2b", "anger3a", "anger3b"],
-	"fear" : ["Fear I", "Fear VI", "fear2a", "fear2b", "fear3a", "fear3b"],
-	"envy" : ["Envy I", "Envy VI", "envy2a", "envy2b", "envy3a", "envy3b"],
+	"anger": ["Anger I", "Anger VI", "anger2a", "anger2b", "anger3a", "anger3b", "Envy & Anger", "Anger & Fear"],
+	"fear" : ["Fear I", "Fear VI", "fear2a", "fear2b", "fear3a", "fear3b", "Anger & Fear", "Fear & Envy"],
+	"envy" : ["Envy I", "Envy VI", "envy2a", "envy2b", "envy3a", "envy3b", "Envy & Anger", "Fear & Envy"],
 	"boss" : ["Heal I", "Heal II", "Heal III"]
 	}
 	
-var type : String = ""
+var type : Array = []
 
 var level: int = 0
 
@@ -40,7 +40,7 @@ func _ready() -> void:
 	for emotion_type : String in talents.keys():
 		for skill : String in talents[emotion_type]:
 			if skill == talent_id:
-				type = emotion_type
+				type.append(emotion_type)
 
 func set_label() -> void:
 	label.text = str(level) + "/" + str(max_level)
@@ -53,26 +53,40 @@ func set_label() -> void:
 
 
 func can_be_increased() -> bool:
-	var result : bool = get_parent().get_points_left(type) > 0
+	var result : bool
+	for i : int in range(len(type)):
+		if Global.collected_fragments[type[i]] >= tier:
+			result = true
+		else:
+			result = false
+			break
+			
 	for talent : TalentSlot in depends_on:
 		if talent.level == 0 or level == max_level:
 			result = false
 	return result
 
 
-func can_be_decreased() -> bool:
-	var has_active_children : bool = false
-	for talent : TalentSlot in get_parent().get_children():
-		if talent is TalentSlot and talent.depends_on.has(self) and talent.level > 0:
-			has_active_children = true
-	return level > 1 or not has_active_children
+func get_points_left(skill_type : String) -> void:
+	var points_spent : int = tier
+	var remaining_points : int = Global.collected_fragments[skill_type] - points_spent
+	if remaining_points >= 0:
+		Global.collected_fragments[skill_type] = remaining_points
+
+#func can_be_decreased() -> bool:
+	#var has_active_children : bool = false
+	#for talent : TalentSlot in get_parent().get_children():
+		#if talent is TalentSlot and talent.depends_on.has(self) and talent.level > 0:
+			#has_active_children = true
+	#return level > 1 or not has_active_children
 
 
 func set_new_level(next_level:int) -> void:
 	level = clamp(next_level, 0, max_level)
 	set_label()
-	if type != "_":
-		get_parent().set_points_label(type)
+	if type[0] != "_":
+		for i : int in range(len(type)):
+			get_parent().set_points_label(type[i])
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -80,8 +94,12 @@ func _on_gui_input(event: InputEvent) -> void:
 		var next_level : int = level
 		if event.button_index == MOUSE_BUTTON_LEFT and can_be_increased():
 			next_level += 1
+			
+			for i in range(len(type)):
+				get_points_left(type[i])
+			
 			if talent_id not in Global.available_skills && talent_id in skill_talents:
 				Global.available_skills.append(talent_id)
-		elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
-			next_level -= 1
+		#elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
+			#next_level -= 1
 		set_new_level(next_level)

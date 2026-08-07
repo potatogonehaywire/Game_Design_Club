@@ -22,25 +22,25 @@ func setup_points() -> void:
 			talent.set_label()
 
 
-func get_points_left(type : String) -> int:
-	var points_spent : int = 0
-	for talent : Node in get_children():
-		if talent is TalentSlot:
-			points_spent += talent.level
-	var remaining_points : int = Global.collected_fragments[type] - points_spent
-	if remaining_points >= 0:
-		Global.collected_fragments[type] = remaining_points
-	
-	return Global.collected_fragments[type]
+#func get_points_left(type : String) -> int:
+	#var points_spent : int = 0
+	#for talent : Node in get_children():
+		#if talent is TalentSlot:
+			#points_spent += talent.level
+	#var remaining_points : int = Global.collected_fragments[type] - points_spent
+	#if remaining_points >= 0:
+		#Global.collected_fragments[type] = remaining_points
+	#
+	#return Global.collected_fragments[type]
 
 
 func set_points_label(type : String) -> void:
 	match type:
 		"anger":
-			anger_label.text = str(get_points_left(type))
+			anger_label.text = str(Global.collected_fragments["anger"])
 		"fear":
-			fear_label.text = str(get_points_left(type))
+			fear_label.text = str(Global.collected_fragments["fear"])
 		"envy":
-			envy_label.text = str(get_points_left(type))
+			envy_label.text = str(Global.collected_fragments["envy"])
 		"boss":
-			boss_label.text = str(get_points_left(type))
+			boss_label.text = str(Global.collected_fragments["boss"])
