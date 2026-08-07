@@ -15,6 +15,16 @@ const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 var skill_talents : Array = ["Basic", "Anger I", "Anger VI", "Fear I", "Fear VI", "Envy I", "Envy VI", 
 							"Anger & Fear", "Fear & Envy", "Envy & Anger"]
 
+var talents : Dictionary = {
+	"_": ["Basic"], 
+	"anger": ["Anger I", "Anger VI", "anger2a", "anger2b", "anger3a", "anger3b"],
+	"fear" : ["Fear I", "Fear VI", "fear2a", "fear2b", "fear3a", "fear3b"],
+	"envy" : ["Envy I", "Envy VI", "envy2a", "envy2b", "envy3a", "envy3b"],
+	"boss" : ["Heal I", "Heal II", "Heal III"]
+	}
+	
+var type : String = ""
+
 var level: int = 0
 
 
@@ -26,7 +36,11 @@ func _ready() -> void:
 		line.add_point(talent.global_position + talent.size/2)
 		line.visible = true
 		add_child(line)
-		
+	
+	for emotion_type : String in talents.keys():
+		for skill : String in talents[emotion_type]:
+			if skill == talent_id:
+				type = emotion_type
 
 func set_label() -> void:
 	label.text = str(level) + "/" + str(max_level)
@@ -39,9 +53,9 @@ func set_label() -> void:
 
 
 func can_be_increased() -> bool:
-	var result : bool = get_parent().get_points_left() > 0
+	var result : bool = get_parent().get_points_left(type) > 0
 	for talent : TalentSlot in depends_on:
-		if talent.level == 0:
+		if talent.level == 0 or level == max_level:
 			result = false
 	return result
 
@@ -57,7 +71,8 @@ func can_be_decreased() -> bool:
 func set_new_level(next_level:int) -> void:
 	level = clamp(next_level, 0, max_level)
 	set_label()
-	get_parent().set_points_label()
+	if type != "_":
+		get_parent().set_points_label(type)
 
 
 func _on_gui_input(event: InputEvent) -> void:
