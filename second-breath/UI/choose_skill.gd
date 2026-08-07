@@ -6,6 +6,10 @@ signal changed_skill(button : int, skill : String)
 @onready var stamina: Label = $ColorRect/Stats/VBoxContainer/STAMINA
 @onready var speed: Label = $ColorRect/Stats/VBoxContainer/Speed
 @onready var atk: Label = $ColorRect/Stats/VBoxContainer/ATK
+@onready var anger: Label = $ColorRect/Fragments/HBoxContainer/Anger
+@onready var fear: Label = $ColorRect/Fragments/HBoxContainer/Fear
+@onready var envy: Label = $ColorRect/Fragments/HBoxContainer/Envy
+
 
 var font : FontFile = preload("uid://blkksf3ub3qsr")
 var picked_skill : int = 0
@@ -41,3 +45,6 @@ func _process(_delta: float) -> void:
 	stamina.text = "Stamina: " + str(Global.stamina) + "/" + str(Global.maxStamina)
 	speed.text = "Speed: " + str(Global.player.speed)
 	atk.text = "Atk: " + str(Global.weapon)
+	anger.text = "Anger: " + str(Global.collected_fragments["anger"])
+	fear.text = "Fear: " + str(Global.collected_fragments["fear"])
+	envy.text = "Envy: " + str(Global.collected_fragments["envy"])

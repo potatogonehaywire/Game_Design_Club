@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://1w3onbqlu1wm" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0013.png" id="16_wxi4u"]
 [ext_resource type="Texture2D" uid="uid://c2un56g0x3w3u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0014.png" id="17_uoulk"]
 [ext_resource type="Texture2D" uid="uid://dfuj2g6ki64a0" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0015.png" id="18_nyaq2"]
+[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/icons/Anger_Essence1.png" id="19_6bsy6"]
+[ext_resource type="Texture2D" uid="uid://ilotdg810pn8" path="res://sprites/icons/Fear_Essence2.png" id="20_kvi6b"]
+[ext_resource type="Texture2D" uid="uid://d2mhs6tc4rnmh" path="res://sprites/icons/Envy_Essence3.png" id="21_7qh5j"]
 
 [sub_resource type="Gradient" id="Gradient_g5084"]
 offsets = PackedFloat32Array(0.060096152, 1)
@@ -107,18 +110,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 432.0
+offset_left = 384.0
 offset_top = 184.0
-offset_right = -432.0
+offset_right = -384.0
 offset_bottom = -168.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1614484113]
 layout_mode = 0
-offset_left = 448.0
+offset_left = 408.0
 offset_top = 200.0
-offset_right = 1472.0
+offset_right = 1512.0
 offset_bottom = 894.0
 color = Color(0.1087028, 0.15506029, 0.17044827, 1)
 
@@ -224,8 +227,59 @@ theme_override_font_sizes/font_size = 64
 text = "ATK: 5"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect" unique_id=1733051567]
-position = Vector2(680, 351.99997)
+position = Vector2(712, 263.99997)
 scale = Vector2(1.925, 1.925)
 sprite_frames = SubResource("SpriteFrames_0amkq")
 autoplay = "default"
 frame_progress = 0.9156598
+
+[node name="Fragments" type="VBoxContainer" parent="ColorRect" unique_id=620851761]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 496.0
+offset_right = 1094.0
+offset_bottom = 609.0
+theme_override_constants/separation = 8
+
+[node name="Fragments" type="Label" parent="ColorRect/Fragments" unique_id=824559624]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "Fragments"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Fragments" unique_id=958253305]
+layout_mode = 2
+theme_override_constants/separation = 72
+
+[node name="Anger" type="Label" parent="ColorRect/Fragments/HBoxContainer" unique_id=1929209116]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 48
+text = "Anger : 0"
+
+[node name="Fear" type="Label" parent="ColorRect/Fragments/HBoxContainer" unique_id=490347071]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 48
+text = "Fear : 0"
+
+[node name="Envy" type="Label" parent="ColorRect/Fragments/HBoxContainer" unique_id=1365117075]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 48
+text = "Envy : 0"
+
+[node name="AngerIcon" type="Sprite2D" parent="ColorRect/Fragments/HBoxContainer" unique_id=146698922]
+position = Vector2(-24, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_6bsy6")
+
+[node name="FearIcon" type="Sprite2D" parent="ColorRect/Fragments/HBoxContainer" unique_id=631202449]
+position = Vector2(176, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("20_kvi6b")
+
+[node name="EnvyIcon" type="Sprite2D" parent="ColorRect/Fragments/HBoxContainer" unique_id=1956095171]
+position = Vector2(352, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("21_7qh5j")

@@ -13,7 +13,7 @@ var isHit : bool = false
 var enemyhp : float = enemyMaxHp
 @export var BASE_DAMAGE : int = 20
 var damage : int = BASE_DAMAGE
-@export var enemyType : int = 0
+@export var enemyType : String = "fear"
 
 @onready var health_bar: ProgressBar = $"../UI/NotMenu/HealthBar"
 @onready var enemy_health_sprite: Sprite3D = $EnemyHealthSprite
@@ -40,6 +40,9 @@ var debuff : int = 0
 var dmgdebuff : int = 0
 #var windup : int = 2
 var gotdmgDebuff : int = 0
+
+var fragment : PackedScene = preload("uid://bv0nirqpgv8uw")
+
 
 func _ready() -> void:
 	starting_location = global_position
@@ -102,6 +105,11 @@ func take_damage() -> void:
 		Global.enemyIsHit = false
 		if my_id in Global.aggro_enemies:
 			Global.aggro_enemies.erase(my_id)
+		var fragment_instance : Node = fragment.instantiate()
+		get_tree().current_scene.add_child(fragment_instance)
+		fragment_instance.change_type(enemyType)
+		fragment_instance.global_position = self.global_position
+		
 		self.queue_free()
 		print("eurgh")
 	else:

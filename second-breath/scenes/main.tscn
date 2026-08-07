@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b11j6h46pc8b7" path="res://UI/ui.tscn" id="3_hjqxc"]
 [ext_resource type="PackedScene" uid="uid://dp7f6qoynfmu2" path="res://audio/music/music_player.tscn" id="6_6w7ju"]
 [ext_resource type="PackedScene" uid="uid://c00rd1mxgsiob" path="res://characters/npc.tscn" id="7_6w7ju"]
+[ext_resource type="PackedScene" uid="uid://bv0nirqpgv8uw" path="res://enemies/fragment.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://jk53jislx0pl" path="res://enemies/testdummy.tscn" id="9_85g3d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0k66g"]
 sky_top_color = Color(0.5340253, 0.800483, 0.98250157, 1)
@@ -56,3 +58,9 @@ RSkill = null
 
 [node name="NPC" parent="." unique_id=564275751 instance=ExtResource("7_6w7ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.21219, 22.016232, -15.862843)
+
+[node name="Fragment" parent="." unique_id=1379615721 instance=ExtResource("8_tipki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.0509, 19.472572, -34.790955)
+
+[node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("9_85g3d")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 83.38101, 19.472572, -18.537243)

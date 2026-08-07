@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bv0nirqpgv8uw"]
+
+[ext_resource type="Script" uid="uid://d04x57vbxjw6s" path="res://enemies/fragment.gd" id="1_fywpa"]
+[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/icons/Anger_Essence1.png" id="1_qjtc0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjtc0"]
+size = Vector3(0.26099205, 0.40185547, 0.07019043)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qjtc0"]
+radius = 0.33852878
+
+[node name="Fragment" type="RigidBody3D" unique_id=1379615721]
+script = ExtResource("1_fywpa")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=444655731]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1_qjtc0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1625008723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0053949356, -0.0021972656, -0.0016479492)
+shape = SubResource("BoxShape3D_qjtc0")
+
+[node name="PickupArea" type="Area3D" parent="." unique_id=183584863]
+
+[node name="DetectionArea" type="CollisionShape3D" parent="PickupArea" unique_id=94979997]
+shape = SubResource("SphereShape3D_qjtc0")
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
