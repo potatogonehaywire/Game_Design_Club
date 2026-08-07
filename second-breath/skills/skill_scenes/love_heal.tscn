@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bdugfjdaer34t"]
+
+[ext_resource type="Script" uid="uid://dqwpb5b4sur2t" path="res://skills/skill_scenes/love_heal.gd" id="1_uj368"]
+
+[node name="LoveHeal" type="Node3D" unique_id=1073358247]
+script = ExtResource("1_uj368")

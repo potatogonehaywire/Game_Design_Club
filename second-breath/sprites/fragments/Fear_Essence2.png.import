@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2mhs6tc4rnmh"
-path.s3tc="res://.godot/imported/Envy_Essence3.png-363069f69c0cf6121bb1a0dbb97e29ff.s3tc.ctex"
+uid="uid://ilotdg810pn8"
+path.s3tc="res://.godot/imported/Fear_Essence2.png-7d81ba47133d59032db0e79fb4ae3bbd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/icons/Envy_Essence3.png"
-dest_files=["res://.godot/imported/Envy_Essence3.png-363069f69c0cf6121bb1a0dbb97e29ff.s3tc.ctex"]
+source_file="res://sprites/fragments/Fear_Essence2.png"
+dest_files=["res://.godot/imported/Fear_Essence2.png-7d81ba47133d59032db0e79fb4ae3bbd.s3tc.ctex"]
 
 [params]
 

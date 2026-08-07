@@ -24,7 +24,7 @@ var player : Player
 var aggro_enemies : Array = []
 var available_skills : Array = []
 var current_skills : Dictionary = {"L": [], "E": [], "Q": [], "R": []}
-var collected_fragments : Dictionary = {"_" : 1, "boss" : 0 , "anger" : 30, "fear" : 30 , "envy" : 10}
+var collected_fragments : Dictionary = {"_" : 1, "boss" : 20 , "anger" : 30, "fear" : 30 , "envy" : 10}
 
 func get_global_position() -> Vector3:
 	return player.global_position

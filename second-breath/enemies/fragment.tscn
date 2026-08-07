@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv0nirqpgv8uw"]
 
 [ext_resource type="Script" uid="uid://d04x57vbxjw6s" path="res://enemies/fragment.gd" id="1_fywpa"]
-[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/icons/Anger_Essence1.png" id="1_qjtc0"]
+[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/fragments/Anger_Essence1.png" id="1_qjtc0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjtc0"]
 size = Vector3(0.26099205, 0.40185547, 0.07019043)

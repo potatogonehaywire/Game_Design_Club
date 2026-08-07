@@ -47,10 +47,10 @@ light_color = Color(0.6896453, 0.76223814, 1, 1)
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("2_0k66g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.21219, 22.016232, -19.50201)
-LSkill = null
-ESkill = null
-QSkill = null
-RSkill = null
+LSkill = ""
+ESkill = ""
+QSkill = ""
+RSkill = ""
 
 [node name="UI" parent="." unique_id=725296579 instance=ExtResource("3_hjqxc")]
 

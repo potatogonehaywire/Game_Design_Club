@@ -85,11 +85,14 @@ var anger_fear : PackedScene = preload("res://skills/skill_scenes/anger_fear.tsc
 var fear_envy : PackedScene = preload("res://skills/skill_scenes/fear_envy.tscn")
 var anger_envy : PackedScene = preload("res://skills/skill_scenes/anger_envy.tscn")
 var heal1 : PackedScene = preload("res://skills/skill_scenes/basic_heal.tscn")
+var heal2 : PackedScene = preload("res://skills/skill_scenes/contempt_heal.tscn")
+var heal3 : PackedScene = preload("res://skills/skill_scenes/love_heal.tscn")
+
 
 var skill_dict : Dictionary = {"Basic": base, "Anger I" : anger1, "Fear I" : fear1, "Envy I" : envy1,
 								"Anger VI": angerMax, "Fear VI": fearMax, "Envy VI" : envyMax,
 								"Anger & Fear" : anger_fear, "Fear & Envy" : fear_envy, "Envy & Anger" : anger_envy,
-								"Heal" : heal1}
+								"Heal" : heal1, "Contempt Heal" : heal2, "Love Heal" : heal3}
 
 var skillUsed : Node
 

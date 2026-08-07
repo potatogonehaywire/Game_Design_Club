@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ilotdg810pn8"
-path.s3tc="res://.godot/imported/Fear_Essence2.png-38acedc517b7ac45e3deea53e6b68103.s3tc.ctex"
+uid="uid://dopje6qwnhsgh"
+path.s3tc="res://.godot/imported/Anger_Essence1.png-20bf0e9dcc26777eb4c8e0dbcce784d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/icons/Fear_Essence2.png"
-dest_files=["res://.godot/imported/Fear_Essence2.png-38acedc517b7ac45e3deea53e6b68103.s3tc.ctex"]
+source_file="res://sprites/fragments/Anger_Essence1.png"
+dest_files=["res://.godot/imported/Anger_Essence1.png-20bf0e9dcc26777eb4c8e0dbcce784d0.s3tc.ctex"]
 
 [params]
 

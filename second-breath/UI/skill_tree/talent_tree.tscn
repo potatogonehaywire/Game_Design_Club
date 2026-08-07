@@ -14,6 +14,14 @@ region = Rect2(320, 416, 32, 32)
 atlas = ExtResource("4_cjy42")
 region = Rect2(288, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aql1q"]
+atlas = ExtResource("4_cjy42")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmnto"]
+atlas = ExtResource("4_cjy42")
+region = Rect2(128, 288, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvu2r"]
 atlas = ExtResource("4_cjy42")
 region = Rect2(352, 96, 32, 32)
@@ -125,6 +133,39 @@ texture_normal = SubResource("AtlasTexture_gdvun")
 talent_id = "Anger I"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
+
+[node name="Heal1" parent="." unique_id=1273088684 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 245.0
+offset_right = 841.0
+offset_bottom = 277.0
+texture_normal = SubResource("AtlasTexture_aql1q")
+talent_id = "Heal"
+tier = 2
+depends_on = [NodePath("../BaseTalent")]
+
+[node name="Heal2" parent="." unique_id=2114952151 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 301.0
+offset_right = 724.0
+offset_bottom = 333.0
+texture_normal = SubResource("AtlasTexture_jmnto")
+talent_id = "Contempt Heal"
+tier = 3
+depends_on = [NodePath("../Heal1")]
+
+[node name="Heal3" parent="." unique_id=380195095 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 359.0
+offset_right = 590.0
+offset_bottom = 391.0
+texture_normal = SubResource("AtlasTexture_jmnto")
+talent_id = "Love Heal"
+tier = 4
+depends_on = [NodePath("../Heal2")]
 
 [node name="Anger2a" parent="." unique_id=1144516064 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0

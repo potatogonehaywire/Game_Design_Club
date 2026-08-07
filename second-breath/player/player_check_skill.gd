@@ -43,6 +43,7 @@ func exit() -> void:
 		
 		Global.stamina -= skillUsed.staminaDrain
 		
+		
 		# only change the skill's cooldown if it isn't already in cooldown
 		#if skillUsed.animationTime > parent.skillCooldown.time_left:
 			#parent.skillCooldown.wait_time = skillUsed.animationTime

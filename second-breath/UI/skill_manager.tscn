@@ -18,9 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://1w3onbqlu1wm" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0013.png" id="16_wxi4u"]
 [ext_resource type="Texture2D" uid="uid://c2un56g0x3w3u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0014.png" id="17_uoulk"]
 [ext_resource type="Texture2D" uid="uid://dfuj2g6ki64a0" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0015.png" id="18_nyaq2"]
-[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/icons/Anger_Essence1.png" id="19_6bsy6"]
-[ext_resource type="Texture2D" uid="uid://ilotdg810pn8" path="res://sprites/icons/Fear_Essence2.png" id="20_kvi6b"]
-[ext_resource type="Texture2D" uid="uid://d2mhs6tc4rnmh" path="res://sprites/icons/Envy_Essence3.png" id="21_7qh5j"]
+[ext_resource type="Texture2D" uid="uid://dopje6qwnhsgh" path="res://sprites/fragments/Anger_Essence1.png" id="19_6bsy6"]
+[ext_resource type="Texture2D" uid="uid://ilotdg810pn8" path="res://sprites/fragments/Fear_Essence2.png" id="20_kvi6b"]
+[ext_resource type="Texture2D" uid="uid://d2mhs6tc4rnmh" path="res://sprites/fragments/Envy_Essence3.png" id="21_7qh5j"]
 
 [sub_resource type="Gradient" id="Gradient_g5084"]
 offsets = PackedFloat32Array(0.060096152, 1)

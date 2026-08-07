@@ -13,14 +13,14 @@ const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 @onready var talent_line: TalentLine = $TalentLine
 
 var skill_talents : Array = ["Basic", "Anger I", "Anger VI", "Fear I", "Fear VI", "Envy I", "Envy VI", 
-							"Anger & Fear", "Fear & Envy", "Envy & Anger"]
+							"Anger & Fear", "Fear & Envy", "Envy & Anger", "Heal", "Contempt Heal", "Love Heal"]
 
 var talents : Dictionary = {
 	"_": ["Basic"], 
 	"anger": ["Anger I", "Anger VI", "anger2a", "anger2b", "anger3a", "anger3b", "Envy & Anger", "Anger & Fear"],
 	"fear" : ["Fear I", "Fear VI", "fear2a", "fear2b", "fear3a", "fear3b", "Anger & Fear", "Fear & Envy"],
 	"envy" : ["Envy I", "Envy VI", "envy2a", "envy2b", "envy3a", "envy3b", "Envy & Anger", "Fear & Envy"],
-	"boss" : ["Heal I", "Heal II", "Heal III"]
+	"boss" : ["Heal", "Contempt Heal", "Love Heal"]
 	}
 	
 var type : Array = []
@@ -95,7 +95,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and can_be_increased():
 			next_level += 1
 			
-			for i in range(len(type)):
+			for i : int in range(len(type)):
 				get_points_left(type[i])
 			
 			if talent_id not in Global.available_skills && talent_id in skill_talents:
