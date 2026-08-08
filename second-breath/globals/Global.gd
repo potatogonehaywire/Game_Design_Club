@@ -6,10 +6,7 @@ var maxStamina : int = 100
 
 var s : int = 1
 var weapon : float = 1.0
-var equippedWeapon : int = 1
 var ranged : float = 2.0
-var equippedRanged : int = 1
-
 
 var enemyHitID : Array = []
 var enemyIsHit: bool = false
@@ -60,16 +57,3 @@ func staminaRecover() -> void:
 		await get_tree().create_timer(0.1).timeout
 		s = 1
 		
-
-func weapon_check() -> void:
-	if equippedWeapon == 1:
-		weapon = 1
-	elif equippedWeapon == 2:
-		weapon = 1.5
-
-
-func ranged_weapon_check() -> void:
-	if equippedRanged == 1:
-		ranged = 1
-	elif equippedRanged == 2:
-		ranged = 1.5

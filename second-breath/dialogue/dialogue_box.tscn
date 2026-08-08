@@ -36,7 +36,7 @@ text = "This is a test, actual dialogue will show up in game"
 [node name="DialogueData" type="Node" parent="." unique_id=1866791404]
 script = ExtResource("3_dcftc")
 
-[node name="Label" type="Label" parent="." unique_id=1071295611]
+[node name="Instructions" type="Label" parent="." unique_id=1071295611]
 layout_mode = 0
 offset_left = 519.0
 offset_top = 33.0
@@ -45,3 +45,14 @@ offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("2_gboqh")
 theme_override_font_sizes/font_size = 48
 text = "[J] Back  [K] Next"
+
+[node name="EndInstructions" type="Label" parent="." unique_id=1872118826]
+visible = false
+layout_mode = 0
+offset_left = 1107.0
+offset_top = 33.0
+offset_right = 1599.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("2_gboqh")
+theme_override_font_sizes/font_size = 48
+text = "Press [Left Click] to exit dialogue"

@@ -16,7 +16,6 @@ func attackActive() -> void:
 	# player stops moving when attacking, player would slide around otherwise
 	parent.velocity.x = 0
 	parent.velocity.z = 0
-	Global.weapon_check()
 	attack.disabled = false
 	Global.stamina -= 10
 	parent.cooldownOff = false

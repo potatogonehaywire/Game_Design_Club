@@ -6,6 +6,7 @@ extends Node
 @onready var talent_root: Control = $UI/TalentRoot
 @onready var not_menu: Control = $UI/NotMenu
 @onready var dialogue_root : Control = $UI/DialogueRoot
+@onready var dialogue_box : Control = $UI/DialogueRoot/DialogueBox
 @onready var skill_root : Control = $UI/SkillRoot
 @onready var skill_manager : Control = $UI/SkillRoot/SkillManager
 @onready var l_cooldown : Control = $UI/NotMenu/Cooldown/LeftClickSkill
@@ -19,6 +20,7 @@ func _ready() -> void:
 	player.toggle_dialogue.connect(toggle_dialogue_box)
 	player.toggle_stats.connect(toggle_player_stats)
 	skill_manager.changed_skill.connect(change_skill)
+	dialogue_box.finished_dialogue.connect(dialogue_ended)
 
 func toggle_skilltree_interface() -> void:
 	if skill_root.visible:
@@ -65,3 +67,7 @@ func change_skill(button : int, skill : String) -> void:
 		4:
 			player.QSkill = skill
 			q_cooldown.change_skill()
+
+
+func dialogue_ended() -> void:
+	toggle_dialogue_box(false)

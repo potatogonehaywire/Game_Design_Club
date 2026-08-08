@@ -5,8 +5,10 @@
 
 extends Control
 
+signal finished_dialogue()
+
 @onready var dialogue_root: Control = $".."
-@onready var not_menu: Control = $"../../NotMenu"
+@onready var end_instructions: Label = $EndInstructions
 
 var player : CharacterBody3D = null
 
@@ -37,14 +39,15 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("dialogue_last") or dialogue_section_needs_update or Input.is_action_just_pressed("dialogue_next"):
 		var correct_dialogue_text : String = str(current_dialogue[current_line][0]) + "\n\n" + str(current_dialogue[current_line][1])
 		if current_line == len(current_dialogue) - 1:
-			correct_dialogue_text += "\n(!) Press [attack] to end dialogue"
+			end_instructions.visible = true
+		else:
+			end_instructions.visible = false
 		
 		$DialogueText.text = correct_dialogue_text
 		dialogue_section_needs_update = false
 	
-	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack"):
-		dialogue_root.visible = false	
-		not_menu.visible = true
+	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack") && dialogue_root.visible:
+		finished_dialogue.emit()
 
 
 func message(msg: Array) -> void:

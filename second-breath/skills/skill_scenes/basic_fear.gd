@@ -2,7 +2,7 @@ extends Node3D
 
 var timeInEffect : float = 0
 var animationTime : float = 0.5
-var skillCooldown : int = 5
+var skillCooldown : float = 5
 var healthChange : int = 0
 var dmgDealt : int = 10
 var debuff : int = 0

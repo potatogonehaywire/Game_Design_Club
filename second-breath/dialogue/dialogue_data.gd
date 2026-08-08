@@ -9,6 +9,7 @@ var dialogue_checkpoints : Array = [0, 0, 0]
 var dialogue : Array = [
 	[
 		[ ["SHELF"], ["", "Kolita used to dream of becoming a doctor. Funny how things change."], ["BOSS", "Kolita!"], ["", "Kolita had it all"], ["", "Life is fragile"], ["", "At last this family no longer needs to waste money feeding another mouth."] ],
+		[ ["SHELF"], ["", "Kolita used to dream of becoming a doctor. Funny how things change."], ["BOSS", "Kolita!"], ["", "Kolita had it all"], ["", "Life is fragile"], ["", "At last this family no longer needs to waste money feeding another mouth."] ],
 	],
 	
 	[

@@ -7,6 +7,7 @@ const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
 @export var tier: int = 1
 @export var max_level: int = 1
 @export var depends_on: Array[TalentSlot]
+@export var buff : Dictionary = {"stat" : "none", "value" : 0.0}
 
 @onready var label: Label = $MarginContainer/Label
 @onready var disabled_panel: Panel = $DisabledPanel
@@ -100,6 +101,18 @@ func _on_gui_input(event: InputEvent) -> void:
 			
 			if talent_id not in Global.available_skills && talent_id in skill_talents:
 				Global.available_skills.append(talent_id)
+			elif buff["stat"] != "none":
+				match buff["stat"]:
+					"atk":
+						pass
+					"speed":
+						pass
+					"hp":
+						pass
+					"stamina":
+						pass
+					"ranged_atk":
+						pass
 		#elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
 			#next_level -= 1
 		set_new_level(next_level)

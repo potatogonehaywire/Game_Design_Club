@@ -673,8 +673,6 @@ nodes/Animation/position = Vector2(48, 208)
 node_connections = [&"output", 0, &"Animation"]
 
 [sub_resource type="GDScript" id="GDScript_qjkh3"]
-script/source = "extends Node
-"
 
 [sub_resource type="Animation" id="Animation_48p26"]
 length = 0.001
@@ -1232,8 +1230,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 script = ExtResource("1_rkbax")
 LSkill = "Basic"
 ESkill = "Fear I"
-QSkill = "Love Heal"
-RSkill = "Envy VI"
+QSkill = "Envy & Anger"
+RSkill = "Contempt Heal"
 
 [node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
 top_level = true
