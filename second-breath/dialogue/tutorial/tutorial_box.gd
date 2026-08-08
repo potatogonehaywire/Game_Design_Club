@@ -6,7 +6,7 @@
 extends Control
 
 @onready var dialogue_root: Control = $".."
-var player : Player = null
+var player : CharacterBody3D = null
 
 var all_tutorials : Array = ["Use WASD to move around."]
 var current_tutorial : int = -1

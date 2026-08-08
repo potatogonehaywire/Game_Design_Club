@@ -2,7 +2,7 @@ extends CPUParticles3D
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var particleColour : Color
-@onready var player : Player = $".."
+@onready var player : CharacterBody3D = $".."
 
 func _process(_delta: float) -> void:
 	self.mesh.material.emission = color

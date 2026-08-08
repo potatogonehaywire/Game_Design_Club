@@ -8,7 +8,7 @@ extends Control
 @onready var dialogue_root: Control = $".."
 @onready var not_menu: Control = $"../../NotMenu"
 
-var player : Player = null
+var player : CharacterBody3D = null
 
 
 var current_dialogue : Array = [["GAME INFO", "Placeholder for dialogue box text."], ["GAME INFO", "Click on character with scribble on it (testcharacter) to get only currently added dialogue."]]

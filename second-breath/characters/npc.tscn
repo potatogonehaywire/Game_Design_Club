@@ -28,8 +28,6 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2fly"]
 size = Vector3(0.98947144, 1.1401978, 0.35913086)
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_tjqap"]
-
 [node name="NPC" type="CharacterBody3D" unique_id=564275751 groups=["can_talk"]]
 script = ExtResource("1_ua8er")
 
@@ -42,10 +40,3 @@ animation = &"idle_backward"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1991980506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017532349, 0.005218506, 0.025024414)
 shape = SubResource("BoxShape3D_p2fly")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=874685922]
-
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=665827971]
-active = false
-tree_root = SubResource("AnimationNodeBlendTree_tjqap")
-anim_player = NodePath("../AnimationPlayer")

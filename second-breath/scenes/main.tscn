@@ -54,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.21219, 22.016232, -19.5020
 
 [node name="NPC" parent="." unique_id=564275751 instance=ExtResource("7_6w7ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.21219, 22.016232, -15.862843)
+dialogue_identifier = "FATHER"
 
 [node name="Fragment" parent="." unique_id=1379615721 instance=ExtResource("8_tipki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.0509, 19.472572, -34.790955)

@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://q7c87fcsdex0"]
+
+[ext_resource type="PackedScene" uid="uid://caam7awi1whsx" path="res://dialogue/dialogue_box.tscn" id="3_jbo8c"]
+[ext_resource type="PackedScene" uid="uid://k0ey3o8lx6v2" path="res://dialogue/tutorial/tutorial_box.tscn" id="4_hywsp"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="6_pfy8y"]
+[ext_resource type="Script" uid="uid://dvhnjn5ibhu8m" path="res://UI/hud/interact_label.gd" id="7_0m2om"]
+[ext_resource type="Script" uid="uid://bg1703ofihqyh" path="res://UI/hud/stamina_bar.gd" id="8_xf02i"]
+[ext_resource type="Script" uid="uid://5mpr2dne26d5" path="res://UI/hud/health_bar.gd" id="9_4me5a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
+font = ExtResource("6_pfy8y")
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qiium"]
+bg_color = Color(0.22745098, 0.32156864, 0.35686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arshi"]
+bg_color = Color(0.92260283, 0.61066866, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8lsv"]
+bg_color = Color(0.22899795, 0.322422, 0.3573269, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jle6x"]
+bg_color = Color(0.935171, 0.08018369, 3.85046e-07, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=725296579]
+
+[node name="DialogueRoot" type="Control" parent="." unique_id=541298765]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1914.0
+offset_bottom = 1079.0
+
+[node name="ClickCatcher2" type="Control" parent="DialogueRoot" unique_id=1576099136]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DialogueBox" parent="DialogueRoot" unique_id=1170056814 instance=ExtResource("3_jbo8c")]
+layout_mode = 1
+
+[node name="TutorialBox" parent="DialogueRoot" unique_id=46890979 instance=ExtResource("4_hywsp")]
+layout_mode = 1
+
+[node name="NotMenu" type="Control" parent="." unique_id=1268635304]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InteractLabel" type="Label" parent="NotMenu" unique_id=307289589]
+texture_filter = 1
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 15.0
+theme_override_colors/font_outline_color = Color(0.11511584, 3.4269095e-05, 0.42940018, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("6_pfy8y")
+theme_override_font_sizes/font_size = 32
+text = "F: Interact"
+label_settings = SubResource("LabelSettings_nm1m0")
+script = ExtResource("7_0m2om")
+
+[node name="StaminaBar" type="ProgressBar" parent="NotMenu" unique_id=199650519]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 492.0
+offset_bottom = 53.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
+theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
+value = 50.0
+show_percentage = false
+script = ExtResource("8_xf02i")
+
+[node name="HealthBar" type="ProgressBar" parent="NotMenu" unique_id=1363857212]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 69.0
+offset_right = 683.0
+offset_bottom = 103.0
+theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
+value = 50.0
+show_percentage = false
+script = ExtResource("9_4me5a")

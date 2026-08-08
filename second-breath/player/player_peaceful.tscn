@@ -1,0 +1,1144 @@
+[gd_scene format=3 uid="uid://bqq30unwql12n"]
+
+[ext_resource type="Script" uid="uid://yy22lvsh5xeq" path="res://player/player_peaceful.gd" id="1_qd4n5"]
+[ext_resource type="Texture2D" uid="uid://dxm5dvt82pf8a" path="res://sprites/kolita/kolita_jump_backward/frame0007.png" id="2_pmp2g"]
+[ext_resource type="Texture2D" uid="uid://dxmte0ud1ngx7" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0000.png" id="3_cd22l"]
+[ext_resource type="Texture2D" uid="uid://dgej3ajffknud" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0001.png" id="4_okwxx"]
+[ext_resource type="Texture2D" uid="uid://c52c04wimje2v" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0002.png" id="5_mmgj6"]
+[ext_resource type="Texture2D" uid="uid://damob5q3ko307" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0003.png" id="6_8e571"]
+[ext_resource type="Texture2D" uid="uid://bkqx06vrnbt1g" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0004.png" id="7_r3dxx"]
+[ext_resource type="Texture2D" uid="uid://cy6tqde45aes" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0005.png" id="8_xsk4o"]
+[ext_resource type="Texture2D" uid="uid://bga0rdbr4kn1u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0006.png" id="9_s1ppe"]
+[ext_resource type="Texture2D" uid="uid://doyhvu4qsbjpr" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0007.png" id="10_rxnt5"]
+[ext_resource type="Texture2D" uid="uid://ln8ev6skh5co" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0008.png" id="11_osi70"]
+[ext_resource type="Texture2D" uid="uid://c4r0v7ch3k37r" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0009.png" id="12_pc4sm"]
+[ext_resource type="Texture2D" uid="uid://n04pl6vl05e2" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0010.png" id="13_cyy5t"]
+[ext_resource type="Texture2D" uid="uid://cgyvnkobd44tx" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0011.png" id="14_e78tx"]
+[ext_resource type="Texture2D" uid="uid://bg5ql0s8t5a3q" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0012.png" id="15_sqn07"]
+[ext_resource type="Texture2D" uid="uid://1w3onbqlu1wm" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0013.png" id="16_8x4wr"]
+[ext_resource type="Texture2D" uid="uid://c2un56g0x3w3u" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0014.png" id="17_blgc7"]
+[ext_resource type="Texture2D" uid="uid://dfuj2g6ki64a0" path="res://sprites/kolita/idle_backward/kolita_idle_backwards0015.png" id="18_w5btl"]
+[ext_resource type="Texture2D" uid="uid://crofd5u11y6fd" path="res://sprites/kolita/idle_forward/kolita_idle_forward0001.png" id="19_fca5v"]
+[ext_resource type="Texture2D" uid="uid://cu6tsbkb414ea" path="res://sprites/kolita/idle_forward/kolita_idle_forward0000.png" id="20_yw681"]
+[ext_resource type="Texture2D" uid="uid://mmuyptojkveg" path="res://sprites/kolita/idle_forward/kolita_idle_forward0002.png" id="21_2lxut"]
+[ext_resource type="Texture2D" uid="uid://cah6ir8x5f2ra" path="res://sprites/kolita/idle_forward/kolita_idle_forward0003.png" id="22_4pxvv"]
+[ext_resource type="Texture2D" uid="uid://hnb6576em6ap" path="res://sprites/kolita/idle_forward/kolita_idle_forward0004.png" id="23_p03tx"]
+[ext_resource type="Texture2D" uid="uid://bv0ws6f0hk1l7" path="res://sprites/kolita/idle_forward/kolita_idle_forward0005.png" id="24_nkqcg"]
+[ext_resource type="Texture2D" uid="uid://6obwca1he8q5" path="res://sprites/kolita/idle_forward/kolita_idle_forward0006.png" id="25_nm6xm"]
+[ext_resource type="Texture2D" uid="uid://crwk2fr30bvb8" path="res://sprites/kolita/idle_forward/kolita_idle_forward0007.png" id="26_xjqm3"]
+[ext_resource type="Texture2D" uid="uid://d3nf015njhn0q" path="res://sprites/kolita/idle_forward/kolita_idle_forward0008.png" id="27_sp0iq"]
+[ext_resource type="Texture2D" uid="uid://cyfegslg0v1w2" path="res://sprites/kolita/idle_forward/kolita_idle_forward0009.png" id="28_7sxlf"]
+[ext_resource type="Texture2D" uid="uid://bx1lqylu3dsxo" path="res://sprites/kolita/idle_forward/kolita_idle_forward0010.png" id="29_wgjb0"]
+[ext_resource type="Texture2D" uid="uid://dfhjtr2fpdeod" path="res://sprites/kolita/idle_forward/kolita_idle_forward0011.png" id="30_fakwm"]
+[ext_resource type="Texture2D" uid="uid://be0x53du024r3" path="res://sprites/kolita/idle_forward/kolita_idle_forward0012.png" id="31_cd836"]
+[ext_resource type="Texture2D" uid="uid://c5bw1otiopba4" path="res://sprites/kolita/idle_forward/kolita_idle_forward0013.png" id="32_xw4uv"]
+[ext_resource type="Texture2D" uid="uid://vwweacu5heaf" path="res://sprites/kolita/idle_forward/kolita_idle_forward0014.png" id="33_ipojw"]
+[ext_resource type="Texture2D" uid="uid://r6go4lh6rhhi" path="res://sprites/kolita/idle_forward/kolita_idle_forward0015.png" id="34_4juyc"]
+[ext_resource type="Texture2D" uid="uid://bklb0kww33gso" path="res://sprites/kolita/idle_forward/kolita_idle_forward0016.png" id="35_2kkle"]
+[ext_resource type="Texture2D" uid="uid://s7qwv3yw8gkx" path="res://sprites/kolita/idle_right/kolita_idle_right0000.png" id="36_54poi"]
+[ext_resource type="Texture2D" uid="uid://b0wrpvqjfmree" path="res://sprites/kolita/idle_right/kolita_idle_right0001.png" id="37_od3xt"]
+[ext_resource type="Texture2D" uid="uid://b006kpiibx6ak" path="res://sprites/kolita/idle_right/kolita_idle_right0002.png" id="38_wj381"]
+[ext_resource type="Texture2D" uid="uid://byp51myg7meac" path="res://sprites/kolita/idle_right/kolita_idle_right0003.png" id="39_u2r1c"]
+[ext_resource type="Texture2D" uid="uid://cqicf28vshbj7" path="res://sprites/kolita/idle_right/kolita_idle_right0004.png" id="40_i64wv"]
+[ext_resource type="Texture2D" uid="uid://c1wh5xn5tdqwb" path="res://sprites/kolita/idle_right/kolita_idle_right0005.png" id="41_ux6ob"]
+[ext_resource type="Texture2D" uid="uid://cd1r2hecvvrg2" path="res://sprites/kolita/idle_right/kolita_idle_right0006.png" id="42_ra8j7"]
+[ext_resource type="Texture2D" uid="uid://bctq28fhiax8s" path="res://sprites/kolita/idle_right/kolita_idle_right0007.png" id="43_vdxby"]
+[ext_resource type="Texture2D" uid="uid://dygu3vloanc0i" path="res://sprites/kolita/idle_right/kolita_idle_right0008.png" id="44_go4ef"]
+[ext_resource type="Texture2D" uid="uid://bbplgk7ivgwss" path="res://sprites/kolita/idle_right/kolita_idle_right0009.png" id="45_vnky6"]
+[ext_resource type="Texture2D" uid="uid://h5oy2ym4ir7f" path="res://sprites/kolita/idle_right/kolita_idle_right0010.png" id="46_rcynn"]
+[ext_resource type="Texture2D" uid="uid://44m2c8yrtvs7" path="res://sprites/kolita/idle_right/kolita_idle_right0011.png" id="47_h7f2x"]
+[ext_resource type="Texture2D" uid="uid://bs7f8fx1n1cy6" path="res://sprites/kolita/idle_right/kolita_idle_right0012.png" id="48_1e7co"]
+[ext_resource type="Texture2D" uid="uid://bblr5hh7opgg2" path="res://sprites/kolita/idle_right/kolita_idle_right0013.png" id="49_8a0xx"]
+[ext_resource type="Texture2D" uid="uid://qvkvrhwuf0nn" path="res://sprites/kolita/idle_right/kolita_idle_right0014.png" id="50_fg0ao"]
+[ext_resource type="Texture2D" uid="uid://c2dblcuu233kd" path="res://sprites/kolita/idle_right/kolita_idle_right0015.png" id="51_w8nfr"]
+[ext_resource type="Texture2D" uid="uid://cd6j7xb3xb5t" path="res://sprites/kolita/idle_right/kolita_idle_right0016.png" id="52_jvkra"]
+[ext_resource type="Texture2D" uid="uid://de8oibbgw4jv8" path="res://sprites/kolita/idle_right/kolita_idle_right0017.png" id="53_urp33"]
+[ext_resource type="Texture2D" uid="uid://bnygfarla582e" path="res://sprites/kolita/kolita_jump_backward/frame0000.png" id="54_whbhu"]
+[ext_resource type="Texture2D" uid="uid://ck70clrgo807i" path="res://sprites/kolita/kolita_jump_backward/frame0001.png" id="55_ot0si"]
+[ext_resource type="Texture2D" uid="uid://bfrwtgotqvcxn" path="res://sprites/kolita/kolita_jump_backward/frame0002.png" id="56_3eq1y"]
+[ext_resource type="Texture2D" uid="uid://bss0ubhbj3oe6" path="res://sprites/kolita/kolita_jump_backward/frame0003.png" id="57_55n43"]
+[ext_resource type="Texture2D" uid="uid://dlxmm7idk5g46" path="res://sprites/kolita/kolita_jump_backward/frame0004.png" id="58_bl16r"]
+[ext_resource type="Texture2D" uid="uid://du7hxewg0cpvx" path="res://sprites/kolita/kolita_jump_backward/frame0005.png" id="59_ybuin"]
+[ext_resource type="Texture2D" uid="uid://bxo5q1rmcuto" path="res://sprites/kolita/kolita_jump_backward/frame0006.png" id="60_f088r"]
+[ext_resource type="Texture2D" uid="uid://dferadgbjanva" path="res://sprites/kolita/melee_backward/frame0000.png" id="61_fw0qe"]
+[ext_resource type="Texture2D" uid="uid://cxgx17wlypr7r" path="res://sprites/kolita/melee_backward/frame0001.png" id="62_xa7br"]
+[ext_resource type="Texture2D" uid="uid://hv5o6c7mbn4c" path="res://sprites/kolita/melee_backward/frame0002.png" id="63_4fojb"]
+[ext_resource type="Texture2D" uid="uid://djtroy4uv3rht" path="res://sprites/kolita/melee_backward/frame0003.png" id="64_rgpgu"]
+[ext_resource type="Texture2D" uid="uid://ciyjawochae0u" path="res://sprites/kolita/melee_backward/frame0004.png" id="65_esfvr"]
+[ext_resource type="Texture2D" uid="uid://bi036hjqwt5ai" path="res://sprites/kolita/melee_backward/frame0005.png" id="66_4ksgn"]
+[ext_resource type="Texture2D" uid="uid://dd6qh3cb8g1hh" path="res://sprites/kolita/melee_backward/frame0006.png" id="67_28yms"]
+[ext_resource type="Texture2D" uid="uid://c1mw20jfyw1xd" path="res://sprites/kolita/melee_backward/frame0007.png" id="68_up1dt"]
+[ext_resource type="Texture2D" uid="uid://71piu05k77do" path="res://sprites/kolita/melee_backward/frame0008.png" id="69_5a7xt"]
+[ext_resource type="Texture2D" uid="uid://dav322s6u7mfb" path="res://sprites/kolita/melee_backward/frame0009.png" id="70_jf1x8"]
+[ext_resource type="Texture2D" uid="uid://g0dtkbfa4ib2" path="res://sprites/kolita/melee_backward/frame0010.png" id="71_g4se8"]
+[ext_resource type="Texture2D" uid="uid://dsmp0donnert3" path="res://sprites/kolita/melee_backward/frame0011.png" id="72_ytqgw"]
+[ext_resource type="Texture2D" uid="uid://3uodpbcacc4l" path="res://sprites/kolita/melee_backward/frame0012.png" id="73_potbp"]
+[ext_resource type="Texture2D" uid="uid://spcse8nka5l2" path="res://sprites/kolita/melee_backward/frame0013.png" id="74_d2ebp"]
+[ext_resource type="Texture2D" uid="uid://bonc85skymhup" path="res://sprites/kolita/melee_backward/frame0014.png" id="75_hrseu"]
+[ext_resource type="Texture2D" uid="uid://brvl7tprpje4w" path="res://sprites/kolita/melee_backward/frame0015.png" id="76_ymr7b"]
+[ext_resource type="Texture2D" uid="uid://dakfrxtw04mr5" path="res://sprites/kolita/melee_backward/frame0017.png" id="77_yh604"]
+[ext_resource type="Texture2D" uid="uid://dw1evbw206mxj" path="res://sprites/kolita/melee_backward/frame0018.png" id="78_meew3"]
+[ext_resource type="Texture2D" uid="uid://c43yqvgddeii1" path="res://sprites/kolita/melee_backward/frame0019.png" id="79_5oi0q"]
+[ext_resource type="Texture2D" uid="uid://cvaveftb8ni5u" path="res://sprites/kolita/melee_backward/frame0020.png" id="80_gld7w"]
+[ext_resource type="Texture2D" uid="uid://dlati3a8dxit6" path="res://sprites/kolita/kolita_walk.png" id="81_0vawf"]
+[ext_resource type="Script" uid="uid://ju55rmwabfof" path="res://player/peace_idle.gd" id="83_dvbgo"]
+[ext_resource type="Script" uid="uid://babftyjaat8j7" path="res://player/peace_jump.gd" id="84_p4x8a"]
+[ext_resource type="Script" uid="uid://cson872r47xik" path="res://player/peace_walk.gd" id="85_1ppjl"]
+[ext_resource type="Script" uid="uid://dspv3bgoeph0y" path="res://enemies/state_machine.gd" id="95_emiy5"]
+[ext_resource type="Script" uid="uid://dvag42mma0uu0" path="res://player/skill_effect.gd" id="103_f1ma4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(0, 11, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(4, 207, 199, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(4, 403, 199, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(400, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(400, 207, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(1200, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(400, 403, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(600, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(600, 207, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(600, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(600, 403, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(200, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(200, 207, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(200, 11, 200, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
+atlas = ExtResource("81_0vawf")
+region = Rect2(200, 403, 200, 196)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anp34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pmp2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pmp2g")
+}],
+"loop": true,
+"name": &"fall_backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cd22l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_okwxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mmgj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8e571")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r3dxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xsk4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s1ppe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rxnt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_osi70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pc4sm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cyy5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e78tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sqn07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8x4wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_blgc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_w5btl")
+}],
+"loop": true,
+"name": &"idle_backward",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_fca5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_yw681")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2lxut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_4pxvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_p03tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nkqcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nm6xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_xjqm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_sp0iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7sxlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_wgjb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_fakwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_cd836")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_xw4uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ipojw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_4juyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_2kkle")
+}],
+"loop": true,
+"name": &"idle_forward",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_54poi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_od3xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_wj381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_u2r1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_i64wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ux6ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_ra8j7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_vdxby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_go4ef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_vnky6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_rcynn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_h7f2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_1e7co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_8a0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_fg0ao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_w8nfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_jvkra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_urp33")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("54_whbhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_ot0si")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_3eq1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_55n43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_bl16r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ybuin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_f088r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pmp2g")
+}],
+"loop": false,
+"name": &"jump_backward",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_fw0qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_xa7br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_4fojb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_rgpgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_esfvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_4ksgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_28yms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_up1dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_5a7xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_jf1x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_g4se8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_ytqgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_potbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_d2ebp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_hrseu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_ymr7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_yh604")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_meew3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_5oi0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_gld7w")
+}],
+"loop": false,
+"name": &"melee_backward",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebec5")
+}],
+"loop": true,
+"name": &"walk_backward",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boad6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgyib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6s5")
+}],
+"loop": false,
+"name": &"walk_forward",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7c3f")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqtel"]
+size = Vector3(0.8376465, 1.05, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
+size = Vector3(4, 5, 3)
+
+[sub_resource type="Animation" id="Animation_48p26"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_backward"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite3D:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gcmgo"]
+resource_name = "fall_backwards"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fall_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"fall_backward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_anp34"]
+resource_name = "idle_backward"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_backward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jdjat"]
+resource_name = "idle_forward"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_forward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_forward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kcq4v"]
+resource_name = "idle_left"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_right", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite3D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j420s"]
+resource_name = "idle_right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_right", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qjt2w"]
+resource_name = "jump_backwards"
+length = 0.58
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"jump_backward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_onxu2"]
+resource_name = "melee_backward"
+length = 0.8333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"melee_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"melee_backward", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerSprite3D:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_bd26m"]
+resource_name = "walk_backward"
+length = 0.6667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_backward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"walk_backward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qavcc"]
+resource_name = "walk_forward"
+length = 0.6667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_forward"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"walk_forward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nxclr"]
+resource_name = "walk_left"
+length = 0.6667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_left"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"walk_left", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lufic"]
+resource_name = "walk_right"
+length = 0.6667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_right"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"walk_right", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdjat"]
+_data = {
+&"RESET": SubResource("Animation_48p26"),
+&"fall_backwards": SubResource("Animation_gcmgo"),
+&"idle_backward": SubResource("Animation_anp34"),
+&"idle_forward": SubResource("Animation_jdjat"),
+&"idle_left": SubResource("Animation_kcq4v"),
+&"idle_right": SubResource("Animation_j420s"),
+&"jump_backwards": SubResource("Animation_qjt2w"),
+&"melee_backward": SubResource("Animation_onxu2"),
+&"walk_backward": SubResource("Animation_bd26m"),
+&"walk_forward": SubResource("Animation_qavcc"),
+&"walk_left": SubResource("Animation_nxclr"),
+&"walk_right": SubResource("Animation_lufic")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rnncm"]
+animation = &"jump_backwards"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_nj2w7"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_onxu2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_48p26"]
+animation = &"idle_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anp34"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdjat"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j420s"]
+animation = &"idle_backward"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kcq4v"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_48p26")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_anp34")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_jdjat")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_j420s")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kcq4v"]
+animation = &"walk_forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qavcc"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bd26m"]
+animation = &"walk_backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lufic"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nxclr"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_kcq4v")
+blend_point_0/pos = Vector2(0, -1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_qavcc")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_bd26m")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_lufic")
+blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gcmgo"]
+animation = &"fall_backwards"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qavcc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48p26"]
+advance_mode = 2
+advance_expression = "is_on_floor() && (velocity.x != 0 || velocity.z !=0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_anp34"]
+advance_mode = 2
+advance_expression = "velocity == Vector3(0,0,0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iojyt"]
+advance_mode = 2
+advance_expression = "not is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vhicv"]
+advance_mode = 2
+advance_expression = "not is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hrakr"]
+advance_mode = 2
+advance_expression = "is_on_floor() && (velocity.x != 0 || velocity.z != 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2s0vo"]
+advance_mode = 2
+advance_expression = "is_on_floor() && velocity.x == 0 && velocity.z == 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bd26m"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kcq4v")
+states/Idle/position = Vector2(446, 100.8)
+states/Start/position = Vector2(232.8, 99.68)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_nxclr")
+states/Walk/position = Vector2(722, 101.76)
+states/fall_backwards/node = SubResource("AnimationNodeAnimation_gcmgo")
+states/fall_backwards/position = Vector2(593.2, 218.40002)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_48p26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_anp34"), "Walk", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_iojyt"), "Idle", "fall_backwards", SubResource("AnimationNodeStateMachineTransition_vhicv"), "fall_backwards", "Walk", SubResource("AnimationNodeStateMachineTransition_hrakr"), "fall_backwards", "Idle", SubResource("AnimationNodeStateMachineTransition_2s0vo")]
+graph_offset = Vector2(160, -16)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nxclr"]
+animation = &"melee_backward"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lufic"]
+graph_offset = Vector2(-268.29703, 149.26956)
+nodes/output/position = Vector2(656, 288)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_bd26m")
+nodes/StateMachine/position = Vector2(-256, 176)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_onxu2")
+nodes/OneShot/position = Vector2(368, 304)
+nodes/melee/node = SubResource("AnimationNodeAnimation_nxclr")
+nodes/melee/position = Vector2(64, 576)
+"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_nj2w7")
+"nodes/OneShot 2/position" = Vector2(48, 224)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_rnncm")
+nodes/Animation/position = Vector2(-272, 464)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"OneShot 2", &"OneShot", 1, &"melee", &"OneShot 2", 0, &"StateMachine", &"OneShot 2", 1, &"Animation"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hrakr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsa1w"]
+albedo_color = Color(0.6901961, 0, 0.31764707, 0.54901963)
+emission_enabled = true
+emission = Color(0.6649513, 0.6330032, 0.14904097, 1)
+emission_energy_multiplier = 5.0
+grow_amount = 0.734
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2s0vo"]
+material = SubResource("StandardMaterial3D_wsa1w")
+size = Vector2(0.07, 0.07)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_hgm8h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5423729, 0.34843802), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_2s0vo"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="PlayerPeaceful" type="CharacterBody3D" unique_id=1436769523 groups=["player"]]
+script = ExtResource("1_qd4n5")
+
+[node name="camera_controller" type="Node3D" parent="." unique_id=270254426]
+top_level = true
+
+[node name="camera_target" type="Node3D" parent="camera_controller" unique_id=305944685]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 3.381, 5.593)
+
+[node name="Camera3D" type="Camera3D" parent="camera_controller/camera_target" unique_id=1675269623]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+fov = 46.47491
+
+[node name="PlayerSprite3D" type="AnimatedSprite3D" parent="." unique_id=1570332534]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_anp34")
+animation = &"idle_backward"
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1673068153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.005432e-05, -0.019769087, 0.0048724385)
+shape = SubResource("BoxShape3D_hqtel")
+
+[node name="hitbox" type="Area3D" parent="." unique_id=2001868917 groups=["playerHurtbox"]]
+
+[node name="hitboxcollision" type="CollisionShape3D" parent="hitbox" unique_id=339407772 groups=["playerHurtbox"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.026, 0.001000002)
+shape = SubResource("BoxShape3D_sweqy")
+debug_color = Color(0.9754197, 0, 0.42305484, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1449083884]
+libraries/ = SubResource("AnimationLibrary_jdjat")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1095977158]
+tree_root = SubResource("AnimationNodeBlendTree_lufic")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/Idle/blend_position = Vector2(0, 0)
+parameters/StateMachine/Walk/blend_position = Vector2(0, 0)
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+"parameters/OneShot 2/active" = false
+"parameters/OneShot 2/internal_active" = false
+"parameters/OneShot 2/request" = 0
+
+[node name="InteractRay" type="RayCast3D" parent="." unique_id=963342766]
+
+[node name="CamCollider" type="RayCast3D" parent="." unique_id=1300638165]
+target_position = Vector3(0, 0, 0)
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1163426395 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("95_emiy5")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="PlayerStateMachine" unique_id=1717289953]
+script = ExtResource("83_dvbgo")
+
+[node name="Jump" type="Node" parent="PlayerStateMachine" unique_id=1263818886]
+script = ExtResource("84_p4x8a")
+
+[node name="Walk" type="Node" parent="PlayerStateMachine" unique_id=1947982783]
+script = ExtResource("85_1ppjl")
+
+[node name="particle_emitter" type="MeshInstance3D" parent="." unique_id=509279905]
+transform = Transform3D(0.4155737, 0, 0, 0, 0.4380241, 0, 0, 0, 0.31142217, 0, -0.45214784, 0)
+visible = false
+mesh = SubResource("PlaneMesh_hrakr")
+skeleton = NodePath("../SkillEffect")
+
+[node name="SkillEffect" type="CPUParticles3D" parent="." unique_id=541575349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29546523, 0)
+emitting = false
+amount = 30
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.5
+mesh = SubResource("PlaneMesh_2s0vo")
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 1, 0)
+spread = 20.0
+flatness = 0.15
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+radial_accel_max = 0.4
+damping_min = 4.0
+damping_max = 7.0
+scale_amount_curve = SubResource("Curve_hgm8h")
+color = Color(1, 0, 1, 1)
+color_ramp = SubResource("Gradient_2s0vo")
+script = ExtResource("103_f1ma4")

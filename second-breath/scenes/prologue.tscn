@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bltvyj0wvp5q8"]
+
+[ext_resource type="Script" uid="uid://d3c3pfg1hece1" path="res://scenes/prologue.gd" id="1_x1kem"]
+[ext_resource type="PackedScene" uid="uid://bqq30unwql12n" path="res://player/player_peaceful.tscn" id="2_8byya"]
+[ext_resource type="PackedScene" uid="uid://q7c87fcsdex0" path="res://UI/ui_peaceful.tscn" id="3_8byya"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bxin6"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8byya"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bxin6"]
+sky_top_color = Color(0.37775385, 0.4464609, 0.59604573, 1)
+sky_horizon_color = Color(0.97, 0.46075004, 0.2425, 1)
+ground_bottom_color = Color(0.18378267, 0.16942137, 0.18147728, 1)
+ground_horizon_color = Color(0.6944292, 0.4546634, 0.24231473, 1)
+
+[sub_resource type="Sky" id="Sky_5jffm"]
+sky_material = SubResource("ProceduralSkyMaterial_bxin6")
+
+[sub_resource type="Environment" id="Environment_x1kem"]
+background_mode = 2
+sky = SubResource("Sky_5jffm")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_8byya"]
+
+[sub_resource type="Compositor" id="Compositor_1wrf5"]
+
+[node name="Prologue" type="Node3D" unique_id=1705422233]
+script = ExtResource("1_x1kem")
+
+[node name="Player" parent="." unique_id=1436769523 instance=ExtResource("2_8byya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=726670304]
+transform = Transform3D(16.770388, 0, 0, 0, 1.0000002, 0, 0, 0, 14.638022, 0, 0, 0)
+mesh = SubResource("PlaneMesh_bxin6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1547396225]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1976498530]
+shape = SubResource("ConcavePolygonShape3D_8byya")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=488254453]
+environment = SubResource("Environment_x1kem")
+camera_attributes = SubResource("CameraAttributesPhysical_8byya")
+compositor = SubResource("Compositor_1wrf5")
+
+[node name="UI" parent="." unique_id=725296579 instance=ExtResource("3_8byya")]

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://k0ey3o8lx6v2"]
 
 [ext_resource type="Script" uid="uid://d73pymxiltcy" path="res://dialogue/tutorial/tutorial_data.gd" id="1_ikngb"]
-[ext_resource type="Script" uid="uid://bh7oayw4k5gkm" path="res://dialogue/tutorial/tutorial_box.gd" id="1_qj2gd"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="2_q1ud0"]
 [ext_resource type="Texture2D" uid="uid://g2qxv3m5a06q" path="res://sprites/transparent_icons.png" id="3_jclg0"]
 
@@ -1817,7 +1816,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qj2gd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1796920671]
 layout_mode = 0

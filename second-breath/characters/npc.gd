@@ -3,8 +3,8 @@ class_name Npc
 
 signal message
 
-var dialogue_identifier : String = "GHOST 1"
-var tutorial_identifiers : Array = ["INTERACT"]
+@export var dialogue_identifier : String = "GHOST 1"
+@export var tutorial_identifiers : Array = ["INTERACT"]
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
