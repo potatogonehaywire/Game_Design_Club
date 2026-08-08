@@ -2,12 +2,13 @@ extends TextureProgressBar
 class_name CooldownBar
 var player : Player
 @export var button_pressed : String
-var skill_used : String
+var skill_used : String = "Basic"
 var skill_node : Node
 var cooldown : Timer
 var skill_colour : Color
 
 func check_skill() -> void:
+
 	match button_pressed:
 		"L":
 			skill_used = player.LSkill
