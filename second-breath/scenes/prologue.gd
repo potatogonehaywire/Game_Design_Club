@@ -9,10 +9,10 @@ func _ready() -> void:
 	player.interact_hover.connect(show_interact_hover)
 	player.toggle_dialogue.connect(toggle_dialogue_box)
 
+
 func toggle_dialogue_box(visible : bool) -> void:
 	dialogue_root.visible = visible
 	not_menu.visible = not visible
-
 
 
 func show_interact_hover(visible : bool) -> void:

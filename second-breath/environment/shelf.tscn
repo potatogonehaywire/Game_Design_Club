@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bwlwppg2wkq64"]
+
+[ext_resource type="Texture2D" uid="uid://cbugcadh5ji4o" path="res://environment/shelf.jpg" id="1_3o46w"]
+[ext_resource type="Script" uid="uid://cl4msw5ydjp5k" path="res://environment/interactable_object.gd" id="1_7jspv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7jspv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3o46w"]
+size = Vector3(4.611328, 4.462036, 0.28735352)
+
+[node name="Shelf" type="StaticBody3D" unique_id=1230732024 groups=["can_talk"]]
+physics_material_override = SubResource("PhysicsMaterial_7jspv")
+script = ExtResource("1_7jspv")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=259568060]
+texture = ExtResource("1_3o46w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=182231921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1035156e-05, 0.014282227)
+shape = SubResource("BoxShape3D_3o46w")

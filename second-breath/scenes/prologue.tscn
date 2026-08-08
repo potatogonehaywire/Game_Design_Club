@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d3c3pfg1hece1" path="res://scenes/prologue.gd" id="1_x1kem"]
 [ext_resource type="PackedScene" uid="uid://bqq30unwql12n" path="res://player/player_peaceful.tscn" id="2_8byya"]
 [ext_resource type="PackedScene" uid="uid://q7c87fcsdex0" path="res://UI/ui_peaceful.tscn" id="3_8byya"]
+[ext_resource type="PackedScene" uid="uid://bwlwppg2wkq64" path="res://environment/shelf.tscn" id="4_1wrf5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bxin6"]
 
@@ -47,3 +48,12 @@ camera_attributes = SubResource("CameraAttributesPhysical_8byya")
 compositor = SubResource("Compositor_1wrf5")
 
 [node name="UI" parent="." unique_id=725296579 instance=ExtResource("3_8byya")]
+
+[node name="Shelf" parent="." unique_id=1230732024 instance=ExtResource("4_1wrf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2308893, -4.941766)
+
+[node name="Shelf2" parent="." unique_id=705690286 instance=ExtResource("4_1wrf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5260572, 2.2308893, -4.941766)
+
+[node name="Shelf3" parent="." unique_id=196947510 instance=ExtResource("4_1wrf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5562963, 2.2308893, -4.941766)

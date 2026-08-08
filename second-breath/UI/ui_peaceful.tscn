@@ -39,8 +39,18 @@ offset_bottom = 40.0
 
 [node name="DialogueBox" parent="DialogueRoot" unique_id=1170056814 instance=ExtResource("3_jbo8c")]
 layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 131.0
+offset_top = -435.0
+offset_right = 131.0
+offset_bottom = -435.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [node name="TutorialBox" parent="DialogueRoot" unique_id=46890979 instance=ExtResource("4_hywsp")]
+visible = false
 layout_mode = 1
 
 [node name="NotMenu" type="Control" parent="." unique_id=1268635304]

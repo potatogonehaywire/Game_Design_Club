@@ -8,9 +8,14 @@ extends Node
 var dialogue_checkpoints : Array = [0, 0, 0]
 var dialogue : Array = [
 	[
+		[ ["SHELF"], ["", "Kolita used to dream of becoming a doctor. Funny how things change."], ["BOSS", "Kolita!"], ["", "Kolita had it all"], ["", "Life is fragile"], ["", "At last this family no longer needs to waste money feeding another mouth."] ],
+	],
+	
+	[
 		[ ["GHOST 1", "GHOST 2"], ["GHOST 1", "Come with us."], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],
 		[ ["FATHER"], ["FATHER", "I recognize you.  You are the daughter of Catherine."], ["KOLITA", "How do you know her?"], ["FATHER", "She came to us a couple years ago.  She was so full of potential.  I can sense that you are even stronger that she was."], ["KOLITA", "Where is she?"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"] ]
 	],
+	
 	
 	[
 		[ ["INITIALIZING CHARACTER 1", "INITIALIZING CHARACTER 2"], ["CHARACTER", "AREA2 CHPO1 LINE1"], ["CHARACTER", "AREA1 CHPO1 LINE2"] ],
