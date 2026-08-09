@@ -2,6 +2,7 @@ extends TextureButton
 class_name TalentSlot
 
 const DEFAULT_LINE_COLOUR : Color = Color(0.47, 0.47, 0.47, 1.0)
+var player : Player = null
 
 @export var talent_id: String
 @export var tier: int = 1
@@ -30,6 +31,7 @@ var level: int = 0
 
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player")
 	for talent : TalentSlot in depends_on:
 		var line:TalentLine = talent_line.duplicate()
 		line.dependent_talent_id = talent.talent_id
@@ -104,15 +106,15 @@ func _on_gui_input(event: InputEvent) -> void:
 			elif buff["stat"] != "none":
 				match buff["stat"]:
 					"atk":
-						pass
+						Global.weapon += buff["value"]
 					"speed":
-						pass
+						player.speed += buff["value"]
 					"hp":
-						pass
+						Global.maxHealth += buff["value"]
 					"stamina":
-						pass
+						Global.maxStamina += buff["value"]
 					"ranged_atk":
-						pass
+						Global.ranged += buff["value"]
 		#elif event.button_index == MOUSE_BUTTON_RIGHT and can_be_decreased():
 			#next_level -= 1
 		set_new_level(next_level)

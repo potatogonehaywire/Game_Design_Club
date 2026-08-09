@@ -226,6 +226,12 @@ theme_override_fonts/font = ExtResource("1_aiabx")
 theme_override_font_sizes/font_size = 64
 text = "ATK: 5"
 
+[node name="RangedATK" type="Label" parent="ColorRect/Stats/VBoxContainer" unique_id=725575484]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aiabx")
+theme_override_font_sizes/font_size = 64
+text = "Ranged ATK: "
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect" unique_id=1733051567]
 position = Vector2(712, 263.99997)
 scale = Vector2(1.925, 1.925)

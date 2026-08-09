@@ -144,6 +144,10 @@ texture_normal = SubResource("AtlasTexture_aql1q")
 talent_id = "Heal"
 tier = 2
 depends_on = [NodePath("../BaseTalent")]
+buff = {
+"stat": "hp",
+"value": 20.0
+}
 
 [node name="Heal2" parent="." unique_id=2114952151 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -155,6 +159,10 @@ texture_normal = SubResource("AtlasTexture_jmnto")
 talent_id = "Contempt Heal"
 tier = 3
 depends_on = [NodePath("../Heal1")]
+buff = {
+"stat": "stamina",
+"value": 20.0
+}
 
 [node name="Heal3" parent="." unique_id=380195095 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -166,6 +174,10 @@ texture_normal = SubResource("AtlasTexture_jmnto")
 talent_id = "Love Heal"
 tier = 4
 depends_on = [NodePath("../Heal2")]
+buff = {
+"stat": "hp",
+"value": 20.0
+}
 
 [node name="Anger2a" parent="." unique_id=1144516064 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -177,6 +189,10 @@ texture_normal = SubResource("AtlasTexture_gdvun")
 talent_id = "anger2a"
 tier = 3
 depends_on = [NodePath("../Anger1")]
+buff = {
+"stat": "hp",
+"value": 20.0
+}
 
 [node name="Anger2b" parent="." unique_id=1491037975 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -188,6 +204,10 @@ texture_normal = SubResource("AtlasTexture_gdvun")
 talent_id = "anger2b"
 tier = 3
 depends_on = [NodePath("../Anger1")]
+buff = {
+"stat": "atk",
+"value": 0.2
+}
 
 [node name="Anger3a" parent="." unique_id=420939200 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -199,6 +219,10 @@ texture_normal = SubResource("AtlasTexture_gdvun")
 talent_id = "anger3a"
 tier = 4
 depends_on = [NodePath("../Anger2a")]
+buff = {
+"stat": "hp",
+"value": 40.0
+}
 
 [node name="Anger3b" parent="." unique_id=119486477 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -210,6 +234,10 @@ texture_normal = SubResource("AtlasTexture_gdvun")
 talent_id = "anger3b"
 tier = 4
 depends_on = [NodePath("../Anger2b")]
+buff = {
+"stat": "atk",
+"value": 0.5
+}
 
 [node name="Anger4" parent="." unique_id=794917001 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -254,6 +282,10 @@ texture_normal = SubResource("AtlasTexture_xqaal")
 talent_id = "fear2a"
 tier = 3
 depends_on = [NodePath("../Fear1")]
+buff = {
+"stat": "speed",
+"value": 1.0
+}
 
 [node name="Fear2b" parent="." unique_id=1665576891 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -265,6 +297,10 @@ texture_normal = SubResource("AtlasTexture_xqaal")
 talent_id = "fear2b"
 tier = 3
 depends_on = [NodePath("../Fear1")]
+buff = {
+"stat": "ranged",
+"value": 1.0
+}
 
 [node name="Fear3a" parent="." unique_id=2137919866 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -276,6 +312,10 @@ texture_normal = SubResource("AtlasTexture_xqaal")
 talent_id = "fear3a"
 tier = 4
 depends_on = [NodePath("../Fear2a")]
+buff = {
+"stat": "speed",
+"value": 3.0
+}
 
 [node name="Fear3b" parent="." unique_id=603850004 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -287,6 +327,10 @@ texture_normal = SubResource("AtlasTexture_xqaal")
 talent_id = "fear3b"
 tier = 4
 depends_on = [NodePath("../Fear2b")]
+buff = {
+"stat": "ranged",
+"value": 2.0
+}
 
 [node name="Fear4" parent="." unique_id=505517741 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -331,6 +375,10 @@ texture_normal = SubResource("AtlasTexture_n3jii")
 talent_id = "envy2a"
 tier = 3
 depends_on = [NodePath("../Envy1")]
+buff = {
+"stat": "atk",
+"value": 0.5
+}
 
 [node name="Envy2b" parent="." unique_id=795528445 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -342,6 +390,10 @@ texture_normal = SubResource("AtlasTexture_n3jii")
 talent_id = "envy2b"
 tier = 3
 depends_on = [NodePath("../Envy1")]
+buff = {
+"stat": "stamina",
+"value": 20.0
+}
 
 [node name="Envy3a" parent="." unique_id=1025337655 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -353,6 +405,10 @@ texture_normal = SubResource("AtlasTexture_n3jii")
 talent_id = "envy3a"
 tier = 4
 depends_on = [NodePath("../Envy2a")]
+buff = {
+"stat": "atk",
+"value": 0.5
+}
 
 [node name="Envy3b" parent="." unique_id=1467945865 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0
@@ -364,6 +420,10 @@ texture_normal = SubResource("AtlasTexture_n3jii")
 talent_id = "envy3b"
 tier = 4
 depends_on = [NodePath("../Envy2b")]
+buff = {
+"stat": "stamina",
+"value": 30.0
+}
 
 [node name="Envy4" parent="." unique_id=783468988 node_paths=PackedStringArray("depends_on") instance=ExtResource("3_mugwv")]
 layout_mode = 0

@@ -6,7 +6,7 @@ func apply_buffs() -> void:
 	Global.health += skillUsed.healthChange
 	Global.debuff += skillUsed.debuff
 	Global.dmgdebuff = skillUsed.dmgDebuff
-	Global.maxHealth = skillUsed.maxHealth
+	Global.maxHealth += skillUsed.maxHealth
 	Global.weapon *= skillUsed.weaponBuff
 	parent.speed += skillUsed.speedBuff
 	parent.health_bar.health_changed()

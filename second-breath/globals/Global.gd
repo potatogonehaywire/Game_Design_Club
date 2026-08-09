@@ -6,7 +6,7 @@ var maxStamina : int = 100
 
 var s : int = 1
 var weapon : float = 1.0
-var ranged : float = 2.0
+var ranged : float = 1.0
 
 var enemyHitID : Array = []
 var enemyIsHit: bool = false
