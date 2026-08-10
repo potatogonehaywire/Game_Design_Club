@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8xrqxpgcilcd"
-path="res://.godot/imported/prelove.glb-3a08dc92657206247c270b152779cf88.scn"
+uid="uid://dewvrsqvfxs0s"
+path="res://.godot/imported/prelove2.glb-27ee0d2b81c23e7ca85f4f956de84cbe.scn"
 
 [deps]
 
-source_file="res://environment/3dmodels/prelove.glb"
-dest_files=["res://.godot/imported/prelove.glb-3a08dc92657206247c270b152779cf88.scn"]
+source_file="res://environment/3dmodels/prelove2.glb"
+dest_files=["res://.godot/imported/prelove2.glb-27ee0d2b81c23e7ca85f4f956de84cbe.scn"]
 
 [params]
 

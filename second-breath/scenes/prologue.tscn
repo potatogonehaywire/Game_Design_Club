@@ -57,3 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5260572, 2.2308893, -4.9417
 
 [node name="Shelf3" parent="." unique_id=196947510 instance=ExtResource("4_1wrf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5562963, 2.2308893, -4.941766)
+
+[node name="MusicPlayer" type="Node3D" parent="." unique_id=1709856146]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicPlayer" unique_id=194383002]

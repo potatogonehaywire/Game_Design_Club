@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/menus/Graphics/crystal2_outline.png" id="12_ow1yt"]
 [ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/menus/Graphics/crystal3_outline.png" id="13_o2t6a"]
 [ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/menus/Graphics/crystal4_outline.png" id="14_8gukh"]
+[ext_resource type="Script" uid="uid://u1osqigc6ns1" path="res://dialogue/quests/quest.gd" id="21_i1yd8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
 font = ExtResource("3_c7tqi")
@@ -130,10 +131,10 @@ script = ExtResource("6_8gkfd")
 
 [node name="StaminaBar" type="ProgressBar" parent="NotMenu" unique_id=199650519]
 layout_mode = 0
-offset_left = 21.0
+offset_left = 24.0
 offset_top = 24.0
-offset_right = 492.0
-offset_bottom = 53.0
+offset_right = 495.0
+offset_bottom = 48.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qiium")
 theme_override_styles/fill = SubResource("StyleBoxFlat_arshi")
 value = 50.0
@@ -142,10 +143,10 @@ script = ExtResource("7_8gkfd")
 
 [node name="HealthBar" type="ProgressBar" parent="NotMenu" unique_id=1363857212]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 69.0
-offset_right = 683.0
-offset_bottom = 103.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 685.0
+offset_bottom = 98.0
 theme_override_styles/background = SubResource("StyleBoxFlat_q8lsv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jle6x")
 value = 50.0
@@ -271,3 +272,50 @@ offset_bottom = 233.0
 theme_override_fonts/font = ExtResource("3_c7tqi")
 theme_override_font_sizes/font_size = 48
 text = "Q"
+
+[node name="QuestDisplay" type="Control" parent="NotMenu" unique_id=994905088]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 128.0
+offset_right = 64.0
+offset_bottom = 168.0
+
+[node name="Background" type="ColorRect" parent="NotMenu/QuestDisplay" unique_id=954310788]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.2
+anchor_bottom = 1.4000001
+offset_right = 456.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1893278, 0.18932778, 0.1893278, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="NotMenu/QuestDisplay/Background" unique_id=1025705697]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotMenu/QuestDisplay/Background/MarginContainer" unique_id=1923037452]
+layout_mode = 2
+
+[node name="QuestTitle" type="Label" parent="NotMenu/QuestDisplay/Background/MarginContainer/VBoxContainer" unique_id=1571461832]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 48
+text = "Quest Title"
+
+[node name="QuestDesc" type="Label" parent="NotMenu/QuestDisplay/Background/MarginContainer/VBoxContainer" unique_id=400665280]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c7tqi")
+theme_override_font_sizes/font_size = 42
+text = "Quest Description"
+
+[node name="Quest" type="Control" parent="." unique_id=1570389047]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("21_i1yd8")

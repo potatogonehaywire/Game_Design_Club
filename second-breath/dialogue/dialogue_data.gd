@@ -29,11 +29,11 @@ var dialogue : Array = [
 	]
 ]
 
-var icon_lookup : Dictionary = {"info": 0,
-				   "GAME INFO": 0,
-				   "GHOST 1": 1,
-				   "KOLITA": 2,
-				   "GHOST 2": 3}
+#var icon_lookup : Dictionary = {"info": 0,
+				   #"GAME INFO": 0,
+				   #"GHOST 1": 1,
+				   #"KOLITA": 2,
+				   #"GHOST 2": 3}
 
 
 # Probably keep dialogue data

@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c0ml2mwg50l7c"]
+
+[ext_resource type="Shader" uid="uid://diadrcrmn4b23" path="res://environment/shaders/landscaper/grass_shader.gdshader" id="1_oa61g"]
+[ext_resource type="Texture2D" uid="uid://bsxrl8u5p3o80" path="res://environment/shaders/landscaper/grass_texture.png" id="2_2x4ge"]
+[ext_resource type="Texture2D" uid="uid://b6frqsxw2ncb3" path="res://environment/shaders/landscaper/terrain_texture.png" id="3_8uhjh"]
+[ext_resource type="Texture2D" uid="uid://xhycdkoxbwj3" path="res://environment/shaders/landscaper/default_grass_v0.svg" id="4_u6rjk"]
+[ext_resource type="Texture2D" uid="uid://cyr4bsgk5rufl" path="res://environment/shaders/landscaper/default_grass_v1.svg" id="5_xtlr5"]
+[ext_resource type="Texture2D" uid="uid://t21e4puxj3kp" path="res://environment/shaders/landscaper/default_grass_v2.svg" id="6_uub3h"]
+
+[sub_resource type="Gradient" id="Gradient_jqov2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6haqi"]
+gradient = SubResource("Gradient_jqov2")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_oa61g")
+shader_parameter/enable_details = true
+shader_parameter/billboard_y = false
+shader_parameter/detail_color = Color(0.24771896, 0.43454987, 0.45060503, 1)
+shader_parameter/world_size = Vector2(10, 10)
+shader_parameter/world_position = Vector2(0, 0)
+shader_parameter/grass_color = ExtResource("2_2x4ge")
+shader_parameter/terrain_color = ExtResource("3_8uhjh")
+shader_parameter/gradient_mask = SubResource("GradientTexture2D_6haqi")
+shader_parameter/variants = Array[Texture2D]([ExtResource("4_u6rjk"), ExtResource("5_xtlr5"), ExtResource("6_uub3h")])

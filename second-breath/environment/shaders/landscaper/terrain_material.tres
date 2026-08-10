@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://gl76s02g8jku"]
+
+[ext_resource type="Texture2D" uid="uid://b6frqsxw2ncb3" path="res://environment/shaders/landscaper/terrain_texture.png" id="1_3rl3e"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_3rl3e")

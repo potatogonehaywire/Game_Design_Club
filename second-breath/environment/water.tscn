@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qfku3d3vkrbw"]
 
-[ext_resource type="Material" uid="uid://cr8yf6r3utjih" path="res://shaders/Stylized-Water-Shader-main/water_mat.tres" id="1_p67ub"]
+[ext_resource type="Material" uid="uid://cr8yf6r3utjih" path="res://environment/shaders/Stylized-Water-Shader-main/water_mat.tres" id="1_p67ub"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y2dte"]
 material = ExtResource("1_p67ub")
