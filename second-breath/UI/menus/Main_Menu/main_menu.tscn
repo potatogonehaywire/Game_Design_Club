@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bkxh3tdpimpiu" path="res://UI/menus/Option_Menu/options.tscn" id="3_6qckm"]
 [ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="3_gj40y"]
 [ext_resource type="FontFile" uid="uid://dgi81hu8rvh3y" path="res://UI/fonts/ModernDOS9x16.ttf" id="3_ix11v"]
+[ext_resource type="PackedScene" uid="uid://bumiifry8yhpe" path="res://audio/music/music_player_prologue.tscn" id="6_uq6ag"]
 
 [node name="Main_Menu" type="Control" unique_id=86582445]
 layout_mode = 3
@@ -120,3 +121,5 @@ text = "Exit Game"
 [node name="Option_Menu" parent="." unique_id=48153190 instance=ExtResource("3_6qckm")]
 visible = false
 layout_mode = 1
+
+[node name="MusicPlayer" parent="." unique_id=1769319417 instance=ExtResource("6_uq6ag")]

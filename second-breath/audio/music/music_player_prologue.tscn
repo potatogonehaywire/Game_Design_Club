@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bumiifry8yhpe"]
+
+[ext_resource type="Script" uid="uid://brvxkqkvimvyu" path="res://audio/music/prologue_music_player.gd" id="1_6sksi"]
+[ext_resource type="AudioStream" uid="uid://csqsqt24teyxw" path="res://audio/music/opening_intro.ogg" id="2_d2ulg"]
+[ext_resource type="AudioStream" uid="uid://be23i0dn20wdv" path="res://audio/music/opening_loop.ogg" id="3_owd5c"]
+
+[node name="MusicPlayer" type="Node3D" unique_id=1769319417]
+script = ExtResource("1_6sksi")
+
+[node name="opening_intro" type="AudioStreamPlayer" parent="." unique_id=1204620871]
+stream = ExtResource("2_d2ulg")
+autoplay = true
+
+[node name="opening_loop" type="AudioStreamPlayer" parent="." unique_id=1486817633]
+stream = ExtResource("3_owd5c")
+parameters/looping = true
+
+[connection signal="finished" from="opening_intro" to="." method="_on_opening_intro_finished"]

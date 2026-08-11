@@ -19,7 +19,7 @@ var dialogue : Array = [
 	
 	
 	[
-		[ ["INITIALIZING CHARACTER 1", "INITIALIZING CHARACTER 2"], ["CHARACTER", "AREA2 CHPO1 LINE1"], ["CHARACTER", "AREA1 CHPO1 LINE2"] ],
+		[ ["FATHER"], ["FATHER", "Oh it's you again"], ["KOLITA", "How do you know her?"], ["FATHER", "She came to us a couple years ago.  She was so full of potential.  I can sense that you are even stronger that she was."], ["KOLITA", "Where is she?"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"] ],
 		[ ["INITIALIZING CHARACTER 2", "INITIALIZING CHARACTER 3"], ["CHARACTER", "AREA2 CHPO2 LINE1"], ["CHARACTER", "AREA1 CHPO2 LINE2"] ]
 	],
 	

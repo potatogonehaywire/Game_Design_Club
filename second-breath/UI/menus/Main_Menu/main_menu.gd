@@ -10,7 +10,7 @@ extends Control
 @onready var option_menu: OptionsMenu = $Option_Menu
 @onready var margin_container : MarginContainer = $MarginContainer
 
-@onready var start_level: PackedScene = preload("uid://ckk0uk57jofg2")
+@onready var start_level: PackedScene = preload("uid://bltvyj0wvp5q8")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
