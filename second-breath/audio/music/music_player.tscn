@@ -9,10 +9,12 @@ script = ExtResource("2_uuj3i")
 
 [node name="base_bgm_intro" type="AudioStreamPlayer" parent="." unique_id=757861441]
 stream = ExtResource("2_xc4v1")
+volume_db = -10.0
 autoplay = true
 
 [node name="base_bgm_loop" type="AudioStreamPlayer" parent="." unique_id=801693477]
 stream = ExtResource("3_lnqi7")
+volume_db = -10.0
 parameters/looping = true
 
 [connection signal="finished" from="base_bgm_intro" to="." method="_on_base_bgm_intro_finished"]

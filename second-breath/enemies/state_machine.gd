@@ -1,5 +1,7 @@
 class_name StateMachine extends Node
 
+signal state_changed()
+
 @export var initial_state: State
 
 var current_state: State
@@ -37,6 +39,8 @@ func change_state(new_state_name: String) -> void:
 	new_state.enter()
 	
 	current_state = new_state 
+	
+	state_changed.emit(return_current_state())
 
 func return_current_state() -> String:
 	var current_state_name : String = states.find_key(current_state)

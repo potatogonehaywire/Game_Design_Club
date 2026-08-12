@@ -104,6 +104,8 @@
 [ext_resource type="Script" uid="uid://cry3ntgqll3e0" path="res://player/player_check_skill.gd" id="103_2s0vo"]
 [ext_resource type="Script" uid="uid://dvag42mma0uu0" path="res://player/skill_effect.gd" id="103_hgm8h"]
 [ext_resource type="Script" uid="uid://bir28w314qtms" path="res://player/sfx_controller.gd" id="104_hgm8h"]
+[ext_resource type="AudioStream" uid="uid://dpqry17lxwcv4" path="res://audio/sfx/spear_swing.mp3" id="105_ig2t1"]
+[ext_resource type="AudioStream" uid="uid://daawdw8r4tddi" path="res://audio/sfx/walk_grass.mp3" id="106_7xdiq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
 atlas = ExtResource("2_g1dw6")
@@ -1382,7 +1384,16 @@ script = ExtResource("103_hgm8h")
 [node name="SFXController" type="Node3D" parent="." unique_id=450992647]
 script = ExtResource("104_hgm8h")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SFXController" unique_id=662234935]
+[node name="Attack" type="AudioStreamPlayer3D" parent="SFXController" unique_id=662234935]
+stream = ExtResource("105_ig2t1")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="Walking" type="AudioStreamPlayer3D" parent="SFXController" unique_id=1433498182]
+stream = ExtResource("106_7xdiq")
+volume_db = -13.135
+max_db = -4.557
+max_distance = 15.28
 
 [connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
@@ -1390,3 +1401,4 @@ script = ExtResource("104_hgm8h")
 [connection signal="timeout" from="skillCooldown" to="." method="_on_skill_cooldown_timeout"]
 [connection signal="timeout" from="skillCooldown2" to="." method="_on_skill_cooldown_2_timeout"]
 [connection signal="timeout" from="skillCooldown3" to="." method="_on_skill_cooldown_3_timeout"]
+[connection signal="finished" from="SFXController/Walking" to="SFXController" method="_on_walking_finished"]
