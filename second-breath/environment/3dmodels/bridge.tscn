@@ -13,14 +13,14 @@ albedo_color = Color(0.7407241, 0.641515, 0.40025643, 1)
 
 [node name="bridge" unique_id=2002642990 instance=ExtResource("1_l0vkg")]
 
-[node name="floor" parent="." index="0" unique_id=757626800]
+[node name="floor" parent="." index="0" unique_id=1704150148]
 surface_material_override/0 = SubResource("StandardMaterial3D_l0vkg")
 
-[node name="horizontal_beam" parent="." index="2" unique_id=1959673352]
+[node name="horizontal_beam" parent="." index="2" unique_id=1297104275]
 surface_material_override/0 = SubResource("StandardMaterial3D_41ky6")
 
-[node name="vertical_beam" parent="." index="3" unique_id=1281838214]
+[node name="vertical_beam" parent="." index="3" unique_id=1613992993]
 surface_material_override/0 = SubResource("StandardMaterial3D_yr07d")
 
-[node name="@StaticBody3D@44953" parent="." index="4" unique_id=1015172680]
+[node name="@StaticBody3D@80197" parent="." index="4" unique_id=1082273437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

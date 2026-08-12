@@ -46,7 +46,7 @@ light_color = Color(0.6896453, 0.76223814, 1, 1)
 [node name="Islands" parent="." unique_id=10303803 instance=ExtResource("1_ubm4t")]
 
 [node name="Player" parent="." unique_id=1436769523 instance=ExtResource("2_0k66g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.499771, 40.760166, 61.216125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.19182, 40.760166, -2.2229462)
 
 [node name="UI" parent="." unique_id=725296579 instance=ExtResource("3_hjqxc")]
 
@@ -55,9 +55,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.499771, 40.760166, 61.2161
 [node name="NPC" parent="." unique_id=564275751 instance=ExtResource("7_6w7ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.21219, 22.016232, -15.862843)
 dialogue_identifier = "FATHER"
+display_name = "Father"
 
 [node name="Fragment" parent="." unique_id=1379615721 instance=ExtResource("8_tipki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.0509, 19.472572, -34.790955)
 
 [node name="testdummy" parent="." unique_id=505480189 instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 83.38101, 19.472572, -18.537243)
+
+[node name="NPC2" parent="." unique_id=472980192 instance=ExtResource("7_6w7ju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.03015, 19.763294, -8.327593)

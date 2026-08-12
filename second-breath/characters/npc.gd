@@ -5,6 +5,7 @@ signal message
 
 @export var dialogue_identifier : String = "GHOST 1"
 @export var tutorial_identifiers : Array = ["INTERACT"]
+@export var display_name : String = "Ghost"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

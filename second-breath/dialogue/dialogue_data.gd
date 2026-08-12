@@ -7,10 +7,6 @@ extends Node
 # Do this for each area of dialogue.
 var dialogue_checkpoints : Array = [0, 0, 0]
 var dialogue : Array = [
-	[
-		[ ["SHELF"], ["", "Kolita used to dream of becoming a doctor. Funny how things change."], ["BOSS", "Kolita!"], ["", "Kolita had it all"], ["", "Life is fragile"], ["", "At last this family no longer needs to waste money feeding another mouth."] ],
-		[ ["SHELF"], ["", "Kolita used to dream of becoming a doctor. Funny how things change."], ["BOSS", "Kolita!"], ["", "Kolita had it all"], ["", "Life is fragile"], ["", "At last this family no longer needs to waste money feeding another mouth."] ],
-	],
 	
 	[
 		[ ["GHOST 1", "GHOST 2"], ["GHOST 1", "Come with us."], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],

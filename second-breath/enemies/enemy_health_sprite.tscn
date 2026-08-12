@@ -17,6 +17,7 @@ bg_color = Color(0.99999994, 0.06251521, 0.4531635, 1)
 [node name="EnemyHealthSprite" type="Sprite3D" unique_id=555377135]
 transform = Transform3D(6.666665, 0, 0, 0, 6.666665, 0, 0, 0, 6.666665, 0, 0, 0)
 billboard = 1
+texture_filter = 2
 texture = SubResource("ViewportTexture_7p70c")
 script = ExtResource("1_3tglm")
 

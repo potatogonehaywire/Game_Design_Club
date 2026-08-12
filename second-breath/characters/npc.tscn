@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4unusk40r8jw" path="res://characters/npc.gd" id="1_ua8er"]
 [ext_resource type="Texture2D" uid="uid://fao2bj4bg4fc" path="res://sprites/father/father.png" id="2_708c4"]
+[ext_resource type="PackedScene" uid="uid://ckgk0l3qmk6i7" path="res://characters/name_tag.tscn" id="3_4apfu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifo5i"]
 atlas = ExtResource("2_708c4")
@@ -28,6 +29,9 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2fly"]
 size = Vector3(0.98947144, 1.1401978, 0.35913086)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_4apfu"]
+viewport_path = NodePath("SubViewport")
+
 [node name="NPC" type="CharacterBody3D" unique_id=564275751 groups=["can_talk"]]
 script = ExtResource("1_ua8er")
 
@@ -40,3 +44,7 @@ animation = &"idle_backward"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1991980506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017532349, 0.005218506, 0.025024414)
 shape = SubResource("BoxShape3D_p2fly")
+
+[node name="NameTag" parent="." unique_id=108386686 instance=ExtResource("3_4apfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002614975, 0.6916237, 0)
+texture = SubResource("ViewportTexture_4apfu")

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ckgk0l3qmk6i7"]
+
+[ext_resource type="Script" uid="uid://dboydupf1g30p" path="res://characters/name_tag.gd" id="1_skke4"]
+[ext_resource type="FontFile" uid="uid://blkksf3ub3qsr" path="res://UI/fonts/Comicoro.ttf" id="2_wgapx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_skke4"]
+viewport_path = NodePath("SubViewport")
+
+[node name="NameTag" type="Sprite3D" unique_id=108386686]
+texture_filter = 0
+texture = SubResource("ViewportTexture_skke4")
+script = ExtResource("1_skke4")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2064670266]
+transparent_bg = true
+size = Vector2i(150, 32)
+
+[node name="CharacterName" type="Label" parent="SubViewport" unique_id=1713029298]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_wgapx")
+theme_override_font_sizes/font_size = 32
+text = "Ghost"
+horizontal_alignment = 1
