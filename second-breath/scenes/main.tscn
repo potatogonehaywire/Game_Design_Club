@@ -65,3 +65,8 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 83.38101, 19.472572,
 
 [node name="NPC2" parent="." unique_id=472980192 instance=ExtResource("7_6w7ju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.03015, 19.763294, -8.327593)
+
+[node name="NPC3" parent="." unique_id=1703907963 instance=ExtResource("7_6w7ju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.229706, 12.691999, -7.321039)
+dialogue_identifier = "COWBOY"
+display_name = "Cowboy"

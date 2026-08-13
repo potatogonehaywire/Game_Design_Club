@@ -46,15 +46,20 @@ func _process(_delta: float) -> void:
 		$DialogueText.text = correct_dialogue_text
 		dialogue_section_needs_update = false
 	
+	if current_dialogue == [["" , ""]] && dialogue_root.visible:
+		finished_dialogue.emit()
+	
 	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack") && dialogue_root.visible:
 		finished_dialogue.emit()
+	
 
 
 func message(msg: Array) -> void:
 	if msg[0]["recipient"] == "dialogue scene":
 		if msg[0]["topic"] == "start dialogue":
-			if current_dialogue != $DialogueData.dialogue_output(msg[1][0]):
-				current_dialogue = $DialogueData.dialogue_output(msg[1][0])
+			var correct_dialogue : Array = $DialogueData.dialogue_output(msg[1][0])
+			if current_dialogue != correct_dialogue:
+				current_dialogue = correct_dialogue 
 				current_line = -1
 				dialogue_section_needs_update = true
 		else:
