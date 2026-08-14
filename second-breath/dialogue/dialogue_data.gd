@@ -6,6 +6,15 @@ extends Node
 # If the character is valid for the next checkpoint, play the dialogue AND add 1 to checkpoint.
 # Do this for each area of dialogue.
 var dialogue_checkpoints : Array = [0, 0, 0]
+
+# dictionary to convert dialogue checkpoints into quests
+# first key is for the dialogue area
+#he value of dialogue_checkpoints[area] will be the index of the quest inside the list
+var dialogue_to_quest : Dictionary = {
+	0 : [{"quest_name" : "Organize the Shelves", "quest_description": " Organize the Shelves", "return_text": "none"}]
+	, 1 : [{"quest_name" : "Talk to father", "quest_description": " Organize the Shelves", "return_text": "none"}, {"quest_name" : "Talk to father", "quest_description": " Organize the Shelves", "return_text": "none"}]
+	}
+	
 var dialogue : Array = [
 	
 	[
@@ -40,17 +49,18 @@ func dialogue_output(identifier: String) -> Array:
 	var found_correct_dialogue : bool = false
 	# If you need to change the stored dialogue data in any way, you can do that here.
 	for area : int in range(len(dialogue_checkpoints)):
-		# If the character initializes the checkpoint
+		# if the player hasn't played through all the dialogue 
 		if len(dialogue[area]) > dialogue_checkpoints[area]:
+			# if the player talks to the character in the right order
 			if identifier in dialogue[area][dialogue_checkpoints[area]][0]:
 				returned_dialogue.append( dialogue[area][dialogue_checkpoints[area]].slice(1,) )
 				dialogue_checkpoints[area] += 1
 				found_correct_dialogue = true
 		
+		# return empty dialogue if the player talks to the wrong person
 		if !found_correct_dialogue:
 			returned_dialogue = [[["" , ""]]]
 		#elif identifier in dialogue[area][dialogue_checkpoints[area] + 1][0]:
-			#print("no")
 			#returned_dialogue.append( dialogue[area][dialogue_checkpoints[area] + 1].slice(1,) )
 			#dialogue_checkpoints[area] += 1
 			
