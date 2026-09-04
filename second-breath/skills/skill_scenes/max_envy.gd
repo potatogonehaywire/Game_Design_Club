@@ -12,4 +12,4 @@ var speedBuff : float = 0
 var maxHealth : int = 15
 var staminaDrain : int = 10
 var type : String = "buff"
-var colour : Color = Color("7300e1ff")
+var colour : Color = Color("039b8eff")

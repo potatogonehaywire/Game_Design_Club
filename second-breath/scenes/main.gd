@@ -37,6 +37,10 @@ func toggle_dialogue_box(visible : bool) -> void:
 		toggle_player_stats()
 	dialogue_root.visible = visible
 	not_menu.visible = not visible
+	if dialogue_root.visible:
+		for child : Node in ui.get_children():
+			if child is Quest:
+				child.queue_free()
 
 func toggle_player_stats() -> void:
 	if talent_root.visible:

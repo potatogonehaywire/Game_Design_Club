@@ -10,12 +10,16 @@ var dialogue_checkpoints : Array = [0, 0, 0]
 # dictionary to convert dialogue checkpoints into quests
 # first key is for the dialogue area
 #he value of dialogue_checkpoints[area] will be the index of the quest inside the list
+# {area : [{"quest_name" : name, "quest_description" : desc , "return_text" : text}, {"quest_name" : name, "quest_description" : desc , "return_text" : text}]
 var dialogue_to_quest : Dictionary = {
-	0 : [{"quest_name" : "Organize the Shelves", "quest_description": " Organize the Shelves", "return_text": "none"}]
-	, 1 : [{"quest_name" : "Talk to father", "quest_description": " Organize the Shelves", "return_text": "none"}, {"quest_name" : "Talk to father", "quest_description": " Organize the Shelves", "return_text": "none"}]
+	0 : [{"quest_name" : "Kick the shelf", "quest_description": " Organize the Shelves", "return_text": "none"},{"quest_name" : "talk to father", "quest_description": "", "return_text": "none"},{"quest_name" : "talk to ghost 3", "quest_description": "", "return_text": "none"}]
+	, 1 : [{"quest_name" : "Talk to ghost", "quest_description": " Organize the Shelves", "return_text": "none"},{"quest_name" : "talk to father", "quest_description": "", "return_text": "none"},{"quest_name" : "talk to ghost 3", "quest_description": "", "return_text": "none"}]
 	}
 	
 var dialogue : Array = [
+	[
+		[ ["SHELF"], ["SHELF", "Ouch"], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],
+	],
 	
 	[
 		[ ["GHOST 1", "GHOST 2"], ["GHOST 1", "Come with us."], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],
@@ -35,6 +39,8 @@ var dialogue : Array = [
 	],
 ]
 
+var correct_area : int = 0
+
 #var icon_lookup : Dictionary = {"info": 0,
 				   #"GAME INFO": 0,
 				   #"GHOST 1": 1,
@@ -48,20 +54,27 @@ func dialogue_output(identifier: String) -> Array:
 	var returned_dialogue : Array = []
 	var found_correct_dialogue : bool = false
 	# If you need to change the stored dialogue data in any way, you can do that here.
-	for area : int in range(len(dialogue_checkpoints)):
-		# if the player hasn't played through all the dialogue 
-		if len(dialogue[area]) > dialogue_checkpoints[area]:
-			# if the player talks to the character in the right order
-			if identifier in dialogue[area][dialogue_checkpoints[area]][0]:
-				returned_dialogue.append( dialogue[area][dialogue_checkpoints[area]].slice(1,) )
-				dialogue_checkpoints[area] += 1
-				found_correct_dialogue = true
+	#for area : int in range(len(dialogue_checkpoints)):
+	# if the player hasn't played through all the dialogue 
+	if len(dialogue[correct_area]) > dialogue_checkpoints[correct_area]:
+		# if the player talks to the character in the right order
+		if identifier in dialogue[correct_area][dialogue_checkpoints[correct_area]][0]:
+			returned_dialogue.append( dialogue[correct_area][dialogue_checkpoints[correct_area]].slice(1,) )
+			dialogue_checkpoints[correct_area] += 1
+			found_correct_dialogue = true
+	else:
+		correct_area += 1
 		
-		# return empty dialogue if the player talks to the wrong person
-		if !found_correct_dialogue:
-			returned_dialogue = [[["" , ""]]]
+	# return empty dialogue if the player talks to the wrong person
+	if !found_correct_dialogue:
+		returned_dialogue = [[["" , ""]]]
 		#elif identifier in dialogue[area][dialogue_checkpoints[area] + 1][0]:
 			#returned_dialogue.append( dialogue[area][dialogue_checkpoints[area] + 1].slice(1,) )
 			#dialogue_checkpoints[area] += 1
 			
 	return returned_dialogue[0] # **Not sure why I need to take the only item out of this list to get the list, but...
+
+func set_quest() -> Dictionary:
+	print("set Quest", correct_area)
+	print(dialogue_to_quest[correct_area][dialogue_checkpoints[correct_area] - 1])
+	return dialogue_to_quest[correct_area][dialogue_checkpoints[correct_area] - 1]

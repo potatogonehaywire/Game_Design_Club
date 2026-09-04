@@ -9,9 +9,12 @@ signal finished_dialogue()
 
 @onready var dialogue_root: Control = $".."
 @onready var end_instructions: Label = $EndInstructions
+@onready var quest: Quest = $"../../Quest"
+@onready var ui: CanvasLayer = $"../.."
+
+var quest_scene : PackedScene = preload("uid://cpbcivuocc888")
 
 var player : CharacterBody3D = null
-
 
 var current_dialogue : Array = [["GAME INFO", "Placeholder for dialogue box text."], ["GAME INFO", "Click on character with scribble on it (testcharacter) to get only currently added dialogue."]]
 var current_line : int = -1
@@ -50,9 +53,15 @@ func _process(_delta: float) -> void:
 		finished_dialogue.emit()
 	
 	if current_line == len(current_dialogue) - 1 && Input.is_action_pressed("attack") && dialogue_root.visible:
+		var quest_data : Dictionary = $DialogueData.set_quest()
+		var new_quest : Node = quest_scene.instantiate()
+		ui.add_child(new_quest)
+		new_quest.quest_name = quest_data["quest_name"]
+		new_quest.quest_description = quest_data["quest_description"]
+		new_quest.return_text = quest_data["return_text"]
+		new_quest.start_quest()
 		finished_dialogue.emit()
-	
-
+		
 
 func message(msg: Array) -> void:
 	if msg[0]["recipient"] == "dialogue scene":

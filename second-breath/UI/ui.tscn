@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://blakh2ru7wx8m" path="res://UI/menus/Graphics/crystal2_outline.png" id="12_ow1yt"]
 [ext_resource type="Texture2D" uid="uid://bm0jh6mdbh2v4" path="res://UI/menus/Graphics/crystal3_outline.png" id="13_o2t6a"]
 [ext_resource type="Texture2D" uid="uid://dycetkf4sqd6k" path="res://UI/menus/Graphics/crystal4_outline.png" id="14_8gukh"]
-[ext_resource type="Script" uid="uid://u1osqigc6ns1" path="res://dialogue/quests/quest.gd" id="21_i1yd8"]
+[ext_resource type="PackedScene" uid="uid://cpbcivuocc888" path="res://dialogue/quests/quest.tscn" id="21_i1yd8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nm1m0"]
 font = ExtResource("3_c7tqi")
@@ -313,9 +313,4 @@ theme_override_fonts/font = ExtResource("3_c7tqi")
 theme_override_font_sizes/font_size = 42
 text = "Quest Description"
 
-[node name="Quest" type="Control" parent="." unique_id=1570389047]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("21_i1yd8")
+[node name="Quest" parent="." unique_id=2033016934 instance=ExtResource("21_i1yd8")]

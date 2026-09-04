@@ -70,3 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.03015, 19.763294, -8.32759
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.229706, 12.691999, -7.321039)
 dialogue_identifier = "COWBOY"
 display_name = "Cowboy"
+
+[node name="NPC4" parent="." unique_id=902540169 instance=ExtResource("7_6w7ju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.22229, 14.468477, 6.725459)
+dialogue_identifier = "SHELF"
+display_name = "Shelf"
