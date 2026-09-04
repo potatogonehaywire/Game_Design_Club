@@ -18,13 +18,30 @@ var dialogue_to_quest : Dictionary = {
 	
 var dialogue : Array = [
 	[
-		[ ["SHELF"], ["SHELF", "Ouch"], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],
+		# Prologue
+		[ ["SHELF"], 
+		["", "Kolita is shelving cans on a shelf in a grocery store."], 
+		["", "Kolita used to dream of becoming a doctor.  Funny how these things change."], 
+		["BOSS", "Kolita!  I need you to change the sign outside for me!"], 
+		["KOLITA", "Alright boss."], 
+		["KOLITA", "Save me from what?"], 
+		["", "Kolita had it all, loving parents, good friends, and a sister named Issac. This all changed when her mother got sick."], 
+		["", "Over the next few months, she withered away until there was nothing left.  None of the treatments did anything but plunge the family deeper and deeper into debt."], 
+		["", "Now Kolita is stuck shelving cans in a store to try to pay off some of that debt."], 
+		["", "Life is fragile, isn’t it?  We always assume we are immortal until we see death staring us in the face.  Sometimes we don’t see it coming."], 
+		["", "At least this family no longer needs to waste money feeding another mouth."] ],
 	],
 	
-	[
-		[ ["GHOST 1", "GHOST 2"], ["GHOST 1", "Come with us."], ["KOLITA", "Who are you?"], ["GHOST 1", "We are servants of the Father.  We are here to save you."], ["KOLITA", "Save me from what?"], ["GHOST 2", "Pain, death, suffering, everything."], ["KOLITA", "I don’t understand.  Where am I?"], ["GHOST 1", "This is the ghost world.  You are dead, but don’t worry because that won’t last for long."], ["KOLITA", "What?"], ["GHOST 1", "The Father will soon have the power to bring us all back to life.  Come with us.  We will introduce you."] ],
-		[ ["FATHER"], ["FATHER", "I recognize you.  You are the daughter of Catherine."], ["KOLITA", "How do you know her?"], ["FATHER", "She came to us a couple years ago.  She was so full of potential.  I can sense that you are even stronger that she was."], ["KOLITA", "Where is she?"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"], ["CHARACTER", "AREA1 CHPO2 LINE2"] ],
-		[["COWBOY"], ["COWBOY", "Damn, you need new sheets."], ["KOLITA", "What are you on?"]]
+	[	
+		# Act 1 Scene 1
+		[ ["DOVE"], 
+		["DOVE", "How unfortunate.  You had so much ahead of you.  Too bad, I guess."], 
+		["KOLITA", "What is going on here?  Where am I?"], 
+		["DOVE", "You don’t get it do you?  How sad."], 
+		["KOLITA", "You can’t be real!  Birds don't talk!"], 
+		["DOVE", "Gah!  How rude!"]],
+		
+		[["COWBOY"], ["COWBOY", "Oh great, it did it again.  Don't worry, you are safe now."]]
 	],
 	
 	
